@@ -1,0 +1,75 @@
+{
+  "users": {
+    "462501728848179200": {
+      "canonical_name": "Fawaz",
+      "usernames": ["faximus"],
+      "excel_names": ["faximus", "Powerball Ticket", "Abrakadabra Alakamara"]
+    },
+    "467556046399860736": {
+      "canonical_name": "hoo2champ",
+      "usernames": ["hoo2champ", "NEESHHYPE"],
+      "excel_names": ["hoo2champ", "NEESHHYPE", "MOBY HYPE", "GOAT Cheese"]
+    },
+    "467556088519061504": {
+      "canonical_name": "Aryan",
+      "usernames": ["nihalbharath"],
+      "excel_names": ["nihalbharath", "D Adams Family", "Nihal"]
+    },
+    "467556283235430400": {
+      "canonical_name": "Jaguo",
+      "usernames": ["Jaguo"],
+      "excel_names": ["Jaguo", "Graham Crackers"]
+    },
+    "467556448272904192": {
+      "canonical_name": "Gmen",
+      "usernames": ["Gmen926"],
+      "excel_names": ["Gmen926", "Remember the Taitans"]
+    },
+    "467556485400883200": {
+      "canonical_name": "Loomnoo",
+      "usernames": ["loomnoo"],
+      "excel_names": ["loomnoo", "Everybody Diggs A Good Cooks"]
+    },
+    "467562671558881280": {
+      "canonical_name": "Rohit",
+      "usernames": ["rohitV", "bohit"],
+      "excel_names": ["rohitV", "bohit"]
+    },
+    "467563705354153984": {
+      "canonical_name": "Mutumbs",
+      "usernames": ["Mutumbs"],
+      "excel_names": ["Mutumbs", "This Team Blows"]
+    },
+    "467575251014774784": {
+      "canonical_name": "Nfi421",
+      "usernames": ["Nfi421"],
+      "excel_names": ["Nfi421"]
+    },
+    "468118346949193728": {
+      "canonical_name": "GeneralSod",
+      "usernames": ["GeneralSod"],
+      "excel_names": ["GeneralSod"]
+    },
+    "468426188281344000": {
+      "canonical_name": "Aneesh",
+      "usernames": ["aneeshatri29"],
+      "excel_names": ["aneeshatri29"]
+    },
+    "468452373182803968": {
+      "canonical_name": "Nabbo",
+      "usernames": ["Nabbo"],
+      "excel_names": ["Nabbo", "bimbozappamimanbap"]
+    },
+    "883711528850051072": {
+      "canonical_name": "Aryan",
+      "usernames": ["Aryankara"],
+      "excel_names": ["Aryankara"]
+    }
+  },
+  "legacy_only_managers": {
+    "Arpan": "Arpan",
+    "MihirDoshi": "Mihir",
+    "will": "Will",
+    "Sau": "GeneralSod"
+  }
+}

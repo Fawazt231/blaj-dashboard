@@ -1,0 +1,360 @@
+:root {
+  --bg-primary: #1c1917;
+  --bg-card: #292524;
+  --bg-card-hover: #383533;
+  --border-color: #44403c;
+  --text-primary: #f5f5f4;
+  --text-secondary: #d6d3d1;
+  --text-muted: #a8a29e;
+  --accent-green: #d97706;
+  --accent-blue: #d97706;
+  --accent-purple: #fde68a;
+  --accent-teal: #fde68a;
+  --accent-amber: #d97706;
+  --danger-red: #f87171;
+  --danger-bg: rgba(248, 113, 113, 0.12);
+  --danger-border: rgba(248, 113, 113, 0.3);
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Layout - Generous Full-Width Canvas */
+.app-container {
+  width: 96%;
+  max-width: 1850px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem;
+}
+
+/* Header & Nav */
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 2.25rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.brand-title {
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-primary);
+}
+
+.brand-title span {
+  color: var(--accent-blue);
+}
+
+.nav-tabs {
+  display: flex;
+  gap: 0.65rem;
+  background-color: #141210;
+  padding: 0.45rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  flex-wrap: wrap;
+}
+
+.nav-tab {
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.nav-tab:hover {
+  color: var(--text-primary);
+  background-color: rgba(217, 119, 6, 0.1);
+}
+
+.nav-tab.active {
+  background-color: var(--bg-card);
+  color: var(--accent-blue);
+  font-weight: 700;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* Main Grid - Balanced Columns with Wider Sidebars */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 420px 1fr 420px;
+  gap: 2.25rem;
+}
+
+@media (max-width: 1380px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Cards & Modules - Subtle Soft Edges & Breathing Room */
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+  font-size: 0.9375rem;
+  font-weight: 800;
+  margin-bottom: 1.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+/* Tables & Sorting - Spacious Rows */
+.table-container {
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.data-table th {
+  padding: 0.85rem 1rem;
+  color: var(--text-muted);
+  font-weight: 700;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.775rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  user-select: none;
+  background-color: #171412;
+}
+
+.data-table th.sortable {
+  cursor: pointer;
+}
+
+.data-table th.sortable:hover {
+  color: var(--text-primary);
+  background-color: rgba(217, 119, 6, 0.1);
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid rgba(68, 64, 60, 0.5);
+  color: var(--text-primary);
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.data-table td .team-name-cell {
+  max-width: 175px;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.data-table th.wl-col,
+.data-table td.wl-col {
+  min-width: 65px;
+  white-space: nowrap;
+  text-align: center;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.data-table th.pf-col,
+.data-table td.pf-col {
+  min-width: 85px;
+  white-space: nowrap;
+  text-align: right;
+  padding-left: 0.5rem;
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table tr:hover td {
+  background-color: rgba(217, 119, 6, 0.05);
+}
+
+/* Punishment Watch & Calendar Sidebar Module */
+.punishment-card {
+  background-color: var(--danger-bg);
+  border: 1px solid var(--danger-border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.punishment-title {
+  color: var(--danger-red);
+  font-size: 0.9375rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.calendar-sidebar-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+}
+
+.calendar-grid-preview {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.calendar-thumb {
+  aspect-ratio: 1;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.calendar-thumb:hover {
+  transform: scale(1.04);
+  border-color: var(--accent-blue);
+}
+
+.calendar-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Matchup Cards */
+.matchups-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.matchup-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+}
+
+.matchup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.15rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.matchup-teams {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.team-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  text-align: center;
+}
+
+.team-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: var(--border-color);
+  object-fit: cover;
+}
+
+.team-name {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.team-score {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.vs-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  background-color: var(--bg-primary);
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+/* Record Book Sheet Selector Buttons Container */
+.sheet-selector-container {
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  max-width: 100%;
+}

@@ -1,0 +1,7241 @@
+{
+  "league_name": "Blaj",
+  "season": "2026",
+  "current_week": 1,
+  "total_weeks": 14,
+  "standings": [
+    {
+      "roster_id": 4,
+      "owner_id": "467556283235430400",
+      "canonical_name": "Jaguo",
+      "display_name": "Jaguo",
+      "team_name": "I\u2019m Reicharded",
+      "avatar_url": "profile-images-removed/thumbs/72ecd4695a1f517a9964cb803a182eaa",
+      "wins": 1,
+      "losses": 0,
+      "ties": 0,
+      "points_for": 140.62,
+      "points_against": 105.94,
+      "division": 1,
+      "rank": 1
+    },
+    {
+      "roster_id": 1,
+      "owner_id": "462501728848179200",
+      "canonical_name": "Fawaz",
+      "display_name": "faximus",
+      "team_name": "Wheres Waddle",
+      "avatar_url": "profile-images-removed/thumbs/dd6928a9b380502def30e6b9dc3c22df",
+      "wins": 1,
+      "losses": 0,
+      "ties": 0,
+      "points_for": 139.48,
+      "points_against": 88.8,
+      "division": 3,
+      "rank": 2
+    },
+    {
+      "roster_id": 6,
+      "owner_id": "467556485400883200",
+      "canonical_name": "Loomnoo",
+      "display_name": "loomnoo",
+      "team_name": "Sydney's Sweeneys",
+      "avatar_url": "profile-images-removed/thumbs/920dc858372ba40dc19e94f670d12e0f",
+      "wins": 1,
+      "losses": 0,
+      "ties": 0,
+      "points_for": 126.12,
+      "points_against": 64.92,
+      "division": 3,
+      "rank": 3
+    },
+    {
+      "roster_id": 12,
+      "owner_id": "468452373182803968",
+      "canonical_name": "Nabbo",
+      "display_name": "Nabbo",
+      "team_name": "Touchdown in London Town",
+      "avatar_url": "profile-images-removed/thumbs/8e9887c56921844272b51af3e7384fa2",
+      "wins": 1,
+      "losses": 0,
+      "ties": 0,
+      "points_for": 125.96,
+      "points_against": 123.2,
+      "division": 2,
+      "rank": 4
+    },
+    {
+      "roster_id": 5,
+      "owner_id": "467556448272904192",
+      "canonical_name": "Gmen",
+      "display_name": "Gmen926",
+      "team_name": "InsertCoolName",
+      "avatar_url": "profile-images-removed/thumbs/909b16f12d1bd5b227bd97c98bc1f825",
+      "wins": 1,
+      "losses": 0,
+      "ties": 0,
+      "points_for": 121.54,
+      "points_against": 94.36,
+      "division": 2,
+      "rank": 5
+    },
+    {
+      "roster_id": 9,
+      "owner_id": "467575251014774784",
+      "canonical_name": "Nfi421",
+      "display_name": "Nfi421",
+      "team_name": "First Team All-Suspension",
+      "avatar_url": "profile-images-removed/thumbs/6f925123e8c7894bf1cddb0e21a9ae71",
+      "wins": 1,
+      "losses": 0,
+      "ties": 0,
+      "points_for": 87.24,
+      "points_against": 75.8,
+      "division": 1,
+      "rank": 6
+    },
+    {
+      "roster_id": 10,
+      "owner_id": "468118346949193728",
+      "canonical_name": "GeneralSod",
+      "display_name": "GeneralSod",
+      "team_name": "Naberhood Watch",
+      "avatar_url": "profile-images-removed/thumbs/accfa8d733980b98db2fcb40cb98bc1b",
+      "wins": 0,
+      "losses": 1,
+      "ties": 0,
+      "points_for": 123.2,
+      "points_against": 125.96,
+      "division": 2,
+      "rank": 7
+    },
+    {
+      "roster_id": 11,
+      "owner_id": "468426188281344000",
+      "canonical_name": "Aneesh",
+      "display_name": "aneeshatri29",
+      "team_name": "petting zoo",
+      "avatar_url": "profile-images-removed/thumbs/50ba16db60e2e064b58bc354ce163ddd",
+      "wins": 0,
+      "losses": 1,
+      "ties": 0,
+      "points_for": 105.94,
+      "points_against": 140.62,
+      "division": 1,
+      "rank": 8
+    },
+    {
+      "roster_id": 2,
+      "owner_id": "467556046399860736",
+      "canonical_name": "hoo2champ",
+      "display_name": "hoo2champ",
+      "team_name": "Ghay for Bhay",
+      "avatar_url": "profile-images-removed/thumbs/d25e506df15ed6ff693171379464e8ab",
+      "wins": 0,
+      "losses": 1,
+      "ties": 0,
+      "points_for": 94.36,
+      "points_against": 121.54,
+      "division": 2,
+      "rank": 9
+    },
+    {
+      "roster_id": 8,
+      "owner_id": "467563705354153984",
+      "canonical_name": "Mutumbs",
+      "display_name": "Mutumbs",
+      "team_name": "George PickHIMS",
+      "avatar_url": "profile-images-removed/thumbs/3ba9b13839d8aae42305608dfbb1bfe2",
+      "wins": 0,
+      "losses": 1,
+      "ties": 0,
+      "points_for": 88.8,
+      "points_against": 139.48,
+      "division": 3,
+      "rank": 10
+    },
+    {
+      "roster_id": 7,
+      "owner_id": "467562671558881280",
+      "canonical_name": "Rohit",
+      "display_name": "rohitV",
+      "team_name": "Chris Cross Adams Sauce",
+      "avatar_url": "profile-images-removed/thumbs/aebe47e302e42a4847b5c66d57f320af",
+      "wins": 0,
+      "losses": 1,
+      "ties": 0,
+      "points_for": 75.8,
+      "points_against": 87.24,
+      "division": 1,
+      "rank": 11
+    },
+    {
+      "roster_id": 3,
+      "owner_id": "883711528850051072",
+      "canonical_name": "Aryan",
+      "display_name": "Aryankara",
+      "team_name": "Kyren(No Achalles) Irving",
+      "avatar_url": "profile-images-removed/thumbs/82aec8e811b839b8ec25d7b458afd57b",
+      "wins": 0,
+      "losses": 1,
+      "ties": 0,
+      "points_for": 64.92,
+      "points_against": 126.12,
+      "division": 3,
+      "rank": 12
+    }
+  ],
+  "playoff_picture": [
+    {
+      "seed": 1,
+      "type": "Division Winner",
+      "team": {
+        "roster_id": 4,
+        "owner_id": "467556283235430400",
+        "canonical_name": "Jaguo",
+        "display_name": "Jaguo",
+        "team_name": "I\u2019m Reicharded",
+        "avatar_url": "profile-images-removed/thumbs/72ecd4695a1f517a9964cb803a182eaa",
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "points_for": 140.62,
+        "points_against": 105.94,
+        "division": 1,
+        "rank": 1
+      }
+    },
+    {
+      "seed": 2,
+      "type": "Division Winner",
+      "team": {
+        "roster_id": 1,
+        "owner_id": "462501728848179200",
+        "canonical_name": "Fawaz",
+        "display_name": "faximus",
+        "team_name": "Wheres Waddle",
+        "avatar_url": "profile-images-removed/thumbs/dd6928a9b380502def30e6b9dc3c22df",
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "points_for": 139.48,
+        "points_against": 88.8,
+        "division": 3,
+        "rank": 2
+      }
+    },
+    {
+      "seed": 3,
+      "type": "Division Winner",
+      "team": {
+        "roster_id": 12,
+        "owner_id": "468452373182803968",
+        "canonical_name": "Nabbo",
+        "display_name": "Nabbo",
+        "team_name": "Touchdown in London Town",
+        "avatar_url": "profile-images-removed/thumbs/8e9887c56921844272b51af3e7384fa2",
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "points_for": 125.96,
+        "points_against": 123.2,
+        "division": 2,
+        "rank": 4
+      }
+    },
+    {
+      "seed": 4,
+      "type": "Wildcard (Record)",
+      "team": {
+        "roster_id": 6,
+        "owner_id": "467556485400883200",
+        "canonical_name": "Loomnoo",
+        "display_name": "loomnoo",
+        "team_name": "Sydney's Sweeneys",
+        "avatar_url": "profile-images-removed/thumbs/920dc858372ba40dc19e94f670d12e0f",
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "points_for": 126.12,
+        "points_against": 64.92,
+        "division": 3,
+        "rank": 3
+      }
+    },
+    {
+      "seed": 5,
+      "type": "Points For Qualifier",
+      "team": {
+        "roster_id": 10,
+        "owner_id": "468118346949193728",
+        "canonical_name": "GeneralSod",
+        "display_name": "GeneralSod",
+        "team_name": "Naberhood Watch",
+        "avatar_url": "profile-images-removed/thumbs/accfa8d733980b98db2fcb40cb98bc1b",
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "points_for": 123.2,
+        "points_against": 125.96,
+        "division": 2,
+        "rank": 7
+      }
+    },
+    {
+      "seed": 6,
+      "type": "Points For Qualifier",
+      "team": {
+        "roster_id": 5,
+        "owner_id": "467556448272904192",
+        "canonical_name": "Gmen",
+        "display_name": "Gmen926",
+        "team_name": "InsertCoolName",
+        "avatar_url": "profile-images-removed/thumbs/909b16f12d1bd5b227bd97c98bc1f825",
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "points_for": 121.54,
+        "points_against": 94.36,
+        "division": 2,
+        "rank": 5
+      }
+    }
+  ],
+  "punishment_watch": [
+    {
+      "roster_id": 8,
+      "owner_id": "467563705354153984",
+      "canonical_name": "Mutumbs",
+      "display_name": "Mutumbs",
+      "team_name": "George PickHIMS",
+      "avatar_url": "profile-images-removed/thumbs/3ba9b13839d8aae42305608dfbb1bfe2",
+      "wins": 0,
+      "losses": 1,
+      "ties": 0,
+      "points_for": 88.8,
+      "points_against": 139.48,
+      "division": 3,
+      "rank": 10
+    },
+    {
+      "roster_id": 7,
+      "owner_id": "467562671558881280",
+      "canonical_name": "Rohit",
+      "display_name": "rohitV",
+      "team_name": "Chris Cross Adams Sauce",
+      "avatar_url": "profile-images-removed/thumbs/aebe47e302e42a4847b5c66d57f320af",
+      "wins": 0,
+      "losses": 1,
+      "ties": 0,
+      "points_for": 75.8,
+      "points_against": 87.24,
+      "division": 1,
+      "rank": 11
+    },
+    {
+      "roster_id": 3,
+      "owner_id": "883711528850051072",
+      "canonical_name": "Aryan",
+      "display_name": "Aryankara",
+      "team_name": "Kyren(No Achalles) Irving",
+      "avatar_url": "profile-images-removed/thumbs/82aec8e811b839b8ec25d7b458afd57b",
+      "wins": 0,
+      "losses": 1,
+      "ties": 0,
+      "points_for": 64.92,
+      "points_against": 126.12,
+      "division": 3,
+      "rank": 12
+    }
+  ],
+  "matchups_by_week": {
+    "1": [
+      [
+        {
+          "roster_id": 1,
+          "team_info": {
+            "roster_id": 1,
+            "owner_id": "462501728848179200",
+            "canonical_name": "Fawaz",
+            "display_name": "faximus",
+            "team_name": "Wheres Waddle",
+            "avatar_url": "profile-images-removed/thumbs/dd6928a9b380502def30e6b9dc3c22df",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 139.48,
+            "points_against": 88.8,
+            "division": 3,
+            "rank": 2
+          },
+          "points": 139.48,
+          "starters": [
+            "11560",
+            "12527",
+            "7543",
+            "9488",
+            "7526",
+            "7553",
+            "12481",
+            "12185",
+            "PIT"
+          ],
+          "starters_points": [
+            38.26,
+            30.2,
+            9.8,
+            20.2,
+            0.2,
+            0.0,
+            16.6,
+            6.0,
+            18.22
+          ]
+        },
+        {
+          "roster_id": 8,
+          "team_info": {
+            "roster_id": 8,
+            "owner_id": "467563705354153984",
+            "canonical_name": "Mutumbs",
+            "display_name": "Mutumbs",
+            "team_name": "George PickHIMS",
+            "avatar_url": "profile-images-removed/thumbs/3ba9b13839d8aae42305608dfbb1bfe2",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 88.8,
+            "points_against": 139.48,
+            "division": 3,
+            "rank": 10
+          },
+          "points": 88.8,
+          "starters": [
+            "3294",
+            "3198",
+            "13287",
+            "12526",
+            "5927",
+            "12518",
+            "11628",
+            "1945",
+            "HOU"
+          ],
+          "starters_points": [
+            14.9,
+            36.8,
+            11.5,
+            7.5,
+            1.9,
+            7.3,
+            3.8,
+            9.0,
+            -3.9
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 2,
+          "team_info": {
+            "roster_id": 2,
+            "owner_id": "467556046399860736",
+            "canonical_name": "hoo2champ",
+            "display_name": "hoo2champ",
+            "team_name": "Ghay for Bhay",
+            "avatar_url": "profile-images-removed/thumbs/d25e506df15ed6ff693171379464e8ab",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 94.36,
+            "points_against": 121.54,
+            "division": 2,
+            "rank": 9
+          },
+          "points": 94.36,
+          "starters": [
+            "6770",
+            "8138",
+            "12490",
+            "6794",
+            "9754",
+            "3214",
+            "12512",
+            "12711",
+            "DET"
+          ],
+          "starters_points": [
+            16.16,
+            9.4,
+            11.3,
+            24.7,
+            1.7,
+            3.1,
+            6.0,
+            14.0,
+            8.0
+          ]
+        },
+        {
+          "roster_id": 5,
+          "team_info": {
+            "roster_id": 5,
+            "owner_id": "467556448272904192",
+            "canonical_name": "Gmen",
+            "display_name": "Gmen926",
+            "team_name": "InsertCoolName",
+            "avatar_url": "profile-images-removed/thumbs/909b16f12d1bd5b227bd97c98bc1f825",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 121.54,
+            "points_against": 94.36,
+            "division": 2,
+            "rank": 5
+          },
+          "points": 121.54,
+          "starters": [
+            "12508",
+            "9224",
+            "5892",
+            "7547",
+            "2216",
+            "7002",
+            "9756",
+            "2747",
+            "LAR"
+          ],
+          "starters_points": [
+            28.6,
+            15.3,
+            26.9,
+            19.7,
+            13.4,
+            12.4,
+            0.0,
+            7.0,
+            -1.76
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 3,
+          "team_info": {
+            "roster_id": 3,
+            "owner_id": "883711528850051072",
+            "canonical_name": "Aryan",
+            "display_name": "Aryankara",
+            "team_name": "Kyren(No Achalles) Irving",
+            "avatar_url": "profile-images-removed/thumbs/82aec8e811b839b8ec25d7b458afd57b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 64.92,
+            "points_against": 126.12,
+            "division": 3,
+            "rank": 12
+          },
+          "points": 64.92,
+          "starters": [
+            "11564",
+            "9226",
+            "8150",
+            "8146",
+            "5846",
+            "12506",
+            "11584",
+            "11533",
+            "LAC"
+          ],
+          "starters_points": [
+            12.32,
+            8.1,
+            14.0,
+            9.4,
+            5.0,
+            2.6,
+            15.3,
+            1.0,
+            -2.8
+          ]
+        },
+        {
+          "roster_id": 6,
+          "team_info": {
+            "roster_id": 6,
+            "owner_id": "467556485400883200",
+            "canonical_name": "Loomnoo",
+            "display_name": "loomnoo",
+            "team_name": "Sydney's Sweeneys",
+            "avatar_url": "profile-images-removed/thumbs/920dc858372ba40dc19e94f670d12e0f",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 126.12,
+            "points_against": 64.92,
+            "division": 3,
+            "rank": 3
+          },
+          "points": 126.12,
+          "starters": [
+            "6904",
+            "9221",
+            "13286",
+            "5859",
+            "12514",
+            "4217",
+            "7588",
+            "13545",
+            "JAX"
+          ],
+          "starters_points": [
+            25.72,
+            35.1,
+            7.8,
+            3.6,
+            7.8,
+            1.2,
+            20.2,
+            12.0,
+            12.7
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 4,
+          "team_info": {
+            "roster_id": 4,
+            "owner_id": "467556283235430400",
+            "canonical_name": "Jaguo",
+            "display_name": "Jaguo",
+            "team_name": "I\u2019m Reicharded",
+            "avatar_url": "profile-images-removed/thumbs/72ecd4695a1f517a9964cb803a182eaa",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 140.62,
+            "points_against": 105.94,
+            "division": 1,
+            "rank": 1
+          },
+          "points": 140.62,
+          "starters": [
+            "6797",
+            "6790",
+            "8155",
+            "7564",
+            "9487",
+            "12517",
+            "8151",
+            "11792",
+            "SEA"
+          ],
+          "starters_points": [
+            13.76,
+            32.9,
+            20.8,
+            1.7,
+            15.8,
+            0.0,
+            35.1,
+            7.0,
+            13.56
+          ]
+        },
+        {
+          "roster_id": 11,
+          "team_info": {
+            "roster_id": 11,
+            "owner_id": "468426188281344000",
+            "canonical_name": "Aneesh",
+            "display_name": "aneeshatri29",
+            "team_name": "petting zoo",
+            "avatar_url": "profile-images-removed/thumbs/50ba16db60e2e064b58bc354ce163ddd",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 105.94,
+            "points_against": 140.62,
+            "division": 1,
+            "rank": 8
+          },
+          "points": 105.94,
+          "starters": [
+            "4881",
+            "6813",
+            "8228",
+            "8137",
+            "11635",
+            "9484",
+            "11620",
+            "11539",
+            "PHI"
+          ],
+          "starters_points": [
+            25.96,
+            24.6,
+            7.3,
+            3.8,
+            16.2,
+            8.0,
+            5.7,
+            7.0,
+            7.38
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 7,
+          "team_info": {
+            "roster_id": 7,
+            "owner_id": "467562671558881280",
+            "canonical_name": "Rohit",
+            "display_name": "rohitV",
+            "team_name": "Chris Cross Adams Sauce",
+            "avatar_url": "profile-images-removed/thumbs/aebe47e302e42a4847b5c66d57f320af",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 75.8,
+            "points_against": 87.24,
+            "division": 1,
+            "rank": 11
+          },
+          "points": 75.8,
+          "starters": [
+            "5849",
+            "4034",
+            "7567",
+            "7569",
+            "8144",
+            "10859",
+            "7525",
+            "12015",
+            "KC"
+          ],
+          "starters_points": [
+            -0.38,
+            9.8,
+            2.3,
+            15.7,
+            21.7,
+            5.8,
+            5.8,
+            1.0,
+            14.08
+          ]
+        },
+        {
+          "roster_id": 9,
+          "team_info": {
+            "roster_id": 9,
+            "owner_id": "467575251014774784",
+            "canonical_name": "Nfi421",
+            "display_name": "Nfi421",
+            "team_name": "First Team All-Suspension",
+            "avatar_url": "profile-images-removed/thumbs/6f925123e8c7894bf1cddb0e21a9ae71",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 87.24,
+            "points_against": 75.8,
+            "division": 1,
+            "rank": 6
+          },
+          "points": 87.24,
+          "starters": [
+            "8183",
+            "7021",
+            "11581",
+            "9493",
+            "6786",
+            "8130",
+            "6801",
+            "3451",
+            "DEN"
+          ],
+          "starters_points": [
+            23.1,
+            2.1,
+            4.7,
+            8.4,
+            12.4,
+            18.0,
+            7.4,
+            9.0,
+            2.14
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 10,
+          "team_info": {
+            "roster_id": 10,
+            "owner_id": "468118346949193728",
+            "canonical_name": "GeneralSod",
+            "display_name": "GeneralSod",
+            "team_name": "Naberhood Watch",
+            "avatar_url": "profile-images-removed/thumbs/accfa8d733980b98db2fcb40cb98bc1b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 123.2,
+            "points_against": 125.96,
+            "division": 2,
+            "rank": 7
+          },
+          "points": 123.2,
+          "starters": [
+            "7523",
+            "4866",
+            "12507",
+            "8167",
+            "10229",
+            "8131",
+            "6806",
+            "11786",
+            "NE"
+          ],
+          "starters_points": [
+            26.6,
+            9.0,
+            10.3,
+            28.2,
+            7.9,
+            21.8,
+            4.1,
+            12.0,
+            3.3
+          ]
+        },
+        {
+          "roster_id": 12,
+          "team_info": {
+            "roster_id": 12,
+            "owner_id": "468452373182803968",
+            "canonical_name": "Nabbo",
+            "display_name": "Nabbo",
+            "team_name": "Touchdown in London Town",
+            "avatar_url": "profile-images-removed/thumbs/8e9887c56921844272b51af3e7384fa2",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 125.96,
+            "points_against": 123.2,
+            "division": 2,
+            "rank": 4
+          },
+          "points": 125.96,
+          "starters": [
+            "4984",
+            "9509",
+            "7611",
+            "8112",
+            "12519",
+            "1466",
+            "9997",
+            "8259",
+            "BAL"
+          ],
+          "starters_points": [
+            35.66,
+            27.3,
+            11.0,
+            4.0,
+            5.5,
+            8.1,
+            23.0,
+            2.0,
+            9.4
+          ]
+        }
+      ]
+    ],
+    "2": [
+      [
+        {
+          "roster_id": 1,
+          "team_info": {
+            "roster_id": 1,
+            "owner_id": "462501728848179200",
+            "canonical_name": "Fawaz",
+            "display_name": "faximus",
+            "team_name": "Wheres Waddle",
+            "avatar_url": "profile-images-removed/thumbs/dd6928a9b380502def30e6b9dc3c22df",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 139.48,
+            "points_against": 88.8,
+            "division": 3,
+            "rank": 2
+          },
+          "points": 0.0,
+          "starters": [
+            "11560",
+            "12527",
+            "7543",
+            "9488",
+            "11646",
+            "7553",
+            "12481",
+            "12185",
+            "PIT"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 3,
+          "team_info": {
+            "roster_id": 3,
+            "owner_id": "883711528850051072",
+            "canonical_name": "Aryan",
+            "display_name": "Aryankara",
+            "team_name": "Kyren(No Achalles) Irving",
+            "avatar_url": "profile-images-removed/thumbs/82aec8e811b839b8ec25d7b458afd57b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 64.92,
+            "points_against": 126.12,
+            "division": 3,
+            "rank": 12
+          },
+          "points": 0.0,
+          "starters": [
+            "11566",
+            "9226",
+            "8150",
+            "8146",
+            "5846",
+            "12506",
+            "11584",
+            "11533",
+            "LAC"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 2,
+          "team_info": {
+            "roster_id": 2,
+            "owner_id": "467556046399860736",
+            "canonical_name": "hoo2champ",
+            "display_name": "hoo2champ",
+            "team_name": "Ghay for Bhay",
+            "avatar_url": "profile-images-removed/thumbs/d25e506df15ed6ff693171379464e8ab",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 94.36,
+            "points_against": 121.54,
+            "division": 2,
+            "rank": 9
+          },
+          "points": 0.0,
+          "starters": [
+            "6770",
+            "8138",
+            "12490",
+            "6794",
+            "9754",
+            "3214",
+            "12512",
+            "12711",
+            "DET"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 10,
+          "team_info": {
+            "roster_id": 10,
+            "owner_id": "468118346949193728",
+            "canonical_name": "GeneralSod",
+            "display_name": "GeneralSod",
+            "team_name": "Naberhood Watch",
+            "avatar_url": "profile-images-removed/thumbs/accfa8d733980b98db2fcb40cb98bc1b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 123.2,
+            "points_against": 125.96,
+            "division": 2,
+            "rank": 7
+          },
+          "points": 0.0,
+          "starters": [
+            "7523",
+            "4866",
+            "12507",
+            "8167",
+            "10229",
+            "8131",
+            "12533",
+            "11786",
+            "NE"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 4,
+          "team_info": {
+            "roster_id": 4,
+            "owner_id": "467556283235430400",
+            "canonical_name": "Jaguo",
+            "display_name": "Jaguo",
+            "team_name": "I\u2019m Reicharded",
+            "avatar_url": "profile-images-removed/thumbs/72ecd4695a1f517a9964cb803a182eaa",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 140.62,
+            "points_against": 105.94,
+            "division": 1,
+            "rank": 1
+          },
+          "points": 0.0,
+          "starters": [
+            "6797",
+            "6790",
+            "8155",
+            "7564",
+            "9487",
+            "12517",
+            "8151",
+            "11792",
+            "SEA"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 9,
+          "team_info": {
+            "roster_id": 9,
+            "owner_id": "467575251014774784",
+            "canonical_name": "Nfi421",
+            "display_name": "Nfi421",
+            "team_name": "First Team All-Suspension",
+            "avatar_url": "profile-images-removed/thumbs/6f925123e8c7894bf1cddb0e21a9ae71",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 87.24,
+            "points_against": 75.8,
+            "division": 1,
+            "rank": 6
+          },
+          "points": 0.0,
+          "starters": [
+            "8183",
+            "7021",
+            "11581",
+            "9493",
+            "6786",
+            "8130",
+            "6801",
+            "3451",
+            "DEN"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 5,
+          "team_info": {
+            "roster_id": 5,
+            "owner_id": "467556448272904192",
+            "canonical_name": "Gmen",
+            "display_name": "Gmen926",
+            "team_name": "InsertCoolName",
+            "avatar_url": "profile-images-removed/thumbs/909b16f12d1bd5b227bd97c98bc1f825",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 121.54,
+            "points_against": 94.36,
+            "division": 2,
+            "rank": 5
+          },
+          "points": 0.0,
+          "starters": [
+            "12508",
+            "9224",
+            "5892",
+            "7547",
+            "2216",
+            "7002",
+            "9756",
+            "2747",
+            "LAR"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 12,
+          "team_info": {
+            "roster_id": 12,
+            "owner_id": "468452373182803968",
+            "canonical_name": "Nabbo",
+            "display_name": "Nabbo",
+            "team_name": "Touchdown in London Town",
+            "avatar_url": "profile-images-removed/thumbs/8e9887c56921844272b51af3e7384fa2",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 125.96,
+            "points_against": 123.2,
+            "division": 2,
+            "rank": 4
+          },
+          "points": 0.0,
+          "starters": [
+            "4984",
+            "9509",
+            "7611",
+            "8112",
+            "12519",
+            "1466",
+            "9997",
+            "8259",
+            "BAL"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 6,
+          "team_info": {
+            "roster_id": 6,
+            "owner_id": "467556485400883200",
+            "canonical_name": "Loomnoo",
+            "display_name": "loomnoo",
+            "team_name": "Sydney's Sweeneys",
+            "avatar_url": "profile-images-removed/thumbs/920dc858372ba40dc19e94f670d12e0f",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 126.12,
+            "points_against": 64.92,
+            "division": 3,
+            "rank": 3
+          },
+          "points": 0.0,
+          "starters": [
+            "6904",
+            "9221",
+            "7588",
+            "5872",
+            "12514",
+            "4217",
+            "13286",
+            "13545",
+            "JAX"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 8,
+          "team_info": {
+            "roster_id": 8,
+            "owner_id": "467563705354153984",
+            "canonical_name": "Mutumbs",
+            "display_name": "Mutumbs",
+            "team_name": "George PickHIMS",
+            "avatar_url": "profile-images-removed/thumbs/3ba9b13839d8aae42305608dfbb1bfe2",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 88.8,
+            "points_against": 139.48,
+            "division": 3,
+            "rank": 10
+          },
+          "points": 0.0,
+          "starters": [
+            "3294",
+            "3198",
+            "13287",
+            "12526",
+            "5927",
+            "12518",
+            "11628",
+            "1945",
+            "HOU"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 7,
+          "team_info": {
+            "roster_id": 7,
+            "owner_id": "467562671558881280",
+            "canonical_name": "Rohit",
+            "display_name": "rohitV",
+            "team_name": "Chris Cross Adams Sauce",
+            "avatar_url": "profile-images-removed/thumbs/aebe47e302e42a4847b5c66d57f320af",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 75.8,
+            "points_against": 87.24,
+            "division": 1,
+            "rank": 11
+          },
+          "points": 0.0,
+          "starters": [
+            "5849",
+            "4034",
+            "12534",
+            "7569",
+            "8144",
+            "10236",
+            "7525",
+            "12015",
+            "KC"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 11,
+          "team_info": {
+            "roster_id": 11,
+            "owner_id": "468426188281344000",
+            "canonical_name": "Aneesh",
+            "display_name": "aneeshatri29",
+            "team_name": "petting zoo",
+            "avatar_url": "profile-images-removed/thumbs/50ba16db60e2e064b58bc354ce163ddd",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 105.94,
+            "points_against": 140.62,
+            "division": 1,
+            "rank": 8
+          },
+          "points": 0.0,
+          "starters": null,
+          "starters_points": []
+        }
+      ]
+    ],
+    "3": [
+      [
+        {
+          "roster_id": 1,
+          "team_info": {
+            "roster_id": 1,
+            "owner_id": "462501728848179200",
+            "canonical_name": "Fawaz",
+            "display_name": "faximus",
+            "team_name": "Wheres Waddle",
+            "avatar_url": "profile-images-removed/thumbs/dd6928a9b380502def30e6b9dc3c22df",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 139.48,
+            "points_against": 88.8,
+            "division": 3,
+            "rank": 2
+          },
+          "points": 0.0,
+          "starters": [
+            "11560",
+            "12527",
+            "7543",
+            "9488",
+            "11646",
+            "7553",
+            "12481",
+            "12185",
+            "PIT"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 6,
+          "team_info": {
+            "roster_id": 6,
+            "owner_id": "467556485400883200",
+            "canonical_name": "Loomnoo",
+            "display_name": "loomnoo",
+            "team_name": "Sydney's Sweeneys",
+            "avatar_url": "profile-images-removed/thumbs/920dc858372ba40dc19e94f670d12e0f",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 126.12,
+            "points_against": 64.92,
+            "division": 3,
+            "rank": 3
+          },
+          "points": 0.0,
+          "starters": [
+            "6904",
+            "9221",
+            "13286",
+            "0",
+            "12514",
+            "4217",
+            "7588",
+            "13545",
+            "JAX"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 2,
+          "team_info": {
+            "roster_id": 2,
+            "owner_id": "467556046399860736",
+            "canonical_name": "hoo2champ",
+            "display_name": "hoo2champ",
+            "team_name": "Ghay for Bhay",
+            "avatar_url": "profile-images-removed/thumbs/d25e506df15ed6ff693171379464e8ab",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 94.36,
+            "points_against": 121.54,
+            "division": 2,
+            "rank": 9
+          },
+          "points": 0.0,
+          "starters": [
+            "6770",
+            "8138",
+            "12490",
+            "6794",
+            "9754",
+            "3214",
+            "12512",
+            "12711",
+            "DET"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 12,
+          "team_info": {
+            "roster_id": 12,
+            "owner_id": "468452373182803968",
+            "canonical_name": "Nabbo",
+            "display_name": "Nabbo",
+            "team_name": "Touchdown in London Town",
+            "avatar_url": "profile-images-removed/thumbs/8e9887c56921844272b51af3e7384fa2",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 125.96,
+            "points_against": 123.2,
+            "division": 2,
+            "rank": 4
+          },
+          "points": 0.0,
+          "starters": [
+            "4984",
+            "9509",
+            "7611",
+            "8112",
+            "12519",
+            "1466",
+            "9997",
+            "8259",
+            "BAL"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 3,
+          "team_info": {
+            "roster_id": 3,
+            "owner_id": "883711528850051072",
+            "canonical_name": "Aryan",
+            "display_name": "Aryankara",
+            "team_name": "Kyren(No Achalles) Irving",
+            "avatar_url": "profile-images-removed/thumbs/82aec8e811b839b8ec25d7b458afd57b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 64.92,
+            "points_against": 126.12,
+            "division": 3,
+            "rank": 12
+          },
+          "points": 0.0,
+          "starters": [
+            "11564",
+            "9226",
+            "8150",
+            "8146",
+            "5846",
+            "12506",
+            "11584",
+            "11533",
+            "LAC"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 8,
+          "team_info": {
+            "roster_id": 8,
+            "owner_id": "467563705354153984",
+            "canonical_name": "Mutumbs",
+            "display_name": "Mutumbs",
+            "team_name": "George PickHIMS",
+            "avatar_url": "profile-images-removed/thumbs/3ba9b13839d8aae42305608dfbb1bfe2",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 88.8,
+            "points_against": 139.48,
+            "division": 3,
+            "rank": 10
+          },
+          "points": 0.0,
+          "starters": [
+            "3294",
+            "3198",
+            "13287",
+            "12526",
+            "5927",
+            "12518",
+            "11628",
+            "1945",
+            "HOU"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 4,
+          "team_info": {
+            "roster_id": 4,
+            "owner_id": "467556283235430400",
+            "canonical_name": "Jaguo",
+            "display_name": "Jaguo",
+            "team_name": "I\u2019m Reicharded",
+            "avatar_url": "profile-images-removed/thumbs/72ecd4695a1f517a9964cb803a182eaa",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 140.62,
+            "points_against": 105.94,
+            "division": 1,
+            "rank": 1
+          },
+          "points": 0.0,
+          "starters": [
+            "6797",
+            "6790",
+            "8155",
+            "7564",
+            "9487",
+            "12517",
+            "8151",
+            "11792",
+            "SEA"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 7,
+          "team_info": {
+            "roster_id": 7,
+            "owner_id": "467562671558881280",
+            "canonical_name": "Rohit",
+            "display_name": "rohitV",
+            "team_name": "Chris Cross Adams Sauce",
+            "avatar_url": "profile-images-removed/thumbs/aebe47e302e42a4847b5c66d57f320af",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 75.8,
+            "points_against": 87.24,
+            "division": 1,
+            "rank": 11
+          },
+          "points": 0.0,
+          "starters": [
+            "5849",
+            "4034",
+            "12534",
+            "7569",
+            "8144",
+            "10236",
+            "7525",
+            "12015",
+            "KC"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 5,
+          "team_info": {
+            "roster_id": 5,
+            "owner_id": "467556448272904192",
+            "canonical_name": "Gmen",
+            "display_name": "Gmen926",
+            "team_name": "InsertCoolName",
+            "avatar_url": "profile-images-removed/thumbs/909b16f12d1bd5b227bd97c98bc1f825",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 121.54,
+            "points_against": 94.36,
+            "division": 2,
+            "rank": 5
+          },
+          "points": 0.0,
+          "starters": [
+            "12508",
+            "9224",
+            "5892",
+            "7547",
+            "2216",
+            "7002",
+            "9756",
+            "2747",
+            "LAR"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 10,
+          "team_info": {
+            "roster_id": 10,
+            "owner_id": "468118346949193728",
+            "canonical_name": "GeneralSod",
+            "display_name": "GeneralSod",
+            "team_name": "Naberhood Watch",
+            "avatar_url": "profile-images-removed/thumbs/accfa8d733980b98db2fcb40cb98bc1b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 123.2,
+            "points_against": 125.96,
+            "division": 2,
+            "rank": 7
+          },
+          "points": 0.0,
+          "starters": [
+            "7523",
+            "4866",
+            "12507",
+            "8167",
+            "10229",
+            "8131",
+            "12533",
+            "11786",
+            "NE"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 9,
+          "team_info": {
+            "roster_id": 9,
+            "owner_id": "467575251014774784",
+            "canonical_name": "Nfi421",
+            "display_name": "Nfi421",
+            "team_name": "First Team All-Suspension",
+            "avatar_url": "profile-images-removed/thumbs/6f925123e8c7894bf1cddb0e21a9ae71",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 87.24,
+            "points_against": 75.8,
+            "division": 1,
+            "rank": 6
+          },
+          "points": 0.0,
+          "starters": [
+            "8183",
+            "7021",
+            "11581",
+            "9493",
+            "6786",
+            "8130",
+            "6801",
+            "3451",
+            "DEN"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 11,
+          "team_info": {
+            "roster_id": 11,
+            "owner_id": "468426188281344000",
+            "canonical_name": "Aneesh",
+            "display_name": "aneeshatri29",
+            "team_name": "petting zoo",
+            "avatar_url": "profile-images-removed/thumbs/50ba16db60e2e064b58bc354ce163ddd",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 105.94,
+            "points_against": 140.62,
+            "division": 1,
+            "rank": 8
+          },
+          "points": 0.0,
+          "starters": null,
+          "starters_points": []
+        }
+      ]
+    ],
+    "4": [
+      [
+        {
+          "roster_id": 1,
+          "team_info": {
+            "roster_id": 1,
+            "owner_id": "462501728848179200",
+            "canonical_name": "Fawaz",
+            "display_name": "faximus",
+            "team_name": "Wheres Waddle",
+            "avatar_url": "profile-images-removed/thumbs/dd6928a9b380502def30e6b9dc3c22df",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 139.48,
+            "points_against": 88.8,
+            "division": 3,
+            "rank": 2
+          },
+          "points": 0.0,
+          "starters": [
+            "11560",
+            "12527",
+            "7543",
+            "9488",
+            "11646",
+            "7553",
+            "12481",
+            "12185",
+            "PIT"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 7,
+          "team_info": {
+            "roster_id": 7,
+            "owner_id": "467562671558881280",
+            "canonical_name": "Rohit",
+            "display_name": "rohitV",
+            "team_name": "Chris Cross Adams Sauce",
+            "avatar_url": "profile-images-removed/thumbs/aebe47e302e42a4847b5c66d57f320af",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 75.8,
+            "points_against": 87.24,
+            "division": 1,
+            "rank": 11
+          },
+          "points": 0.0,
+          "starters": [
+            "5849",
+            "4034",
+            "12534",
+            "7569",
+            "8144",
+            "10236",
+            "7525",
+            "12015",
+            "KC"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 2,
+          "team_info": {
+            "roster_id": 2,
+            "owner_id": "467556046399860736",
+            "canonical_name": "hoo2champ",
+            "display_name": "hoo2champ",
+            "team_name": "Ghay for Bhay",
+            "avatar_url": "profile-images-removed/thumbs/d25e506df15ed6ff693171379464e8ab",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 94.36,
+            "points_against": 121.54,
+            "division": 2,
+            "rank": 9
+          },
+          "points": 0.0,
+          "starters": [
+            "6770",
+            "8138",
+            "12490",
+            "6794",
+            "9754",
+            "3214",
+            "12512",
+            "12711",
+            "DET"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 3,
+          "team_info": {
+            "roster_id": 3,
+            "owner_id": "883711528850051072",
+            "canonical_name": "Aryan",
+            "display_name": "Aryankara",
+            "team_name": "Kyren(No Achalles) Irving",
+            "avatar_url": "profile-images-removed/thumbs/82aec8e811b839b8ec25d7b458afd57b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 64.92,
+            "points_against": 126.12,
+            "division": 3,
+            "rank": 12
+          },
+          "points": 0.0,
+          "starters": [
+            "11564",
+            "9226",
+            "8150",
+            "8146",
+            "5846",
+            "12506",
+            "11584",
+            "11533",
+            "LAC"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 4,
+          "team_info": {
+            "roster_id": 4,
+            "owner_id": "467556283235430400",
+            "canonical_name": "Jaguo",
+            "display_name": "Jaguo",
+            "team_name": "I\u2019m Reicharded",
+            "avatar_url": "profile-images-removed/thumbs/72ecd4695a1f517a9964cb803a182eaa",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 140.62,
+            "points_against": 105.94,
+            "division": 1,
+            "rank": 1
+          },
+          "points": 0.0,
+          "starters": [
+            "6797",
+            "6790",
+            "8155",
+            "7564",
+            "9487",
+            "12517",
+            "8151",
+            "11792",
+            "SEA"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 12,
+          "team_info": {
+            "roster_id": 12,
+            "owner_id": "468452373182803968",
+            "canonical_name": "Nabbo",
+            "display_name": "Nabbo",
+            "team_name": "Touchdown in London Town",
+            "avatar_url": "profile-images-removed/thumbs/8e9887c56921844272b51af3e7384fa2",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 125.96,
+            "points_against": 123.2,
+            "division": 2,
+            "rank": 4
+          },
+          "points": 0.0,
+          "starters": [
+            "4984",
+            "9509",
+            "7611",
+            "8112",
+            "12519",
+            "1466",
+            "9997",
+            "8259",
+            "BAL"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 5,
+          "team_info": {
+            "roster_id": 5,
+            "owner_id": "467556448272904192",
+            "canonical_name": "Gmen",
+            "display_name": "Gmen926",
+            "team_name": "InsertCoolName",
+            "avatar_url": "profile-images-removed/thumbs/909b16f12d1bd5b227bd97c98bc1f825",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 121.54,
+            "points_against": 94.36,
+            "division": 2,
+            "rank": 5
+          },
+          "points": 0.0,
+          "starters": [
+            "12508",
+            "9224",
+            "5892",
+            "7547",
+            "2216",
+            "7002",
+            "9756",
+            "2747",
+            "LAR"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 6,
+          "team_info": {
+            "roster_id": 6,
+            "owner_id": "467556485400883200",
+            "canonical_name": "Loomnoo",
+            "display_name": "loomnoo",
+            "team_name": "Sydney's Sweeneys",
+            "avatar_url": "profile-images-removed/thumbs/920dc858372ba40dc19e94f670d12e0f",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 126.12,
+            "points_against": 64.92,
+            "division": 3,
+            "rank": 3
+          },
+          "points": 0.0,
+          "starters": [
+            "6904",
+            "9221",
+            "13286",
+            "0",
+            "12514",
+            "4217",
+            "7588",
+            "13545",
+            "JAX"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 8,
+          "team_info": {
+            "roster_id": 8,
+            "owner_id": "467563705354153984",
+            "canonical_name": "Mutumbs",
+            "display_name": "Mutumbs",
+            "team_name": "George PickHIMS",
+            "avatar_url": "profile-images-removed/thumbs/3ba9b13839d8aae42305608dfbb1bfe2",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 88.8,
+            "points_against": 139.48,
+            "division": 3,
+            "rank": 10
+          },
+          "points": 0.0,
+          "starters": [
+            "3294",
+            "3198",
+            "13287",
+            "12526",
+            "5927",
+            "12518",
+            "11628",
+            "1945",
+            "HOU"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 9,
+          "team_info": {
+            "roster_id": 9,
+            "owner_id": "467575251014774784",
+            "canonical_name": "Nfi421",
+            "display_name": "Nfi421",
+            "team_name": "First Team All-Suspension",
+            "avatar_url": "profile-images-removed/thumbs/6f925123e8c7894bf1cddb0e21a9ae71",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 87.24,
+            "points_against": 75.8,
+            "division": 1,
+            "rank": 6
+          },
+          "points": 0.0,
+          "starters": [
+            "8183",
+            "7021",
+            "11581",
+            "9493",
+            "6786",
+            "8130",
+            "6801",
+            "3451",
+            "DEN"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 10,
+          "team_info": {
+            "roster_id": 10,
+            "owner_id": "468118346949193728",
+            "canonical_name": "GeneralSod",
+            "display_name": "GeneralSod",
+            "team_name": "Naberhood Watch",
+            "avatar_url": "profile-images-removed/thumbs/accfa8d733980b98db2fcb40cb98bc1b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 123.2,
+            "points_against": 125.96,
+            "division": 2,
+            "rank": 7
+          },
+          "points": 0.0,
+          "starters": [
+            "7523",
+            "4866",
+            "12507",
+            "8167",
+            "10229",
+            "8131",
+            "12533",
+            "11786",
+            "NE"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 11,
+          "team_info": {
+            "roster_id": 11,
+            "owner_id": "468426188281344000",
+            "canonical_name": "Aneesh",
+            "display_name": "aneeshatri29",
+            "team_name": "petting zoo",
+            "avatar_url": "profile-images-removed/thumbs/50ba16db60e2e064b58bc354ce163ddd",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 105.94,
+            "points_against": 140.62,
+            "division": 1,
+            "rank": 8
+          },
+          "points": 0.0,
+          "starters": null,
+          "starters_points": []
+        }
+      ]
+    ],
+    "5": [
+      [
+        {
+          "roster_id": 1,
+          "team_info": {
+            "roster_id": 1,
+            "owner_id": "462501728848179200",
+            "canonical_name": "Fawaz",
+            "display_name": "faximus",
+            "team_name": "Wheres Waddle",
+            "avatar_url": "profile-images-removed/thumbs/dd6928a9b380502def30e6b9dc3c22df",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 139.48,
+            "points_against": 88.8,
+            "division": 3,
+            "rank": 2
+          },
+          "points": 0.0,
+          "starters": [
+            "11560",
+            "12527",
+            "7543",
+            "9488",
+            "11646",
+            "7553",
+            "12481",
+            "12185",
+            "PIT"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 9,
+          "team_info": {
+            "roster_id": 9,
+            "owner_id": "467575251014774784",
+            "canonical_name": "Nfi421",
+            "display_name": "Nfi421",
+            "team_name": "First Team All-Suspension",
+            "avatar_url": "profile-images-removed/thumbs/6f925123e8c7894bf1cddb0e21a9ae71",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 87.24,
+            "points_against": 75.8,
+            "division": 1,
+            "rank": 6
+          },
+          "points": 0.0,
+          "starters": [
+            "8183",
+            "7021",
+            "11581",
+            "9493",
+            "6786",
+            "8130",
+            "6801",
+            "3451",
+            "DEN"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 2,
+          "team_info": {
+            "roster_id": 2,
+            "owner_id": "467556046399860736",
+            "canonical_name": "hoo2champ",
+            "display_name": "hoo2champ",
+            "team_name": "Ghay for Bhay",
+            "avatar_url": "profile-images-removed/thumbs/d25e506df15ed6ff693171379464e8ab",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 94.36,
+            "points_against": 121.54,
+            "division": 2,
+            "rank": 9
+          },
+          "points": 0.0,
+          "starters": [
+            "6770",
+            "8138",
+            "12490",
+            "6794",
+            "9754",
+            "3214",
+            "12512",
+            "12711",
+            "DET"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 6,
+          "team_info": {
+            "roster_id": 6,
+            "owner_id": "467556485400883200",
+            "canonical_name": "Loomnoo",
+            "display_name": "loomnoo",
+            "team_name": "Sydney's Sweeneys",
+            "avatar_url": "profile-images-removed/thumbs/920dc858372ba40dc19e94f670d12e0f",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 126.12,
+            "points_against": 64.92,
+            "division": 3,
+            "rank": 3
+          },
+          "points": 0.0,
+          "starters": [
+            "6904",
+            "9221",
+            "13286",
+            "0",
+            "12514",
+            "4217",
+            "7588",
+            "13545",
+            "JAX"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 3,
+          "team_info": {
+            "roster_id": 3,
+            "owner_id": "883711528850051072",
+            "canonical_name": "Aryan",
+            "display_name": "Aryankara",
+            "team_name": "Kyren(No Achalles) Irving",
+            "avatar_url": "profile-images-removed/thumbs/82aec8e811b839b8ec25d7b458afd57b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 64.92,
+            "points_against": 126.12,
+            "division": 3,
+            "rank": 12
+          },
+          "points": 0.0,
+          "starters": [
+            "11564",
+            "9226",
+            "8150",
+            "8146",
+            "5846",
+            "12506",
+            "11584",
+            "11533",
+            "LAC"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 5,
+          "team_info": {
+            "roster_id": 5,
+            "owner_id": "467556448272904192",
+            "canonical_name": "Gmen",
+            "display_name": "Gmen926",
+            "team_name": "InsertCoolName",
+            "avatar_url": "profile-images-removed/thumbs/909b16f12d1bd5b227bd97c98bc1f825",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 121.54,
+            "points_against": 94.36,
+            "division": 2,
+            "rank": 5
+          },
+          "points": 0.0,
+          "starters": [
+            "12508",
+            "9224",
+            "5892",
+            "7547",
+            "2216",
+            "7002",
+            "9756",
+            "2747",
+            "LAR"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 4,
+          "team_info": {
+            "roster_id": 4,
+            "owner_id": "467556283235430400",
+            "canonical_name": "Jaguo",
+            "display_name": "Jaguo",
+            "team_name": "I\u2019m Reicharded",
+            "avatar_url": "profile-images-removed/thumbs/72ecd4695a1f517a9964cb803a182eaa",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 140.62,
+            "points_against": 105.94,
+            "division": 1,
+            "rank": 1
+          },
+          "points": 0.0,
+          "starters": [
+            "6797",
+            "6790",
+            "8155",
+            "7564",
+            "9487",
+            "12517",
+            "8151",
+            "11792",
+            "SEA"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 10,
+          "team_info": {
+            "roster_id": 10,
+            "owner_id": "468118346949193728",
+            "canonical_name": "GeneralSod",
+            "display_name": "GeneralSod",
+            "team_name": "Naberhood Watch",
+            "avatar_url": "profile-images-removed/thumbs/accfa8d733980b98db2fcb40cb98bc1b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 123.2,
+            "points_against": 125.96,
+            "division": 2,
+            "rank": 7
+          },
+          "points": 0.0,
+          "starters": [
+            "7523",
+            "4866",
+            "12507",
+            "8167",
+            "10229",
+            "8131",
+            "12533",
+            "11786",
+            "NE"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 7,
+          "team_info": {
+            "roster_id": 7,
+            "owner_id": "467562671558881280",
+            "canonical_name": "Rohit",
+            "display_name": "rohitV",
+            "team_name": "Chris Cross Adams Sauce",
+            "avatar_url": "profile-images-removed/thumbs/aebe47e302e42a4847b5c66d57f320af",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 75.8,
+            "points_against": 87.24,
+            "division": 1,
+            "rank": 11
+          },
+          "points": 0.0,
+          "starters": [
+            "5849",
+            "4034",
+            "12534",
+            "7569",
+            "8144",
+            "10236",
+            "7525",
+            "12015",
+            "KC"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 8,
+          "team_info": {
+            "roster_id": 8,
+            "owner_id": "467563705354153984",
+            "canonical_name": "Mutumbs",
+            "display_name": "Mutumbs",
+            "team_name": "George PickHIMS",
+            "avatar_url": "profile-images-removed/thumbs/3ba9b13839d8aae42305608dfbb1bfe2",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 88.8,
+            "points_against": 139.48,
+            "division": 3,
+            "rank": 10
+          },
+          "points": 0.0,
+          "starters": [
+            "3294",
+            "3198",
+            "13287",
+            "12526",
+            "5927",
+            "12518",
+            "11628",
+            "1945",
+            "HOU"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 11,
+          "team_info": {
+            "roster_id": 11,
+            "owner_id": "468426188281344000",
+            "canonical_name": "Aneesh",
+            "display_name": "aneeshatri29",
+            "team_name": "petting zoo",
+            "avatar_url": "profile-images-removed/thumbs/50ba16db60e2e064b58bc354ce163ddd",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 105.94,
+            "points_against": 140.62,
+            "division": 1,
+            "rank": 8
+          },
+          "points": 0.0,
+          "starters": null,
+          "starters_points": []
+        },
+        {
+          "roster_id": 12,
+          "team_info": {
+            "roster_id": 12,
+            "owner_id": "468452373182803968",
+            "canonical_name": "Nabbo",
+            "display_name": "Nabbo",
+            "team_name": "Touchdown in London Town",
+            "avatar_url": "profile-images-removed/thumbs/8e9887c56921844272b51af3e7384fa2",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 125.96,
+            "points_against": 123.2,
+            "division": 2,
+            "rank": 4
+          },
+          "points": 0.0,
+          "starters": [
+            "4984",
+            "9509",
+            "7611",
+            "8112",
+            "12519",
+            "1466",
+            "9997",
+            "8259",
+            "BAL"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    ],
+    "6": [
+      [
+        {
+          "roster_id": 1,
+          "team_info": {
+            "roster_id": 1,
+            "owner_id": "462501728848179200",
+            "canonical_name": "Fawaz",
+            "display_name": "faximus",
+            "team_name": "Wheres Waddle",
+            "avatar_url": "profile-images-removed/thumbs/dd6928a9b380502def30e6b9dc3c22df",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 139.48,
+            "points_against": 88.8,
+            "division": 3,
+            "rank": 2
+          },
+          "points": 0.0,
+          "starters": [
+            "11560",
+            "12527",
+            "7543",
+            "9488",
+            "11646",
+            "7553",
+            "12481",
+            "12185",
+            "PIT"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 11,
+          "team_info": {
+            "roster_id": 11,
+            "owner_id": "468426188281344000",
+            "canonical_name": "Aneesh",
+            "display_name": "aneeshatri29",
+            "team_name": "petting zoo",
+            "avatar_url": "profile-images-removed/thumbs/50ba16db60e2e064b58bc354ce163ddd",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 105.94,
+            "points_against": 140.62,
+            "division": 1,
+            "rank": 8
+          },
+          "points": 0.0,
+          "starters": null,
+          "starters_points": []
+        }
+      ],
+      [
+        {
+          "roster_id": 2,
+          "team_info": {
+            "roster_id": 2,
+            "owner_id": "467556046399860736",
+            "canonical_name": "hoo2champ",
+            "display_name": "hoo2champ",
+            "team_name": "Ghay for Bhay",
+            "avatar_url": "profile-images-removed/thumbs/d25e506df15ed6ff693171379464e8ab",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 94.36,
+            "points_against": 121.54,
+            "division": 2,
+            "rank": 9
+          },
+          "points": 0.0,
+          "starters": [
+            "6770",
+            "8138",
+            "12490",
+            "6794",
+            "9754",
+            "3214",
+            "12512",
+            "12711",
+            "DET"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 7,
+          "team_info": {
+            "roster_id": 7,
+            "owner_id": "467562671558881280",
+            "canonical_name": "Rohit",
+            "display_name": "rohitV",
+            "team_name": "Chris Cross Adams Sauce",
+            "avatar_url": "profile-images-removed/thumbs/aebe47e302e42a4847b5c66d57f320af",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 75.8,
+            "points_against": 87.24,
+            "division": 1,
+            "rank": 11
+          },
+          "points": 0.0,
+          "starters": [
+            "5849",
+            "4034",
+            "12534",
+            "7569",
+            "8144",
+            "10236",
+            "7525",
+            "12015",
+            "KC"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 3,
+          "team_info": {
+            "roster_id": 3,
+            "owner_id": "883711528850051072",
+            "canonical_name": "Aryan",
+            "display_name": "Aryankara",
+            "team_name": "Kyren(No Achalles) Irving",
+            "avatar_url": "profile-images-removed/thumbs/82aec8e811b839b8ec25d7b458afd57b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 64.92,
+            "points_against": 126.12,
+            "division": 3,
+            "rank": 12
+          },
+          "points": 0.0,
+          "starters": [
+            "11564",
+            "9226",
+            "8150",
+            "8146",
+            "5846",
+            "12506",
+            "11584",
+            "11533",
+            "LAC"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 10,
+          "team_info": {
+            "roster_id": 10,
+            "owner_id": "468118346949193728",
+            "canonical_name": "GeneralSod",
+            "display_name": "GeneralSod",
+            "team_name": "Naberhood Watch",
+            "avatar_url": "profile-images-removed/thumbs/accfa8d733980b98db2fcb40cb98bc1b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 123.2,
+            "points_against": 125.96,
+            "division": 2,
+            "rank": 7
+          },
+          "points": 0.0,
+          "starters": [
+            "7523",
+            "4866",
+            "12507",
+            "8167",
+            "10229",
+            "8131",
+            "12533",
+            "11786",
+            "NE"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 4,
+          "team_info": {
+            "roster_id": 4,
+            "owner_id": "467556283235430400",
+            "canonical_name": "Jaguo",
+            "display_name": "Jaguo",
+            "team_name": "I\u2019m Reicharded",
+            "avatar_url": "profile-images-removed/thumbs/72ecd4695a1f517a9964cb803a182eaa",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 140.62,
+            "points_against": 105.94,
+            "division": 1,
+            "rank": 1
+          },
+          "points": 0.0,
+          "starters": [
+            "6797",
+            "6790",
+            "8155",
+            "7564",
+            "9487",
+            "12517",
+            "8151",
+            "11792",
+            "SEA"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 8,
+          "team_info": {
+            "roster_id": 8,
+            "owner_id": "467563705354153984",
+            "canonical_name": "Mutumbs",
+            "display_name": "Mutumbs",
+            "team_name": "George PickHIMS",
+            "avatar_url": "profile-images-removed/thumbs/3ba9b13839d8aae42305608dfbb1bfe2",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 88.8,
+            "points_against": 139.48,
+            "division": 3,
+            "rank": 10
+          },
+          "points": 0.0,
+          "starters": [
+            "3294",
+            "3198",
+            "13287",
+            "12526",
+            "5927",
+            "12518",
+            "11628",
+            "1945",
+            "HOU"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 5,
+          "team_info": {
+            "roster_id": 5,
+            "owner_id": "467556448272904192",
+            "canonical_name": "Gmen",
+            "display_name": "Gmen926",
+            "team_name": "InsertCoolName",
+            "avatar_url": "profile-images-removed/thumbs/909b16f12d1bd5b227bd97c98bc1f825",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 121.54,
+            "points_against": 94.36,
+            "division": 2,
+            "rank": 5
+          },
+          "points": 0.0,
+          "starters": [
+            "12508",
+            "9224",
+            "5892",
+            "7547",
+            "2216",
+            "7002",
+            "9756",
+            "2747",
+            "LAR"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 9,
+          "team_info": {
+            "roster_id": 9,
+            "owner_id": "467575251014774784",
+            "canonical_name": "Nfi421",
+            "display_name": "Nfi421",
+            "team_name": "First Team All-Suspension",
+            "avatar_url": "profile-images-removed/thumbs/6f925123e8c7894bf1cddb0e21a9ae71",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 87.24,
+            "points_against": 75.8,
+            "division": 1,
+            "rank": 6
+          },
+          "points": 0.0,
+          "starters": [
+            "8183",
+            "7021",
+            "11581",
+            "9493",
+            "6786",
+            "8130",
+            "6801",
+            "3451",
+            "DEN"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 6,
+          "team_info": {
+            "roster_id": 6,
+            "owner_id": "467556485400883200",
+            "canonical_name": "Loomnoo",
+            "display_name": "loomnoo",
+            "team_name": "Sydney's Sweeneys",
+            "avatar_url": "profile-images-removed/thumbs/920dc858372ba40dc19e94f670d12e0f",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 126.12,
+            "points_against": 64.92,
+            "division": 3,
+            "rank": 3
+          },
+          "points": 0.0,
+          "starters": [
+            "6904",
+            "9221",
+            "13286",
+            "0",
+            "12514",
+            "4217",
+            "7588",
+            "13545",
+            "JAX"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 12,
+          "team_info": {
+            "roster_id": 12,
+            "owner_id": "468452373182803968",
+            "canonical_name": "Nabbo",
+            "display_name": "Nabbo",
+            "team_name": "Touchdown in London Town",
+            "avatar_url": "profile-images-removed/thumbs/8e9887c56921844272b51af3e7384fa2",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 125.96,
+            "points_against": 123.2,
+            "division": 2,
+            "rank": 4
+          },
+          "points": 0.0,
+          "starters": [
+            "4984",
+            "9509",
+            "7611",
+            "8112",
+            "12519",
+            "1466",
+            "9997",
+            "8259",
+            "BAL"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    ],
+    "7": [
+      [
+        {
+          "roster_id": 1,
+          "team_info": {
+            "roster_id": 1,
+            "owner_id": "462501728848179200",
+            "canonical_name": "Fawaz",
+            "display_name": "faximus",
+            "team_name": "Wheres Waddle",
+            "avatar_url": "profile-images-removed/thumbs/dd6928a9b380502def30e6b9dc3c22df",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 139.48,
+            "points_against": 88.8,
+            "division": 3,
+            "rank": 2
+          },
+          "points": 0.0,
+          "starters": [
+            "11560",
+            "12527",
+            "7543",
+            "9488",
+            "11646",
+            "7553",
+            "12481",
+            "12185",
+            "PIT"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 4,
+          "team_info": {
+            "roster_id": 4,
+            "owner_id": "467556283235430400",
+            "canonical_name": "Jaguo",
+            "display_name": "Jaguo",
+            "team_name": "I\u2019m Reicharded",
+            "avatar_url": "profile-images-removed/thumbs/72ecd4695a1f517a9964cb803a182eaa",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 140.62,
+            "points_against": 105.94,
+            "division": 1,
+            "rank": 1
+          },
+          "points": 0.0,
+          "starters": [
+            "6797",
+            "6790",
+            "8155",
+            "7564",
+            "9487",
+            "12517",
+            "8151",
+            "11792",
+            "SEA"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 2,
+          "team_info": {
+            "roster_id": 2,
+            "owner_id": "467556046399860736",
+            "canonical_name": "hoo2champ",
+            "display_name": "hoo2champ",
+            "team_name": "Ghay for Bhay",
+            "avatar_url": "profile-images-removed/thumbs/d25e506df15ed6ff693171379464e8ab",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 94.36,
+            "points_against": 121.54,
+            "division": 2,
+            "rank": 9
+          },
+          "points": 0.0,
+          "starters": [
+            "6770",
+            "8138",
+            "12490",
+            "6794",
+            "9754",
+            "3214",
+            "12512",
+            "12711",
+            "DET"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 9,
+          "team_info": {
+            "roster_id": 9,
+            "owner_id": "467575251014774784",
+            "canonical_name": "Nfi421",
+            "display_name": "Nfi421",
+            "team_name": "First Team All-Suspension",
+            "avatar_url": "profile-images-removed/thumbs/6f925123e8c7894bf1cddb0e21a9ae71",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 87.24,
+            "points_against": 75.8,
+            "division": 1,
+            "rank": 6
+          },
+          "points": 0.0,
+          "starters": [
+            "8183",
+            "7021",
+            "11581",
+            "9493",
+            "6786",
+            "8130",
+            "6801",
+            "3451",
+            "DEN"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 3,
+          "team_info": {
+            "roster_id": 3,
+            "owner_id": "883711528850051072",
+            "canonical_name": "Aryan",
+            "display_name": "Aryankara",
+            "team_name": "Kyren(No Achalles) Irving",
+            "avatar_url": "profile-images-removed/thumbs/82aec8e811b839b8ec25d7b458afd57b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 64.92,
+            "points_against": 126.12,
+            "division": 3,
+            "rank": 12
+          },
+          "points": 0.0,
+          "starters": [
+            "11564",
+            "9226",
+            "8150",
+            "8146",
+            "5846",
+            "12506",
+            "11584",
+            "11533",
+            "LAC"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 12,
+          "team_info": {
+            "roster_id": 12,
+            "owner_id": "468452373182803968",
+            "canonical_name": "Nabbo",
+            "display_name": "Nabbo",
+            "team_name": "Touchdown in London Town",
+            "avatar_url": "profile-images-removed/thumbs/8e9887c56921844272b51af3e7384fa2",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 125.96,
+            "points_against": 123.2,
+            "division": 2,
+            "rank": 4
+          },
+          "points": 0.0,
+          "starters": [
+            "4984",
+            "9509",
+            "7611",
+            "8112",
+            "12519",
+            "1466",
+            "9997",
+            "8259",
+            "BAL"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 5,
+          "team_info": {
+            "roster_id": 5,
+            "owner_id": "467556448272904192",
+            "canonical_name": "Gmen",
+            "display_name": "Gmen926",
+            "team_name": "InsertCoolName",
+            "avatar_url": "profile-images-removed/thumbs/909b16f12d1bd5b227bd97c98bc1f825",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 121.54,
+            "points_against": 94.36,
+            "division": 2,
+            "rank": 5
+          },
+          "points": 0.0,
+          "starters": [
+            "12508",
+            "9224",
+            "5892",
+            "7547",
+            "2216",
+            "7002",
+            "9756",
+            "2747",
+            "LAR"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 7,
+          "team_info": {
+            "roster_id": 7,
+            "owner_id": "467562671558881280",
+            "canonical_name": "Rohit",
+            "display_name": "rohitV",
+            "team_name": "Chris Cross Adams Sauce",
+            "avatar_url": "profile-images-removed/thumbs/aebe47e302e42a4847b5c66d57f320af",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 75.8,
+            "points_against": 87.24,
+            "division": 1,
+            "rank": 11
+          },
+          "points": 0.0,
+          "starters": [
+            "5849",
+            "4034",
+            "12534",
+            "7569",
+            "8144",
+            "10236",
+            "7525",
+            "12015",
+            "KC"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 6,
+          "team_info": {
+            "roster_id": 6,
+            "owner_id": "467556485400883200",
+            "canonical_name": "Loomnoo",
+            "display_name": "loomnoo",
+            "team_name": "Sydney's Sweeneys",
+            "avatar_url": "profile-images-removed/thumbs/920dc858372ba40dc19e94f670d12e0f",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 126.12,
+            "points_against": 64.92,
+            "division": 3,
+            "rank": 3
+          },
+          "points": 0.0,
+          "starters": [
+            "6904",
+            "9221",
+            "13286",
+            "0",
+            "12514",
+            "4217",
+            "7588",
+            "13545",
+            "JAX"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 10,
+          "team_info": {
+            "roster_id": 10,
+            "owner_id": "468118346949193728",
+            "canonical_name": "GeneralSod",
+            "display_name": "GeneralSod",
+            "team_name": "Naberhood Watch",
+            "avatar_url": "profile-images-removed/thumbs/accfa8d733980b98db2fcb40cb98bc1b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 123.2,
+            "points_against": 125.96,
+            "division": 2,
+            "rank": 7
+          },
+          "points": 0.0,
+          "starters": [
+            "7523",
+            "4866",
+            "12507",
+            "8167",
+            "10229",
+            "8131",
+            "12533",
+            "11786",
+            "NE"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 8,
+          "team_info": {
+            "roster_id": 8,
+            "owner_id": "467563705354153984",
+            "canonical_name": "Mutumbs",
+            "display_name": "Mutumbs",
+            "team_name": "George PickHIMS",
+            "avatar_url": "profile-images-removed/thumbs/3ba9b13839d8aae42305608dfbb1bfe2",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 88.8,
+            "points_against": 139.48,
+            "division": 3,
+            "rank": 10
+          },
+          "points": 0.0,
+          "starters": [
+            "3294",
+            "3198",
+            "13287",
+            "12526",
+            "5927",
+            "12518",
+            "11628",
+            "1945",
+            "HOU"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 11,
+          "team_info": {
+            "roster_id": 11,
+            "owner_id": "468426188281344000",
+            "canonical_name": "Aneesh",
+            "display_name": "aneeshatri29",
+            "team_name": "petting zoo",
+            "avatar_url": "profile-images-removed/thumbs/50ba16db60e2e064b58bc354ce163ddd",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 105.94,
+            "points_against": 140.62,
+            "division": 1,
+            "rank": 8
+          },
+          "points": 0.0,
+          "starters": null,
+          "starters_points": []
+        }
+      ]
+    ],
+    "8": [
+      [
+        {
+          "roster_id": 1,
+          "team_info": {
+            "roster_id": 1,
+            "owner_id": "462501728848179200",
+            "canonical_name": "Fawaz",
+            "display_name": "faximus",
+            "team_name": "Wheres Waddle",
+            "avatar_url": "profile-images-removed/thumbs/dd6928a9b380502def30e6b9dc3c22df",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 139.48,
+            "points_against": 88.8,
+            "division": 3,
+            "rank": 2
+          },
+          "points": 0.0,
+          "starters": [
+            "11560",
+            "12527",
+            "7543",
+            "9488",
+            "11646",
+            "7553",
+            "12481",
+            "12185",
+            "PIT"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 2,
+          "team_info": {
+            "roster_id": 2,
+            "owner_id": "467556046399860736",
+            "canonical_name": "hoo2champ",
+            "display_name": "hoo2champ",
+            "team_name": "Ghay for Bhay",
+            "avatar_url": "profile-images-removed/thumbs/d25e506df15ed6ff693171379464e8ab",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 94.36,
+            "points_against": 121.54,
+            "division": 2,
+            "rank": 9
+          },
+          "points": 0.0,
+          "starters": [
+            "6770",
+            "8138",
+            "12490",
+            "6794",
+            "9754",
+            "3214",
+            "12512",
+            "12711",
+            "DET"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 3,
+          "team_info": {
+            "roster_id": 3,
+            "owner_id": "883711528850051072",
+            "canonical_name": "Aryan",
+            "display_name": "Aryankara",
+            "team_name": "Kyren(No Achalles) Irving",
+            "avatar_url": "profile-images-removed/thumbs/82aec8e811b839b8ec25d7b458afd57b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 64.92,
+            "points_against": 126.12,
+            "division": 3,
+            "rank": 12
+          },
+          "points": 0.0,
+          "starters": [
+            "11564",
+            "9226",
+            "8150",
+            "8146",
+            "5846",
+            "12506",
+            "11584",
+            "11533",
+            "LAC"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 11,
+          "team_info": {
+            "roster_id": 11,
+            "owner_id": "468426188281344000",
+            "canonical_name": "Aneesh",
+            "display_name": "aneeshatri29",
+            "team_name": "petting zoo",
+            "avatar_url": "profile-images-removed/thumbs/50ba16db60e2e064b58bc354ce163ddd",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 105.94,
+            "points_against": 140.62,
+            "division": 1,
+            "rank": 8
+          },
+          "points": 0.0,
+          "starters": null,
+          "starters_points": []
+        }
+      ],
+      [
+        {
+          "roster_id": 4,
+          "team_info": {
+            "roster_id": 4,
+            "owner_id": "467556283235430400",
+            "canonical_name": "Jaguo",
+            "display_name": "Jaguo",
+            "team_name": "I\u2019m Reicharded",
+            "avatar_url": "profile-images-removed/thumbs/72ecd4695a1f517a9964cb803a182eaa",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 140.62,
+            "points_against": 105.94,
+            "division": 1,
+            "rank": 1
+          },
+          "points": 0.0,
+          "starters": [
+            "6797",
+            "6790",
+            "8155",
+            "7564",
+            "9487",
+            "12517",
+            "8151",
+            "11792",
+            "SEA"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 6,
+          "team_info": {
+            "roster_id": 6,
+            "owner_id": "467556485400883200",
+            "canonical_name": "Loomnoo",
+            "display_name": "loomnoo",
+            "team_name": "Sydney's Sweeneys",
+            "avatar_url": "profile-images-removed/thumbs/920dc858372ba40dc19e94f670d12e0f",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 126.12,
+            "points_against": 64.92,
+            "division": 3,
+            "rank": 3
+          },
+          "points": 0.0,
+          "starters": [
+            "6904",
+            "9221",
+            "13286",
+            "0",
+            "12514",
+            "4217",
+            "7588",
+            "13545",
+            "JAX"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 5,
+          "team_info": {
+            "roster_id": 5,
+            "owner_id": "467556448272904192",
+            "canonical_name": "Gmen",
+            "display_name": "Gmen926",
+            "team_name": "InsertCoolName",
+            "avatar_url": "profile-images-removed/thumbs/909b16f12d1bd5b227bd97c98bc1f825",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 121.54,
+            "points_against": 94.36,
+            "division": 2,
+            "rank": 5
+          },
+          "points": 0.0,
+          "starters": [
+            "12508",
+            "9224",
+            "5892",
+            "7547",
+            "2216",
+            "7002",
+            "9756",
+            "2747",
+            "LAR"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 8,
+          "team_info": {
+            "roster_id": 8,
+            "owner_id": "467563705354153984",
+            "canonical_name": "Mutumbs",
+            "display_name": "Mutumbs",
+            "team_name": "George PickHIMS",
+            "avatar_url": "profile-images-removed/thumbs/3ba9b13839d8aae42305608dfbb1bfe2",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 88.8,
+            "points_against": 139.48,
+            "division": 3,
+            "rank": 10
+          },
+          "points": 0.0,
+          "starters": [
+            "3294",
+            "3198",
+            "13287",
+            "12526",
+            "5927",
+            "12518",
+            "11628",
+            "1945",
+            "HOU"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 7,
+          "team_info": {
+            "roster_id": 7,
+            "owner_id": "467562671558881280",
+            "canonical_name": "Rohit",
+            "display_name": "rohitV",
+            "team_name": "Chris Cross Adams Sauce",
+            "avatar_url": "profile-images-removed/thumbs/aebe47e302e42a4847b5c66d57f320af",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 75.8,
+            "points_against": 87.24,
+            "division": 1,
+            "rank": 11
+          },
+          "points": 0.0,
+          "starters": [
+            "5849",
+            "4034",
+            "12534",
+            "7569",
+            "8144",
+            "10236",
+            "7525",
+            "12015",
+            "KC"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 10,
+          "team_info": {
+            "roster_id": 10,
+            "owner_id": "468118346949193728",
+            "canonical_name": "GeneralSod",
+            "display_name": "GeneralSod",
+            "team_name": "Naberhood Watch",
+            "avatar_url": "profile-images-removed/thumbs/accfa8d733980b98db2fcb40cb98bc1b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 123.2,
+            "points_against": 125.96,
+            "division": 2,
+            "rank": 7
+          },
+          "points": 0.0,
+          "starters": [
+            "7523",
+            "4866",
+            "12507",
+            "8167",
+            "10229",
+            "8131",
+            "12533",
+            "11786",
+            "NE"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 9,
+          "team_info": {
+            "roster_id": 9,
+            "owner_id": "467575251014774784",
+            "canonical_name": "Nfi421",
+            "display_name": "Nfi421",
+            "team_name": "First Team All-Suspension",
+            "avatar_url": "profile-images-removed/thumbs/6f925123e8c7894bf1cddb0e21a9ae71",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 87.24,
+            "points_against": 75.8,
+            "division": 1,
+            "rank": 6
+          },
+          "points": 0.0,
+          "starters": [
+            "8183",
+            "7021",
+            "11581",
+            "9493",
+            "6786",
+            "8130",
+            "6801",
+            "3451",
+            "DEN"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 12,
+          "team_info": {
+            "roster_id": 12,
+            "owner_id": "468452373182803968",
+            "canonical_name": "Nabbo",
+            "display_name": "Nabbo",
+            "team_name": "Touchdown in London Town",
+            "avatar_url": "profile-images-removed/thumbs/8e9887c56921844272b51af3e7384fa2",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 125.96,
+            "points_against": 123.2,
+            "division": 2,
+            "rank": 4
+          },
+          "points": 0.0,
+          "starters": [
+            "4984",
+            "9509",
+            "7611",
+            "8112",
+            "12519",
+            "1466",
+            "9997",
+            "8259",
+            "BAL"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    ],
+    "9": [
+      [
+        {
+          "roster_id": 1,
+          "team_info": {
+            "roster_id": 1,
+            "owner_id": "462501728848179200",
+            "canonical_name": "Fawaz",
+            "display_name": "faximus",
+            "team_name": "Wheres Waddle",
+            "avatar_url": "profile-images-removed/thumbs/dd6928a9b380502def30e6b9dc3c22df",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 139.48,
+            "points_against": 88.8,
+            "division": 3,
+            "rank": 2
+          },
+          "points": 0.0,
+          "starters": [
+            "11560",
+            "12527",
+            "7543",
+            "9488",
+            "11646",
+            "7553",
+            "12481",
+            "12185",
+            "PIT"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 5,
+          "team_info": {
+            "roster_id": 5,
+            "owner_id": "467556448272904192",
+            "canonical_name": "Gmen",
+            "display_name": "Gmen926",
+            "team_name": "InsertCoolName",
+            "avatar_url": "profile-images-removed/thumbs/909b16f12d1bd5b227bd97c98bc1f825",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 121.54,
+            "points_against": 94.36,
+            "division": 2,
+            "rank": 5
+          },
+          "points": 0.0,
+          "starters": [
+            "12508",
+            "9224",
+            "5892",
+            "7547",
+            "2216",
+            "7002",
+            "9756",
+            "2747",
+            "LAR"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 2,
+          "team_info": {
+            "roster_id": 2,
+            "owner_id": "467556046399860736",
+            "canonical_name": "hoo2champ",
+            "display_name": "hoo2champ",
+            "team_name": "Ghay for Bhay",
+            "avatar_url": "profile-images-removed/thumbs/d25e506df15ed6ff693171379464e8ab",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 94.36,
+            "points_against": 121.54,
+            "division": 2,
+            "rank": 9
+          },
+          "points": 0.0,
+          "starters": [
+            "6770",
+            "8138",
+            "12490",
+            "6794",
+            "9754",
+            "3214",
+            "12512",
+            "12711",
+            "DET"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 8,
+          "team_info": {
+            "roster_id": 8,
+            "owner_id": "467563705354153984",
+            "canonical_name": "Mutumbs",
+            "display_name": "Mutumbs",
+            "team_name": "George PickHIMS",
+            "avatar_url": "profile-images-removed/thumbs/3ba9b13839d8aae42305608dfbb1bfe2",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 88.8,
+            "points_against": 139.48,
+            "division": 3,
+            "rank": 10
+          },
+          "points": 0.0,
+          "starters": [
+            "3294",
+            "3198",
+            "13287",
+            "12526",
+            "5927",
+            "12518",
+            "11628",
+            "1945",
+            "HOU"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 3,
+          "team_info": {
+            "roster_id": 3,
+            "owner_id": "883711528850051072",
+            "canonical_name": "Aryan",
+            "display_name": "Aryankara",
+            "team_name": "Kyren(No Achalles) Irving",
+            "avatar_url": "profile-images-removed/thumbs/82aec8e811b839b8ec25d7b458afd57b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 64.92,
+            "points_against": 126.12,
+            "division": 3,
+            "rank": 12
+          },
+          "points": 0.0,
+          "starters": [
+            "11564",
+            "9226",
+            "8150",
+            "8146",
+            "5846",
+            "12506",
+            "11584",
+            "11533",
+            "LAC"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 4,
+          "team_info": {
+            "roster_id": 4,
+            "owner_id": "467556283235430400",
+            "canonical_name": "Jaguo",
+            "display_name": "Jaguo",
+            "team_name": "I\u2019m Reicharded",
+            "avatar_url": "profile-images-removed/thumbs/72ecd4695a1f517a9964cb803a182eaa",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 140.62,
+            "points_against": 105.94,
+            "division": 1,
+            "rank": 1
+          },
+          "points": 0.0,
+          "starters": [
+            "6797",
+            "6790",
+            "8155",
+            "7564",
+            "9487",
+            "12517",
+            "8151",
+            "11792",
+            "SEA"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 6,
+          "team_info": {
+            "roster_id": 6,
+            "owner_id": "467556485400883200",
+            "canonical_name": "Loomnoo",
+            "display_name": "loomnoo",
+            "team_name": "Sydney's Sweeneys",
+            "avatar_url": "profile-images-removed/thumbs/920dc858372ba40dc19e94f670d12e0f",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 126.12,
+            "points_against": 64.92,
+            "division": 3,
+            "rank": 3
+          },
+          "points": 0.0,
+          "starters": [
+            "6904",
+            "9221",
+            "13286",
+            "0",
+            "12514",
+            "4217",
+            "7588",
+            "13545",
+            "JAX"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 11,
+          "team_info": {
+            "roster_id": 11,
+            "owner_id": "468426188281344000",
+            "canonical_name": "Aneesh",
+            "display_name": "aneeshatri29",
+            "team_name": "petting zoo",
+            "avatar_url": "profile-images-removed/thumbs/50ba16db60e2e064b58bc354ce163ddd",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 105.94,
+            "points_against": 140.62,
+            "division": 1,
+            "rank": 8
+          },
+          "points": 0.0,
+          "starters": null,
+          "starters_points": []
+        }
+      ],
+      [
+        {
+          "roster_id": 7,
+          "team_info": {
+            "roster_id": 7,
+            "owner_id": "467562671558881280",
+            "canonical_name": "Rohit",
+            "display_name": "rohitV",
+            "team_name": "Chris Cross Adams Sauce",
+            "avatar_url": "profile-images-removed/thumbs/aebe47e302e42a4847b5c66d57f320af",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 75.8,
+            "points_against": 87.24,
+            "division": 1,
+            "rank": 11
+          },
+          "points": 0.0,
+          "starters": [
+            "5849",
+            "4034",
+            "12534",
+            "7569",
+            "8144",
+            "10236",
+            "7525",
+            "12015",
+            "KC"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 12,
+          "team_info": {
+            "roster_id": 12,
+            "owner_id": "468452373182803968",
+            "canonical_name": "Nabbo",
+            "display_name": "Nabbo",
+            "team_name": "Touchdown in London Town",
+            "avatar_url": "profile-images-removed/thumbs/8e9887c56921844272b51af3e7384fa2",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 125.96,
+            "points_against": 123.2,
+            "division": 2,
+            "rank": 4
+          },
+          "points": 0.0,
+          "starters": [
+            "4984",
+            "9509",
+            "7611",
+            "8112",
+            "12519",
+            "1466",
+            "9997",
+            "8259",
+            "BAL"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 9,
+          "team_info": {
+            "roster_id": 9,
+            "owner_id": "467575251014774784",
+            "canonical_name": "Nfi421",
+            "display_name": "Nfi421",
+            "team_name": "First Team All-Suspension",
+            "avatar_url": "profile-images-removed/thumbs/6f925123e8c7894bf1cddb0e21a9ae71",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 87.24,
+            "points_against": 75.8,
+            "division": 1,
+            "rank": 6
+          },
+          "points": 0.0,
+          "starters": [
+            "8183",
+            "7021",
+            "11581",
+            "9493",
+            "6786",
+            "8130",
+            "6801",
+            "3451",
+            "DEN"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 10,
+          "team_info": {
+            "roster_id": 10,
+            "owner_id": "468118346949193728",
+            "canonical_name": "GeneralSod",
+            "display_name": "GeneralSod",
+            "team_name": "Naberhood Watch",
+            "avatar_url": "profile-images-removed/thumbs/accfa8d733980b98db2fcb40cb98bc1b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 123.2,
+            "points_against": 125.96,
+            "division": 2,
+            "rank": 7
+          },
+          "points": 0.0,
+          "starters": [
+            "7523",
+            "4866",
+            "12507",
+            "8167",
+            "10229",
+            "8131",
+            "12533",
+            "11786",
+            "NE"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    ],
+    "10": [
+      [
+        {
+          "roster_id": 1,
+          "team_info": {
+            "roster_id": 1,
+            "owner_id": "462501728848179200",
+            "canonical_name": "Fawaz",
+            "display_name": "faximus",
+            "team_name": "Wheres Waddle",
+            "avatar_url": "profile-images-removed/thumbs/dd6928a9b380502def30e6b9dc3c22df",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 139.48,
+            "points_against": 88.8,
+            "division": 3,
+            "rank": 2
+          },
+          "points": 0.0,
+          "starters": [
+            "11560",
+            "12527",
+            "7543",
+            "9488",
+            "11646",
+            "7553",
+            "12481",
+            "12185",
+            "PIT"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 10,
+          "team_info": {
+            "roster_id": 10,
+            "owner_id": "468118346949193728",
+            "canonical_name": "GeneralSod",
+            "display_name": "GeneralSod",
+            "team_name": "Naberhood Watch",
+            "avatar_url": "profile-images-removed/thumbs/accfa8d733980b98db2fcb40cb98bc1b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 123.2,
+            "points_against": 125.96,
+            "division": 2,
+            "rank": 7
+          },
+          "points": 0.0,
+          "starters": [
+            "7523",
+            "4866",
+            "12507",
+            "8167",
+            "10229",
+            "8131",
+            "12533",
+            "11786",
+            "NE"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 2,
+          "team_info": {
+            "roster_id": 2,
+            "owner_id": "467556046399860736",
+            "canonical_name": "hoo2champ",
+            "display_name": "hoo2champ",
+            "team_name": "Ghay for Bhay",
+            "avatar_url": "profile-images-removed/thumbs/d25e506df15ed6ff693171379464e8ab",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 94.36,
+            "points_against": 121.54,
+            "division": 2,
+            "rank": 9
+          },
+          "points": 0.0,
+          "starters": [
+            "6770",
+            "8138",
+            "12490",
+            "6794",
+            "9754",
+            "3214",
+            "12512",
+            "12711",
+            "DET"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 11,
+          "team_info": {
+            "roster_id": 11,
+            "owner_id": "468426188281344000",
+            "canonical_name": "Aneesh",
+            "display_name": "aneeshatri29",
+            "team_name": "petting zoo",
+            "avatar_url": "profile-images-removed/thumbs/50ba16db60e2e064b58bc354ce163ddd",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 105.94,
+            "points_against": 140.62,
+            "division": 1,
+            "rank": 8
+          },
+          "points": 0.0,
+          "starters": null,
+          "starters_points": []
+        }
+      ],
+      [
+        {
+          "roster_id": 3,
+          "team_info": {
+            "roster_id": 3,
+            "owner_id": "883711528850051072",
+            "canonical_name": "Aryan",
+            "display_name": "Aryankara",
+            "team_name": "Kyren(No Achalles) Irving",
+            "avatar_url": "profile-images-removed/thumbs/82aec8e811b839b8ec25d7b458afd57b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 64.92,
+            "points_against": 126.12,
+            "division": 3,
+            "rank": 12
+          },
+          "points": 0.0,
+          "starters": [
+            "11564",
+            "9226",
+            "8150",
+            "8146",
+            "5846",
+            "12506",
+            "11584",
+            "11533",
+            "LAC"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 7,
+          "team_info": {
+            "roster_id": 7,
+            "owner_id": "467562671558881280",
+            "canonical_name": "Rohit",
+            "display_name": "rohitV",
+            "team_name": "Chris Cross Adams Sauce",
+            "avatar_url": "profile-images-removed/thumbs/aebe47e302e42a4847b5c66d57f320af",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 75.8,
+            "points_against": 87.24,
+            "division": 1,
+            "rank": 11
+          },
+          "points": 0.0,
+          "starters": [
+            "5849",
+            "4034",
+            "12534",
+            "7569",
+            "8144",
+            "10236",
+            "7525",
+            "12015",
+            "KC"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 4,
+          "team_info": {
+            "roster_id": 4,
+            "owner_id": "467556283235430400",
+            "canonical_name": "Jaguo",
+            "display_name": "Jaguo",
+            "team_name": "I\u2019m Reicharded",
+            "avatar_url": "profile-images-removed/thumbs/72ecd4695a1f517a9964cb803a182eaa",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 140.62,
+            "points_against": 105.94,
+            "division": 1,
+            "rank": 1
+          },
+          "points": 0.0,
+          "starters": [
+            "6797",
+            "6790",
+            "8155",
+            "7564",
+            "9487",
+            "12517",
+            "8151",
+            "11792",
+            "SEA"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 5,
+          "team_info": {
+            "roster_id": 5,
+            "owner_id": "467556448272904192",
+            "canonical_name": "Gmen",
+            "display_name": "Gmen926",
+            "team_name": "InsertCoolName",
+            "avatar_url": "profile-images-removed/thumbs/909b16f12d1bd5b227bd97c98bc1f825",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 121.54,
+            "points_against": 94.36,
+            "division": 2,
+            "rank": 5
+          },
+          "points": 0.0,
+          "starters": [
+            "12508",
+            "9224",
+            "5892",
+            "7547",
+            "2216",
+            "7002",
+            "9756",
+            "2747",
+            "LAR"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 6,
+          "team_info": {
+            "roster_id": 6,
+            "owner_id": "467556485400883200",
+            "canonical_name": "Loomnoo",
+            "display_name": "loomnoo",
+            "team_name": "Sydney's Sweeneys",
+            "avatar_url": "profile-images-removed/thumbs/920dc858372ba40dc19e94f670d12e0f",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 126.12,
+            "points_against": 64.92,
+            "division": 3,
+            "rank": 3
+          },
+          "points": 0.0,
+          "starters": [
+            "6904",
+            "9221",
+            "13286",
+            "0",
+            "12514",
+            "4217",
+            "7588",
+            "13545",
+            "JAX"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 9,
+          "team_info": {
+            "roster_id": 9,
+            "owner_id": "467575251014774784",
+            "canonical_name": "Nfi421",
+            "display_name": "Nfi421",
+            "team_name": "First Team All-Suspension",
+            "avatar_url": "profile-images-removed/thumbs/6f925123e8c7894bf1cddb0e21a9ae71",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 87.24,
+            "points_against": 75.8,
+            "division": 1,
+            "rank": 6
+          },
+          "points": 0.0,
+          "starters": [
+            "8183",
+            "7021",
+            "11581",
+            "9493",
+            "6786",
+            "8130",
+            "6801",
+            "3451",
+            "DEN"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 8,
+          "team_info": {
+            "roster_id": 8,
+            "owner_id": "467563705354153984",
+            "canonical_name": "Mutumbs",
+            "display_name": "Mutumbs",
+            "team_name": "George PickHIMS",
+            "avatar_url": "profile-images-removed/thumbs/3ba9b13839d8aae42305608dfbb1bfe2",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 88.8,
+            "points_against": 139.48,
+            "division": 3,
+            "rank": 10
+          },
+          "points": 0.0,
+          "starters": [
+            "3294",
+            "3198",
+            "13287",
+            "12526",
+            "5927",
+            "12518",
+            "11628",
+            "1945",
+            "HOU"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 12,
+          "team_info": {
+            "roster_id": 12,
+            "owner_id": "468452373182803968",
+            "canonical_name": "Nabbo",
+            "display_name": "Nabbo",
+            "team_name": "Touchdown in London Town",
+            "avatar_url": "profile-images-removed/thumbs/8e9887c56921844272b51af3e7384fa2",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 125.96,
+            "points_against": 123.2,
+            "division": 2,
+            "rank": 4
+          },
+          "points": 0.0,
+          "starters": [
+            "4984",
+            "9509",
+            "7611",
+            "8112",
+            "12519",
+            "1466",
+            "9997",
+            "8259",
+            "BAL"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    ],
+    "11": [
+      [
+        {
+          "roster_id": 1,
+          "team_info": {
+            "roster_id": 1,
+            "owner_id": "462501728848179200",
+            "canonical_name": "Fawaz",
+            "display_name": "faximus",
+            "team_name": "Wheres Waddle",
+            "avatar_url": "profile-images-removed/thumbs/dd6928a9b380502def30e6b9dc3c22df",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 139.48,
+            "points_against": 88.8,
+            "division": 3,
+            "rank": 2
+          },
+          "points": 0.0,
+          "starters": [
+            "11560",
+            "12527",
+            "7543",
+            "9488",
+            "11646",
+            "7553",
+            "12481",
+            "12185",
+            "PIT"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 12,
+          "team_info": {
+            "roster_id": 12,
+            "owner_id": "468452373182803968",
+            "canonical_name": "Nabbo",
+            "display_name": "Nabbo",
+            "team_name": "Touchdown in London Town",
+            "avatar_url": "profile-images-removed/thumbs/8e9887c56921844272b51af3e7384fa2",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 125.96,
+            "points_against": 123.2,
+            "division": 2,
+            "rank": 4
+          },
+          "points": 0.0,
+          "starters": [
+            "4984",
+            "9509",
+            "7611",
+            "8112",
+            "12519",
+            "1466",
+            "9997",
+            "8259",
+            "BAL"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 2,
+          "team_info": {
+            "roster_id": 2,
+            "owner_id": "467556046399860736",
+            "canonical_name": "hoo2champ",
+            "display_name": "hoo2champ",
+            "team_name": "Ghay for Bhay",
+            "avatar_url": "profile-images-removed/thumbs/d25e506df15ed6ff693171379464e8ab",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 94.36,
+            "points_against": 121.54,
+            "division": 2,
+            "rank": 9
+          },
+          "points": 0.0,
+          "starters": [
+            "6770",
+            "8138",
+            "12490",
+            "6794",
+            "9754",
+            "3214",
+            "12512",
+            "12711",
+            "DET"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 4,
+          "team_info": {
+            "roster_id": 4,
+            "owner_id": "467556283235430400",
+            "canonical_name": "Jaguo",
+            "display_name": "Jaguo",
+            "team_name": "I\u2019m Reicharded",
+            "avatar_url": "profile-images-removed/thumbs/72ecd4695a1f517a9964cb803a182eaa",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 140.62,
+            "points_against": 105.94,
+            "division": 1,
+            "rank": 1
+          },
+          "points": 0.0,
+          "starters": [
+            "6797",
+            "6790",
+            "8155",
+            "7564",
+            "9487",
+            "12517",
+            "8151",
+            "11792",
+            "SEA"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 3,
+          "team_info": {
+            "roster_id": 3,
+            "owner_id": "883711528850051072",
+            "canonical_name": "Aryan",
+            "display_name": "Aryankara",
+            "team_name": "Kyren(No Achalles) Irving",
+            "avatar_url": "profile-images-removed/thumbs/82aec8e811b839b8ec25d7b458afd57b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 64.92,
+            "points_against": 126.12,
+            "division": 3,
+            "rank": 12
+          },
+          "points": 0.0,
+          "starters": [
+            "11564",
+            "9226",
+            "8150",
+            "8146",
+            "5846",
+            "12506",
+            "11584",
+            "11533",
+            "LAC"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 9,
+          "team_info": {
+            "roster_id": 9,
+            "owner_id": "467575251014774784",
+            "canonical_name": "Nfi421",
+            "display_name": "Nfi421",
+            "team_name": "First Team All-Suspension",
+            "avatar_url": "profile-images-removed/thumbs/6f925123e8c7894bf1cddb0e21a9ae71",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 87.24,
+            "points_against": 75.8,
+            "division": 1,
+            "rank": 6
+          },
+          "points": 0.0,
+          "starters": [
+            "8183",
+            "7021",
+            "11581",
+            "9493",
+            "6786",
+            "8130",
+            "6801",
+            "3451",
+            "DEN"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 5,
+          "team_info": {
+            "roster_id": 5,
+            "owner_id": "467556448272904192",
+            "canonical_name": "Gmen",
+            "display_name": "Gmen926",
+            "team_name": "InsertCoolName",
+            "avatar_url": "profile-images-removed/thumbs/909b16f12d1bd5b227bd97c98bc1f825",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 121.54,
+            "points_against": 94.36,
+            "division": 2,
+            "rank": 5
+          },
+          "points": 0.0,
+          "starters": [
+            "12508",
+            "9224",
+            "5892",
+            "7547",
+            "2216",
+            "7002",
+            "9756",
+            "2747",
+            "LAR"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 11,
+          "team_info": {
+            "roster_id": 11,
+            "owner_id": "468426188281344000",
+            "canonical_name": "Aneesh",
+            "display_name": "aneeshatri29",
+            "team_name": "petting zoo",
+            "avatar_url": "profile-images-removed/thumbs/50ba16db60e2e064b58bc354ce163ddd",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 105.94,
+            "points_against": 140.62,
+            "division": 1,
+            "rank": 8
+          },
+          "points": 0.0,
+          "starters": null,
+          "starters_points": []
+        }
+      ],
+      [
+        {
+          "roster_id": 6,
+          "team_info": {
+            "roster_id": 6,
+            "owner_id": "467556485400883200",
+            "canonical_name": "Loomnoo",
+            "display_name": "loomnoo",
+            "team_name": "Sydney's Sweeneys",
+            "avatar_url": "profile-images-removed/thumbs/920dc858372ba40dc19e94f670d12e0f",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 126.12,
+            "points_against": 64.92,
+            "division": 3,
+            "rank": 3
+          },
+          "points": 0.0,
+          "starters": [
+            "6904",
+            "9221",
+            "13286",
+            "0",
+            "12514",
+            "4217",
+            "7588",
+            "13545",
+            "JAX"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 7,
+          "team_info": {
+            "roster_id": 7,
+            "owner_id": "467562671558881280",
+            "canonical_name": "Rohit",
+            "display_name": "rohitV",
+            "team_name": "Chris Cross Adams Sauce",
+            "avatar_url": "profile-images-removed/thumbs/aebe47e302e42a4847b5c66d57f320af",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 75.8,
+            "points_against": 87.24,
+            "division": 1,
+            "rank": 11
+          },
+          "points": 0.0,
+          "starters": [
+            "5849",
+            "4034",
+            "12534",
+            "7569",
+            "8144",
+            "10236",
+            "7525",
+            "12015",
+            "KC"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 8,
+          "team_info": {
+            "roster_id": 8,
+            "owner_id": "467563705354153984",
+            "canonical_name": "Mutumbs",
+            "display_name": "Mutumbs",
+            "team_name": "George PickHIMS",
+            "avatar_url": "profile-images-removed/thumbs/3ba9b13839d8aae42305608dfbb1bfe2",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 88.8,
+            "points_against": 139.48,
+            "division": 3,
+            "rank": 10
+          },
+          "points": 0.0,
+          "starters": [
+            "3294",
+            "3198",
+            "13287",
+            "12526",
+            "5927",
+            "12518",
+            "11628",
+            "1945",
+            "HOU"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 10,
+          "team_info": {
+            "roster_id": 10,
+            "owner_id": "468118346949193728",
+            "canonical_name": "GeneralSod",
+            "display_name": "GeneralSod",
+            "team_name": "Naberhood Watch",
+            "avatar_url": "profile-images-removed/thumbs/accfa8d733980b98db2fcb40cb98bc1b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 123.2,
+            "points_against": 125.96,
+            "division": 2,
+            "rank": 7
+          },
+          "points": 0.0,
+          "starters": [
+            "7523",
+            "4866",
+            "12507",
+            "8167",
+            "10229",
+            "8131",
+            "12533",
+            "11786",
+            "NE"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    ],
+    "12": [
+      [
+        {
+          "roster_id": 1,
+          "team_info": {
+            "roster_id": 1,
+            "owner_id": "462501728848179200",
+            "canonical_name": "Fawaz",
+            "display_name": "faximus",
+            "team_name": "Wheres Waddle",
+            "avatar_url": "profile-images-removed/thumbs/dd6928a9b380502def30e6b9dc3c22df",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 139.48,
+            "points_against": 88.8,
+            "division": 3,
+            "rank": 2
+          },
+          "points": 0.0,
+          "starters": [
+            "11560",
+            "12527",
+            "7543",
+            "9488",
+            "11646",
+            "7553",
+            "12481",
+            "12185",
+            "PIT"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 8,
+          "team_info": {
+            "roster_id": 8,
+            "owner_id": "467563705354153984",
+            "canonical_name": "Mutumbs",
+            "display_name": "Mutumbs",
+            "team_name": "George PickHIMS",
+            "avatar_url": "profile-images-removed/thumbs/3ba9b13839d8aae42305608dfbb1bfe2",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 88.8,
+            "points_against": 139.48,
+            "division": 3,
+            "rank": 10
+          },
+          "points": 0.0,
+          "starters": [
+            "3294",
+            "3198",
+            "13287",
+            "12526",
+            "5927",
+            "12518",
+            "11628",
+            "1945",
+            "HOU"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 2,
+          "team_info": {
+            "roster_id": 2,
+            "owner_id": "467556046399860736",
+            "canonical_name": "hoo2champ",
+            "display_name": "hoo2champ",
+            "team_name": "Ghay for Bhay",
+            "avatar_url": "profile-images-removed/thumbs/d25e506df15ed6ff693171379464e8ab",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 94.36,
+            "points_against": 121.54,
+            "division": 2,
+            "rank": 9
+          },
+          "points": 0.0,
+          "starters": [
+            "6770",
+            "8138",
+            "12490",
+            "6794",
+            "9754",
+            "3214",
+            "12512",
+            "12711",
+            "DET"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 5,
+          "team_info": {
+            "roster_id": 5,
+            "owner_id": "467556448272904192",
+            "canonical_name": "Gmen",
+            "display_name": "Gmen926",
+            "team_name": "InsertCoolName",
+            "avatar_url": "profile-images-removed/thumbs/909b16f12d1bd5b227bd97c98bc1f825",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 121.54,
+            "points_against": 94.36,
+            "division": 2,
+            "rank": 5
+          },
+          "points": 0.0,
+          "starters": [
+            "12508",
+            "9224",
+            "5892",
+            "7547",
+            "2216",
+            "7002",
+            "9756",
+            "2747",
+            "LAR"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 3,
+          "team_info": {
+            "roster_id": 3,
+            "owner_id": "883711528850051072",
+            "canonical_name": "Aryan",
+            "display_name": "Aryankara",
+            "team_name": "Kyren(No Achalles) Irving",
+            "avatar_url": "profile-images-removed/thumbs/82aec8e811b839b8ec25d7b458afd57b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 64.92,
+            "points_against": 126.12,
+            "division": 3,
+            "rank": 12
+          },
+          "points": 0.0,
+          "starters": [
+            "11564",
+            "9226",
+            "8150",
+            "8146",
+            "5846",
+            "12506",
+            "11584",
+            "11533",
+            "LAC"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 6,
+          "team_info": {
+            "roster_id": 6,
+            "owner_id": "467556485400883200",
+            "canonical_name": "Loomnoo",
+            "display_name": "loomnoo",
+            "team_name": "Sydney's Sweeneys",
+            "avatar_url": "profile-images-removed/thumbs/920dc858372ba40dc19e94f670d12e0f",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 126.12,
+            "points_against": 64.92,
+            "division": 3,
+            "rank": 3
+          },
+          "points": 0.0,
+          "starters": [
+            "6904",
+            "9221",
+            "13286",
+            "0",
+            "12514",
+            "4217",
+            "7588",
+            "13545",
+            "JAX"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 4,
+          "team_info": {
+            "roster_id": 4,
+            "owner_id": "467556283235430400",
+            "canonical_name": "Jaguo",
+            "display_name": "Jaguo",
+            "team_name": "I\u2019m Reicharded",
+            "avatar_url": "profile-images-removed/thumbs/72ecd4695a1f517a9964cb803a182eaa",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 140.62,
+            "points_against": 105.94,
+            "division": 1,
+            "rank": 1
+          },
+          "points": 0.0,
+          "starters": [
+            "6797",
+            "6790",
+            "8155",
+            "7564",
+            "9487",
+            "12517",
+            "8151",
+            "11792",
+            "SEA"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 11,
+          "team_info": {
+            "roster_id": 11,
+            "owner_id": "468426188281344000",
+            "canonical_name": "Aneesh",
+            "display_name": "aneeshatri29",
+            "team_name": "petting zoo",
+            "avatar_url": "profile-images-removed/thumbs/50ba16db60e2e064b58bc354ce163ddd",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 105.94,
+            "points_against": 140.62,
+            "division": 1,
+            "rank": 8
+          },
+          "points": 0.0,
+          "starters": null,
+          "starters_points": []
+        }
+      ],
+      [
+        {
+          "roster_id": 7,
+          "team_info": {
+            "roster_id": 7,
+            "owner_id": "467562671558881280",
+            "canonical_name": "Rohit",
+            "display_name": "rohitV",
+            "team_name": "Chris Cross Adams Sauce",
+            "avatar_url": "profile-images-removed/thumbs/aebe47e302e42a4847b5c66d57f320af",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 75.8,
+            "points_against": 87.24,
+            "division": 1,
+            "rank": 11
+          },
+          "points": 0.0,
+          "starters": [
+            "5849",
+            "4034",
+            "12534",
+            "7569",
+            "8144",
+            "10236",
+            "7525",
+            "12015",
+            "KC"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 9,
+          "team_info": {
+            "roster_id": 9,
+            "owner_id": "467575251014774784",
+            "canonical_name": "Nfi421",
+            "display_name": "Nfi421",
+            "team_name": "First Team All-Suspension",
+            "avatar_url": "profile-images-removed/thumbs/6f925123e8c7894bf1cddb0e21a9ae71",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 87.24,
+            "points_against": 75.8,
+            "division": 1,
+            "rank": 6
+          },
+          "points": 0.0,
+          "starters": [
+            "8183",
+            "7021",
+            "11581",
+            "9493",
+            "6786",
+            "8130",
+            "6801",
+            "3451",
+            "DEN"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 10,
+          "team_info": {
+            "roster_id": 10,
+            "owner_id": "468118346949193728",
+            "canonical_name": "GeneralSod",
+            "display_name": "GeneralSod",
+            "team_name": "Naberhood Watch",
+            "avatar_url": "profile-images-removed/thumbs/accfa8d733980b98db2fcb40cb98bc1b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 123.2,
+            "points_against": 125.96,
+            "division": 2,
+            "rank": 7
+          },
+          "points": 0.0,
+          "starters": [
+            "7523",
+            "4866",
+            "12507",
+            "8167",
+            "10229",
+            "8131",
+            "12533",
+            "11786",
+            "NE"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 12,
+          "team_info": {
+            "roster_id": 12,
+            "owner_id": "468452373182803968",
+            "canonical_name": "Nabbo",
+            "display_name": "Nabbo",
+            "team_name": "Touchdown in London Town",
+            "avatar_url": "profile-images-removed/thumbs/8e9887c56921844272b51af3e7384fa2",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 125.96,
+            "points_against": 123.2,
+            "division": 2,
+            "rank": 4
+          },
+          "points": 0.0,
+          "starters": [
+            "4984",
+            "9509",
+            "7611",
+            "8112",
+            "12519",
+            "1466",
+            "9997",
+            "8259",
+            "BAL"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    ],
+    "13": [
+      [
+        {
+          "roster_id": 1,
+          "team_info": {
+            "roster_id": 1,
+            "owner_id": "462501728848179200",
+            "canonical_name": "Fawaz",
+            "display_name": "faximus",
+            "team_name": "Wheres Waddle",
+            "avatar_url": "profile-images-removed/thumbs/dd6928a9b380502def30e6b9dc3c22df",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 139.48,
+            "points_against": 88.8,
+            "division": 3,
+            "rank": 2
+          },
+          "points": 0.0,
+          "starters": [
+            "11560",
+            "12527",
+            "7543",
+            "9488",
+            "11646",
+            "7553",
+            "12481",
+            "12185",
+            "PIT"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 3,
+          "team_info": {
+            "roster_id": 3,
+            "owner_id": "883711528850051072",
+            "canonical_name": "Aryan",
+            "display_name": "Aryankara",
+            "team_name": "Kyren(No Achalles) Irving",
+            "avatar_url": "profile-images-removed/thumbs/82aec8e811b839b8ec25d7b458afd57b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 64.92,
+            "points_against": 126.12,
+            "division": 3,
+            "rank": 12
+          },
+          "points": 0.0,
+          "starters": [
+            "11564",
+            "9226",
+            "8150",
+            "8146",
+            "5846",
+            "12506",
+            "11584",
+            "11533",
+            "LAC"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 2,
+          "team_info": {
+            "roster_id": 2,
+            "owner_id": "467556046399860736",
+            "canonical_name": "hoo2champ",
+            "display_name": "hoo2champ",
+            "team_name": "Ghay for Bhay",
+            "avatar_url": "profile-images-removed/thumbs/d25e506df15ed6ff693171379464e8ab",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 94.36,
+            "points_against": 121.54,
+            "division": 2,
+            "rank": 9
+          },
+          "points": 0.0,
+          "starters": [
+            "6770",
+            "8138",
+            "12490",
+            "6794",
+            "9754",
+            "3214",
+            "12512",
+            "12711",
+            "DET"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 10,
+          "team_info": {
+            "roster_id": 10,
+            "owner_id": "468118346949193728",
+            "canonical_name": "GeneralSod",
+            "display_name": "GeneralSod",
+            "team_name": "Naberhood Watch",
+            "avatar_url": "profile-images-removed/thumbs/accfa8d733980b98db2fcb40cb98bc1b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 123.2,
+            "points_against": 125.96,
+            "division": 2,
+            "rank": 7
+          },
+          "points": 0.0,
+          "starters": [
+            "7523",
+            "4866",
+            "12507",
+            "8167",
+            "10229",
+            "8131",
+            "12533",
+            "11786",
+            "NE"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 4,
+          "team_info": {
+            "roster_id": 4,
+            "owner_id": "467556283235430400",
+            "canonical_name": "Jaguo",
+            "display_name": "Jaguo",
+            "team_name": "I\u2019m Reicharded",
+            "avatar_url": "profile-images-removed/thumbs/72ecd4695a1f517a9964cb803a182eaa",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 140.62,
+            "points_against": 105.94,
+            "division": 1,
+            "rank": 1
+          },
+          "points": 0.0,
+          "starters": [
+            "6797",
+            "6790",
+            "8155",
+            "7564",
+            "9487",
+            "12517",
+            "8151",
+            "11792",
+            "SEA"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 9,
+          "team_info": {
+            "roster_id": 9,
+            "owner_id": "467575251014774784",
+            "canonical_name": "Nfi421",
+            "display_name": "Nfi421",
+            "team_name": "First Team All-Suspension",
+            "avatar_url": "profile-images-removed/thumbs/6f925123e8c7894bf1cddb0e21a9ae71",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 87.24,
+            "points_against": 75.8,
+            "division": 1,
+            "rank": 6
+          },
+          "points": 0.0,
+          "starters": [
+            "8183",
+            "7021",
+            "11581",
+            "9493",
+            "6786",
+            "8130",
+            "6801",
+            "3451",
+            "DEN"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 5,
+          "team_info": {
+            "roster_id": 5,
+            "owner_id": "467556448272904192",
+            "canonical_name": "Gmen",
+            "display_name": "Gmen926",
+            "team_name": "InsertCoolName",
+            "avatar_url": "profile-images-removed/thumbs/909b16f12d1bd5b227bd97c98bc1f825",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 121.54,
+            "points_against": 94.36,
+            "division": 2,
+            "rank": 5
+          },
+          "points": 0.0,
+          "starters": [
+            "12508",
+            "9224",
+            "5892",
+            "7547",
+            "2216",
+            "7002",
+            "9756",
+            "2747",
+            "LAR"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 12,
+          "team_info": {
+            "roster_id": 12,
+            "owner_id": "468452373182803968",
+            "canonical_name": "Nabbo",
+            "display_name": "Nabbo",
+            "team_name": "Touchdown in London Town",
+            "avatar_url": "profile-images-removed/thumbs/8e9887c56921844272b51af3e7384fa2",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 125.96,
+            "points_against": 123.2,
+            "division": 2,
+            "rank": 4
+          },
+          "points": 0.0,
+          "starters": [
+            "4984",
+            "9509",
+            "7611",
+            "8112",
+            "12519",
+            "1466",
+            "9997",
+            "8259",
+            "BAL"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 6,
+          "team_info": {
+            "roster_id": 6,
+            "owner_id": "467556485400883200",
+            "canonical_name": "Loomnoo",
+            "display_name": "loomnoo",
+            "team_name": "Sydney's Sweeneys",
+            "avatar_url": "profile-images-removed/thumbs/920dc858372ba40dc19e94f670d12e0f",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 126.12,
+            "points_against": 64.92,
+            "division": 3,
+            "rank": 3
+          },
+          "points": 0.0,
+          "starters": [
+            "6904",
+            "9221",
+            "13286",
+            "0",
+            "12514",
+            "4217",
+            "7588",
+            "13545",
+            "JAX"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 8,
+          "team_info": {
+            "roster_id": 8,
+            "owner_id": "467563705354153984",
+            "canonical_name": "Mutumbs",
+            "display_name": "Mutumbs",
+            "team_name": "George PickHIMS",
+            "avatar_url": "profile-images-removed/thumbs/3ba9b13839d8aae42305608dfbb1bfe2",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 88.8,
+            "points_against": 139.48,
+            "division": 3,
+            "rank": 10
+          },
+          "points": 0.0,
+          "starters": [
+            "3294",
+            "3198",
+            "13287",
+            "12526",
+            "5927",
+            "12518",
+            "11628",
+            "1945",
+            "HOU"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 7,
+          "team_info": {
+            "roster_id": 7,
+            "owner_id": "467562671558881280",
+            "canonical_name": "Rohit",
+            "display_name": "rohitV",
+            "team_name": "Chris Cross Adams Sauce",
+            "avatar_url": "profile-images-removed/thumbs/aebe47e302e42a4847b5c66d57f320af",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 75.8,
+            "points_against": 87.24,
+            "division": 1,
+            "rank": 11
+          },
+          "points": 0.0,
+          "starters": [
+            "5849",
+            "4034",
+            "12534",
+            "7569",
+            "8144",
+            "10236",
+            "7525",
+            "12015",
+            "KC"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 11,
+          "team_info": {
+            "roster_id": 11,
+            "owner_id": "468426188281344000",
+            "canonical_name": "Aneesh",
+            "display_name": "aneeshatri29",
+            "team_name": "petting zoo",
+            "avatar_url": "profile-images-removed/thumbs/50ba16db60e2e064b58bc354ce163ddd",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 105.94,
+            "points_against": 140.62,
+            "division": 1,
+            "rank": 8
+          },
+          "points": 0.0,
+          "starters": null,
+          "starters_points": []
+        }
+      ]
+    ],
+    "14": [
+      [
+        {
+          "roster_id": 1,
+          "team_info": {
+            "roster_id": 1,
+            "owner_id": "462501728848179200",
+            "canonical_name": "Fawaz",
+            "display_name": "faximus",
+            "team_name": "Wheres Waddle",
+            "avatar_url": "profile-images-removed/thumbs/dd6928a9b380502def30e6b9dc3c22df",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 139.48,
+            "points_against": 88.8,
+            "division": 3,
+            "rank": 2
+          },
+          "points": 0.0,
+          "starters": [
+            "11560",
+            "12527",
+            "7543",
+            "9488",
+            "11646",
+            "7553",
+            "12481",
+            "12185",
+            "PIT"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 6,
+          "team_info": {
+            "roster_id": 6,
+            "owner_id": "467556485400883200",
+            "canonical_name": "Loomnoo",
+            "display_name": "loomnoo",
+            "team_name": "Sydney's Sweeneys",
+            "avatar_url": "profile-images-removed/thumbs/920dc858372ba40dc19e94f670d12e0f",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 126.12,
+            "points_against": 64.92,
+            "division": 3,
+            "rank": 3
+          },
+          "points": 0.0,
+          "starters": [
+            "6904",
+            "9221",
+            "13286",
+            "0",
+            "12514",
+            "4217",
+            "7588",
+            "13545",
+            "JAX"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 2,
+          "team_info": {
+            "roster_id": 2,
+            "owner_id": "467556046399860736",
+            "canonical_name": "hoo2champ",
+            "display_name": "hoo2champ",
+            "team_name": "Ghay for Bhay",
+            "avatar_url": "profile-images-removed/thumbs/d25e506df15ed6ff693171379464e8ab",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 94.36,
+            "points_against": 121.54,
+            "division": 2,
+            "rank": 9
+          },
+          "points": 0.0,
+          "starters": [
+            "6770",
+            "8138",
+            "12490",
+            "6794",
+            "9754",
+            "3214",
+            "12512",
+            "12711",
+            "DET"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 12,
+          "team_info": {
+            "roster_id": 12,
+            "owner_id": "468452373182803968",
+            "canonical_name": "Nabbo",
+            "display_name": "Nabbo",
+            "team_name": "Touchdown in London Town",
+            "avatar_url": "profile-images-removed/thumbs/8e9887c56921844272b51af3e7384fa2",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 125.96,
+            "points_against": 123.2,
+            "division": 2,
+            "rank": 4
+          },
+          "points": 0.0,
+          "starters": [
+            "4984",
+            "9509",
+            "7611",
+            "8112",
+            "12519",
+            "1466",
+            "9997",
+            "8259",
+            "BAL"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 3,
+          "team_info": {
+            "roster_id": 3,
+            "owner_id": "883711528850051072",
+            "canonical_name": "Aryan",
+            "display_name": "Aryankara",
+            "team_name": "Kyren(No Achalles) Irving",
+            "avatar_url": "profile-images-removed/thumbs/82aec8e811b839b8ec25d7b458afd57b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 64.92,
+            "points_against": 126.12,
+            "division": 3,
+            "rank": 12
+          },
+          "points": 0.0,
+          "starters": [
+            "11564",
+            "9226",
+            "8150",
+            "8146",
+            "5846",
+            "12506",
+            "11584",
+            "11533",
+            "LAC"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 8,
+          "team_info": {
+            "roster_id": 8,
+            "owner_id": "467563705354153984",
+            "canonical_name": "Mutumbs",
+            "display_name": "Mutumbs",
+            "team_name": "George PickHIMS",
+            "avatar_url": "profile-images-removed/thumbs/3ba9b13839d8aae42305608dfbb1bfe2",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 88.8,
+            "points_against": 139.48,
+            "division": 3,
+            "rank": 10
+          },
+          "points": 0.0,
+          "starters": [
+            "3294",
+            "3198",
+            "13287",
+            "12526",
+            "5927",
+            "12518",
+            "11628",
+            "1945",
+            "HOU"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 4,
+          "team_info": {
+            "roster_id": 4,
+            "owner_id": "467556283235430400",
+            "canonical_name": "Jaguo",
+            "display_name": "Jaguo",
+            "team_name": "I\u2019m Reicharded",
+            "avatar_url": "profile-images-removed/thumbs/72ecd4695a1f517a9964cb803a182eaa",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 140.62,
+            "points_against": 105.94,
+            "division": 1,
+            "rank": 1
+          },
+          "points": 0.0,
+          "starters": [
+            "6797",
+            "6790",
+            "8155",
+            "7564",
+            "9487",
+            "12517",
+            "8151",
+            "11792",
+            "SEA"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 7,
+          "team_info": {
+            "roster_id": 7,
+            "owner_id": "467562671558881280",
+            "canonical_name": "Rohit",
+            "display_name": "rohitV",
+            "team_name": "Chris Cross Adams Sauce",
+            "avatar_url": "profile-images-removed/thumbs/aebe47e302e42a4847b5c66d57f320af",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 75.8,
+            "points_against": 87.24,
+            "division": 1,
+            "rank": 11
+          },
+          "points": 0.0,
+          "starters": [
+            "5849",
+            "4034",
+            "12534",
+            "7569",
+            "8144",
+            "10236",
+            "7525",
+            "12015",
+            "KC"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 5,
+          "team_info": {
+            "roster_id": 5,
+            "owner_id": "467556448272904192",
+            "canonical_name": "Gmen",
+            "display_name": "Gmen926",
+            "team_name": "InsertCoolName",
+            "avatar_url": "profile-images-removed/thumbs/909b16f12d1bd5b227bd97c98bc1f825",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 121.54,
+            "points_against": 94.36,
+            "division": 2,
+            "rank": 5
+          },
+          "points": 0.0,
+          "starters": [
+            "12508",
+            "9224",
+            "5892",
+            "7547",
+            "2216",
+            "7002",
+            "9756",
+            "2747",
+            "LAR"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 10,
+          "team_info": {
+            "roster_id": 10,
+            "owner_id": "468118346949193728",
+            "canonical_name": "GeneralSod",
+            "display_name": "GeneralSod",
+            "team_name": "Naberhood Watch",
+            "avatar_url": "profile-images-removed/thumbs/accfa8d733980b98db2fcb40cb98bc1b",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 123.2,
+            "points_against": 125.96,
+            "division": 2,
+            "rank": 7
+          },
+          "points": 0.0,
+          "starters": [
+            "7523",
+            "4866",
+            "12507",
+            "8167",
+            "10229",
+            "8131",
+            "12533",
+            "11786",
+            "NE"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      [
+        {
+          "roster_id": 9,
+          "team_info": {
+            "roster_id": 9,
+            "owner_id": "467575251014774784",
+            "canonical_name": "Nfi421",
+            "display_name": "Nfi421",
+            "team_name": "First Team All-Suspension",
+            "avatar_url": "profile-images-removed/thumbs/6f925123e8c7894bf1cddb0e21a9ae71",
+            "wins": 1,
+            "losses": 0,
+            "ties": 0,
+            "points_for": 87.24,
+            "points_against": 75.8,
+            "division": 1,
+            "rank": 6
+          },
+          "points": 0.0,
+          "starters": [
+            "8183",
+            "7021",
+            "11581",
+            "9493",
+            "6786",
+            "8130",
+            "6801",
+            "3451",
+            "DEN"
+          ],
+          "starters_points": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "roster_id": 11,
+          "team_info": {
+            "roster_id": 11,
+            "owner_id": "468426188281344000",
+            "canonical_name": "Aneesh",
+            "display_name": "aneeshatri29",
+            "team_name": "petting zoo",
+            "avatar_url": "profile-images-removed/thumbs/50ba16db60e2e064b58bc354ce163ddd",
+            "wins": 0,
+            "losses": 1,
+            "ties": 0,
+            "points_for": 105.94,
+            "points_against": 140.62,
+            "division": 1,
+            "rank": 8
+          },
+          "points": 0.0,
+          "starters": null,
+          "starters_points": []
+        }
+      ]
+    ]
+  },
+  "champions_history": [
+    {
+      "season": 2025,
+      "champion": "Jaguo",
+      "team_name": "Inside Njoku",
+      "canonical_name": "Jaguo",
+      "league_id": "1247668145125085184"
+    },
+    {
+      "season": 2024,
+      "champion": "Nfi421",
+      "team_name": "Jahmyrical Workers",
+      "canonical_name": "Nfi421",
+      "league_id": "1109174547460440064"
+    },
+    {
+      "season": 2023,
+      "champion": "Nabbo",
+      "team_name": "Tucker in the Hall",
+      "canonical_name": "Nabbo",
+      "league_id": "986870950782177280"
+    },
+    {
+      "season": 2022,
+      "champion": "Nabbo",
+      "team_name": "We\u2019re Trying",
+      "canonical_name": "Nabbo",
+      "league_id": "863913454367608832"
+    },
+    {
+      "season": 2021,
+      "champion": "loomnoo",
+      "team_name": "Biggest Penis",
+      "canonical_name": "Loomnoo",
+      "league_id": "723665944777388032"
+    },
+    {
+      "season": 2020,
+      "champion": "Gmen926",
+      "team_name": "InsertCoolName",
+      "canonical_name": "Gmen",
+      "league_id": "602231677183393792"
+    },
+    {
+      "season": 2019,
+      "champion": "Jaguo",
+      "team_name": "Jaguo",
+      "canonical_name": "Jaguo",
+      "league_id": "467554871701139456"
+    },
+    {
+      "season": 2018,
+      "champion": "Fawaz",
+      "team_name": "Graham Crackers",
+      "canonical_name": "Fawaz"
+    },
+    {
+      "season": 2017,
+      "champion": "GeneralSod",
+      "team_name": "Abrakadabra Alakamara",
+      "canonical_name": "GeneralSod"
+    }
+  ],
+  "odds_movers": null
+}

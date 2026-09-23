@@ -1,0 +1,793 @@
+{
+  "seasons": [
+    {
+      "season": "2026",
+      "league_id": "1389388845572702208",
+      "name": "Blaj",
+      "users": [
+        {
+          "user_id": "462501728848179200",
+          "display_name": "faximus",
+          "username": null,
+          "metadata_team_name": "QB Bower"
+        },
+        {
+          "user_id": "467556046399860736",
+          "display_name": "hoo2champ",
+          "username": null,
+          "metadata_team_name": "Gaye for Maye"
+        },
+        {
+          "user_id": "467556088519061504",
+          "display_name": "nihalbharath",
+          "username": null,
+          "metadata_team_name": "Jose Mourinho"
+        },
+        {
+          "user_id": "467556283235430400",
+          "display_name": "Jaguo",
+          "username": null,
+          "metadata_team_name": "Inside Njoku"
+        },
+        {
+          "user_id": "467556448272904192",
+          "display_name": "Gmen926",
+          "username": null,
+          "metadata_team_name": "InsertCoolName"
+        },
+        {
+          "user_id": "467556485400883200",
+          "display_name": "loomnoo",
+          "username": null,
+          "metadata_team_name": "Altar Boy"
+        },
+        {
+          "user_id": "467562671558881280",
+          "display_name": "rohitV",
+          "username": null,
+          "metadata_team_name": "Sutton My Face"
+        },
+        {
+          "user_id": "467563705354153984",
+          "display_name": "Mutumbs",
+          "username": null,
+          "metadata_team_name": "George PickHIMS"
+        },
+        {
+          "user_id": "467575251014774784",
+          "display_name": "Nfi421",
+          "username": null,
+          "metadata_team_name": "Jahmyrical Workers"
+        },
+        {
+          "user_id": "468118346949193728",
+          "display_name": "GeneralSod",
+          "username": null,
+          "metadata_team_name": "Abrakadabra AlaKamara"
+        },
+        {
+          "user_id": "468426188281344000",
+          "display_name": "aneeshatri29",
+          "username": null,
+          "metadata_team_name": "petting zoo"
+        },
+        {
+          "user_id": "468452373182803968",
+          "display_name": "Nabbo",
+          "username": null,
+          "metadata_team_name": "That\u2019s a Purdy Dicker"
+        },
+        {
+          "user_id": "883711528850051072",
+          "display_name": "Aryankara",
+          "username": null,
+          "metadata_team_name": "They aint believe in us"
+        }
+      ],
+      "rosters_count": 12
+    },
+    {
+      "season": "2025",
+      "league_id": "1247668145125085184",
+      "name": "Blaj",
+      "users": [
+        {
+          "user_id": "462501728848179200",
+          "display_name": "faximus",
+          "username": null,
+          "metadata_team_name": "QB Bower"
+        },
+        {
+          "user_id": "467556046399860736",
+          "display_name": "hoo2champ",
+          "username": null,
+          "metadata_team_name": "Gaye for Maye"
+        },
+        {
+          "user_id": "467556088519061504",
+          "display_name": "nihalbharath",
+          "username": null,
+          "metadata_team_name": "Jose Mourinho"
+        },
+        {
+          "user_id": "467556283235430400",
+          "display_name": "Jaguo",
+          "username": null,
+          "metadata_team_name": "Inside Njoku"
+        },
+        {
+          "user_id": "467556448272904192",
+          "display_name": "Gmen926",
+          "username": null,
+          "metadata_team_name": "Nabers Memorial Hospital"
+        },
+        {
+          "user_id": "467556485400883200",
+          "display_name": "loomnoo",
+          "username": null,
+          "metadata_team_name": "Altar Boy"
+        },
+        {
+          "user_id": "467562671558881280",
+          "display_name": "rohitV",
+          "username": null,
+          "metadata_team_name": "Sutton My Face"
+        },
+        {
+          "user_id": "467563705354153984",
+          "display_name": "Mutumbs",
+          "username": null,
+          "metadata_team_name": "George PickHIMS"
+        },
+        {
+          "user_id": "467575251014774784",
+          "display_name": "Nfi421",
+          "username": null,
+          "metadata_team_name": "Jahmyrical Workers"
+        },
+        {
+          "user_id": "468118346949193728",
+          "display_name": "GeneralSod",
+          "username": null,
+          "metadata_team_name": "Abrakadabra AlaKamara"
+        },
+        {
+          "user_id": "468426188281344000",
+          "display_name": "aneeshatri29",
+          "username": null,
+          "metadata_team_name": "petting zoo"
+        },
+        {
+          "user_id": "468452373182803968",
+          "display_name": "Nabbo",
+          "username": null,
+          "metadata_team_name": "That\u2019s a Purdy Dicker"
+        },
+        {
+          "user_id": "883711528850051072",
+          "display_name": "Aryankara",
+          "username": null,
+          "metadata_team_name": "They aint believe in us"
+        }
+      ],
+      "rosters_count": 12
+    },
+    {
+      "season": "2024",
+      "league_id": "1109174547460440064",
+      "name": "Blaj",
+      "users": [
+        {
+          "user_id": "462501728848179200",
+          "display_name": "faximus",
+          "username": null,
+          "metadata_team_name": "Taylored for TouchDowns"
+        },
+        {
+          "user_id": "467556046399860736",
+          "display_name": "hoo2champ",
+          "username": null,
+          "metadata_team_name": "good kid ladd city"
+        },
+        {
+          "user_id": "467556088519061504",
+          "display_name": "nihalbharath",
+          "username": null,
+          "metadata_team_name": "Jose Mourinho"
+        },
+        {
+          "user_id": "467556283235430400",
+          "display_name": "Jaguo",
+          "username": null,
+          "metadata_team_name": "Here Comes McBride"
+        },
+        {
+          "user_id": "467556448272904192",
+          "display_name": "Gmen926",
+          "username": null,
+          "metadata_team_name": "CMC Memorial Hospital"
+        },
+        {
+          "user_id": "467556485400883200",
+          "display_name": "loomnoo",
+          "username": null,
+          "metadata_team_name": "Nick Hype"
+        },
+        {
+          "user_id": "467562671558881280",
+          "display_name": "rohitV",
+          "username": null,
+          "metadata_team_name": "Underwrighters insurance"
+        },
+        {
+          "user_id": "467563705354153984",
+          "display_name": "Mutumbs",
+          "username": null,
+          "metadata_team_name": "George PickHIMS"
+        },
+        {
+          "user_id": "467575251014774784",
+          "display_name": "Nfi421",
+          "username": null,
+          "metadata_team_name": "Jahmyrical Workers"
+        },
+        {
+          "user_id": "468118346949193728",
+          "display_name": "GeneralSod",
+          "username": null,
+          "metadata_team_name": "Dead on this hill"
+        },
+        {
+          "user_id": "468426188281344000",
+          "display_name": "aneeshatri29",
+          "username": null,
+          "metadata_team_name": "petting zoo"
+        },
+        {
+          "user_id": "468452373182803968",
+          "display_name": "Nabbo",
+          "username": null,
+          "metadata_team_name": "Deflower Thy Nabers"
+        }
+      ],
+      "rosters_count": 12
+    },
+    {
+      "season": "2023",
+      "league_id": "986870950782177280",
+      "name": "Blaj",
+      "users": [
+        {
+          "user_id": "462501728848179200",
+          "display_name": "faximus",
+          "username": null,
+          "metadata_team_name": "Lights Kamara Mixon"
+        },
+        {
+          "user_id": "467556046399860736",
+          "display_name": "hoo2champ",
+          "username": null,
+          "metadata_team_name": "Team L"
+        },
+        {
+          "user_id": "467556088519061504",
+          "display_name": "nihalbharath",
+          "username": null,
+          "metadata_team_name": "Number One"
+        },
+        {
+          "user_id": "467556283235430400",
+          "display_name": "Jaguo",
+          "username": null,
+          "metadata_team_name": "Commiting Tuacide"
+        },
+        {
+          "user_id": "467556448272904192",
+          "display_name": "Gmen926",
+          "username": null,
+          "metadata_team_name": "\ud83d\ude00\ud83d\udd2b"
+        },
+        {
+          "user_id": "467556485400883200",
+          "display_name": "loomnoo",
+          "username": null,
+          "metadata_team_name": "boshit"
+        },
+        {
+          "user_id": "467562671558881280",
+          "display_name": "bohit",
+          "username": null,
+          "metadata_team_name": "loom(no)o chip"
+        },
+        {
+          "user_id": "467563705354153984",
+          "display_name": "Mutumbs",
+          "username": null,
+          "metadata_team_name": "George PickHIMS"
+        },
+        {
+          "user_id": "467575251014774784",
+          "display_name": "Nfi421",
+          "username": null,
+          "metadata_team_name": "Call of Jeudy"
+        },
+        {
+          "user_id": "468118346949193728",
+          "display_name": "GeneralSod",
+          "username": null,
+          "metadata_team_name": "Digging my own grave"
+        },
+        {
+          "user_id": "468426188281344000",
+          "display_name": "aneeshatri29",
+          "username": null,
+          "metadata_team_name": "petting zoo"
+        },
+        {
+          "user_id": "468452373182803968",
+          "display_name": "Nabbo",
+          "username": null,
+          "metadata_team_name": "Tucker in the Hall"
+        }
+      ],
+      "rosters_count": 12
+    },
+    {
+      "season": "2022",
+      "league_id": "863913454367608832",
+      "name": "Blaj",
+      "users": [
+        {
+          "user_id": "462501728848179200",
+          "display_name": "faximus",
+          "username": null,
+          "metadata_team_name": "Tua the moon"
+        },
+        {
+          "user_id": "467556046399860736",
+          "display_name": "hoo2champ",
+          "username": null,
+          "metadata_team_name": "Keeping up w/ the Joneses"
+        },
+        {
+          "user_id": "467556088519061504",
+          "display_name": "nihalbharath",
+          "username": null,
+          "metadata_team_name": "Number One"
+        },
+        {
+          "user_id": "467556283235430400",
+          "display_name": "Jaguo",
+          "username": null,
+          "metadata_team_name": "Dameon Pierced My Nuts"
+        },
+        {
+          "user_id": "467556448272904192",
+          "display_name": "Gmen926",
+          "username": null,
+          "metadata_team_name": "InsertCoolName"
+        },
+        {
+          "user_id": "467556485400883200",
+          "display_name": "loomnoo",
+          "username": null,
+          "metadata_team_name": "Kew Bees"
+        },
+        {
+          "user_id": "467562671558881280",
+          "display_name": "bohit",
+          "username": null,
+          "metadata_team_name": "Bye week"
+        },
+        {
+          "user_id": "467563705354153984",
+          "display_name": "Mutumbs",
+          "username": null,
+          "metadata_team_name": "George PickHIMS"
+        },
+        {
+          "user_id": "467575251014774784",
+          "display_name": "Nfi421",
+          "username": null,
+          "metadata_team_name": "Hide & Zeke"
+        },
+        {
+          "user_id": "468118346949193728",
+          "display_name": "GeneralSod",
+          "username": null,
+          "metadata_team_name": "Devantuds "
+        },
+        {
+          "user_id": "468426188281344000",
+          "display_name": "aneeshatri29",
+          "username": null,
+          "metadata_team_name": "petting zoo"
+        },
+        {
+          "user_id": "468452373182803968",
+          "display_name": "Nabbo",
+          "username": null,
+          "metadata_team_name": "We\u2019re Trying"
+        }
+      ],
+      "rosters_count": 12
+    },
+    {
+      "season": "2021",
+      "league_id": "723665944777388032",
+      "name": "Blaj",
+      "users": [
+        {
+          "user_id": "462501728848179200",
+          "display_name": "faximus",
+          "username": null,
+          "metadata_team_name": "kupple of chips"
+        },
+        {
+          "user_id": "467556046399860736",
+          "display_name": "hoo2champ",
+          "username": null,
+          "metadata_team_name": "Test"
+        },
+        {
+          "user_id": "467556088519061504",
+          "display_name": "nihalbharath",
+          "username": null,
+          "metadata_team_name": "Joseph Black Star"
+        },
+        {
+          "user_id": "467556283235430400",
+          "display_name": "Jaguo",
+          "username": null,
+          "metadata_team_name": "hornygirl13"
+        },
+        {
+          "user_id": "467556448272904192",
+          "display_name": "Gmen926",
+          "username": null,
+          "metadata_team_name": "InsertCoolName"
+        },
+        {
+          "user_id": "467556485400883200",
+          "display_name": "loomnoo",
+          "username": null,
+          "metadata_team_name": "Biggest Penis"
+        },
+        {
+          "user_id": "467562671558881280",
+          "display_name": "bohit",
+          "username": null,
+          "metadata_team_name": "Dawsonknoxyoursoxoff"
+        },
+        {
+          "user_id": "467563705354153984",
+          "display_name": "Mutumbs",
+          "username": null,
+          "metadata_team_name": "COVID"
+        },
+        {
+          "user_id": "467575251014774784",
+          "display_name": "Nfi421",
+          "username": null,
+          "metadata_team_name": "Hide & Zeke"
+        },
+        {
+          "user_id": "468118346949193728",
+          "display_name": "GeneralSod",
+          "username": null,
+          "metadata_team_name": "Dead"
+        },
+        {
+          "user_id": "468426188281344000",
+          "display_name": "aneeshatri29",
+          "username": null,
+          "metadata_team_name": "the chefs"
+        },
+        {
+          "user_id": "468452373182803968",
+          "display_name": "Nabbo",
+          "username": null,
+          "metadata_team_name": "TuckYerJonesIntoYerFant"
+        }
+      ],
+      "rosters_count": 12
+    },
+    {
+      "season": "2020",
+      "league_id": "602231677183393792",
+      "name": "Blaj",
+      "users": [
+        {
+          "user_id": "462501728848179200",
+          "display_name": "faximus",
+          "username": null,
+          "metadata_team_name": "HOO HYPE"
+        },
+        {
+          "user_id": "467556046399860736",
+          "display_name": "hoo2champ",
+          "username": null,
+          "metadata_team_name": "MOBY HYPE"
+        },
+        {
+          "user_id": "467556088519061504",
+          "display_name": "nihalbharath",
+          "username": null,
+          "metadata_team_name": "Cometh the Hour, Cometh"
+        },
+        {
+          "user_id": "467556283235430400",
+          "display_name": "Jaguo",
+          "username": null,
+          "metadata_team_name": "HOO HYPE"
+        },
+        {
+          "user_id": "467556448272904192",
+          "display_name": "Gmen926",
+          "username": null,
+          "metadata_team_name": "InsertCoolName"
+        },
+        {
+          "user_id": "467556485400883200",
+          "display_name": "loomnoo",
+          "username": null,
+          "metadata_team_name": "Week 16 Bye"
+        },
+        {
+          "user_id": "467562671558881280",
+          "display_name": "bohit",
+          "username": null,
+          "metadata_team_name": null
+        },
+        {
+          "user_id": "467563705354153984",
+          "display_name": "Mutumbs",
+          "username": null,
+          "metadata_team_name": "COVID"
+        },
+        {
+          "user_id": "467575251014774784",
+          "display_name": "Nfi421",
+          "username": null,
+          "metadata_team_name": "CMC Just Carry Me"
+        },
+        {
+          "user_id": "468118346949193728",
+          "display_name": "GeneralSod",
+          "username": null,
+          "metadata_team_name": "For Sale"
+        },
+        {
+          "user_id": "468426188281344000",
+          "display_name": "aneeshatri29",
+          "username": null,
+          "metadata_team_name": "My Boyd Jacobs"
+        },
+        {
+          "user_id": "468452373182803968",
+          "display_name": "Nabbo",
+          "username": null,
+          "metadata_team_name": "LOOMNOO HYPE"
+        }
+      ],
+      "rosters_count": 12
+    },
+    {
+      "season": "2019",
+      "league_id": "467554871701139456",
+      "name": "Blaj",
+      "users": [
+        {
+          "user_id": "462501728848179200",
+          "display_name": "faximus",
+          "username": null,
+          "metadata_team_name": "Aneesh"
+        },
+        {
+          "user_id": "467556046399860736",
+          "display_name": "NEESHHYPE",
+          "username": null,
+          "metadata_team_name": "NEESH HYPE"
+        },
+        {
+          "user_id": "467556088519061504",
+          "display_name": "nihalbharath",
+          "username": null,
+          "metadata_team_name": "Powerball Ticket"
+        },
+        {
+          "user_id": "467556283235430400",
+          "display_name": "Jaguo",
+          "username": null,
+          "metadata_team_name": null
+        },
+        {
+          "user_id": "467556448272904192",
+          "display_name": "Gmen926",
+          "username": null,
+          "metadata_team_name": "There\u2019s Always Next Year"
+        },
+        {
+          "user_id": "467556485400883200",
+          "display_name": "loomnoo",
+          "username": null,
+          "metadata_team_name": "SAX HYPE"
+        },
+        {
+          "user_id": "467562671558881280",
+          "display_name": "bohit",
+          "username": null,
+          "metadata_team_name": "Connerlingus"
+        },
+        {
+          "user_id": "467563705354153984",
+          "display_name": "Mutumbs",
+          "username": null,
+          "metadata_team_name": null
+        },
+        {
+          "user_id": "467575251014774784",
+          "display_name": "Nfi421",
+          "username": null,
+          "metadata_team_name": "Godwin Squadron"
+        },
+        {
+          "user_id": "468118346949193728",
+          "display_name": "GeneralSod",
+          "username": null,
+          "metadata_team_name": "Ravens"
+        },
+        {
+          "user_id": "468426188281344000",
+          "display_name": "aneeshatri29",
+          "username": null,
+          "metadata_team_name": null
+        },
+        {
+          "user_id": "468452373182803968",
+          "display_name": "Nabbo",
+          "username": null,
+          "metadata_team_name": "Hyde Yo Kids"
+        }
+      ],
+      "rosters_count": 12
+    }
+  ],
+  "sleeper_users": {
+    "462501728848179200": [
+      "faximus"
+    ],
+    "467556046399860736": [
+      "hoo2champ",
+      "NEESHHYPE"
+    ],
+    "467556088519061504": [
+      "nihalbharath"
+    ],
+    "467556283235430400": [
+      "Jaguo"
+    ],
+    "467556448272904192": [
+      "Gmen926"
+    ],
+    "467556485400883200": [
+      "loomnoo"
+    ],
+    "467562671558881280": [
+      "rohitV",
+      "bohit"
+    ],
+    "467563705354153984": [
+      "Mutumbs"
+    ],
+    "467575251014774784": [
+      "Nfi421"
+    ],
+    "468118346949193728": [
+      "GeneralSod"
+    ],
+    "468426188281344000": [
+      "aneeshatri29"
+    ],
+    "468452373182803968": [
+      "Nabbo"
+    ],
+    "883711528850051072": [
+      "Aryankara"
+    ]
+  },
+  "excel_names": [
+    "That\u2019s a Purdy Dicker",
+    "Jaguo",
+    "Hide & Zeke",
+    "GeneralSod",
+    "Graham Crackers",
+    "Kew Bees",
+    "CMC Just Carry Me",
+    "Test",
+    "Hyde Yo Kids",
+    "Taylored for TouchDowns",
+    "good kid ladd city",
+    "Nabbo",
+    "Jose Mourinho",
+    "loomnoo",
+    "aneeshatri29",
+    "MOBY HYPE",
+    "Lights Kamara Mixon",
+    "will",
+    "Underwrighters insurance",
+    "Bye week",
+    "There\u2019s Always Next Year",
+    "InsertCoolName",
+    "boshit",
+    "Tua the moon",
+    "Moore Yards",
+    "Aneesh",
+    "Abrakadabra AlaKamara",
+    "Ravens",
+    "TuckYerJonesIntoYerFant",
+    "Keeping up w/ the Joneses",
+    "kupple of chips",
+    "GOAT Cheese",
+    "Nfi421",
+    "We\u2019re Trying",
+    "NEESH HYPE",
+    "Inside Njoku",
+    "Dead",
+    "Team L",
+    "\ud83d\ude00\ud83d\udd2b",
+    "Gmen926",
+    "LOOMNOO HYPE",
+    "Nick Hype",
+    "Godwin Squadron",
+    "QB Bower",
+    "Dawsonknoxyoursoxoff",
+    "For Sale",
+    "MihirDoshi",
+    "This Team Blows",
+    "Sutton My Face",
+    "HOOHYPE",
+    "Nick Took Patrick Mahomes",
+    "Dameon Pierced My Nuts",
+    "Abrakadabra Alakamara",
+    "Digging my own grave",
+    "SAX HYPE",
+    "Commiting Tuacide",
+    "petting zoo",
+    "CMC Memorial Hospital",
+    "Tucker in the Hall",
+    "Here Comes McBride",
+    "Mutumbs",
+    "Cometh the Hour, Cometh",
+    "hornygirl13",
+    "Dead on this hill",
+    "Connerlingus",
+    "Arpan",
+    "Call of Jeudy",
+    "faximus",
+    "bohit",
+    "Week 16 Bye",
+    "George PickHIMS",
+    "Sau",
+    "COVID",
+    "Everybody Diggs A Good Cooks",
+    "bimbozappamimanbap",
+    "D Adams Family",
+    "Njigbas never age",
+    "the chefs",
+    "loom(no)o chip",
+    "rohitV",
+    "Devantuds",
+    "nihalbharath",
+    "Remember the Taitans",
+    "Number One",
+    "HOO HYPE",
+    "Powerball Ticket",
+    "Joseph Black Star",
+    "Biggest Penis",
+    "Jahmyrical Workers",
+    "My Boyd Jacobs",
+    "Deflower Thy Nabers",
+    "hoo2champ"
+  ]
+}
