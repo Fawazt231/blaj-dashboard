@@ -2,12 +2,18 @@ import pandas as pd
 import requests
 import json
 import os
+import math
+import random
 from collections import defaultdict
 
-EXCEL_PATH = "/Users/FawazTahir/ffScripts/ff_report_with_playoffs_updated_FINAL_RECALC.xlsx"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+EXCEL_PATH = os.environ.get(
+    "BLAJ_EXCEL_PATH",
+    "/Users/FawazTahir/ffScripts/ff_report_with_playoffs_updated_FINAL_RECALC.xlsx"
+)
 CURRENT_LEAGUE_ID = "1389388845572702208"
-MANAGERS_FILE = "/Users/FawazTahir/Projects/blaj-dashboard/managers.json"
-OUTPUT_DIR = "/Users/FawazTahir/Projects/blaj-dashboard/public/data"
+MANAGERS_FILE = os.path.join(BASE_DIR, "managers.json")
+OUTPUT_DIR = os.path.join(BASE_DIR, "public", "data")
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
@@ -33,6 +39,169 @@ def get_canonical(name_or_id):
         return "Unknown"
     s = str(name_or_id).strip().lower()
     return name_map.get(s, str(name_or_id).strip())
+
+def build_playoff_odds_snapshot(live_data, history_data, completed_week, simulations=10000):
+    """Rebuild a deterministic end-of-week playoff simulation snapshot."""
+    season = int(live_data.get("season", 0))
+    standings = live_data.get("standings", [])
+    logs = [
+        game for game in history_data.get("MatchLog_PlayoffIncluded", [])
+        if int(game.get("season", 0)) == season
+        and int(game.get("week", 0)) <= completed_week
+        and str(game.get("game_type", "regular")).lower() == "regular"
+    ]
+    proxies = {row.get("manager"): row for row in history_data.get("PerManagerSummary", [])}
+
+    teams = []
+    for standing in standings:
+        name = standing.get("canonical_name")
+        team_games = [g for g in logs if name in (g.get("awayTeamName"), g.get("homeTeamName"))]
+        wins = sum(1 for g in team_games if g.get("winner") == name)
+        losses = sum(1 for g in team_games if g.get("loser") == name)
+        points = sum(
+            float(g.get("awayScore", 0)) if g.get("awayTeamName") == name else float(g.get("homeScore", 0))
+            for g in team_games
+        )
+        proxy = proxies.get(name, {})
+        historical_avg = max(100.0, float(proxy.get("highest_score", 0)) * 0.7) if proxy else 110.0
+        total_games = wins + losses
+        raw_mean = points / total_games if total_games else historical_avg
+        std = max(math.sqrt(max(raw_mean, 1.0)) * 1.5, 16.0)
+        prior_mean, prior_std, min_sigma = 115.0, 25.0, 20.0
+        if total_games:
+            prior_var = prior_std ** 2
+            obs_var = max(std ** 2, min_sigma ** 2)
+            post_var = 1.0 / (1.0 / prior_var + total_games / obs_var)
+            mean = post_var * (prior_mean / prior_var + total_games * raw_mean / obs_var)
+            std = math.sqrt(obs_var + post_var)
+        else:
+            mean = 0.5 * raw_mean + 0.5 * prior_mean
+            std = prior_std
+        teams.append({
+            "name": name,
+            "wins": wins,
+            "losses": losses,
+            "fpts": points,
+            "mean": mean,
+            "std": std,
+            "division": standing.get("division", 1),
+        })
+
+    remaining_schedule = []
+    for week_key, pairs in live_data.get("matchups_by_week", {}).items():
+        if int(week_key) <= completed_week:
+            continue
+        for pair in pairs or []:
+            if len(pair) < 2:
+                continue
+            away = pair[0].get("team_info", {}).get("canonical_name")
+            home = pair[1].get("team_info", {}).get("canonical_name")
+            if away and home:
+                remaining_schedule.append((away, home))
+
+    counters = {
+        "playoff": defaultdict(int), "bye": defaultdict(int),
+        "division": defaultdict(int), "last": defaultdict(int),
+        "wins": defaultdict(float), "points": defaultdict(float),
+    }
+    rng = random.Random(season * 100000 + completed_week * 100 + simulations)
+    divisions = defaultdict(list)
+    for team in teams:
+        divisions[team["division"]].append(team["name"])
+
+    for _ in range(simulations):
+        state = {team["name"]: dict(team) for team in teams}
+        for away_name, home_name in remaining_schedule:
+            away, home = state.get(away_name), state.get(home_name)
+            if not away or not home:
+                continue
+            away_score = rng.gauss(away["mean"], away["std"])
+            home_score = rng.gauss(home["mean"], home["std"])
+            away["fpts"] += away_score
+            home["fpts"] += home_score
+            if away_score > home_score:
+                away["wins"] += 1
+                home["losses"] += 1
+            else:
+                home["wins"] += 1
+                away["losses"] += 1
+
+        values = list(state.values())
+        last = min(values, key=lambda t: (t["wins"], t["fpts"]))
+        counters["last"][last["name"]] += 1
+
+        division_winners = []
+        for members in divisions.values():
+            candidates = [state[name] for name in members if name in state]
+            if candidates:
+                winner = max(candidates, key=lambda t: (t["wins"], t["fpts"]))
+                division_winners.append(winner)
+                counters["division"][winner["name"]] += 1
+        division_winners.sort(key=lambda t: (t["wins"], t["fpts"]), reverse=True)
+        for team in division_winners[:2]:
+            counters["bye"][team["name"]] += 1
+
+        winner_names = {team["name"] for team in division_winners}
+        pool = sorted(
+            [team for team in values if team["name"] not in winner_names],
+            key=lambda t: (t["wins"], t["fpts"]), reverse=True,
+        )
+        fourth_seed = pool[:1]
+        point_qualifiers = sorted(pool[1:], key=lambda t: t["fpts"], reverse=True)[:2]
+        for team in division_winners + fourth_seed + point_qualifiers:
+            counters["playoff"][team["name"]] += 1
+        for team in values:
+            counters["wins"][team["name"]] += team["wins"]
+            counters["points"][team["name"]] += team["fpts"]
+
+    results = []
+    for team in teams:
+        name = team["name"]
+        results.append({
+            "name": name,
+            "playoffCount": counters["playoff"][name],
+            "playoffPct": round(counters["playoff"][name] / simulations * 100, 1),
+            "byeCount": counters["bye"][name],
+            "byePct": round(counters["bye"][name] / simulations * 100, 1),
+            "divWinnerCount": counters["division"][name],
+            "divWinnerPct": round(counters["division"][name] / simulations * 100, 1),
+            "lastCount": counters["last"][name],
+            "lastPct": round(counters["last"][name] / simulations * 100, 1),
+            "projWins": round(counters["wins"][name] / simulations, 1),
+            "projFpts": round(counters["points"][name] / simulations, 1),
+        })
+    results.sort(key=lambda row: (row["playoffPct"], row["projWins"]), reverse=True)
+    return {
+        "weekCompleted": completed_week,
+        "simulations": simulations,
+        "model": "Bayesian",
+        "seed": season * 100000 + completed_week * 100 + simulations,
+        "results": results,
+    }
+
+def update_playoff_odds_history(live_data):
+    history_path = os.path.join(OUTPUT_DIR, "excel_history.json")
+    odds_path = os.path.join(OUTPUT_DIR, "playoff_odds_history.json")
+    with open(history_path, "r") as stream:
+        history_data = json.load(stream)
+    season = str(live_data.get("season"))
+    completed_week = max(1, int(live_data.get("current_week", 1)) - 1)
+    odds_history = {"season": season, "snapshots": {}}
+    if os.path.exists(odds_path):
+        with open(odds_path, "r") as stream:
+            existing = json.load(stream)
+        if str(existing.get("season")) == season:
+            odds_history = existing
+    snapshots = odds_history.setdefault("snapshots", {})
+    for week in range(1, completed_week + 1):
+        key = str(week)
+        if key not in snapshots:
+            snapshots[key] = build_playoff_odds_snapshot(live_data, history_data, week)
+            snapshots[key]["source"] = "reconstructed" if week < completed_week else "weekly_update"
+    with open(odds_path, "w") as stream:
+        json.dump(odds_history, stream, indent=2)
+    live_data["playoff_odds_history"] = odds_history
+    print(f"Saved playoff odds snapshots through completed Week {completed_week}.")
 
 def build_full_history():
     print("Building Full Historical Record Book via Sleeper API + Legacy Base...")
@@ -523,6 +692,8 @@ def fetch_sleeper_history_and_live():
         "champions_history": champions_by_year,
         "odds_movers": None
     }
+
+    update_playoff_odds_history(live_export)
     
     with open(os.path.join(OUTPUT_DIR, "live_sleeper_data.json"), "w") as f:
         json.dump(live_export, f, indent=2)

@@ -1,8 +1,30 @@
 import React, { useState, useEffect, useMemo } from 'react'
-import { Trophy, Flame, ShieldAlert, BookOpen, Calendar, Award, Search, ArrowUpDown, ArrowUp, ArrowDown, Camera, X, Filter, Cpu, Play, RefreshCw, Sliders, TrendingUp, TrendingDown, Zap, Copy, Check, Share2, FileDown } from 'lucide-react'
+import Trophy from 'lucide-react/dist/esm/icons/trophy'
+import Flame from 'lucide-react/dist/esm/icons/flame'
+import ShieldAlert from 'lucide-react/dist/esm/icons/shield-alert'
+import BookOpen from 'lucide-react/dist/esm/icons/book-open'
+import Calendar from 'lucide-react/dist/esm/icons/calendar'
+import Award from 'lucide-react/dist/esm/icons/award'
+import Search from 'lucide-react/dist/esm/icons/search'
+import ArrowUpDown from 'lucide-react/dist/esm/icons/arrow-up-down'
+import ArrowUp from 'lucide-react/dist/esm/icons/arrow-up'
+import ArrowDown from 'lucide-react/dist/esm/icons/arrow-down'
+import Camera from 'lucide-react/dist/esm/icons/camera'
+import X from 'lucide-react/dist/esm/icons/x'
+import Filter from 'lucide-react/dist/esm/icons/list-filter'
+import Cpu from 'lucide-react/dist/esm/icons/cpu'
+import Play from 'lucide-react/dist/esm/icons/play'
+import RefreshCw from 'lucide-react/dist/esm/icons/refresh-cw'
+import Sliders from 'lucide-react/dist/esm/icons/sliders-horizontal'
+import TrendingUp from 'lucide-react/dist/esm/icons/trending-up'
+import TrendingDown from 'lucide-react/dist/esm/icons/trending-down'
+import Zap from 'lucide-react/dist/esm/icons/zap'
+import Copy from 'lucide-react/dist/esm/icons/copy'
+import Check from 'lucide-react/dist/esm/icons/check'
+import Share2 from 'lucide-react/dist/esm/icons/share-2'
+import FileDown from 'lucide-react/dist/esm/icons/file-down'
 import { runPlayoffSimulation } from './playoffSimulatorEngine'
-import jsPDF from 'jspdf'
-import html2canvas from 'html2canvas'
+import { downloadWeeklyNewsletter } from './weeklyReport'
 
 const MONTH_NAMES_MAP = {
   1: { short: 'Jan', full: 'January' },
@@ -1597,216 +1619,22 @@ export default function App() {
     })
   }
 
-  // 3. One-Button PDF Download: Executive Blaj League Report (Recap & Upcoming Week Preview)
+  // 3. One-Button PDF Download: one-page weekly newsletter
   const downloadPdfReport = async () => {
-    const curWk = liveData?.current_week || 1
-    const prevWk = curWk - 1 > 0 ? curWk - 1 : 1
-    const nextWk = selectedWeek || curWk
-    const matchLog = excelData?.MatchLog_PlayoffIncluded || []
-
-    const pdf = new jsPDF('p', 'mm', 'a4')
-    const pageWidth = pdf.internal.pageSize.getWidth()
-    const pageHeight = pdf.internal.pageSize.getHeight()
-
-    const darkBg = '#0d1117'
-    const cardBg = '#161b22'
-    const accentGold = '#f59e0b'
-    const accentGreen = '#10b981'
-    const accentRed = '#ef4444'
-    const textPrimary = '#f3f4f6'
-    const textMuted = '#9ca3af'
-
-    const container = document.createElement('div')
-    container.style.width = '800px'
-    container.style.backgroundColor = darkBg
-    container.style.color = textPrimary
-    container.style.fontFamily = 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
-    container.style.padding = '30px'
-    container.style.boxSizing = 'border-box'
-    container.style.position = 'absolute'
-    container.style.left = '-9999px'
-
-    let html = `
-      <div style="border: 2px solid ${accentGold}; border-radius: 10px; padding: 25px; background-color: ${cardBg}; font-family: sans-serif;">
-        <!-- Header -->
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid rgba(245, 158, 11, 0.3); padding-bottom: 15px; margin-bottom: 20px;">
-          <div>
-            <div style="font-size: 24px; font-weight: 900; color: ${accentGold}; letter-spacing: 1px;">BLAJ LEAGUE EXECUTIVE REPORT</div>
-            <div style="font-size: 13px; color: ${textMuted}; margin-top: 4px;">Official Weekly Intelligence Brief & Analysis</div>
-          </div>
-          <div style="text-align: right;">
-            <div style="font-size: 14px; font-weight: 800; color: ${textPrimary};">WEEK ${prevWk} RECAP & WEEK ${nextWk} PREVIEW</div>
-            <div style="font-size: 11px; color: ${textMuted};">2026 Regular Season</div>
-          </div>
-        </div>
-
-        <!-- Section 1: Playoff Picture -->
-        <div style="margin-bottom: 25px;">
-          <div style="font-size: 16px; font-weight: 800; color: ${accentGold}; text-transform: uppercase; margin-bottom: 12px; border-left: 4px solid ${accentGold}; padding-left: 10px;">
-            🏆 Playoff Picture (Top 6)
-          </div>
-          <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
-            <thead>
-              <tr style="background-color: rgba(245, 158, 11, 0.15); color: ${accentGold}; text-align: left;">
-                <th style="padding: 8px 10px; border-radius: 4px 0 0 4px;">Seed</th>
-                <th style="padding: 8px 10px;">Team Name</th>
-                <th style="padding: 8px 10px;">Record (W-L)</th>
-                <th style="padding: 8px 10px; border-radius: 0 4px 4px 0;">Points For (PF)</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${(liveData?.playoff_picture || []).map(p => `
-                <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
-                  <td style="padding: 8px 10px; font-weight: 800; color: ${accentGold};">#${p.seed}</td>
-                  <td style="padding: 8px 10px; font-weight: 700; color: ${textPrimary};">${p.team?.team_name || p.team?.canonical_name}</td>
-                  <td style="padding: 8px 10px; color: ${textPrimary};">${p.team?.wins || 0}-${p.team?.losses || 0}</td>
-                  <td style="padding: 8px 10px; font-weight: 700; color: ${accentGreen};">${(p.team?.points_for || 0).toFixed(2)}</td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Section 2: Punishment Watch -->
-        <div style="margin-bottom: 25px;">
-          <div style="font-size: 16px; font-weight: 800; color: ${accentRed}; text-transform: uppercase; margin-bottom: 12px; border-left: 4px solid ${accentRed}; padding-left: 10px;">
-            ⚠️ Punishment Watch (Bottom 3)
-          </div>
-          <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
-            <thead>
-              <tr style="background-color: rgba(239, 68, 68, 0.15); color: ${accentRed}; text-align: left;">
-                <th style="padding: 8px 10px; border-radius: 4px 0 0 4px;">Rank</th>
-                <th style="padding: 8px 10px;">Team Name</th>
-                <th style="padding: 8px 10px;">Record (W-L)</th>
-                <th style="padding: 8px 10px; border-radius: 0 4px 4px 0;">Points For (PF)</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${(liveData?.punishment_watch || []).map(t => `
-                <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
-                  <td style="padding: 8px 10px; font-weight: 800; color: ${accentRed};">#${t.rank}</td>
-                  <td style="padding: 8px 10px; font-weight: 700; color: ${textPrimary};">${t.team_name || t.canonical_name}</td>
-                  <td style="padding: 8px 10px; color: ${textPrimary};">${t.wins}-${t.losses}</td>
-                  <td style="padding: 8px 10px; font-weight: 700; color: ${accentRed};">${(t.points_for || 0).toFixed(2)}</td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Section 3: Playoff Simulation Odds -->
-        ${simResults && simResults.length > 0 ? `
-          <div style="margin-bottom: 25px;">
-            <div style="font-size: 16px; font-weight: 800; color: ${accentGold}; text-transform: uppercase; margin-bottom: 12px; border-left: 4px solid ${accentGold}; padding-left: 10px;">
-              📊 Monte Carlo Playoff Simulation (${simCount.toLocaleString()} Iterations)
-            </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
-              
-              <!-- Playoff Odds -->
-              <div style="background-color: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 12px;">
-                <div style="font-size: 12px; font-weight: 800; color: ${accentGreen}; margin-bottom: 8px; text-transform: uppercase;">Playoff Odds</div>
-                ${[...simResults].sort((a,b) => b.playoffPct - a.playoffPct).map(r => {
-                  const tObj = (liveData?.standings || []).find(s => s.canonical_name === r.name)
-                  const name = tObj ? (tObj.team_name || tObj.canonical_name) : r.name
-                  return `
-                    <div style="display: flex; justify-content: space-between; font-size: 11px; padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.04);">
-                      <span style="color: ${textPrimary}; font-weight: 600;">${name.length > 14 ? name.slice(0, 13) + '…' : name}</span>
-                      <span style="color: ${accentGreen}; font-weight: 800;">${r.playoffPct.toFixed(1)}%</span>
-                    </div>
-                  `
-                }).join('')}
-              </div>
-
-              <!-- Bye Odds -->
-              <div style="background-color: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 12px;">
-                <div style="font-size: 12px; font-weight: 800; color: ${accentGold}; margin-bottom: 8px; text-transform: uppercase;">Bye Odds</div>
-                ${[...simResults].sort((a,b) => b.byePct - a.byePct).map(r => {
-                  const tObj = (liveData?.standings || []).find(s => s.canonical_name === r.name)
-                  const name = tObj ? (tObj.team_name || tObj.canonical_name) : r.name
-                  return `
-                    <div style="display: flex; justify-content: space-between; font-size: 11px; padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.04);">
-                      <span style="color: ${textPrimary}; font-weight: 600;">${name.length > 14 ? name.slice(0, 13) + '…' : name}</span>
-                      <span style="color: ${accentGold}; font-weight: 800;">${r.byePct.toFixed(1)}%</span>
-                    </div>
-                  `
-                }).join('')}
-              </div>
-
-              <!-- Last-Place Odds -->
-              <div style="background-color: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 12px;">
-                <div style="font-size: 12px; font-weight: 800; color: ${accentRed}; margin-bottom: 8px; text-transform: uppercase;">Last-Place Odds</div>
-                ${[...simResults].sort((a,b) => b.lastPct - a.lastPct).map(r => {
-                  const tObj = (liveData?.standings || []).find(s => s.canonical_name === r.name)
-                  const name = tObj ? (tObj.team_name || tObj.canonical_name) : r.name
-                  return `
-                    <div style="display: flex; justify-content: space-between; font-size: 11px; padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.04);">
-                      <span style="color: ${textPrimary}; font-weight: 600;">${name.length > 14 ? name.slice(0, 13) + '…' : name}</span>
-                      <span style="color: ${accentRed}; font-weight: 800;">${r.lastPct.toFixed(1)}%</span>
-                    </div>
-                  `
-                }).join('')}
-              </div>
-
-            </div>
-          </div>
-        ` : ''}
-
-        <!-- Section 4: Upcoming Week Matchup Outlook & Historical Facts -->
-        <div style="margin-top: 25px;">
-          <div style="font-size: 16px; font-weight: 800; color: ${accentGold}; text-transform: uppercase; margin-bottom: 12px; border-left: 4px solid ${accentGold}; padding-left: 10px;">
-            ⚔️ Week ${nextWk} Matchup Preview & Historical Outlook
-          </div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-            ${(currentMatchups || []).slice(0, 6).map((pair, idx) => {
-              if (pair.length < 2) return ''
-              const tA = pair[0].team_info
-              const tB = pair[1].team_info
-              const h2h = getH2HRecord(tA.canonical_name, tB.canonical_name)
-              return `
-                <div style="background-color: rgba(255,255,255,0.03); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 6px; padding: 12px;">
-                  <div style="font-size: 13px; font-weight: 800; color: ${accentGold}; margin-bottom: 6px;">
-                    Matchup #${idx + 1}: ${tA.team_name} vs ${tB.team_name}
-                  </div>
-                  <div style="font-size: 11px; color: ${textMuted}; margin-bottom: 4px;">
-                    • Lifetime Series: <strong style="color: ${textPrimary};">${h2h}</strong>
-                  </div>
-                </div>
-              `
-            }).join('')}
-          </div>
-        </div>
-
-        <!-- Footer -->
-        <div style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 30px; padding-top: 15px; font-size: 11px; color: ${textMuted};">
-          Generated via Blaj Fantasy Dashboard • Official League Intelligence Report
-        </div>
-      </div>
-    `
-
-    container.innerHTML = html
-    document.body.appendChild(container)
-
     try {
-      const canvas = await html2canvas(container, {
-        scale: 2,
-        backgroundColor: darkBg,
-        useCORS: true
+      await downloadWeeklyNewsletter({
+        liveData,
+        excelData,
+        simResults,
+        simCount,
+        currentMatchups,
+        selectedWeek,
+        getH2HRecord
       })
-      document.body.removeChild(container)
-
-      const imgData = canvas.toDataURL('image/jpeg', 0.95)
-      const imgWidth = pageWidth - 20
-      const imgHeight = (canvas.height * imgWidth) / canvas.width
-
-      pdf.addImage(imgData, 'JPEG', 10, 10, imgWidth, imgHeight)
-      pdf.save(`Blaj_League_Report_Week_${nextWk}.pdf`)
       setCopiedToast('pdf')
       setTimeout(() => setCopiedToast(null), 2500)
     } catch (err) {
       console.error('Error generating PDF:', err)
-      if (document.body.contains(container)) {
-        document.body.removeChild(container)
-      }
     }
   }
 
@@ -2067,10 +1895,10 @@ export default function App() {
               transition: 'all 0.15s ease',
               boxShadow: '0 2px 6px rgba(245, 158, 11, 0.2)'
             }}
-            title="Download Executive Blaj League Report PDF (Recap & Next Week Preview)"
+            title="Download the one-page portrait Blaj Weekly newspaper PDF"
           >
             {copiedToast === 'pdf' ? <Check size={15} /> : <FileDown size={15} color="#fde68a" />}
-            {copiedToast === 'pdf' ? 'Downloaded Report!' : 'Download Report (PDF)'}
+            {copiedToast === 'pdf' ? 'Newsletter Downloaded!' : 'Download Weekly (PDF)'}
           </button>
 
           <nav className="nav-tabs">
