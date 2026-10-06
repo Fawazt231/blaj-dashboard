@@ -1,5 +1,6 @@
 import jsPDF from 'jspdf'
 import html2canvas from 'html2canvas'
+import { calculateLuckRows } from './luckIndex'
 
 const C = { ink:'#111827', paper:'#f7f3ea', gold:'#d97706', green:'#047857', playoffBg:'#dcfce7', red:'#b91c1c', blue:'#1d4ed8', muted:'#6b7280', line:'#d6d3d1' }
 const esc = (value = '') => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;')
@@ -19,16 +20,6 @@ const liveGames = (liveData, week, season) => (liveData?.matchups_by_week?.[Stri
     const awayWon = awayScore >= homeScore
     return { awayScore, homeScore, winner:managerName(awayWon ? away : home), loser:managerName(awayWon ? home : away), season, week }
   })
-
-const luckRows = standings => {
-  const byPoints = [...standings].sort((a,b) => Number(b.points_for||0)-Number(a.points_for||0))
-  return standings.map(team => {
-    const games = Number(team.wins||0)+Number(team.losses||0)
-    const pfRank = byPoints.findIndex(item => item.roster_id === team.roster_id)
-    const expectedWins = games ? ((standings.length-1-pfRank)/(standings.length-1))*games : 0
-    return { ...team, expectedWins, luck:Number(team.wins||0)-expectedWins }
-  })
-}
 
 const playoffRound = (season, week) => {
   const rounds = Number(season) <= 2020
@@ -155,7 +146,12 @@ export async function downloadWeeklyNewsletter({ liveData, excelData, simResults
   const headlineGame=[...games].sort((a,b)=>Math.max(Number(b.awayScore||0),Number(b.homeScore||0))-Math.max(Number(a.awayScore||0),Number(a.homeScore||0)))[0]
   const headlineManager=headlineGame?(Number(headlineGame.awayScore||0)>=Number(headlineGame.homeScore||0)?headlineGame.awayTeamName:headlineGame.homeTeamName):''
   const headlineTeam=display(headlineManager)
-  const luck=luckRows(standings)
+  const luck=calculateLuckRows(standings,{
+    matchupsByWeek:liveData?.matchups_by_week,
+    matchLog:log,
+    season,
+    throughWeek:recapWeek,
+  })
   const historicalBase=historicalRankings(log,recapWeek,season)
 
   const snapshots=liveData?.playoff_odds_history?.snapshots||{}
@@ -189,7 +185,7 @@ export async function downloadWeeklyNewsletter({ liveData, excelData, simResults
       <div style="padding-right:12px;border-right:1px solid ${C.line};">
         ${section('Standings & luck index')}
         <div style="display:grid;grid-template-columns:20px minmax(0,1fr) 28px 38px 43px 38px;gap:3px;padding-bottom:5px;border-bottom:1px solid ${C.ink};font-family:Arial,sans-serif;font-size:6px;font-weight:900;color:${C.muted};text-transform:uppercase;"><span>#</span><span>Team</span><span>Rec</span><span style="text-align:right;">PF</span><span>Exp</span><span style="text-align:right;">Luck</span></div>
-        ${luck.map(team=>{const isPlayoff=playoff.has(team.canonical_name);const isDanger=danger.has(team.canonical_name);const sign=team.luck>0?'+':'';return `<div style="height:20px;display:grid;grid-template-columns:20px minmax(0,1fr) 28px 38px 43px 38px;gap:3px;align-items:center;border-bottom:1px solid ${C.line};background:${isPlayoff?C.playoffBg:'transparent'};font-family:Arial,sans-serif;"><strong style="font-size:8px;color:${isDanger?C.red:isPlayoff?C.green:C.ink};">${esc(team.rank)}</strong><strong style="font-size:6.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(teamName(team))}</strong><span style="font-size:6px;">${Number(team.wins||0)}-${Number(team.losses||0)}</span><span style="font-size:6px;text-align:right;">${score(team.points_for)}</span><span style="font-size:6px;">${team.expectedWins.toFixed(1)}-${(Number(team.wins||0)+Number(team.losses||0)-team.expectedWins).toFixed(1)}</span><strong style="font-size:7px;text-align:right;color:${team.luck>.1?C.green:team.luck<-.1?C.red:C.muted};">${sign}${team.luck.toFixed(1)}</strong></div>`}).join('')}
+        ${luck.map(team=>{const isPlayoff=playoff.has(team.canonical_name);const isDanger=danger.has(team.canonical_name);const sign=team.luck>0?'+':'';return `<div style="height:20px;display:grid;grid-template-columns:20px minmax(0,1fr) 28px 38px 43px 38px;gap:3px;align-items:center;border-bottom:1px solid ${C.line};background:${isPlayoff?C.playoffBg:'transparent'};font-family:Arial,sans-serif;"><strong style="font-size:8px;color:${isDanger?C.red:isPlayoff?C.green:C.ink};">${esc(team.rank)}</strong><strong style="font-size:6.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(teamName(team))}</strong><span style="font-size:6px;">${Number(team.wins||0)}-${Number(team.losses||0)}</span><span style="font-size:6px;text-align:right;">${score(team.points_for)}</span><span style="font-size:6px;">${team.expectedWins.toFixed(1)}-${team.expectedLosses.toFixed(1)}</span><strong style="font-size:7px;text-align:right;color:${team.luck>.1?C.green:team.luck<-.1?C.red:C.muted};">${sign}${team.luck.toFixed(1)}</strong></div>`}).join('')}
       </div>
       <div>
         ${section(`Playoff outlook | 10k sims | vs Week ${Math.max(1,recapWeek-1)}`)}

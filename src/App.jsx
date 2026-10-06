@@ -26,6 +26,7 @@ import FileDown from 'lucide-react/dist/esm/icons/file-down'
 import { runPlayoffSimulation } from './playoffSimulatorEngine'
 import { downloadWeeklyNewsletter } from './weeklyReport'
 import { resolveCurrentWeek } from './seasonWeek'
+import { calculateLuckRows } from './luckIndex'
 
 const MONTH_NAMES_MAP = {
   1: { short: 'Jan', full: 'January' },
@@ -2021,21 +2022,17 @@ export default function App() {
                   </thead>
                   <tbody>
                     {(() => {
-                      const standingsCopy = [...(liveData.standings || [])];
-                      // Sort by points_for desc to compute expected wins based on scoring performance
-                      const sortedByPf = [...standingsCopy].sort((a, b) => b.points_for - a.points_for);
-                      
-                      const luckCalculated = standingsCopy.map((team) => {
-                        const totalGames = team.wins + team.losses;
-                        if (totalGames === 0) return { ...team, expWins: 0, luckDiff: 0 };
-                        // Rank based on PF (0-indexed: 0 is highest scoring)
-                        const pfRank = sortedByPf.findIndex(t => t.roster_id === team.roster_id);
-                        // All-play expected win percentage: (11 - pfRank) / 11
-                        const expWinPct = (11 - pfRank) / 11;
-                        const expWins = expWinPct * totalGames;
-                        const luckDiff = team.wins - expWins;
-                        return { ...team, expWins, luckDiff, totalGames };
-                      });
+                      const luckCalculated = calculateLuckRows(liveData.standings || [], {
+                        matchupsByWeek: liveData.matchups_by_week,
+                        matchLog: excelData?.MatchLog_PlayoffIncluded || [],
+                        season: liveData.season,
+                        throughWeek: Math.max(0, Number(liveData.current_week || 1) - 1)
+                      }).map(team => ({
+                        ...team,
+                        expWins: team.expectedWins,
+                        luckDiff: team.luck,
+                        totalGames: team.expectedGames
+                      }));
 
                       // Sort Luck table by Expected Wins descending (best scoring teams at the top)
                       luckCalculated.sort((a, b) => b.expWins - a.expWins || b.points_for - a.points_for);
@@ -2053,7 +2050,7 @@ export default function App() {
                             <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: '600' }}>{team.canonical_name}</div>
                           </td>
                           <td className="wl-col" style={{ fontWeight: '600' }}>{team.wins}-{team.losses}</td>
-                          <td style={{ fontWeight: '600' }}>{team.expWins.toFixed(1)} - {(team.totalGames - team.expWins).toFixed(1)}</td>
+                          <td style={{ fontWeight: '600' }}>{team.expWins.toFixed(1)} - {team.expectedLosses.toFixed(1)}</td>
                           <td>
                             <span style={{
                               fontWeight: '800',
