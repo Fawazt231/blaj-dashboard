@@ -2,9 +2,9 @@
   "PerManagerSummary": [
     {
       "manager": "Loomnoo",
-      "all_time_record": "71-54-0",
-      "regular_season_win_pct": 0.568,
-      "total_games": 125,
+      "all_time_record": "72-54-0",
+      "regular_season_win_pct": 0.5714,
+      "total_games": 126,
       "highest_score": 159.16,
       "lowest_score": 62.22,
       "week1_record": "7-3-0",
@@ -12,9 +12,9 @@
     },
     {
       "manager": "Fawaz",
-      "all_time_record": "68-57-0",
-      "regular_season_win_pct": 0.544,
-      "total_games": 125,
+      "all_time_record": "68-58-0",
+      "regular_season_win_pct": 0.5397,
+      "total_games": 126,
       "highest_score": 157.7,
       "lowest_score": 44.64,
       "week1_record": "4-6-0",
@@ -22,9 +22,9 @@
     },
     {
       "manager": "GeneralSod",
-      "all_time_record": "68-57-0",
-      "regular_season_win_pct": 0.544,
-      "total_games": 125,
+      "all_time_record": "68-58-0",
+      "regular_season_win_pct": 0.5397,
+      "total_games": 126,
       "highest_score": 165.86,
       "lowest_score": 51.9,
       "week1_record": "6-4-0",
@@ -42,9 +42,9 @@
     },
     {
       "manager": "Aneesh",
-      "all_time_record": "66-59-0",
-      "regular_season_win_pct": 0.528,
-      "total_games": 125,
+      "all_time_record": "67-59-0",
+      "regular_season_win_pct": 0.5317,
+      "total_games": 126,
       "highest_score": 165.16,
       "lowest_score": 51.42,
       "week1_record": "6-4-0",
@@ -52,9 +52,9 @@
     },
     {
       "manager": "Rohit",
-      "all_time_record": "51-48-0",
-      "regular_season_win_pct": 0.5152,
-      "total_games": 99,
+      "all_time_record": "52-48-0",
+      "regular_season_win_pct": 0.52,
+      "total_games": 100,
       "highest_score": 154.48,
       "lowest_score": 50.64,
       "week1_record": "3-5-0",
@@ -62,9 +62,9 @@
     },
     {
       "manager": "hoo2champ",
-      "all_time_record": "64-61-0",
-      "regular_season_win_pct": 0.512,
-      "total_games": 125,
+      "all_time_record": "65-61-0",
+      "regular_season_win_pct": 0.5159,
+      "total_games": 126,
       "highest_score": 169.2,
       "lowest_score": 46.76,
       "week1_record": "7-3-0",
@@ -72,9 +72,9 @@
     },
     {
       "manager": "Nfi421",
-      "all_time_record": "49-50-0",
-      "regular_season_win_pct": 0.4949,
-      "total_games": 99,
+      "all_time_record": "50-50-0",
+      "regular_season_win_pct": 0.5,
+      "total_games": 100,
       "highest_score": 158.42,
       "lowest_score": 52.02,
       "week1_record": "5-3-0",
@@ -82,9 +82,9 @@
     },
     {
       "manager": "Mutumbs",
-      "all_time_record": "61-64-0",
-      "regular_season_win_pct": 0.488,
-      "total_games": 125,
+      "all_time_record": "61-65-0",
+      "regular_season_win_pct": 0.4841,
+      "total_games": 126,
       "highest_score": 151.0,
       "lowest_score": 49.06,
       "week1_record": "6-4-0",
@@ -92,9 +92,9 @@
     },
     {
       "manager": "Nabbo",
-      "all_time_record": "60-65-0",
-      "regular_season_win_pct": 0.48,
-      "total_games": 125,
+      "all_time_record": "61-65-0",
+      "regular_season_win_pct": 0.4841,
+      "total_games": 126,
       "highest_score": 158.52,
       "lowest_score": 37.76,
       "week1_record": "3-7-0",
@@ -102,9 +102,9 @@
     },
     {
       "manager": "Jaguo",
-      "all_time_record": "47-52-0",
-      "regular_season_win_pct": 0.4747,
-      "total_games": 99,
+      "all_time_record": "47-53-0",
+      "regular_season_win_pct": 0.47,
+      "total_games": 100,
       "highest_score": 164.08,
       "lowest_score": 42.94,
       "week1_record": "4-4-0",
@@ -112,9 +112,9 @@
     },
     {
       "manager": "Gmen",
-      "all_time_record": "59-66-0",
-      "regular_season_win_pct": 0.472,
-      "total_games": 125,
+      "all_time_record": "59-67-0",
+      "regular_season_win_pct": 0.4683,
+      "total_games": 126,
       "highest_score": 153.34,
       "lowest_score": 52.86,
       "week1_record": "4-6-0",
@@ -122,9 +122,9 @@
     },
     {
       "manager": "Aryan",
-      "all_time_record": "55-70-0",
-      "regular_season_win_pct": 0.44,
-      "total_games": 125,
+      "all_time_record": "55-71-0",
+      "regular_season_win_pct": 0.4365,
+      "total_games": 126,
       "highest_score": 160.9,
       "lowest_score": 50.04,
       "week1_record": "3-7-0",
@@ -300,9 +300,9 @@
     {
       "season": 2026,
       "manager": "Nabbo",
-      "avg_points_per_game": 128.27,
-      "total_points": 384.82,
-      "games_played": 3
+      "avg_points_per_game": 128.84,
+      "total_points": 515.38,
+      "games_played": 4
     },
     {
       "season": 2018,
@@ -310,13 +310,6 @@
       "avg_points_per_game": 120.77,
       "total_points": 1569.98,
       "games_played": 13
-    },
-    {
-      "season": 2026,
-      "manager": "Jaguo",
-      "avg_points_per_game": 119.67,
-      "total_points": 359.02,
-      "games_played": 3
     },
     {
       "season": 2023,
@@ -340,6 +333,13 @@
       "games_played": 14
     },
     {
+      "season": 2026,
+      "manager": "Loomnoo",
+      "avg_points_per_game": 115.99,
+      "total_points": 463.96,
+      "games_played": 4
+    },
+    {
       "season": 2024,
       "manager": "Jaguo",
       "avg_points_per_game": 115.45,
@@ -347,24 +347,24 @@
       "games_played": 14
     },
     {
+      "season": 2026,
+      "manager": "Jaguo",
+      "avg_points_per_game": 115.01,
+      "total_points": 460.04,
+      "games_played": 4
+    },
+    {
+      "season": 2026,
+      "manager": "Nfi421",
+      "avg_points_per_game": 113.97,
+      "total_points": 455.86,
+      "games_played": 4
+    },
+    {
       "season": 2024,
       "manager": "Nabbo",
       "avg_points_per_game": 113.93,
       "total_points": 1595.0,
-      "games_played": 14
-    },
-    {
-      "season": 2026,
-      "manager": "Loomnoo",
-      "avg_points_per_game": 113.73,
-      "total_points": 341.18,
-      "games_played": 3
-    },
-    {
-      "season": 2022,
-      "manager": "Aneesh",
-      "avg_points_per_game": 113.73,
-      "total_points": 1592.2,
       "games_played": 14
     }
   ],
@@ -372,16 +372,9 @@
     {
       "season": 2026,
       "manager": "Nabbo",
-      "avg_points_per_game": 128.27,
-      "total_points": 384.82,
-      "games_played": 3
-    },
-    {
-      "season": 2026,
-      "manager": "Jaguo",
-      "avg_points_per_game": 119.67,
-      "total_points": 359.02,
-      "games_played": 3
+      "avg_points_per_game": 128.84,
+      "total_points": 515.38,
+      "games_played": 4
     },
     {
       "season": 2024,
@@ -403,6 +396,20 @@
       "avg_points_per_game": 116.83,
       "total_points": 1752.52,
       "games_played": 15
+    },
+    {
+      "season": 2026,
+      "manager": "Loomnoo",
+      "avg_points_per_game": 115.99,
+      "total_points": 463.96,
+      "games_played": 4
+    },
+    {
+      "season": 2026,
+      "manager": "Jaguo",
+      "avg_points_per_game": 115.01,
+      "total_points": 460.04,
+      "games_played": 4
     },
     {
       "season": 2024,
@@ -427,17 +434,10 @@
     },
     {
       "season": 2026,
-      "manager": "Loomnoo",
-      "avg_points_per_game": 113.73,
-      "total_points": 341.18,
-      "games_played": 3
-    },
-    {
-      "season": 2025,
-      "manager": "Jaguo",
-      "avg_points_per_game": 113.27,
-      "total_points": 1812.38,
-      "games_played": 16
+      "manager": "Nfi421",
+      "avg_points_per_game": 113.97,
+      "total_points": 455.86,
+      "games_played": 4
     }
   ],
   "H2H_AllTime": [
@@ -468,10 +468,10 @@
     {
       "manager": "Aneesh",
       "opponent": "GeneralSod",
-      "W": 4,
+      "W": 5,
       "L": 5,
       "T": 0,
-      "meetings_total": 9
+      "meetings_total": 10
     },
     {
       "manager": "Aneesh",
@@ -749,9 +749,9 @@
       "manager": "Aryan",
       "opponent": "hoo2champ",
       "W": 5,
-      "L": 6,
+      "L": 7,
       "T": 0,
-      "meetings_total": 11
+      "meetings_total": 12
     },
     {
       "manager": "Fawaz",
@@ -845,9 +845,9 @@
       "manager": "Fawaz",
       "opponent": "Rohit",
       "W": 4,
-      "L": 3,
+      "L": 4,
       "T": 0,
-      "meetings_total": 7
+      "meetings_total": 8
     },
     {
       "manager": "Fawaz",
@@ -869,9 +869,9 @@
       "manager": "GeneralSod",
       "opponent": "Aneesh",
       "W": 5,
-      "L": 4,
+      "L": 5,
       "T": 0,
-      "meetings_total": 9
+      "meetings_total": 10
     },
     {
       "manager": "GeneralSod",
@@ -1029,9 +1029,9 @@
       "manager": "Gmen",
       "opponent": "Loomnoo",
       "W": 5,
-      "L": 5,
+      "L": 6,
       "T": 0,
-      "meetings_total": 10
+      "meetings_total": 11
     },
     {
       "manager": "Gmen",
@@ -1149,9 +1149,9 @@
       "manager": "Jaguo",
       "opponent": "Nabbo",
       "W": 4,
-      "L": 3,
+      "L": 4,
       "T": 0,
-      "meetings_total": 7
+      "meetings_total": 8
     },
     {
       "manager": "Jaguo",
@@ -1220,10 +1220,10 @@
     {
       "manager": "Loomnoo",
       "opponent": "Gmen",
-      "W": 5,
+      "W": 6,
       "L": 5,
       "T": 0,
-      "meetings_total": 10
+      "meetings_total": 11
     },
     {
       "manager": "Loomnoo",
@@ -1461,9 +1461,9 @@
       "manager": "Mutumbs",
       "opponent": "Nfi421",
       "W": 4,
-      "L": 3,
+      "L": 4,
       "T": 0,
-      "meetings_total": 7
+      "meetings_total": 8
     },
     {
       "manager": "Mutumbs",
@@ -1540,10 +1540,10 @@
     {
       "manager": "Nabbo",
       "opponent": "Jaguo",
-      "W": 3,
+      "W": 4,
       "L": 4,
       "T": 0,
-      "meetings_total": 7
+      "meetings_total": 8
     },
     {
       "manager": "Nabbo",
@@ -1660,10 +1660,10 @@
     {
       "manager": "Nfi421",
       "opponent": "Mutumbs",
-      "W": 3,
+      "W": 4,
       "L": 4,
       "T": 0,
-      "meetings_total": 7
+      "meetings_total": 8
     },
     {
       "manager": "Nfi421",
@@ -1708,10 +1708,10 @@
     {
       "manager": "Rohit",
       "opponent": "Fawaz",
-      "W": 3,
+      "W": 4,
       "L": 4,
       "T": 0,
-      "meetings_total": 7
+      "meetings_total": 8
     },
     {
       "manager": "Rohit",
@@ -1884,10 +1884,10 @@
     {
       "manager": "hoo2champ",
       "opponent": "Aryan",
-      "W": 6,
+      "W": 7,
       "L": 5,
       "T": 0,
-      "meetings_total": 11
+      "meetings_total": 12
     },
     {
       "manager": "hoo2champ",
@@ -2382,8 +2382,8 @@
     {
       "manager": "Fawaz",
       "opponent": "Rohit",
-      "last5_W": 4,
-      "last5_L": 1,
+      "last5_W": 3,
+      "last5_L": 2,
       "last5_T": 0,
       "meetings_considered": 5
     },
@@ -2998,8 +2998,8 @@
     {
       "manager": "Mutumbs",
       "opponent": "Nfi421",
-      "last5_W": 2,
-      "last5_L": 3,
+      "last5_W": 1,
+      "last5_L": 4,
       "last5_T": 0,
       "meetings_considered": 5
     },
@@ -3198,8 +3198,8 @@
     {
       "manager": "Nfi421",
       "opponent": "Mutumbs",
-      "last5_W": 3,
-      "last5_L": 2,
+      "last5_W": 4,
+      "last5_L": 1,
       "last5_T": 0,
       "meetings_considered": 5
     },
@@ -3246,8 +3246,8 @@
     {
       "manager": "Rohit",
       "opponent": "Fawaz",
-      "last5_W": 1,
-      "last5_L": 4,
+      "last5_W": 2,
+      "last5_L": 3,
       "last5_T": 0,
       "meetings_considered": 5
     },
@@ -3544,10 +3544,10 @@
     {
       "manager": "Aneesh",
       "opponent": "GeneralSod",
-      "W": 4,
+      "W": 5,
       "L": 5,
       "T": 0,
-      "meetings_total": 9
+      "meetings_total": 10
     },
     {
       "manager": "Aneesh",
@@ -3825,9 +3825,9 @@
       "manager": "Aryan",
       "opponent": "hoo2champ",
       "W": 5,
-      "L": 6,
+      "L": 7,
       "T": 0,
-      "meetings_total": 11
+      "meetings_total": 12
     },
     {
       "manager": "Fawaz",
@@ -3921,9 +3921,9 @@
       "manager": "Fawaz",
       "opponent": "Rohit",
       "W": 4,
-      "L": 3,
+      "L": 4,
       "T": 0,
-      "meetings_total": 7
+      "meetings_total": 8
     },
     {
       "manager": "Fawaz",
@@ -3945,9 +3945,9 @@
       "manager": "GeneralSod",
       "opponent": "Aneesh",
       "W": 5,
-      "L": 4,
+      "L": 5,
       "T": 0,
-      "meetings_total": 9
+      "meetings_total": 10
     },
     {
       "manager": "GeneralSod",
@@ -4105,9 +4105,9 @@
       "manager": "Gmen",
       "opponent": "Loomnoo",
       "W": 6,
-      "L": 6,
+      "L": 7,
       "T": 0,
-      "meetings_total": 12
+      "meetings_total": 13
     },
     {
       "manager": "Gmen",
@@ -4225,9 +4225,9 @@
       "manager": "Jaguo",
       "opponent": "Nabbo",
       "W": 5,
-      "L": 3,
+      "L": 4,
       "T": 0,
-      "meetings_total": 8
+      "meetings_total": 9
     },
     {
       "manager": "Jaguo",
@@ -4296,10 +4296,10 @@
     {
       "manager": "Loomnoo",
       "opponent": "Gmen",
-      "W": 6,
+      "W": 7,
       "L": 6,
       "T": 0,
-      "meetings_total": 12
+      "meetings_total": 13
     },
     {
       "manager": "Loomnoo",
@@ -4537,9 +4537,9 @@
       "manager": "Mutumbs",
       "opponent": "Nfi421",
       "W": 4,
-      "L": 3,
+      "L": 4,
       "T": 0,
-      "meetings_total": 7
+      "meetings_total": 8
     },
     {
       "manager": "Mutumbs",
@@ -4616,10 +4616,10 @@
     {
       "manager": "Nabbo",
       "opponent": "Jaguo",
-      "W": 3,
+      "W": 4,
       "L": 5,
       "T": 0,
-      "meetings_total": 8
+      "meetings_total": 9
     },
     {
       "manager": "Nabbo",
@@ -4736,10 +4736,10 @@
     {
       "manager": "Nfi421",
       "opponent": "Mutumbs",
-      "W": 3,
+      "W": 4,
       "L": 4,
       "T": 0,
-      "meetings_total": 7
+      "meetings_total": 8
     },
     {
       "manager": "Nfi421",
@@ -4784,10 +4784,10 @@
     {
       "manager": "Rohit",
       "opponent": "Fawaz",
-      "W": 3,
+      "W": 4,
       "L": 4,
       "T": 0,
-      "meetings_total": 7
+      "meetings_total": 8
     },
     {
       "manager": "Rohit",
@@ -4960,10 +4960,10 @@
     {
       "manager": "hoo2champ",
       "opponent": "Aryan",
-      "W": 6,
+      "W": 7,
       "L": 5,
       "T": 0,
-      "meetings_total": 11
+      "meetings_total": 12
     },
     {
       "manager": "hoo2champ",
@@ -5458,8 +5458,8 @@
     {
       "manager": "Fawaz",
       "opponent": "Rohit",
-      "last5_W": 4,
-      "last5_L": 1,
+      "last5_W": 3,
+      "last5_L": 2,
       "last5_T": 0,
       "meetings_considered": 5
     },
@@ -6074,8 +6074,8 @@
     {
       "manager": "Mutumbs",
       "opponent": "Nfi421",
-      "last5_W": 2,
-      "last5_L": 3,
+      "last5_W": 1,
+      "last5_L": 4,
       "last5_T": 0,
       "meetings_considered": 5
     },
@@ -6274,8 +6274,8 @@
     {
       "manager": "Nfi421",
       "opponent": "Mutumbs",
-      "last5_W": 3,
-      "last5_L": 2,
+      "last5_W": 4,
+      "last5_L": 1,
       "last5_T": 0,
       "meetings_considered": 5
     },
@@ -6322,8 +6322,8 @@
     {
       "manager": "Rohit",
       "opponent": "Fawaz",
-      "last5_W": 1,
-      "last5_L": 4,
+      "last5_W": 2,
+      "last5_L": 3,
       "last5_T": 0,
       "meetings_considered": 5
     },
@@ -6824,6 +6824,84 @@
       "winner": "Nfi421",
       "loser": "Aneesh",
       "margin": 28.78,
+      "tie": false,
+      "game_type": "regular"
+    },
+    {
+      "season": 2026,
+      "week": 4,
+      "awayTeamName": "Fawaz",
+      "homeTeamName": "Rohit",
+      "awayScore": 87.26,
+      "homeScore": 110.5,
+      "winner": "Rohit",
+      "loser": "Fawaz",
+      "margin": 23.24,
+      "tie": false,
+      "game_type": "regular"
+    },
+    {
+      "season": 2026,
+      "week": 4,
+      "awayTeamName": "hoo2champ",
+      "homeTeamName": "Aryan",
+      "awayScore": 127.2,
+      "homeScore": 109.74,
+      "winner": "hoo2champ",
+      "loser": "Aryan",
+      "margin": 17.46,
+      "tie": false,
+      "game_type": "regular"
+    },
+    {
+      "season": 2026,
+      "week": 4,
+      "awayTeamName": "Jaguo",
+      "homeTeamName": "Nabbo",
+      "awayScore": 101.02,
+      "homeScore": 130.56,
+      "winner": "Nabbo",
+      "loser": "Jaguo",
+      "margin": 29.54,
+      "tie": false,
+      "game_type": "regular"
+    },
+    {
+      "season": 2026,
+      "week": 4,
+      "awayTeamName": "Gmen",
+      "homeTeamName": "Loomnoo",
+      "awayScore": 98.3,
+      "homeScore": 122.78,
+      "winner": "Loomnoo",
+      "loser": "Gmen",
+      "margin": 24.48,
+      "tie": false,
+      "game_type": "regular"
+    },
+    {
+      "season": 2026,
+      "week": 4,
+      "awayTeamName": "Mutumbs",
+      "homeTeamName": "Nfi421",
+      "awayScore": 99.92,
+      "homeScore": 146.92,
+      "winner": "Nfi421",
+      "loser": "Mutumbs",
+      "margin": 47.0,
+      "tie": false,
+      "game_type": "regular"
+    },
+    {
+      "season": 2026,
+      "week": 4,
+      "awayTeamName": "GeneralSod",
+      "homeTeamName": "Aneesh",
+      "awayScore": 60.68,
+      "homeScore": 113.54,
+      "winner": "Aneesh",
+      "loser": "GeneralSod",
+      "margin": 52.86,
       "tie": false,
       "game_type": "regular"
     },
@@ -17397,6 +17475,84 @@
       "winner": "Nfi421",
       "loser": "Aneesh",
       "margin": 28.78,
+      "tie": false,
+      "game_type": "regular"
+    },
+    {
+      "season": 2026,
+      "week": 4,
+      "awayTeamName": "Fawaz",
+      "homeTeamName": "Rohit",
+      "awayScore": 87.26,
+      "homeScore": 110.5,
+      "winner": "Rohit",
+      "loser": "Fawaz",
+      "margin": 23.24,
+      "tie": false,
+      "game_type": "regular"
+    },
+    {
+      "season": 2026,
+      "week": 4,
+      "awayTeamName": "hoo2champ",
+      "homeTeamName": "Aryan",
+      "awayScore": 127.2,
+      "homeScore": 109.74,
+      "winner": "hoo2champ",
+      "loser": "Aryan",
+      "margin": 17.46,
+      "tie": false,
+      "game_type": "regular"
+    },
+    {
+      "season": 2026,
+      "week": 4,
+      "awayTeamName": "Jaguo",
+      "homeTeamName": "Nabbo",
+      "awayScore": 101.02,
+      "homeScore": 130.56,
+      "winner": "Nabbo",
+      "loser": "Jaguo",
+      "margin": 29.54,
+      "tie": false,
+      "game_type": "regular"
+    },
+    {
+      "season": 2026,
+      "week": 4,
+      "awayTeamName": "Gmen",
+      "homeTeamName": "Loomnoo",
+      "awayScore": 98.3,
+      "homeScore": 122.78,
+      "winner": "Loomnoo",
+      "loser": "Gmen",
+      "margin": 24.48,
+      "tie": false,
+      "game_type": "regular"
+    },
+    {
+      "season": 2026,
+      "week": 4,
+      "awayTeamName": "Mutumbs",
+      "homeTeamName": "Nfi421",
+      "awayScore": 99.92,
+      "homeScore": 146.92,
+      "winner": "Nfi421",
+      "loser": "Mutumbs",
+      "margin": 47.0,
+      "tie": false,
+      "game_type": "regular"
+    },
+    {
+      "season": 2026,
+      "week": 4,
+      "awayTeamName": "GeneralSod",
+      "homeTeamName": "Aneesh",
+      "awayScore": 60.68,
+      "homeScore": 113.54,
+      "winner": "Aneesh",
+      "loser": "GeneralSod",
+      "margin": 52.86,
       "tie": false,
       "game_type": "regular"
     },

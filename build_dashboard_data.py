@@ -561,7 +561,9 @@ def fetch_sleeper_history_and_live():
     league_url = f"https://api.sleeper.app/v1/league/{CURRENT_LEAGUE_ID}"
     league_res = requests.get(league_url).json()
     total_weeks = league_res.get("settings", {}).get("playoff_week_start", 15) - 1
-    current_leg = league_res.get("settings", {}).get("leg", 1)
+    league_settings = league_res.get("settings", {})
+    current_leg = int(league_settings.get("leg") or 1)
+    last_scored_leg = int(league_settings.get("last_scored_leg") or 0)
     
     users_url = f"https://api.sleeper.app/v1/league/{CURRENT_LEAGUE_ID}/users"
     users_data = requests.get(users_url).json()
@@ -657,7 +659,7 @@ def fetch_sleeper_history_and_live():
     punishment_watch = standings[-3:]
     
     matchups_by_week = {}
-    current_week = min(max(current_leg, 1), 14)
+    current_week = max(current_leg, last_scored_leg + 1, 1)
     
     for wk in range(1, 15):
         m_url = f"https://api.sleeper.app/v1/league/{CURRENT_LEAGUE_ID}/matchups/{wk}"

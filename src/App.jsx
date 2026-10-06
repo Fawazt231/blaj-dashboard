@@ -25,6 +25,7 @@ import Share2 from 'lucide-react/dist/esm/icons/share-2'
 import FileDown from 'lucide-react/dist/esm/icons/file-down'
 import { runPlayoffSimulation } from './playoffSimulatorEngine'
 import { downloadWeeklyNewsletter } from './weeklyReport'
+import { resolveCurrentWeek } from './seasonWeek'
 
 const MONTH_NAMES_MAP = {
   1: { short: 'Jan', full: 'January' },
@@ -1152,7 +1153,7 @@ export default function App() {
             delete excel.Sheet1
           }
 
-          const curWk = sleeperLeague?.settings?.leg || live?.current_week || 1
+          const curWk = resolveCurrentWeek(sleeperLeague, live?.current_week)
           
           // Fetch live matchup points for weeks 1..curWk from Sleeper API
           const matchupPromises = []
