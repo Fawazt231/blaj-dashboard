@@ -14,6 +14,16 @@ const playoffRound = (season, week) => {
   return rounds[Number(week)] || 'Playoffs';
 };
 
+export function mergeCurrentSeasonRegularGames(log, liveGames, currentSeason) {
+  return [
+    ...(log || []).filter(game => !(
+      Number(game.season) === Number(currentSeason)
+      && String(game.game_type || 'regular').toLowerCase() === 'regular'
+    )),
+    ...(liveGames || [])
+  ];
+}
+
 function buildStarts(log, throughWeek, currentSeason) {
   const regular = log.filter(game => String(game.game_type || 'regular').toLowerCase() === 'regular');
   const playoffs = log.filter(game => String(game.game_type || '').toLowerCase() === 'playoff');

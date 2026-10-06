@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-import { buildHistoricalContext } from './historicalContext.js';
+import { buildHistoricalContext, mergeCurrentSeasonRegularGames } from './historicalContext.js';
 
 const history = JSON.parse(fs.readFileSync(new URL('../public/data/excel_history.json', import.meta.url)));
 const weekFourGames = history.MatchLog_PlayoffIncluded.filter(game => (
@@ -41,4 +41,17 @@ test('Week 4 identifies GeneralSod manager-specific low', () => {
   assert.equal(generalSod.direction, 'lowest');
   assert.equal(generalSod.rank, 3);
   assert.equal(generalSod.total, 126);
+});
+
+test('live completed games replace stale current-season history', () => {
+  const stale = [
+    { season: 2025, week: 1, game_type: 'regular', awayTeamName: 'Old A', homeTeamName: 'Old B' },
+    { season: 2026, week: 1, game_type: 'regular', awayTeamName: 'Stale A', homeTeamName: 'Stale B' }
+  ];
+  const live = [
+    { season: 2026, week: 1, game_type: 'regular', awayTeamName: 'Live A', homeTeamName: 'Live B' }
+  ];
+  const merged = mergeCurrentSeasonRegularGames(stale, live, 2026);
+
+  assert.deepEqual(merged.map(game => game.awayTeamName), ['Old A', 'Live A']);
 });

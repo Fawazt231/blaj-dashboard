@@ -1,7 +1,7 @@
 import jsPDF from 'jspdf'
 import html2canvas from 'html2canvas'
 import { calculateLuckRows } from './luckIndex'
-import { buildHistoricalContext } from './historicalContext'
+import { buildHistoricalContext, mergeCurrentSeasonRegularGames } from './historicalContext'
 
 const C = { ink:'#111827', paper:'#f7f3ea', gold:'#d97706', green:'#047857', playoffBg:'#dcfce7', red:'#b91c1c', blue:'#1d4ed8', muted:'#6b7280', line:'#d6d3d1' }
 const esc = (value = '') => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;')
@@ -91,6 +91,8 @@ export async function downloadWeeklyNewsletter({ liveData, excelData, simResults
   const previewWeek=Number(selectedWeek||currentWeek)
   const season=Number(liveData?.season||2026)
   const log=excelData?.MatchLog_PlayoffIncluded||[]
+  const completedLiveGames=Array.from({length:recapWeek},(_,index)=>liveGames(liveData,index+1,season)).flat()
+  const contextLog=mergeCurrentSeasonRegularGames(log,completedLiveGames,season)
   const archived=log.filter(game=>Number(game.season)===season&&Number(game.week)===recapWeek)
   const games=(archived.length?archived:liveGames(liveData,recapWeek,season)).slice(0,6)
   const standings=[...(liveData?.standings||[])].sort((a,b)=>Number(a.rank||99)-Number(b.rank||99))
@@ -115,7 +117,7 @@ export async function downloadWeeklyNewsletter({ liveData, excelData, simResults
     ...item,
     delta:Number(item.playoffPct||0)-Number(previousByName.get(String(item.name||'').toLowerCase())?.playoffPct||0),
   }))
-  const historical=buildHistoricalContext({log,recapGames:games,throughWeek:recapWeek,currentSeason:season})
+  const historical=buildHistoricalContext({log:contextLog,recapGames:games,throughWeek:recapWeek,currentSeason:season})
 
   const report=document.createElement('section')
   report.setAttribute('style',`box-sizing:border-box;width:794px;height:1123px;padding:39px 48px 28px;overflow:hidden;position:relative;background:${C.paper};color:${C.ink};font-family:Georgia,"Times New Roman",serif;`)
