@@ -10,6 +10,27 @@ function randomNormal(mean = 0, std = 1) {
   return mean + z * std;
 }
 
+function deriveDivisionGroups(teams) {
+  return teams.reduce((groups, team) => {
+    const divisionId = String(team.division ?? 1);
+    if (!groups[divisionId]) groups[divisionId] = [];
+    groups[divisionId].push(team.name);
+    return groups;
+  }, {});
+}
+
+function isCompleteDivisionMap(divisions, teams) {
+  if (!divisions || typeof divisions !== 'object' || Array.isArray(divisions)) return false;
+
+  const members = Object.values(divisions).flatMap(group => Array.isArray(group) ? group : []);
+  const teamNames = teams.map(team => team.name);
+  const knownTeams = new Set(teamNames);
+
+  return members.length === teamNames.length
+    && new Set(members).size === teamNames.length
+    && members.every(name => knownTeams.has(name));
+}
+
 export function runPlayoffSimulation({
   teams,             // list of { name, wins, losses, fpts, roster_id, division }
   remainingSchedule, // list of [awayName, homeName] for unplayed regular season games
@@ -57,6 +78,14 @@ export function runPlayoffSimulation({
       division: t.division
     };
   });
+
+  // The live payload stores division membership on each team and may not include
+  // a top-level divisions map. Derive it here so the simulator always awards
+  // exactly one division title per division. Preserve a complete explicit map
+  // for backwards compatibility with callers that provide one.
+  const divisionGroups = isCompleteDivisionMap(divisions, simTeamsBase)
+    ? divisions
+    : deriveDivisionGroups(simTeamsBase);
 
   // Track qualification counts across N simulations
   const playoffCounts = {};
@@ -138,11 +167,11 @@ export function runPlayoffSimulation({
 
     // Determine Division Winners (3 seeds)
     const divWinners = [];
-    const divNames = Object.keys(divisions);
+    const divNames = Object.keys(divisionGroups);
 
     if (divNames.length > 0) {
       divNames.forEach(divId => {
-        const members = divisions[divId] || [];
+        const members = divisionGroups[divId] || [];
         const divTeams = state.filter(t => members.includes(t.name));
         if (divTeams.length > 0) {
           divTeams.sort((a, b) => {
