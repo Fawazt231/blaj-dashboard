@@ -1,6 +1,7 @@
 import jsPDF from 'jspdf'
 import html2canvas from 'html2canvas'
 import { calculateLuckRows } from './luckIndex'
+import { buildHistoricalContext } from './historicalContext'
 
 const C = { ink:'#111827', paper:'#f7f3ea', gold:'#d97706', green:'#047857', playoffBg:'#dcfce7', red:'#b91c1c', blue:'#1d4ed8', muted:'#6b7280', line:'#d6d3d1' }
 const esc = (value = '') => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;')
@@ -18,7 +19,7 @@ const liveGames = (liveData, week, season) => (liveData?.matchups_by_week?.[Stri
     const awayScore = Number(pair[0].points || 0)
     const homeScore = Number(pair[1].points || 0)
     const awayWon = awayScore >= homeScore
-    return { awayScore, homeScore, winner:managerName(awayWon ? away : home), loser:managerName(awayWon ? home : away), season, week }
+    return { awayTeamName:managerName(away), homeTeamName:managerName(home), awayScore, homeScore, winner:managerName(awayWon ? away : home), loser:managerName(awayWon ? home : away), season, week, game_type:'regular' }
   })
 
 const playoffRound = (season, week) => {
@@ -49,85 +50,39 @@ const matchupHistory = (log, a, b) => {
   return { lastFiveText, note:'' }
 }
 
-const ordinal = value => {
-  const n=Number(value), mod100=n%100
-  if(mod100>=11&&mod100<=13)return `${n}th`
-  return `${n}${n%10===1?'st':n%10===2?'nd':n%10===3?'rd':'th'}`
-}
+const historicalPageMarkup = (context, recapWeek, season) => {
+  const rankingTable = table => `<div>
+    <div style="font-family:Arial,sans-serif;font-size:7px;font-weight:900;color:${C.muted};text-transform:uppercase;margin-bottom:6px;">${esc(table.label)} by PF</div>
+    <div style="display:grid;grid-template-columns:18px 1fr 58px 1.5fr;gap:6px;padding-bottom:5px;border-bottom:1px solid ${C.ink};font-family:Arial,sans-serif;font-size:6px;font-weight:900;color:${C.muted};text-transform:uppercase;"><span>#</span><span>Team</span><span style="text-align:right;">PF</span><span style="text-align:right;">End result</span></div>
+    ${table.rows.map((item,index)=>`<div style="height:27px;display:grid;grid-template-columns:18px 1fr 58px 1.5fr;gap:6px;align-items:center;border-bottom:1px solid ${C.line};background:${item.season===season?C.playoffBg:'transparent'};font-family:Arial,sans-serif;font-size:7px;"><strong style="color:${C.gold};">${index+1}</strong><strong>${esc(item.team)} '${String(item.season).slice(-2)}</strong><span style="text-align:right;font-weight:800;">${score(item.pf)}</span><span style="text-align:right;">${esc(item.outcome)}</span></div>`).join('')}
+  </div>`
 
-const historicalRankings = (log, throughWeek, currentSeason) => {
-  const regular=log.filter(game=>String(game.game_type||'regular').toLowerCase()==='regular')
-  const playoffGames=log.filter(game=>String(game.game_type||'').toLowerCase()==='playoff')
-  const full=new Map(), starts=new Map()
-  const key=(season,team)=>`${season}|${team}`
-  regular.forEach(game=>{
-    const season=Number(game.season)
-    ;['away','home'].forEach(side=>{
-      const team=game[`${side}TeamName`], id=key(season,team), points=Number(game[`${side}Score`]||0)
-      const total=full.get(id)||{season,team,wins:0,losses:0,ties:0,pf:0,games:0}
-      total.games+=1;total.pf+=points
-      if(game.winner===team)total.wins+=1;else if(game.loser===team)total.losses+=1;else total.ties+=1
-      full.set(id,total)
-      if(Number(game.week)<=throughWeek){const start=starts.get(id)||{season,team,pf:0,games:0,wins:0,losses:0,ties:0};start.pf+=points;start.games+=1;if(game.winner===team)start.wins+=1;else if(game.loser===team)start.losses+=1;else start.ties+=1;starts.set(id,start)}
-    })
-  })
-  const ranks=new Map()
-  ;[...new Set([...full.values()].map(item=>item.season))].forEach(season=>{
-    [...full.values()].filter(item=>item.season===season).sort((a,b)=>b.wins-a.wins||b.pf-a.pf).forEach((item,index)=>ranks.set(key(season,item.team),index+1))
-  })
-  const outcome=item=>{
-    const total=full.get(key(item.season,item.team));const record=`${total.wins}-${total.losses}${total.ties?`-${total.ties}`:''}`
-    if(item.season===currentSeason)return `Current ${record}`
-    const games=playoffGames.filter(game=>Number(game.season)===item.season&&[game.awayTeamName,game.homeTeamName].includes(item.team))
-    if(!games.length)return `${ordinal(ranks.get(key(item.season,item.team)))}, ${record}; missed playoffs`
-    const final=games.find(game=>game.is_championship)
-    if(final)return `${ordinal(ranks.get(key(item.season,item.team)))}, ${record}; ${final.winner===item.team?'Champion':'Finalist'}`
-    const deepest=[...games].sort((a,b)=>Number(b.week)-Number(a.week))[0]
-    return `${ordinal(ranks.get(key(item.season,item.team)))}, ${record}; ${playoffRound(item.season,deepest.week)}`
-  }
-  const entries=[...starts.values()].filter(item=>item.games===throughWeek).map(item=>({...item,outcome:outcome(item)}))
-  const top=[...entries].sort((a,b)=>b.pf-a.pf).slice(0,5)
-  const bottom=[...entries].sort((a,b)=>a.pf-b.pf).slice(0,5)
-  const current=entries.filter(item=>item.season===currentSeason)
-  const completed=entries.filter(item=>item.season<currentSeason)
-  const facts=[]
-  const recordGroups=new Map()
-  current.forEach(item=>{const id=`${item.wins}-${item.losses}`;if(!recordGroups.has(id))recordGroups.set(id,[]);recordGroups.get(id).push(item)})
-  recordGroups.forEach((members,id)=>{
-    const [wins,losses]=id.split('-').map(Number)
-    const cohort=completed.filter(item=>item.wins===wins&&item.losses===losses)
-    if(cohort.length<5)return
-    const made=cohort.filter(item=>playoffGames.some(game=>Number(game.season)===item.season&&[game.awayTeamName,game.homeTeamName].includes(item.team))).length
-    const champs=cohort.filter(item=>playoffGames.some(game=>Number(game.season)===item.season&&game.is_championship&&game.winner===item.team)).length
-    const names=members.map(item=>item.team).join(members.length===2?' and ':', ')
-    facts.push({score:70+Math.abs((made/cohort.length)*100-50)/5,text:`${names} ${members.length===1?'is':'are'} ${id}. Historically, ${made} of ${cohort.length} (${((made/cohort.length)*100).toFixed(1)}%) comparable starts made the playoffs${champs?`; ${champs} won the title`:''}.`})
-  })
-  const byPf=[...entries].sort((a,b)=>b.pf-a.pf)
-  current.forEach(item=>{
-    const rank=byPf.findIndex(row=>row.season===item.season&&row.team===item.team)+1
-    if(rank<=Math.ceil(byPf.length*.1))facts.push({score:80-rank,text:`${item.team}'s ${item.pf.toFixed(2)} PF ranks ${ordinal(rank)} of ${byPf.length} starts through Week ${throughWeek}.`})
-    else if(rank>byPf.length-Math.ceil(byPf.length*.1))facts.push({score:80-(byPf.length-rank+1),text:`${item.team}'s ${item.pf.toFixed(2)} PF ranks ${ordinal(rank)} of ${byPf.length} starts through Week ${throughWeek}.`})
-  })
-  return { top, bottom, facts, topHasCurrent:top.some(item=>item.season===currentSeason), bottomHasCurrent:bottom.some(item=>item.season===currentSeason) }
-}
+  const annotations = context.annotations.length ? `<div>
+    <div style="font-family:Arial,sans-serif;font-size:7px;font-weight:900;color:${C.muted};text-transform:uppercase;margin-bottom:6px;">Current-season historical ranks</div>
+    ${context.annotations.map(item=>`<div style="padding:9px 10px;border-bottom:1px solid ${C.line};font-family:Arial,sans-serif;"><div style="display:flex;justify-content:space-between;gap:8px;"><strong style="font-size:9px;">${esc(item.team)}</strong><strong style="font-size:9px;color:${C.gold};">${item.rank}/${item.total}</strong></div><div style="font-size:7px;color:${C.muted};margin-top:3px;">${score(item.pf)} PF · ${item.direction==='highest'?'top':'bottom'} 10% through Week ${recapWeek}</div></div>`).join('')}
+  </div>` : ''
 
-const selectHistoricalContext = (base, odds) => {
-  const facts=[...base.facts]
-  const mover=[...odds].sort((a,b)=>Math.abs(Number(b.delta||0))-Math.abs(Number(a.delta||0)))[0]
-  if(mover&&Math.abs(Number(mover.delta||0))>=5)facts.push({score:65+Math.min(20,Math.abs(Number(mover.delta||0))),text:`${mover.name}'s playoff probability moved ${mover.delta>0?'+':''}${Number(mover.delta).toFixed(1)} points, the league's largest weekly swing.`})
-  facts.sort((a,b)=>b.score-a.score)
-  if(base.topHasCurrent&&base.bottomHasCurrent)return {kind:'rankings',panels:[['Top five starts',base.top],['Bottom five starts',base.bottom]],facts}
-  if(base.topHasCurrent)return {kind:'mixed',panels:[['Top five starts',base.top]],facts:facts.slice(0,2)}
-  if(base.bottomHasCurrent)return {kind:'mixed',panels:[['Bottom five starts',base.bottom]],facts:facts.slice(0,2)}
-  return {kind:facts.length===1?'feature':'bullets',panels:[],facts:facts.slice(0,3)}
-}
+  const topBlocks = [...context.tables.map(rankingTable), annotations].filter(Boolean)
+  const cohortRows = context.cohorts.map(item=>`<div style="min-height:31px;display:grid;grid-template-columns:44px 1.4fr 55px 75px 68px;gap:8px;align-items:center;border-bottom:1px solid ${C.line};font-family:Arial,sans-serif;font-size:7px;"><strong style="font-size:10px;color:${C.gold};">${esc(item.record)}</strong><strong>${esc(item.teams.join(', '))}</strong><span style="text-align:right;">${item.sampleSize} starts</span><span style="text-align:right;font-weight:800;">${pct(item.playoffPct)} <span style="color:${C.muted};">(${item.madePlayoffs})</span></span><span style="text-align:right;">${pct(item.championshipPct)} <span style="color:${C.muted};">(${item.champions})</span></span></div>`).join('')
+  const extremeCards = context.weeklyExtremes.map(item=>`<div style="min-height:62px;padding:10px 12px;border-top:2px solid ${C.ink};background:#fffdf8;box-sizing:border-box;"><div style="display:flex;justify-content:space-between;gap:8px;font-family:Arial,sans-serif;"><strong style="font-size:10px;">${esc(item.team)}</strong><strong style="font-size:10px;color:${item.direction==='lowest'?C.red:C.green};">${score(item.score)}</strong></div><div style="margin-top:6px;font-size:9px;line-height:1.35;">${esc(item.ordinalRank)}-${item.direction} regular-season score in ${item.total} recorded performances.</div></div>`).join('')
 
-const historicalMarkup = context => {
-  const panel=([label,rows])=>`<div><div style="font-family:Arial,sans-serif;font-size:6px;font-weight:900;color:${C.muted};text-transform:uppercase;margin-bottom:3px;">${label} by PF</div>${rows.map((item,index)=>`<div style="height:13px;display:grid;grid-template-columns:12px 1fr 43px 1.4fr;gap:4px;align-items:center;border-bottom:1px solid ${C.line};font-family:Arial,sans-serif;font-size:5.5px;"><strong style="color:${C.gold};">${index+1}</strong><strong>${esc(item.team)} '${String(item.season).slice(-2)}</strong><span style="text-align:right;font-weight:800;">${score(item.pf)}</span><span style="text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(item.outcome)}</span></div>`).join('')}</div>`
-  const facts=`<div style="display:grid;gap:7px;align-content:start;">${context.facts.map((fact,index)=>`<div style="display:grid;grid-template-columns:12px 1fr;gap:6px;font-family:Arial,sans-serif;font-size:${context.kind==='feature'?'8px':'6.5px'};line-height:1.35;"><strong style="color:${C.gold};">${context.kind==='feature'?'◆':'•'}</strong><span>${esc(fact.text)}</span></div>`).join('')}</div>`
-  if(context.kind==='rankings')return `<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:-2px;margin-bottom:5px;">${context.panels.map(panel).join('')}</div>`
-  if(context.kind==='mixed')return `<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:-2px;margin-bottom:5px;">${panel(context.panels[0])}${facts}</div>`
-  return `<div style="margin-top:-2px;margin-bottom:5px;padding:3px 2px;">${facts}</div>`
+  return `
+    <div style="display:grid;grid-template-columns:48px 1fr 95px;align-items:center;gap:12px;">
+      <img src="/league_logo.jpg" alt="Blaj league logo" style="width:44px;height:44px;object-fit:cover;"/>
+      <div style="font-size:34px;line-height:1;font-weight:900;text-align:center;">HISTORICAL CONTEXT</div>
+      <div style="font-family:Arial,sans-serif;text-align:right;font-size:8px;line-height:1.7;color:${C.muted};text-transform:uppercase;">Through Week ${recapWeek}<br/>${season} season</div>
+    </div>
+    <div style="border-top:4px solid ${C.ink};border-bottom:1px solid ${C.ink};margin-top:10px;padding:7px 0 6px;font-family:Arial,sans-serif;font-size:7px;font-weight:800;color:${C.muted};text-transform:uppercase;">This season, measured against league history</div>
+
+    <div style="margin-top:18px;">${section('Where this season ranks')}</div>
+    <div style="display:grid;grid-template-columns:repeat(${Math.min(2,Math.max(1,topBlocks.length))},1fr);gap:24px;">${topBlocks.join('')}</div>
+
+    ${context.cohorts.length?`<div style="margin-top:22px;">${section('What these records have meant')}</div>
+    <div style="display:grid;grid-template-columns:44px 1.4fr 55px 75px 68px;gap:8px;padding-bottom:6px;border-bottom:1px solid ${C.ink};font-family:Arial,sans-serif;font-size:6px;font-weight:900;color:${C.muted};text-transform:uppercase;"><span>Start</span><span>Current teams</span><span style="text-align:right;">History</span><span style="text-align:right;">Playoffs</span><span style="text-align:right;">Champion</span></div>${cohortRows}`:''}
+
+    ${context.weeklyExtremes.length?`<div style="margin-top:22px;">${section(`Week ${recapWeek} in each manager's history`)}</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;">${extremeCards}</div>`:''}
+    <div style="position:absolute;left:48px;right:48px;bottom:15px;border-top:1px solid ${C.ink};padding-top:6px;display:flex;justify-content:space-between;font-family:Arial,sans-serif;font-size:7px;color:${C.muted};text-transform:uppercase;"><span>Blaj Weekly | Week ${recapWeek}</span><span>Historical context | Page 2</span></div>
+  `
 }
 
 export async function downloadWeeklyNewsletter({ liveData, excelData, simResults, currentMatchups, selectedWeek, getH2HRecord }) {
@@ -152,8 +107,6 @@ export async function downloadWeeklyNewsletter({ liveData, excelData, simResults
     season,
     throughWeek:recapWeek,
   })
-  const historicalBase=historicalRankings(log,recapWeek,season)
-
   const snapshots=liveData?.playoff_odds_history?.snapshots||{}
   const currentSnapshot=snapshots[String(recapWeek)]?.results||simResults||[]
   const previousSnapshot=snapshots[String(recapWeek-1)]?.results||[]
@@ -162,7 +115,7 @@ export async function downloadWeeklyNewsletter({ liveData, excelData, simResults
     ...item,
     delta:Number(item.playoffPct||0)-Number(previousByName.get(String(item.name||'').toLowerCase())?.playoffPct||0),
   }))
-  const historical=selectHistoricalContext(historicalBase,odds)
+  const historical=buildHistoricalContext({log,recapGames:games,throughWeek:recapWeek,currentSeason:season})
 
   const report=document.createElement('section')
   report.setAttribute('style',`box-sizing:border-box;width:794px;height:1123px;padding:39px 48px 28px;overflow:hidden;position:relative;background:${C.paper};color:${C.ink};font-family:Georgia,"Times New Roman",serif;`)
@@ -194,22 +147,24 @@ export async function downloadWeeklyNewsletter({ liveData, excelData, simResults
       </div>
     </div>
 
-    <div style="margin-top:5px;">${section(`Historical context | through Week ${recapWeek}`)}</div>
-    ${historicalMarkup(historical)}
-
-    <div style="margin-top:4px;">${section(`Week ${previewWeek} preview`)}</div>
+    <div style="margin-top:10px;">${section(`Week ${previewWeek} preview`)}</div>
     <div style="font-size:23px;font-weight:900;margin-top:7px;margin-bottom:6px;">Six games to watch</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 28px;">
       ${(currentMatchups||[]).slice(0,6).map((pair,index)=>{if(!pair||pair.length<2)return'';const rawA=pair[0].team_info||pair[0];const rawB=pair[1].team_info||pair[1];const a=teams.get(String(managerName(rawA)).toLowerCase())||rawA;const b=teams.get(String(managerName(rawB)).toLowerCase())||rawB;const history=matchupHistory(log,managerName(a),managerName(b));const allTime=getH2HRecord(managerName(a),managerName(b));return `<div style="height:65px;padding:4px 0;border-bottom:1px solid ${C.line};box-sizing:border-box;"><div style="font-family:Arial,sans-serif;font-size:5.5px;font-weight:900;color:${C.gold};text-transform:uppercase;">Matchup ${index+1}</div><div style="display:grid;grid-template-columns:1fr 22px 1fr;gap:5px;align-items:end;margin-top:2px;"><div><strong style="display:block;font-size:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(teamName(a))}</strong><span style="font-family:Arial,sans-serif;font-size:5.5px;color:${C.muted};">${Number(a.wins||0)}-${Number(a.losses||0)}</span></div><span style="font-size:6px;text-align:center;color:${C.gold};">vs</span><div style="text-align:right;"><strong style="display:block;font-size:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(teamName(b))}</strong><span style="font-family:Arial,sans-serif;font-size:5.5px;color:${C.muted};">${Number(b.wins||0)}-${Number(b.losses||0)}</span></div></div><div style="display:flex;justify-content:space-between;gap:8px;margin-top:3px;font-family:Arial,sans-serif;font-size:5.5px;font-weight:800;"><span>All-time: ${esc(allTime)}</span><span>L5: ${esc(history.lastFiveText)}</span></div>${history.note?`<div style="margin-top:2px;font-family:Arial,sans-serif;font-size:5.5px;color:${C.blue};">${esc(history.note)}</div>`:''}</div>`}).join('')}
     </div>
-    <div style="position:absolute;left:48px;right:48px;bottom:15px;border-top:1px solid ${C.ink};padding-top:6px;display:flex;justify-content:space-between;font-family:Arial,sans-serif;font-size:7px;color:${C.muted};text-transform:uppercase;"><span>Blaj Weekly | Week ${recapWeek}</span><span>One-page portrait edition</span></div>
+    <div style="position:absolute;left:48px;right:48px;bottom:15px;border-top:1px solid ${C.ink};padding-top:6px;display:flex;justify-content:space-between;font-family:Arial,sans-serif;font-size:7px;color:${C.muted};text-transform:uppercase;"><span>Blaj Weekly | Week ${recapWeek}</span><span>Weekly brief | Page 1</span></div>
   `
 
-  const shell=document.createElement('div');shell.style.position='absolute';shell.style.left='-10000px';shell.style.top='0';shell.appendChild(report);document.body.appendChild(shell)
+  const historyPage=document.createElement('section')
+  historyPage.setAttribute('style',`box-sizing:border-box;width:794px;height:1123px;padding:39px 48px 28px;overflow:hidden;position:relative;background:${C.paper};color:${C.ink};font-family:Georgia,"Times New Roman",serif;`)
+  historyPage.innerHTML=historicalPageMarkup(historical,recapWeek,season)
+
+  const shell=document.createElement('div');shell.style.position='absolute';shell.style.left='-10000px';shell.style.top='0';shell.appendChild(report);if(historical.hasContent)shell.appendChild(historyPage);document.body.appendChild(shell)
   try{
     const canvas=await html2canvas(report,{scale:2,backgroundColor:C.paper,useCORS:true,logging:false})
     const pdf=new jsPDF({orientation:'portrait',unit:'mm',format:'a4',compress:true})
     pdf.addImage(canvas.toDataURL('image/jpeg',0.95),'JPEG',0,0,210,297,undefined,'FAST')
+    if(historical.hasContent){const historyCanvas=await html2canvas(historyPage,{scale:2,backgroundColor:C.paper,useCORS:true,logging:false});pdf.addPage('a4','portrait');pdf.addImage(historyCanvas.toDataURL('image/jpeg',0.95),'JPEG',0,0,210,297,undefined,'FAST')}
     pdf.save(`Blaj_Weekly_Week_${recapWeek}.pdf`)
   }finally{document.body.removeChild(shell)}
 }
