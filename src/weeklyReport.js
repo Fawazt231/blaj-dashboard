@@ -1,7 +1,7 @@
 import jsPDF from 'jspdf'
 import html2canvas from 'html2canvas'
 import { calculateLuckRows } from './luckIndex'
-import { buildHistoricalContext, mergeCurrentSeasonRegularGames, shouldShowCohortTable } from './historicalContext'
+import { buildHistoricalContext, getHeadToHeadWinStreak, mergeCurrentSeasonRegularGames, shouldShowCohortTable } from './historicalContext'
 
 const C = { ink:'#111827', paper:'#f7f3ea', gold:'#d97706', green:'#047857', playoffBg:'#dcfce7', red:'#b91c1c', blue:'#1d4ed8', muted:'#6b7280', line:'#d6d3d1' }
 const esc = (value = '') => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;')
@@ -41,6 +41,8 @@ const matchupHistory = (log, a, b) => {
   const wins=name => lastFive.filter(game => String(game.winner||'').toLowerCase()===String(name||'').toLowerCase()).length
   const aWins=wins(a), bWins=wins(b)
   const lastFiveText=aWins>bWins?`${a} ${aWins}-${bWins}`:bWins>aWins?`${b} ${bWins}-${aWins}`:`Tied ${aWins}-${bWins}`
+  const streak=getHeadToHeadWinStreak(log,a,b)
+  if(streak) return { lastFiveText, note:`${streak.team} has won ${streak.wins} straight meetings` }
   const playoff=games.find(game => String(game.game_type||'').toLowerCase()==='playoff' || game.is_championship)
   if(playoff) return { lastFiveText, note:`${playoff.season} ${playoffRound(playoff.season,playoff.week)} rematch` }
   const closest=[...games].sort((x,y)=>Number(x.margin||99)-Number(y.margin||99))[0]
@@ -73,6 +75,8 @@ const compactHistoricalMarkup = (context, recapWeek, season) => {
 
   const candidates=[
     ...context.milestones.map(item=>({team:item.team,text:item.text,score:100})),
+    ...context.winStreaks.map(item=>({team:item.team,text:item.sampleSize?`${item.team}: ${item.streak} straight wins. Of ${item.sampleSize} prior teams to reach ${item.streak}+, ${item.madePlayoffs} made the playoffs, ${item.finalists} reached the Finals, and ${item.champions} won titles.`:`${item.team}: ${item.streak} straight wins, the first single-season streak of that length in league history.`,score:98+item.streak/100})),
+    ...context.stretchExtremes.map(item=>({team:item.team,text:`${item.team}: ${extremeRank(item)} ${item.length}-week stretch in league history (${score(item.points)} PF, Weeks ${item.startWeek}-${item.endWeek}).`,score:96-item.rank+item.length/100})),
     ...context.weeklyExtremes.map(item=>({team:item.team,text:`${item.team}: ${extremeRank(item)} franchise score (${score(item.score)}) across ${item.total} regular-season games.`,score:95-item.rank})),
     ...context.annotations.map(item=>({team:item.team,text:`${item.team}: ${ordinal(item.displayRank)}-${item.direction} of ${item.total} starts (${score(item.pf)} PF).`,score:80-item.displayRank}))
   ].sort((a,b)=>b.score-a.score||a.team.localeCompare(b.team))

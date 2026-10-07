@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-import { buildHistoricalContext, mergeCurrentSeasonRegularGames, shouldShowCohortTable } from './historicalContext.js';
+import { buildHistoricalContext, buildSeasonWinStreaks, buildStretchExtremes, getHeadToHeadWinStreak, mergeCurrentSeasonRegularGames, shouldShowCohortTable } from './historicalContext.js';
 
 const history = JSON.parse(fs.readFileSync(new URL('../public/data/excel_history.json', import.meta.url)));
 const weekFourGames = history.MatchLog_PlayoffIncluded.filter(game => (
@@ -75,4 +75,77 @@ test('shows record cohorts only when the table has no more than five rows', () =
   assert.equal(shouldShowCohortTable([]), false);
   assert.equal(shouldShowCohortTable(Array.from({ length: 5 }, () => ({}))), true);
   assert.equal(shouldShowCohortTable(Array.from({ length: 6 }, () => ({}))), false);
+});
+
+test('finds current 2-4 week extremes without crossing season boundaries', () => {
+  const log = [];
+  const addGame = (season, week, alphaScore, betaScore) => log.push({
+    season,
+    week,
+    game_type: week > 14 ? 'playoff' : 'regular',
+    awayTeamName: 'Alpha',
+    homeTeamName: 'Beta',
+    awayScore: alphaScore,
+    homeScore: betaScore,
+    winner: alphaScore >= betaScore ? 'Alpha' : 'Beta',
+    loser: alphaScore >= betaScore ? 'Beta' : 'Alpha'
+  });
+
+  for (let week = 1; week <= 4; week += 1) addGame(2025, week, 100, 110);
+  for (let week = 1; week <= 4; week += 1) addGame(2026, week, 160, 90);
+
+  const extremes = buildStretchExtremes(log, 2026, 4);
+  const alpha = extremes.find(item => item.team === 'Alpha');
+
+  assert.ok(alpha);
+  assert.equal(alpha.length, 4);
+  assert.equal(alpha.startWeek, 1);
+  assert.equal(alpha.endWeek, 4);
+  assert.equal(alpha.points, 640);
+  assert.equal(alpha.direction, 'highest');
+  assert.equal(alpha.rank, 1);
+  assert.equal(alpha.total, 4);
+});
+
+test('contextualizes active single-season win streaks of six or more', () => {
+  const log = [];
+  const addWin = (season, week, winner = 'Alpha', championship = false) => log.push({
+    season,
+    week,
+    game_type: championship ? 'playoff' : 'regular',
+    awayTeamName: winner,
+    homeTeamName: 'Beta',
+    awayScore: 120,
+    homeScore: 90,
+    winner,
+    loser: 'Beta',
+    is_championship: championship
+  });
+  for (let week = 1; week <= 6; week += 1) addWin(2025, week);
+  addWin(2025, 15, 'Alpha', true);
+  for (let week = 1; week <= 6; week += 1) addWin(2026, week);
+
+  const streaks = buildSeasonWinStreaks(log, 2026, 6);
+
+  assert.equal(streaks.length, 1);
+  assert.equal(streaks[0].team, 'Alpha');
+  assert.equal(streaks[0].streak, 6);
+  assert.equal(streaks[0].sampleSize, 1);
+  assert.equal(streaks[0].madePlayoffs, 1);
+  assert.equal(streaks[0].finalists, 1);
+  assert.equal(streaks[0].champions, 1);
+});
+
+test('finds head-to-head winning streaks of five or more meetings', () => {
+  const log = Array.from({ length: 5 }, (_, index) => ({
+    season: 2020 + index,
+    week: 1,
+    awayTeamName: 'Alpha',
+    homeTeamName: 'Beta',
+    winner: 'Alpha',
+    loser: 'Beta'
+  }));
+
+  assert.deepEqual(getHeadToHeadWinStreak(log, 'Alpha', 'Beta'), { team: 'Alpha', wins: 5 });
+  assert.equal(getHeadToHeadWinStreak(log.slice(0, 4), 'Alpha', 'Beta'), null);
 });

@@ -4,6 +4,25 @@ export const shouldShowCohortTable = cohorts => (
   Array.isArray(cohorts) && cohorts.length > 0 && cohorts.length <= 5
 );
 
+export function getHeadToHeadWinStreak(log, teamA, teamB) {
+  const a = normalize(teamA);
+  const b = normalize(teamB);
+  const games = (log || []).filter(game => {
+    const away = normalize(game.awayTeamName);
+    const home = normalize(game.homeTeamName);
+    return (away === a && home === b) || (away === b && home === a);
+  }).sort((x, y) => Number(y.season) - Number(x.season) || Number(y.week) - Number(x.week));
+
+  const winner = games[0]?.winner;
+  if (!winner) return null;
+  let wins = 0;
+  for (const game of games) {
+    if (normalize(game.winner) !== normalize(winner)) break;
+    wins += 1;
+  }
+  return wins >= 5 ? { team: winner, wins } : null;
+}
+
 const ordinal = value => {
   const n = Number(value);
   const mod100 = n % 100;
@@ -163,6 +182,152 @@ function buildWeeklyExtremes(log, recapGames, currentSeason, recapWeek) {
   }).filter(Boolean).sort((a, b) => a.percentile - b.percentile || a.rank - b.rank || a.team.localeCompare(b.team)).slice(0, 6);
 }
 
+export function buildStretchExtremes(log, currentSeason, throughWeek) {
+  const performances = new Map();
+
+  (log || []).forEach(game => {
+    const season = Number(game.season);
+    const week = Number(game.week);
+    const gameType = String(game.game_type || 'regular').toLowerCase();
+    if (!['regular', 'playoff'].includes(gameType)) return;
+    if (!Number.isFinite(season) || !Number.isFinite(week) || season > Number(currentSeason)) return;
+    if (season === Number(currentSeason) && week > Number(throughWeek)) return;
+
+    ['away', 'home'].forEach(side => {
+      const team = game[`${side}TeamName`];
+      const points = Number(game[`${side}Score`]);
+      if (!team || !Number.isFinite(points)) return;
+      const id = `${season}|${normalize(team)}`;
+      const group = performances.get(id) || { season, team, scores: new Map() };
+      group.scores.set(week, points);
+      performances.set(id, group);
+    });
+  });
+
+  const windowsByLength = new Map([2, 3, 4].map(length => [length, []]));
+  performances.forEach(group => {
+    const scores = [...group.scores.entries()]
+      .map(([week, points]) => ({ week, points }))
+      .sort((a, b) => a.week - b.week);
+
+    windowsByLength.forEach((windows, length) => {
+      for (let index = 0; index <= scores.length - length; index += 1) {
+        const slice = scores.slice(index, index + length);
+        if (!slice.every((item, offset) => item.week === slice[0].week + offset)) continue;
+        windows.push({
+          season: group.season,
+          team: group.team,
+          length,
+          startWeek: slice[0].week,
+          endWeek: slice[slice.length - 1].week,
+          points: slice.reduce((sum, item) => sum + item.points, 0)
+        });
+      }
+    });
+  });
+
+  const candidates = [];
+  windowsByLength.forEach((windows, length) => {
+    windows.filter(item => (
+      item.season === Number(currentSeason) && item.endWeek === Number(throughWeek)
+    )).forEach(current => {
+      const lowRank = 1 + windows.filter(item => item.points < current.points).length;
+      const highRank = 1 + windows.filter(item => item.points > current.points).length;
+      const direction = lowRank <= highRank ? 'lowest' : 'highest';
+      const rank = Math.min(lowRank, highRank);
+      if (rank > 10) return;
+      candidates.push({
+        ...current,
+        direction,
+        rank,
+        total: windows.length,
+        percentile: rank / windows.length,
+        length
+      });
+    });
+  });
+
+  const selected = [];
+  const seenTeams = new Set();
+  candidates
+    .sort((a, b) => a.rank - b.rank || b.length - a.length || a.percentile - b.percentile || a.team.localeCompare(b.team))
+    .forEach(item => {
+      const id = normalize(item.team);
+      if (selected.length >= 6 || seenTeams.has(id)) return;
+      seenTeams.add(id);
+      selected.push(item);
+    });
+  return selected;
+}
+
+export function buildSeasonWinStreaks(log, currentSeason, throughWeek) {
+  const groups = new Map();
+  const relevantGames = (log || []).filter(game => {
+    const season = Number(game.season);
+    const week = Number(game.week);
+    const type = String(game.game_type || 'regular').toLowerCase();
+    return ['regular', 'playoff'].includes(type)
+      && season <= Number(currentSeason)
+      && !(season === Number(currentSeason) && week > Number(throughWeek));
+  });
+
+  relevantGames.forEach(game => {
+    ['away', 'home'].forEach(side => {
+      const team = game[`${side}TeamName`];
+      if (!team) return;
+      const id = `${game.season}|${normalize(team)}`;
+      const group = groups.get(id) || { season: Number(game.season), team, games: [] };
+      group.games.push({
+        week: Number(game.week),
+        won: normalize(game.winner) === normalize(team)
+      });
+      groups.set(id, group);
+    });
+  });
+
+  const summaries = [...groups.values()].map(group => {
+    let activeStreak = 0;
+    let maxStreak = 0;
+    let running = 0;
+    group.games.sort((a, b) => a.week - b.week).forEach(game => {
+      running = game.won ? running + 1 : 0;
+      maxStreak = Math.max(maxStreak, running);
+    });
+    for (let index = group.games.length - 1; index >= 0 && group.games[index].won; index -= 1) activeStreak += 1;
+    return { ...group, activeStreak, maxStreak };
+  });
+
+  const historical = summaries.filter(item => item.season < Number(currentSeason));
+  return summaries.filter(item => (
+    item.season === Number(currentSeason) && item.activeStreak >= 6
+  )).map(current => {
+    const comparable = historical.filter(item => item.maxStreak >= current.activeStreak);
+    const madePlayoffs = comparable.filter(item => relevantGames.some(game => (
+      Number(game.season) === item.season
+      && String(game.game_type || '').toLowerCase() === 'playoff'
+      && [game.awayTeamName, game.homeTeamName].some(team => normalize(team) === normalize(item.team))
+    ))).length;
+    const finalists = comparable.filter(item => relevantGames.some(game => (
+      Number(game.season) === item.season
+      && game.is_championship
+      && [game.awayTeamName, game.homeTeamName].some(team => normalize(team) === normalize(item.team))
+    ))).length;
+    const champions = comparable.filter(item => relevantGames.some(game => (
+      Number(game.season) === item.season
+      && game.is_championship
+      && normalize(game.winner) === normalize(item.team)
+    ))).length;
+    return {
+      team: current.team,
+      streak: current.activeStreak,
+      sampleSize: comparable.length,
+      madePlayoffs,
+      finalists,
+      champions
+    };
+  }).sort((a, b) => b.streak - a.streak || a.team.localeCompare(b.team));
+}
+
 function buildCareerMilestones(log, recapGames, currentSeason, recapWeek) {
   const currentManagers = new Set();
   recapGames.forEach(game => {
@@ -226,6 +391,8 @@ export function buildHistoricalContext({ log = [], recapGames = [], throughWeek,
 
   const cohorts = buildCohorts(entries, playoffs, currentSeason);
   const weeklyExtremes = buildWeeklyExtremes(log, recapGames, currentSeason, throughWeek);
+  const stretchExtremes = buildStretchExtremes(log, currentSeason, throughWeek);
+  const winStreaks = buildSeasonWinStreaks(log, currentSeason, throughWeek);
   const milestones = buildCareerMilestones(log, recapGames, currentSeason, throughWeek);
 
   return {
@@ -233,7 +400,9 @@ export function buildHistoricalContext({ log = [], recapGames = [], throughWeek,
     annotations,
     cohorts,
     weeklyExtremes,
+    stretchExtremes,
+    winStreaks,
     milestones,
-    hasContent: tables.length > 0 || annotations.length > 0 || cohorts.length > 0 || weeklyExtremes.length > 0 || milestones.length > 0
+    hasContent: tables.length > 0 || annotations.length > 0 || cohorts.length > 0 || weeklyExtremes.length > 0 || stretchExtremes.length > 0 || winStreaks.length > 0 || milestones.length > 0
   };
 }
