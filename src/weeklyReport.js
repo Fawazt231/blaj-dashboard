@@ -1,7 +1,7 @@
 import jsPDF from 'jspdf'
 import html2canvas from 'html2canvas'
 import { calculateLuckRows } from './luckIndex'
-import { buildHistoricalContext, mergeCurrentSeasonRegularGames } from './historicalContext'
+import { buildHistoricalContext, mergeCurrentSeasonRegularGames, shouldShowCohortTable } from './historicalContext'
 
 const C = { ink:'#111827', paper:'#f7f3ea', gold:'#d97706', green:'#047857', playoffBg:'#dcfce7', red:'#b91c1c', blue:'#1d4ed8', muted:'#6b7280', line:'#d6d3d1' }
 const esc = (value = '') => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;')
@@ -61,6 +61,7 @@ const extremeRank = item => {
 }
 
 const compactHistoricalMarkup = (context, recapWeek, season) => {
+  const showCohorts=shouldShowCohortTable(context.cohorts)
   const table=[...context.tables].sort((a,b)=>{
     const aRank=Math.min(...a.rows.map((row,index)=>row.season===season?index+1:99))
     const bRank=Math.min(...b.rows.map((row,index)=>row.season===season?index+1:99))
@@ -68,7 +69,7 @@ const compactHistoricalMarkup = (context, recapWeek, season) => {
   })[0]
   const ranking=table?`<div><div style="font-family:Arial,sans-serif;font-size:5.8px;font-weight:900;color:${C.muted};text-transform:uppercase;margin-bottom:3px;">${esc(table.label)} by PF</div>${table.rows.map((item,index)=>`<div style="min-height:20px;display:grid;grid-template-columns:13px 1fr 43px 1.55fr;gap:4px;align-items:center;padding:2px 0;box-sizing:border-box;border-bottom:1px solid ${C.line};background:${item.season===season?C.playoffBg:'transparent'};font-family:Arial,sans-serif;font-size:5.5px;line-height:1.15;"><strong style="color:${C.gold};">${index+1}</strong><strong>${esc(item.team)} '${String(item.season).slice(-2)}</strong><span style="text-align:right;font-weight:800;">${score(item.pf)}</span><span style="text-align:right;">${esc(item.outcome)}</span></div>`).join('')}</div>`:`<div><div style="font-family:Arial,sans-serif;font-size:5.8px;font-weight:900;color:${C.muted};text-transform:uppercase;margin-bottom:3px;">This season in the record book</div>${context.annotations.map(item=>`<div style="min-height:27px;padding:4px 0;border-bottom:1px solid ${C.line};font-family:Arial,sans-serif;font-size:6px;"><strong>${esc(item.team)}</strong> · ${ordinal(item.displayRank)}-${item.direction} of ${item.total} (${score(item.pf)} PF)</div>`).join('')}</div>`
 
-  const cohorts=`<div><div style="font-family:Arial,sans-serif;font-size:5.8px;font-weight:900;color:${C.muted};text-transform:uppercase;margin-bottom:3px;">What these records have meant</div><div style="display:grid;grid-template-columns:29px 1.15fr 47px 1.5fr;gap:4px;padding-bottom:3px;border-bottom:1px solid ${C.ink};font-family:Arial,sans-serif;font-size:5px;font-weight:900;color:${C.muted};text-transform:uppercase;"><span>Start</span><span>Current</span><span style="text-align:right;">Playoffs</span><span style="text-align:right;">Champions</span></div>${context.cohorts.map(item=>`<div style="min-height:20px;display:grid;grid-template-columns:29px 1.15fr 47px 1.5fr;gap:4px;align-items:center;padding:2px 0;box-sizing:border-box;border-bottom:1px solid ${C.line};font-family:Arial,sans-serif;font-size:5.1px;line-height:1.15;"><strong style="color:${C.gold};">${esc(item.record)}</strong><strong>${esc(item.teams.join(', '))}</strong><span style="text-align:right;font-weight:800;">${pct(item.playoffPct)}</span><span style="text-align:right;">${item.championTeams.length?esc(item.championTeams.join(', ')):'None'}</span></div>`).join('')}</div>`
+  const cohorts=showCohorts?`<div><div style="font-family:Arial,sans-serif;font-size:5.8px;font-weight:900;color:${C.muted};text-transform:uppercase;margin-bottom:3px;">What these records have meant</div><div style="display:grid;grid-template-columns:29px 1.15fr 47px 1.5fr;gap:4px;padding-bottom:3px;border-bottom:1px solid ${C.ink};font-family:Arial,sans-serif;font-size:5px;font-weight:900;color:${C.muted};text-transform:uppercase;"><span>Start</span><span>Current</span><span style="text-align:right;">Playoffs</span><span style="text-align:right;">Champions</span></div>${context.cohorts.map(item=>`<div style="min-height:20px;display:grid;grid-template-columns:29px 1.15fr 47px 1.5fr;gap:4px;align-items:center;padding:2px 0;box-sizing:border-box;border-bottom:1px solid ${C.line};font-family:Arial,sans-serif;font-size:5.1px;line-height:1.15;"><strong style="color:${C.gold};">${esc(item.record)}</strong><strong>${esc(item.teams.join(', '))}</strong><span style="text-align:right;font-weight:800;">${pct(item.playoffPct)}</span><span style="text-align:right;">${item.championTeams.length?esc(item.championTeams.join(', ')):'None'}</span></div>`).join('')}</div>`:''
 
   const candidates=[
     ...context.milestones.map(item=>({team:item.team,text:item.text,score:100})),
@@ -77,7 +78,8 @@ const compactHistoricalMarkup = (context, recapWeek, season) => {
   ].sort((a,b)=>b.score-a.score||a.team.localeCompare(b.team))
   const facts=[],seen=new Set()
   candidates.forEach(item=>{const id=String(item.text||'').toLowerCase();if(facts.length<3&&!seen.has(id)){seen.add(id);facts.push(item)}})
-  return `<div style="margin-top:5px;">${section(`Historical context | through Week ${recapWeek}`)}</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">${ranking}${cohorts}</div>${facts.length?`<div style="display:grid;grid-template-columns:repeat(${facts.length},1fr);gap:10px;margin-top:6px;">${facts.map(item=>`<div style="min-height:32px;padding:5px 7px;border-top:2px solid ${C.ink};background:#fffdf8;font-size:5.7px;line-height:1.3;"><strong>${esc(item.text)}</strong></div>`).join('')}</div>`:''}`
+  const historyColumns=showCohorts?'1fr 1fr':'minmax(0,520px)'
+  return `<div style="margin-top:5px;">${section(`Historical context | through Week ${recapWeek}`)}</div><div style="display:grid;grid-template-columns:${historyColumns};gap:20px;">${ranking}${cohorts}</div>${facts.length?`<div style="display:grid;grid-template-columns:repeat(${facts.length},1fr);gap:10px;margin-top:6px;">${facts.map(item=>`<div style="min-height:32px;padding:5px 7px;border-top:2px solid ${C.ink};background:#fffdf8;font-size:5.7px;line-height:1.3;"><strong>${esc(item.text)}</strong></div>`).join('')}</div>`:''}`
 }
 
 export async function downloadWeeklyNewsletter({ liveData, excelData, simResults, currentMatchups, selectedWeek, getH2HRecord }) {

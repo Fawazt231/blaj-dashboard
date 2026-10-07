@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-import { buildHistoricalContext, mergeCurrentSeasonRegularGames } from './historicalContext.js';
+import { buildHistoricalContext, mergeCurrentSeasonRegularGames, shouldShowCohortTable } from './historicalContext.js';
 
 const history = JSON.parse(fs.readFileSync(new URL('../public/data/excel_history.json', import.meta.url)));
 const weekFourGames = history.MatchLog_PlayoffIncluded.filter(game => (
@@ -69,4 +69,10 @@ test('Week 4 recognizes Nfi421 reaching an exact 50-50 regular-season record', (
   assert.deepEqual(context.milestones.map(item => item.text), [
     'Nfi421 is exactly 50-50 through 100 regular-season games.'
   ]);
+});
+
+test('shows record cohorts only when the table has no more than five rows', () => {
+  assert.equal(shouldShowCohortTable([]), false);
+  assert.equal(shouldShowCohortTable(Array.from({ length: 5 }, () => ({}))), true);
+  assert.equal(shouldShowCohortTable(Array.from({ length: 6 }, () => ({}))), false);
 });

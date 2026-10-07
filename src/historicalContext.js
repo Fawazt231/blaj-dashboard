@@ -1,5 +1,9 @@
 const normalize = value => String(value || '').trim().toLowerCase();
 
+export const shouldShowCohortTable = cohorts => (
+  Array.isArray(cohorts) && cohorts.length > 0 && cohorts.length <= 5
+);
+
 const ordinal = value => {
   const n = Number(value);
   const mod100 = n % 100;
