@@ -23,8 +23,10 @@ test('Week 4 deterministically selects the relevant tables and annotations', () 
   assert.deepEqual(first.tables.map(table => table.label), ['Top five starts']);
   assert.equal(first.tables[0].rows[1].team, 'Nabbo');
   assert.equal(first.tables[0].rows[1].pf, 515.38);
-  assert.deepEqual(first.annotations.map(item => item.team), ['Aryan', 'Loomnoo', 'Jaguo']);
+  assert.deepEqual(first.annotations.map(item => item.team), ['Aryan']);
+  assert.equal(first.annotations[0].displayRank, 10);
   assert.equal(first.cohorts.length, 5);
+  assert.deepEqual(first.cohorts[0].championTeams, ["Jaguo '25"]);
 });
 
 test('Week 4 identifies GeneralSod manager-specific low', () => {
@@ -54,4 +56,17 @@ test('live completed games replace stale current-season history', () => {
   const merged = mergeCurrentSeasonRegularGames(stale, live, 2026);
 
   assert.deepEqual(merged.map(game => game.awayTeamName), ['Old A', 'Live A']);
+});
+
+test('Week 4 recognizes Nfi421 reaching an exact 50-50 regular-season record', () => {
+  const context = buildHistoricalContext({
+    log: history.MatchLog_PlayoffIncluded,
+    recapGames: weekFourGames,
+    throughWeek: 4,
+    currentSeason: 2026
+  });
+
+  assert.deepEqual(context.milestones.map(item => item.text), [
+    'Nfi421 is exactly 50-50 through 100 regular-season games.'
+  ]);
 });

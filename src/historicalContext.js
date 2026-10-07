@@ -105,9 +105,10 @@ function buildCohorts(entries, playoffs, currentSeason) {
     const madePlayoffs = comparable.filter(item => playoffs.some(game => (
       Number(game.season) === item.season && [game.awayTeamName, game.homeTeamName].includes(item.team)
     ))).length;
-    const champions = comparable.filter(item => playoffs.some(game => (
+    const championEntries = comparable.filter(item => playoffs.some(game => (
       Number(game.season) === item.season && game.is_championship && game.winner === item.team
-    ))).length;
+    )));
+    const champions = championEntries.length;
     return {
       record,
       teams: teams.map(item => item.team).sort(),
@@ -115,7 +116,10 @@ function buildCohorts(entries, playoffs, currentSeason) {
       madePlayoffs,
       playoffPct: madePlayoffs / comparable.length * 100,
       champions,
-      championshipPct: champions / comparable.length * 100
+      championshipPct: champions / comparable.length * 100,
+      championTeams: championEntries
+        .map(item => `${item.team} '${String(item.season).slice(-2)}`)
+        .sort()
     };
   }).filter(Boolean).sort((a, b) => Number(b.record.split('-')[0]) - Number(a.record.split('-')[0]));
 }
@@ -142,7 +146,7 @@ function buildWeeklyExtremes(log, recapGames, currentSeason, recapWeek) {
     const direction = lowRank <= highRank ? 'lowest' : 'highest';
     const rank = Math.min(lowRank, highRank);
     const percentile = rank / total;
-    if (percentile > 0.10) return null;
+    if (rank > 10) return null;
     return {
       team: current.team,
       score: current.score,
@@ -155,6 +159,37 @@ function buildWeeklyExtremes(log, recapGames, currentSeason, recapWeek) {
   }).filter(Boolean).sort((a, b) => a.percentile - b.percentile || a.rank - b.rank || a.team.localeCompare(b.team)).slice(0, 6);
 }
 
+function buildCareerMilestones(log, recapGames, currentSeason, recapWeek) {
+  const currentManagers = new Set();
+  recapGames.forEach(game => {
+    if (game.awayTeamName) currentManagers.add(normalize(game.awayTeamName));
+    if (game.homeTeamName) currentManagers.add(normalize(game.homeTeamName));
+  });
+
+  const records = new Map();
+  log.filter(game => String(game.game_type || 'regular').toLowerCase() === 'regular').forEach(game => {
+    if (Number(game.season) > currentSeason) return;
+    if (Number(game.season) === currentSeason && Number(game.week) > recapWeek) return;
+    [game.awayTeamName, game.homeTeamName].forEach(team => {
+      const id = normalize(team);
+      if (!currentManagers.has(id)) return;
+      const record = records.get(id) || { team, wins: 0, losses: 0, ties: 0, games: 0 };
+      record.games += 1;
+      if (normalize(game.winner) === id) record.wins += 1;
+      else if (normalize(game.loser) === id) record.losses += 1;
+      else record.ties += 1;
+      records.set(id, record);
+    });
+  });
+
+  return [...records.values()].filter(record => (
+    record.games >= 50 && record.games % 10 === 0 && record.wins === record.losses && record.ties === 0
+  )).map(record => ({
+    ...record,
+    text: `${record.team} is exactly ${record.wins}-${record.losses} through ${record.games} regular-season games.`
+  })).sort((a, b) => b.games - a.games || a.team.localeCompare(b.team));
+}
+
 export function buildHistoricalContext({ log = [], recapGames = [], throughWeek, currentSeason }) {
   const { entries, playoffs } = buildStarts(log, throughWeek, currentSeason);
   const byPf = [...entries].sort((a, b) => b.pf - a.pf);
@@ -165,18 +200,18 @@ export function buildHistoricalContext({ log = [], recapGames = [], throughWeek,
     ...top.filter(item => item.season === currentSeason).map(item => normalize(item.team)),
     ...bottom.filter(item => item.season === currentSeason).map(item => normalize(item.team))
   ]);
-  const cutoff = Math.ceil(entries.length * 0.10);
   const annotations = currentEntries.map(item => {
     const rank = byPf.findIndex(row => row.season === item.season && row.team === item.team) + 1;
     const tailRank = entries.length - rank + 1;
-    if (rank > cutoff && tailRank > cutoff) return null;
+    if (rank > 10 && tailRank > 10) return null;
     return {
       team: item.team,
       pf: item.pf,
       rank,
       total: entries.length,
-      direction: rank <= cutoff ? 'highest' : 'lowest',
-      extremity: Math.min(rank, tailRank)
+      direction: rank <= 10 ? 'highest' : 'lowest',
+      extremity: Math.min(rank, tailRank),
+      displayRank: Math.min(rank, tailRank)
     };
   }).filter(item => item && !tableTeams.has(normalize(item.team)))
     .sort((a, b) => a.extremity - b.extremity || a.team.localeCompare(b.team));
@@ -187,12 +222,14 @@ export function buildHistoricalContext({ log = [], recapGames = [], throughWeek,
 
   const cohorts = buildCohorts(entries, playoffs, currentSeason);
   const weeklyExtremes = buildWeeklyExtremes(log, recapGames, currentSeason, throughWeek);
+  const milestones = buildCareerMilestones(log, recapGames, currentSeason, throughWeek);
 
   return {
     tables,
     annotations,
     cohorts,
     weeklyExtremes,
-    hasContent: tables.length > 0 || annotations.length > 0 || cohorts.length > 0 || weeklyExtremes.length > 0
+    milestones,
+    hasContent: tables.length > 0 || annotations.length > 0 || cohorts.length > 0 || weeklyExtremes.length > 0 || milestones.length > 0
   };
 }
