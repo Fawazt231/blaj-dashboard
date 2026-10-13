@@ -124,7 +124,7 @@ function buildCohorts(entries, playoffs, currentSeason) {
     const comparable = completed.filter(item => (
       item.wins === teams[0].wins && item.losses === teams[0].losses && item.ties === teams[0].ties
     ));
-    if (comparable.length < 5) return null;
+    if (!comparable.length) return null;
     const madePlayoffs = comparable.filter(item => playoffs.some(game => (
       Number(game.season) === item.season && [game.awayTeamName, game.homeTeamName].includes(item.team)
     ))).length;
@@ -158,7 +158,7 @@ function buildWeeklyExtremes(log, recapGames, currentSeason, recapWeek) {
   return currentScores.map(current => {
     const previous = [];
     regular.forEach(game => {
-      if (Number(game.season) === currentSeason && Number(game.week) === recapWeek) return;
+      if (Number(game.season) === currentSeason && Number(game.week) >= recapWeek) return;
       if (normalize(game.awayTeamName) === normalize(current.team)) previous.push(Number(game.awayScore || 0));
       if (normalize(game.homeTeamName) === normalize(current.team)) previous.push(Number(game.homeScore || 0));
     });

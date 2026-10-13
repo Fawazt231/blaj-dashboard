@@ -77,6 +77,24 @@ test('shows record cohorts only when the table has no more than five rows', () =
   assert.equal(shouldShowCohortTable(Array.from({ length: 6 }, () => ({}))), false);
 });
 
+test('keeps record cohorts with fewer than five historical comparisons', () => {
+  const games = [
+    { season: 2025, week: 1, game_type: 'regular', awayTeamName: 'Alpha', homeTeamName: 'Beta', awayScore: 120, homeScore: 90, winner: 'Alpha', loser: 'Beta' },
+    { season: 2026, week: 1, game_type: 'regular', awayTeamName: 'Gamma', homeTeamName: 'Delta', awayScore: 110, homeScore: 100, winner: 'Gamma', loser: 'Delta' }
+  ];
+  const context = buildHistoricalContext({
+    log: games,
+    recapGames: games.filter(game => game.season === 2026),
+    throughWeek: 1,
+    currentSeason: 2026
+  });
+
+  assert.deepEqual(context.cohorts.map(item => [item.record, item.sampleSize]), [
+    ['1-0', 1],
+    ['0-1', 1]
+  ]);
+});
+
 test('finds current 2-4 week extremes without crossing season boundaries', () => {
   const log = [];
   const addGame = (season, week, alphaScore, betaScore) => log.push({
