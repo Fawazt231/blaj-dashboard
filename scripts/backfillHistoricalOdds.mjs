@@ -12,6 +12,8 @@ const simulations = Number(process.env.BACKTEST_SIMULATIONS || 10000);
 const priorStd = Number(process.env.BACKTEST_PRIOR_STD || 15);
 const minSigma = Number(process.env.BACKTEST_MIN_SIGMA || 40);
 const rosterBlend = Number(process.env.BACKTEST_ROSTER_BLEND || 0);
+const rosterMinCompletedWeek = Number(process.env.BACKTEST_ROSTER_MIN_WEEK || 1);
+const rosterMaxCompletedWeek = Number(process.env.BACKTEST_ROSTER_MAX_WEEK || 99);
 const outputPath = process.env.BACKTEST_OUTPUT
   ? path.resolve(root, process.env.BACKTEST_OUTPUT)
   : path.join(root, 'public/data/historical_backtest.json');
@@ -135,7 +137,9 @@ function buildCheckpoint(games, config, completedWeek) {
     const weeklyScores = teamGames.sort((a, b) => a.week - b.week).map(game => (
       game.awayTeamName === name ? Number(game.awayScore) : Number(game.homeScore)
     ));
-    const rosterProjection = rosterFeatureByCheckpoint.get(`${config.season}|${completedWeek}|${name}`);
+    const rosterProjection = completedWeek >= rosterMinCompletedWeek && completedWeek <= rosterMaxCompletedWeek
+      ? rosterFeatureByCheckpoint.get(`${config.season}|${completedWeek}|${name}`)
+      : null;
     return {
       name,
       wins: teamGames.filter(game => game.winner === name).length,
@@ -144,13 +148,14 @@ function buildCheckpoint(games, config, completedWeek) {
       weeklyScores,
       division: config.divisionByTeam.get(name) || '1',
       projectedMean: rosterProjection?.projectedMean,
-      projectedLeagueMean: rosterProjection?.projectedLeagueMean
+      projectedLeagueMean: rosterProjection?.projectedLeagueMean,
+      projectionWeek: completedWeek + 1
     };
   });
   const remainingSchedule = games
     .filter(game => game.week > completedWeek)
     .sort((a, b) => a.week - b.week)
-    .map(game => [game.awayTeamName, game.homeTeamName]);
+    .map(game => [game.awayTeamName, game.homeTeamName, game.week]);
   return { teams, remainingSchedule };
 }
 
@@ -259,6 +264,9 @@ const output = {
     priorStd,
     minSigma,
     rosterBlend,
+    rosterProjectionWindow: rosterBlend > 0
+      ? { minCompletedWeek: rosterMinCompletedWeek, maxCompletedWeek: rosterMaxCompletedWeek }
+      : null,
     rosterProjectionSource: rosterBlend > 0 ? path.relative(root, rosterFeaturePath) : null
   },
   checkpoints: new Set(forecasts.map(row => `${row.season}-${row.weekCompleted}`)).size,

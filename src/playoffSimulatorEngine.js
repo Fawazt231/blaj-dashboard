@@ -84,17 +84,16 @@ export function runPlayoffSimulation({
       }
     }
 
-    // Optional challenger-model input. A missing roster projection always falls
-    // back to the score-only estimate instead of being interpreted as zero.
+    // Optional challenger-model input. Keep it separate from the durable PF
+    // estimate so a one-week lineup projection affects only its target week.
+    // Missing projections always fall back to the score-only estimate.
     const projectedMean = Number(t.projectedMean);
-    if (Number.isFinite(projectedMean) && rosterBlend > 0) {
-      const blend = Math.min(1, Math.max(0, Number(rosterBlend)));
-      const projectedLeagueMean = Number(t.projectedLeagueMean);
-      const normalizedProjection = Number.isFinite(projectedLeagueMean)
-        ? leagueMean + projectedMean - projectedLeagueMean
-        : projectedMean;
-      mean = (1 - blend) * mean + blend * normalizedProjection;
-    }
+    const projectedLeagueMean = Number(t.projectedLeagueMean);
+    const rosterMean = Number.isFinite(projectedMean)
+      ? (Number.isFinite(projectedLeagueMean)
+          ? leagueMean + projectedMean - projectedLeagueMean
+          : projectedMean)
+      : null;
 
     return {
       name: t.name,
@@ -103,6 +102,8 @@ export function runPlayoffSimulation({
       fpts: t.fpts,
       mean: mean,
       std: std,
+      rosterMean,
+      projectionWeek: Number(t.projectionWeek),
       division: t.division
     };
   });
@@ -142,6 +143,8 @@ export function runPlayoffSimulation({
       fpts: t.fpts,
       mean: t.mean,
       std: t.std,
+      rosterMean: t.rosterMean,
+      projectionWeek: t.projectionWeek,
       division: t.division
     }));
 
@@ -155,18 +158,29 @@ export function runPlayoffSimulation({
       const home = teamByName[match[1]];
       if (!away || !home) return;
 
+      const gameWeek = Number(match[2]);
+      const blend = Math.min(1, Math.max(0, Number(rosterBlend)));
+      const meanForGame = team => (
+        blend > 0
+        && Number.isFinite(gameWeek)
+        && gameWeek === team.projectionWeek
+        && Number.isFinite(team.rosterMean)
+      ) ? (1 - blend) * team.mean + blend * team.rosterMean : team.mean;
+      const awayMean = meanForGame(away);
+      const homeMean = meanForGame(home);
+
       let awayScore = 0;
       let homeScore = 0;
 
       if (overrides[idx] === 'away') {
-        awayScore = away.mean + 20;
-        homeScore = home.mean - 20;
+        awayScore = awayMean + 20;
+        homeScore = homeMean - 20;
       } else if (overrides[idx] === 'home') {
-        awayScore = away.mean - 20;
-        homeScore = home.mean + 20;
+        awayScore = awayMean - 20;
+        homeScore = homeMean + 20;
       } else {
-        awayScore = randomNormal(away.mean, away.std, rng);
-        homeScore = randomNormal(home.mean, home.std, rng);
+        awayScore = randomNormal(awayMean, away.std, rng);
+        homeScore = randomNormal(homeMean, home.std, rng);
       }
 
       away.fpts += awayScore;

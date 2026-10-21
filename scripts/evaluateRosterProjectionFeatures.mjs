@@ -85,6 +85,7 @@ function metrics(inputRows, blend) {
 }
 
 const seasons = [...new Set(rows.map(row => row.season))].sort();
+const completedWeeks = [...new Set(rows.map(row => row.completedWeek))].sort((a, b) => a - b);
 const fixedBlendResults = blends.map(blend => ({
   blend,
   ...Object.fromEntries(Object.entries(metrics(rows, blend)).map(([key, value]) => [key, round(value)])),
@@ -92,6 +93,13 @@ const fixedBlendResults = blends.map(blend => ({
     season,
     ...Object.fromEntries(Object.entries(metrics(rows.filter(row => row.season === season), blend))
       .map(([key, value]) => [key, round(value)]))
+  })),
+  byCompletedWeek: completedWeeks.map(completedWeek => ({
+    completedWeek,
+    ...Object.fromEntries(Object.entries(metrics(
+      rows.filter(row => row.completedWeek === completedWeek),
+      blend
+    )).map(([key, value]) => [key, round(value)]))
   }))
 }));
 

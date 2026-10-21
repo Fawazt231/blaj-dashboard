@@ -1,0 +1,414 @@
+{
+  "generatedAt": "2026-10-21T23:31:35.189Z",
+  "status": "experimental_not_promoted",
+  "method": "One-week roster projections affect only their target game week; later simulated weeks use the tuned PF distribution.",
+  "baseline": "baseline",
+  "candidates": [
+    {
+      "label": "baseline",
+      "source": "/private/tmp/roster-one-week-10k-0.json",
+      "modelParameters": {
+        "priorStd": 15,
+        "minSigma": 40,
+        "rosterBlend": 0,
+        "rosterProjectionSource": null
+      },
+      "simulationsPerCheckpoint": 10000,
+      "overall": {
+        "forecasts": 4272,
+        "brier": 0.10556264759831481,
+        "logLoss": 0.3306405083704612,
+        "brierImprovementPct": 0,
+        "logLossImprovementPct": 0
+      },
+      "byOutcome": {
+        "playoff": {
+          "forecasts": 1068,
+          "brier": 0.17003187829588004,
+          "logLoss": 0.49805135032972536
+        },
+        "bye": {
+          "forecasts": 1068,
+          "brier": 0.07376504095505616,
+          "logLoss": 0.24665545374171657
+        },
+        "divisionWinner": {
+          "forecasts": 1068,
+          "brier": 0.11768506337078632,
+          "logLoss": 0.3620655697992641
+        },
+        "last": {
+          "forecasts": 1068,
+          "brier": 0.060768607771535615,
+          "logLoss": 0.2157896596111406
+        }
+      },
+      "bySeason": [
+        {
+          "season": 2019,
+          "forecasts": 576,
+          "brier": 0.10379569739583326,
+          "logLoss": 0.33002187585223886,
+          "brierImprovementPct": 0,
+          "logLossImprovementPct": 0
+        },
+        {
+          "season": 2020,
+          "forecasts": 576,
+          "brier": 0.11997830583333337,
+          "logLoss": 0.36536385217200346,
+          "brierImprovementPct": 0,
+          "logLossImprovementPct": 0
+        },
+        {
+          "season": 2021,
+          "forecasts": 624,
+          "brier": 0.10559318836538467,
+          "logLoss": 0.3201106554856429,
+          "brierImprovementPct": 0,
+          "logLossImprovementPct": 0
+        },
+        {
+          "season": 2022,
+          "forecasts": 624,
+          "brier": 0.09654571878205123,
+          "logLoss": 0.3090546751368174,
+          "brierImprovementPct": 0,
+          "logLossImprovementPct": 0
+        },
+        {
+          "season": 2023,
+          "forecasts": 624,
+          "brier": 0.09281823301282052,
+          "logLoss": 0.30480185654476716,
+          "brierImprovementPct": 0,
+          "logLossImprovementPct": 0
+        },
+        {
+          "season": 2024,
+          "forecasts": 624,
+          "brier": 0.09701734977564112,
+          "logLoss": 0.3036728437056082,
+          "brierImprovementPct": 0,
+          "logLossImprovementPct": 0
+        },
+        {
+          "season": 2025,
+          "forecasts": 624,
+          "brier": 0.12416301756410264,
+          "logLoss": 0.3840812390256425,
+          "brierImprovementPct": 0,
+          "logLossImprovementPct": 0
+        }
+      ]
+    },
+    {
+      "label": "one-week-blend-50",
+      "source": "/private/tmp/roster-one-week-10k-05.json",
+      "modelParameters": {
+        "priorStd": 15,
+        "minSigma": 40,
+        "rosterBlend": 0.5,
+        "rosterProjectionSource": "data/historical_roster_projection_features.json"
+      },
+      "simulationsPerCheckpoint": 10000,
+      "overall": {
+        "forecasts": 4272,
+        "brier": 0.1052147053089888,
+        "logLoss": 0.3297876771685522,
+        "brierImprovementPct": 0.32960739166943975,
+        "logLossImprovementPct": 0.25793306637235114
+      },
+      "byOutcome": {
+        "playoff": {
+          "forecasts": 1068,
+          "brier": 0.16909214232209743,
+          "logLoss": 0.49602328760530845
+        },
+        "bye": {
+          "forecasts": 1068,
+          "brier": 0.07371372479400765,
+          "logLoss": 0.2464044249643199
+        },
+        "divisionWinner": {
+          "forecasts": 1068,
+          "brier": 0.11762978488764035,
+          "logLoss": 0.36177858747035946
+        },
+        "last": {
+          "forecasts": 1068,
+          "brier": 0.060423169232209806,
+          "logLoss": 0.2149444086342235
+        }
+      },
+      "bySeason": [
+        {
+          "season": 2019,
+          "forecasts": 576,
+          "brier": 0.10379851916666666,
+          "logLoss": 0.32976224628967593,
+          "brierImprovementPct": -0.002718581698668565,
+          "logLossImprovementPct": 0.07867040992129981
+        },
+        {
+          "season": 2020,
+          "forecasts": 576,
+          "brier": 0.1197156644097222,
+          "logLoss": 0.36478621339519207,
+          "brierImprovementPct": 0.2189074281278902,
+          "logLossImprovementPct": 0.15809959671091445
+        },
+        {
+          "season": 2021,
+          "forecasts": 624,
+          "brier": 0.10422078567307692,
+          "logLoss": 0.31623029225803373,
+          "brierImprovementPct": 1.2997075981443174,
+          "logLossImprovementPct": 1.2121943337756846
+        },
+        {
+          "season": 2022,
+          "forecasts": 624,
+          "brier": 0.09661700657051288,
+          "logLoss": 0.30953436978957904,
+          "brierImprovementPct": -0.073838373530144,
+          "logLossImprovementPct": -0.15521352412781741
+        },
+        {
+          "season": 2023,
+          "forecasts": 624,
+          "brier": 0.09183602112179484,
+          "logLoss": 0.3024748488015066,
+          "brierImprovementPct": 1.0582100726804544,
+          "logLossImprovementPct": 0.7634493338195214
+        },
+        {
+          "season": 2024,
+          "forecasts": 624,
+          "brier": 0.09753156291666668,
+          "logLoss": 0.30438611491440554,
+          "brierImprovementPct": -0.5300218385831945,
+          "logLossImprovementPct": -0.23488145995984588
+        },
+        {
+          "season": 2025,
+          "forecasts": 624,
+          "brier": 0.12378989830128209,
+          "logLoss": 0.38402989360438866,
+          "brierImprovementPct": 0.3005075666978829,
+          "logLossImprovementPct": 0.013368375238553831
+        }
+      ]
+    },
+    {
+      "label": "blend-50-through-week-12",
+      "source": "/private/tmp/roster-one-week-10k-05-max12.json",
+      "modelParameters": {
+        "priorStd": 15,
+        "minSigma": 40,
+        "rosterBlend": 0.5,
+        "rosterProjectionWindow": {
+          "minCompletedWeek": 1,
+          "maxCompletedWeek": 12
+        },
+        "rosterProjectionSource": "data/historical_roster_projection_features.json"
+      },
+      "simulationsPerCheckpoint": 10000,
+      "overall": {
+        "forecasts": 4272,
+        "brier": 0.1050790624953184,
+        "logLoss": 0.32944242081529795,
+        "brierImprovementPct": 0.45810247658484293,
+        "logLossImprovementPct": 0.3623535304454806
+      },
+      "byOutcome": {
+        "playoff": {
+          "forecasts": 1068,
+          "brier": 0.1691872278464419,
+          "logLoss": 0.49613116728404333
+        },
+        "bye": {
+          "forecasts": 1068,
+          "brier": 0.07332503018726605,
+          "logLoss": 0.24552933698870852
+        },
+        "divisionWinner": {
+          "forecasts": 1068,
+          "brier": 0.11736477904494375,
+          "logLoss": 0.3611601823655724
+        },
+        "last": {
+          "forecasts": 1068,
+          "brier": 0.06043921290262178,
+          "logLoss": 0.21494899662287056
+        }
+      },
+      "bySeason": [
+        {
+          "season": 2019,
+          "forecasts": 576,
+          "brier": 0.10379851916666666,
+          "logLoss": 0.32976224628967593,
+          "brierImprovementPct": -0.002718581698668565,
+          "logLossImprovementPct": 0.07867040992129981
+        },
+        {
+          "season": 2020,
+          "forecasts": 576,
+          "brier": 0.1197156644097222,
+          "logLoss": 0.36478621339519207,
+          "brierImprovementPct": 0.2189074281278902,
+          "logLossImprovementPct": 0.15809959671091445
+        },
+        {
+          "season": 2021,
+          "forecasts": 624,
+          "brier": 0.10461672849358979,
+          "logLoss": 0.3171132195871893,
+          "brierImprovementPct": 0.9247375582751016,
+          "logLossImprovementPct": 0.9363749213240458
+        },
+        {
+          "season": 2022,
+          "forecasts": 624,
+          "brier": 0.0963120583012821,
+          "logLoss": 0.3086620675827098,
+          "brierImprovementPct": 0.24202055121326227,
+          "logLossImprovementPct": 0.1270349830280959
+        },
+        {
+          "season": 2023,
+          "forecasts": 624,
+          "brier": 0.09204698522435893,
+          "logLoss": 0.3030048052841293,
+          "brierImprovementPct": 0.8309227222145665,
+          "logLossImprovementPct": 0.5895801557802893
+        },
+        {
+          "season": 2024,
+          "forecasts": 624,
+          "brier": 0.09639505983974359,
+          "logLoss": 0.3017262887741014,
+          "brierImprovementPct": 0.641421289425681,
+          "logLossImprovementPct": 0.6410039527254718
+        },
+        {
+          "season": 2025,
+          "forecasts": 624,
+          "brier": 0.12369581115384619,
+          "logLoss": 0.38378546002904346,
+          "brierImprovementPct": 0.3762846775331008,
+          "logLossImprovementPct": 0.07700948823988751
+        }
+      ]
+    },
+    {
+      "label": "blend-100-through-week-12",
+      "source": "/private/tmp/roster-one-week-10k-1-max12.json",
+      "modelParameters": {
+        "priorStd": 15,
+        "minSigma": 40,
+        "rosterBlend": 1,
+        "rosterProjectionWindow": {
+          "minCompletedWeek": 1,
+          "maxCompletedWeek": 12
+        },
+        "rosterProjectionSource": "data/historical_roster_projection_features.json"
+      },
+      "simulationsPerCheckpoint": 10000,
+      "overall": {
+        "forecasts": 4272,
+        "brier": 0.1047569965730333,
+        "logLoss": 0.32865484239535514,
+        "brierImprovementPct": 0.7631970622290152,
+        "logLossImprovementPct": 0.6005513313817157
+      },
+      "byOutcome": {
+        "playoff": {
+          "forecasts": 1068,
+          "brier": 0.1687196112921347,
+          "logLoss": 0.4951414727500778
+        },
+        "bye": {
+          "forecasts": 1068,
+          "brier": 0.07295760928838958,
+          "logLoss": 0.24450570693535853
+        },
+        "divisionWinner": {
+          "forecasts": 1068,
+          "brier": 0.11718138580524359,
+          "logLoss": 0.3606024151707212
+        },
+        "last": {
+          "forecasts": 1068,
+          "brier": 0.06016937990636709,
+          "logLoss": 0.21436977472526417
+        }
+      },
+      "bySeason": [
+        {
+          "season": 2019,
+          "forecasts": 576,
+          "brier": 0.10402242736111107,
+          "logLoss": 0.3299348545381055,
+          "brierImprovementPct": -0.21843869347797362,
+          "logLossImprovementPct": 0.026368347222027744
+        },
+        {
+          "season": 2020,
+          "forecasts": 576,
+          "brier": 0.11958991475694446,
+          "logLoss": 0.3645228789309034,
+          "brierImprovementPct": 0.32371775354824717,
+          "logLossImprovementPct": 0.23017417735790024
+        },
+        {
+          "season": 2021,
+          "forecasts": 624,
+          "brier": 0.10383825663461543,
+          "logLoss": 0.3146735358496979,
+          "brierImprovementPct": 1.6619743734762826,
+          "logLossImprovementPct": 1.6985125433254478
+        },
+        {
+          "season": 2022,
+          "forecasts": 624,
+          "brier": 0.09621082067307686,
+          "logLoss": 0.3085487362575179,
+          "brierImprovementPct": 0.3468803311003299,
+          "logLossImprovementPct": 0.16370529877133277
+        },
+        {
+          "season": 2023,
+          "forecasts": 624,
+          "brier": 0.09147044028846148,
+          "logLoss": 0.30164016972655283,
+          "brierImprovementPct": 1.4520775505098005,
+          "logLossImprovementPct": 1.0372925066976957
+        },
+        {
+          "season": 2024,
+          "forecasts": 624,
+          "brier": 0.0958792924358975,
+          "logLoss": 0.30016977266962525,
+          "brierImprovementPct": 1.1730451742656856,
+          "logLossImprovementPct": 1.1535674356772496
+        },
+        {
+          "season": 2025,
+          "forecasts": 624,
+          "brier": 0.12337231224358994,
+          "logLoss": 0.38395149100111237,
+          "brierImprovementPct": 0.636828369691067,
+          "logLossImprovementPct": 0.033781401262733546
+        }
+      ]
+    }
+  ],
+  "screenedRefinements": [
+    "Separating the posterior-estimation variance floor from future-game variance did not beat the existing 40-point setting.",
+    "Capping roster-versus-league projection differences at 10, 15, or 20 points did not improve season-held-out stability.",
+    "Stopping roster adjustments after completed Week 12 improved this sample, but was rejected as a production rule because the cutoff was identified post-hoc and Week 13 score forecasts still improved."
+  ],
+  "decisionRule": "Promote only after season-held-out Brier and log loss improve stably without relying on a post-hoc week cutoff."
+}

@@ -88,25 +88,28 @@ test('uses completed weekly scores to estimate team volatility', () => {
   assert.ok(byName.Volatile.std > byName.Stable.std * 2);
 });
 
-test('blends normalized roster projections without changing the league scoring level', () => {
+test('applies a normalized roster projection only to its target week', () => {
   const teams = [
-    { name: 'Deep', wins: 1, losses: 0, fpts: 100, division: 1, projectedMean: 120, projectedLeagueMean: 100 },
-    { name: 'Thin', wins: 1, losses: 0, fpts: 100, division: 2, projectedMean: 80, projectedLeagueMean: 100 }
+    { name: 'Deep', wins: 1, losses: 0, fpts: 100, division: 1, projectedMean: 120, projectedLeagueMean: 100, projectionWeek: 2 },
+    { name: 'Thin', wins: 1, losses: 0, fpts: 100, division: 2, projectedMean: 80, projectedLeagueMean: 100, projectionWeek: 2 }
   ];
   const results = runPlayoffSimulation({
     teams,
-    remainingSchedule: [],
+    remainingSchedule: [['Deep', 'Thin', 2], ['Deep', 'Thin', 3]],
     simulations: 1,
     model: 'Bayesian',
     priorStd: 15,
     minSigma: 40,
-    rosterBlend: 0.5
+    rosterBlend: 0.5,
+    overrides: { 0: 'away', 1: 'away' }
   });
   const byName = Object.fromEntries(results.map(result => [result.name, result]));
 
-  assert.equal(byName.Deep.mean, 110);
-  assert.equal(byName.Thin.mean, 90);
-  assert.equal((byName.Deep.mean + byName.Thin.mean) / 2, 100);
+  // Week 2 uses blended means of 110/90, then Week 3 returns to 100/100.
+  assert.equal(byName.Deep.projFpts, 350);
+  assert.equal(byName.Thin.projFpts, 250);
+  assert.equal(byName.Deep.mean, 100);
+  assert.equal(byName.Thin.mean, 100);
 });
 
 test('falls back to the score-only model when a roster projection is missing', () => {

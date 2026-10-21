@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-21T22:17:32.533Z",
+  "generatedAt": "2026-10-21T23:30:26.884Z",
   "status": "challenger_not_promoted",
   "method": "Predict the next weekly team score from the tuned PF posterior and the optimal projected lineup, using only the completed-week roster.",
   "sample": {
@@ -73,6 +73,99 @@
           "mae": 17.7256,
           "bias": -3.2363
         }
+      ],
+      "byCompletedWeek": [
+        {
+          "completedWeek": 1,
+          "forecasts": 84,
+          "rmse": 23.5481,
+          "mae": 19.379,
+          "bias": -2.4943
+        },
+        {
+          "completedWeek": 2,
+          "forecasts": 84,
+          "rmse": 17.2943,
+          "mae": 14.1479,
+          "bias": -0.1624
+        },
+        {
+          "completedWeek": 3,
+          "forecasts": 83,
+          "rmse": 23.0914,
+          "mae": 18.6094,
+          "bias": -1.7592
+        },
+        {
+          "completedWeek": 4,
+          "forecasts": 79,
+          "rmse": 22.3725,
+          "mae": 18.3192,
+          "bias": -6.3459
+        },
+        {
+          "completedWeek": 5,
+          "forecasts": 77,
+          "rmse": 19.5648,
+          "mae": 16.0483,
+          "bias": 5.6815
+        },
+        {
+          "completedWeek": 6,
+          "forecasts": 73,
+          "rmse": 21.1974,
+          "mae": 15.637,
+          "bias": 0.5064
+        },
+        {
+          "completedWeek": 7,
+          "forecasts": 81,
+          "rmse": 22.0074,
+          "mae": 17.8434,
+          "bias": -0.9147
+        },
+        {
+          "completedWeek": 8,
+          "forecasts": 72,
+          "rmse": 21.9141,
+          "mae": 17.0127,
+          "bias": 3.6287
+        },
+        {
+          "completedWeek": 9,
+          "forecasts": 78,
+          "rmse": 22.5858,
+          "mae": 17.6653,
+          "bias": 4.031
+        },
+        {
+          "completedWeek": 10,
+          "forecasts": 76,
+          "rmse": 19.5227,
+          "mae": 16.3408,
+          "bias": 1.4748
+        },
+        {
+          "completedWeek": 11,
+          "forecasts": 79,
+          "rmse": 24.7658,
+          "mae": 19.6881,
+          "bias": 1.2115
+        },
+        {
+          "completedWeek": 12,
+          "forecasts": 84,
+          "rmse": 19.5838,
+          "mae": 16.24,
+          "bias": 0.5883
+        },
+        {
+          "completedWeek": 13,
+          "forecasts": 56,
+          "rmse": 20.606,
+          "mae": 16.8434,
+          "bias": 0.2021
+        }
       ]
     },
     {
@@ -130,6 +223,99 @@
           "rmse": 22.5497,
           "mae": 17.5716,
           "bias": -3.2434
+        }
+      ],
+      "byCompletedWeek": [
+        {
+          "completedWeek": 1,
+          "forecasts": 84,
+          "rmse": 23.3607,
+          "mae": 19.2068,
+          "bias": -2.4943
+        },
+        {
+          "completedWeek": 2,
+          "forecasts": 84,
+          "rmse": 17.2129,
+          "mae": 14.116,
+          "bias": -0.1613
+        },
+        {
+          "completedWeek": 3,
+          "forecasts": 83,
+          "rmse": 22.9096,
+          "mae": 18.4456,
+          "bias": -1.7597
+        },
+        {
+          "completedWeek": 4,
+          "forecasts": 79,
+          "rmse": 22.2454,
+          "mae": 18.2376,
+          "bias": -6.3447
+        },
+        {
+          "completedWeek": 5,
+          "forecasts": 77,
+          "rmse": 19.4691,
+          "mae": 15.9939,
+          "bias": 5.6835
+        },
+        {
+          "completedWeek": 6,
+          "forecasts": 73,
+          "rmse": 21.0152,
+          "mae": 15.6703,
+          "bias": 0.501
+        },
+        {
+          "completedWeek": 7,
+          "forecasts": 81,
+          "rmse": 21.8993,
+          "mae": 17.7944,
+          "bias": -0.9184
+        },
+        {
+          "completedWeek": 8,
+          "forecasts": 72,
+          "rmse": 21.8622,
+          "mae": 17.0636,
+          "bias": 3.6117
+        },
+        {
+          "completedWeek": 9,
+          "forecasts": 78,
+          "rmse": 22.4418,
+          "mae": 17.5401,
+          "bias": 4.0313
+        },
+        {
+          "completedWeek": 10,
+          "forecasts": 76,
+          "rmse": 19.1674,
+          "mae": 16.0848,
+          "bias": 1.4699
+        },
+        {
+          "completedWeek": 11,
+          "forecasts": 79,
+          "rmse": 24.3282,
+          "mae": 19.2526,
+          "bias": 1.1882
+        },
+        {
+          "completedWeek": 12,
+          "forecasts": 84,
+          "rmse": 19.4073,
+          "mae": 16.0193,
+          "bias": 0.5883
+        },
+        {
+          "completedWeek": 13,
+          "forecasts": 56,
+          "rmse": 20.4485,
+          "mae": 16.5849,
+          "bias": 0.1745
         }
       ]
     },
@@ -189,6 +375,99 @@
           "mae": 17.425,
           "bias": -3.2506
         }
+      ],
+      "byCompletedWeek": [
+        {
+          "completedWeek": 1,
+          "forecasts": 84,
+          "rmse": 23.1905,
+          "mae": 19.0345,
+          "bias": -2.4943
+        },
+        {
+          "completedWeek": 2,
+          "forecasts": 84,
+          "rmse": 17.1534,
+          "mae": 14.084,
+          "bias": -0.1602
+        },
+        {
+          "completedWeek": 3,
+          "forecasts": 83,
+          "rmse": 22.7401,
+          "mae": 18.3034,
+          "bias": -1.7603
+        },
+        {
+          "completedWeek": 4,
+          "forecasts": 79,
+          "rmse": 22.15,
+          "mae": 18.1877,
+          "bias": -6.3435
+        },
+        {
+          "completedWeek": 5,
+          "forecasts": 77,
+          "rmse": 19.424,
+          "mae": 15.9457,
+          "bias": 5.6855
+        },
+        {
+          "completedWeek": 6,
+          "forecasts": 73,
+          "rmse": 20.8861,
+          "mae": 15.8046,
+          "bias": 0.4956
+        },
+        {
+          "completedWeek": 7,
+          "forecasts": 81,
+          "rmse": 21.8245,
+          "mae": 17.7735,
+          "bias": -0.9222
+        },
+        {
+          "completedWeek": 8,
+          "forecasts": 72,
+          "rmse": 21.8576,
+          "mae": 17.1592,
+          "bias": 3.5947
+        },
+        {
+          "completedWeek": 9,
+          "forecasts": 78,
+          "rmse": 22.3486,
+          "mae": 17.4644,
+          "bias": 4.0315
+        },
+        {
+          "completedWeek": 10,
+          "forecasts": 76,
+          "rmse": 18.857,
+          "mae": 15.8288,
+          "bias": 1.465
+        },
+        {
+          "completedWeek": 11,
+          "forecasts": 79,
+          "rmse": 23.9344,
+          "mae": 18.8621,
+          "bias": 1.165
+        },
+        {
+          "completedWeek": 12,
+          "forecasts": 84,
+          "rmse": 19.2692,
+          "mae": 15.82,
+          "bias": 0.5883
+        },
+        {
+          "completedWeek": 13,
+          "forecasts": 56,
+          "rmse": 20.3565,
+          "mae": 16.3263,
+          "bias": 0.1468
+        }
       ]
     },
     {
@@ -246,6 +525,99 @@
           "rmse": 22.2891,
           "mae": 17.287,
           "bias": -3.2578
+        }
+      ],
+      "byCompletedWeek": [
+        {
+          "completedWeek": 1,
+          "forecasts": 84,
+          "rmse": 23.0379,
+          "mae": 18.8756,
+          "bias": -2.4943
+        },
+        {
+          "completedWeek": 2,
+          "forecasts": 84,
+          "rmse": 17.1159,
+          "mae": 14.0521,
+          "bias": -0.1591
+        },
+        {
+          "completedWeek": 3,
+          "forecasts": 83,
+          "rmse": 22.5831,
+          "mae": 18.1978,
+          "bias": -1.7608
+        },
+        {
+          "completedWeek": 4,
+          "forecasts": 79,
+          "rmse": 22.0867,
+          "mae": 18.1478,
+          "bias": -6.3423
+        },
+        {
+          "completedWeek": 5,
+          "forecasts": 77,
+          "rmse": 19.4299,
+          "mae": 15.9152,
+          "bias": 5.6874
+        },
+        {
+          "completedWeek": 6,
+          "forecasts": 73,
+          "rmse": 20.811,
+          "mae": 15.9884,
+          "bias": 0.4901
+        },
+        {
+          "completedWeek": 7,
+          "forecasts": 81,
+          "rmse": 21.7833,
+          "mae": 17.7526,
+          "bias": -0.9259
+        },
+        {
+          "completedWeek": 8,
+          "forecasts": 72,
+          "rmse": 21.9004,
+          "mae": 17.2764,
+          "bias": 3.5777
+        },
+        {
+          "completedWeek": 9,
+          "forecasts": 78,
+          "rmse": 22.3069,
+          "mae": 17.4603,
+          "bias": 4.0317
+        },
+        {
+          "completedWeek": 10,
+          "forecasts": 76,
+          "rmse": 18.594,
+          "mae": 15.5728,
+          "bias": 1.4601
+        },
+        {
+          "completedWeek": 11,
+          "forecasts": 79,
+          "rmse": 23.5866,
+          "mae": 18.4783,
+          "bias": 1.1417
+        },
+        {
+          "completedWeek": 12,
+          "forecasts": 84,
+          "rmse": 19.1704,
+          "mae": 15.7324,
+          "bias": 0.5883
+        },
+        {
+          "completedWeek": 13,
+          "forecasts": 56,
+          "rmse": 20.3309,
+          "mae": 16.1174,
+          "bias": 0.1191
         }
       ]
     },
@@ -305,6 +677,99 @@
           "mae": 17.1896,
           "bias": -3.265
         }
+      ],
+      "byCompletedWeek": [
+        {
+          "completedWeek": 1,
+          "forecasts": 84,
+          "rmse": 22.9033,
+          "mae": 18.7335,
+          "bias": -2.4943
+        },
+        {
+          "completedWeek": 2,
+          "forecasts": 84,
+          "rmse": 17.1006,
+          "mae": 14.0481,
+          "bias": -0.1581
+        },
+        {
+          "completedWeek": 3,
+          "forecasts": 83,
+          "rmse": 22.439,
+          "mae": 18.1085,
+          "bias": -1.7614
+        },
+        {
+          "completedWeek": 4,
+          "forecasts": 79,
+          "rmse": 22.0558,
+          "mae": 18.122,
+          "bias": -6.3411
+        },
+        {
+          "completedWeek": 5,
+          "forecasts": 77,
+          "rmse": 19.4868,
+          "mae": 15.9688,
+          "bias": 5.6894
+        },
+        {
+          "completedWeek": 6,
+          "forecasts": 73,
+          "rmse": 20.7907,
+          "mae": 16.2011,
+          "bias": 0.4847
+        },
+        {
+          "completedWeek": 7,
+          "forecasts": 81,
+          "rmse": 21.776,
+          "mae": 17.7317,
+          "bias": -0.9297
+        },
+        {
+          "completedWeek": 8,
+          "forecasts": 72,
+          "rmse": 21.9902,
+          "mae": 17.4841,
+          "bias": 3.5607
+        },
+        {
+          "completedWeek": 9,
+          "forecasts": 78,
+          "rmse": 22.3169,
+          "mae": 17.5064,
+          "bias": 4.0319
+        },
+        {
+          "completedWeek": 10,
+          "forecasts": 76,
+          "rmse": 18.3803,
+          "mae": 15.3383,
+          "bias": 1.4552
+        },
+        {
+          "completedWeek": 11,
+          "forecasts": 79,
+          "rmse": 23.2868,
+          "mae": 18.1321,
+          "bias": 1.1185
+        },
+        {
+          "completedWeek": 12,
+          "forecasts": 84,
+          "rmse": 19.1116,
+          "mae": 15.6782,
+          "bias": 0.5883
+        },
+        {
+          "completedWeek": 13,
+          "forecasts": 56,
+          "rmse": 20.3719,
+          "mae": 15.9756,
+          "bias": 0.0915
+        }
       ]
     },
     {
@@ -362,6 +827,99 @@
           "rmse": 22.1803,
           "mae": 17.1575,
           "bias": -3.2721
+        }
+      ],
+      "byCompletedWeek": [
+        {
+          "completedWeek": 1,
+          "forecasts": 84,
+          "rmse": 22.7869,
+          "mae": 18.5992,
+          "bias": -2.4943
+        },
+        {
+          "completedWeek": 2,
+          "forecasts": 84,
+          "rmse": 17.1076,
+          "mae": 14.0627,
+          "bias": -0.157
+        },
+        {
+          "completedWeek": 3,
+          "forecasts": 83,
+          "rmse": 22.3079,
+          "mae": 18.0306,
+          "bias": -1.7619
+        },
+        {
+          "completedWeek": 4,
+          "forecasts": 79,
+          "rmse": 22.0575,
+          "mae": 18.1042,
+          "bias": -6.34
+        },
+        {
+          "completedWeek": 5,
+          "forecasts": 77,
+          "rmse": 19.5941,
+          "mae": 16.0594,
+          "bias": 5.6914
+        },
+        {
+          "completedWeek": 6,
+          "forecasts": 73,
+          "rmse": 20.8253,
+          "mae": 16.4156,
+          "bias": 0.4793
+        },
+        {
+          "completedWeek": 7,
+          "forecasts": 81,
+          "rmse": 21.8025,
+          "mae": 17.7552,
+          "bias": -0.9334
+        },
+        {
+          "completedWeek": 8,
+          "forecasts": 72,
+          "rmse": 22.1265,
+          "mae": 17.6918,
+          "bias": 3.5437
+        },
+        {
+          "completedWeek": 9,
+          "forecasts": 78,
+          "rmse": 22.3785,
+          "mae": 17.5563,
+          "bias": 4.0322
+        },
+        {
+          "completedWeek": 10,
+          "forecasts": 76,
+          "rmse": 18.2177,
+          "mae": 15.1164,
+          "bias": 1.4503
+        },
+        {
+          "completedWeek": 11,
+          "forecasts": 79,
+          "rmse": 23.0368,
+          "mae": 17.8193,
+          "bias": 1.0952
+        },
+        {
+          "completedWeek": 12,
+          "forecasts": 84,
+          "rmse": 19.093,
+          "mae": 15.6378,
+          "bias": 0.5883
+        },
+        {
+          "completedWeek": 13,
+          "forecasts": 56,
+          "rmse": 20.4792,
+          "mae": 15.9973,
+          "bias": 0.0638
         }
       ]
     }
