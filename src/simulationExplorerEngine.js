@@ -102,6 +102,16 @@ const routeFor = (name, trial) => {
 
 const snapshotTrial = (trial, targetName, initialWins) => {
   const target = trial.state.find(team => team.name === targetName);
+  const standings = [...trial.state]
+    .sort((a, b) => b.wins - a.wins || b.fpts - a.fpts)
+    .map((team, index) => ({
+      rank: index + 1,
+      name: team.name,
+      wins: team.wins,
+      losses: team.losses,
+      fpts: team.fpts,
+      playoff: trial.playoffField.some(entry => entry.name === team.name)
+    }));
   const seeds = trial.playoffField.map((team, index) => ({
     seed: index + 1,
     name: team.name,
@@ -117,18 +127,10 @@ const snapshotTrial = (trial, targetName, initialWins) => {
       losses: target.losses,
       remainingWins: target.wins - initialWins,
       fpts: target.fpts,
-      route: routeFor(targetName, trial)
+      route: routeFor(targetName, trial),
+      placement: standings.find(row => row.name === targetName)?.rank ?? null
     },
-    standings: [...trial.state]
-      .sort((a, b) => b.wins - a.wins || b.fpts - a.fpts)
-      .map((team, index) => ({
-        rank: index + 1,
-        name: team.name,
-        wins: team.wins,
-        losses: team.losses,
-        fpts: team.fpts,
-        playoff: trial.playoffField.some(entry => entry.name === team.name)
-      })),
+    standings,
     seeds,
     games: trial.gameResults
       .filter(game => game.away === targetName || game.home === targetName)
@@ -140,6 +142,94 @@ const snapshotTrial = (trial, targetName, initialWins) => {
         result: game.winner === targetName ? 'W' : 'L'
       }))
   };
+};
+
+const scenarioPath = scenario => scenario.games.map(game => game.result).join('');
+
+const distanceFromTypical = (scenario, medians) => (
+  Math.abs(scenario.target.wins - medians.wins)
+  + Math.abs(scenario.target.fpts - medians.fpts) / 100
+  + Math.abs((scenario.target.placement ?? medians.placement) - medians.placement) / 4
+);
+
+const scenarioDiversity = (left, right, ranges) => {
+  const leftPath = scenarioPath(left);
+  const rightPath = scenarioPath(right);
+  const pathLength = Math.max(leftPath.length, rightPath.length, 1);
+  let pathDifferences = 0;
+  for (let index = 0; index < pathLength; index += 1) {
+    if (leftPath[index] !== rightPath[index]) pathDifferences += 1;
+  }
+  return (left.target.route === right.target.route ? 0 : 2)
+    + Math.abs(left.target.wins - right.target.wins) / ranges.wins
+    + Math.abs(left.target.fpts - right.target.fpts) / ranges.fpts
+    + Math.abs((left.target.placement ?? 0) - (right.target.placement ?? 0)) / 6
+    + 2 * pathDifferences / pathLength;
+};
+
+const labelScenarios = (scenarios, medians) => {
+  const routeLabels = { division: 'Division route', record: 'Record route', points: 'Points route', miss: 'Miss path' };
+  const multipleRoutes = new Set(scenarios.map(scenario => scenario.target.route)).size > 1;
+  const used = new Set();
+  return scenarios.map((scenario, index) => {
+    let archetype = index === 0 ? 'Typical' : multipleRoutes ? routeLabels[scenario.target.route] : null;
+    if (!archetype) {
+      if (scenario.target.wins > medians.wins) archetype = 'More-win path';
+      else if (scenario.target.wins < medians.wins) archetype = 'Fewer-win path';
+      else if (scenario.target.fpts > medians.fpts) archetype = 'Higher-PF path';
+      else if (scenario.target.fpts < medians.fpts) archetype = 'Lower-PF path';
+      else archetype = 'Alternative path';
+    }
+    if (used.has(archetype)) archetype = `Alternative path ${index}`;
+    used.add(archetype);
+    return { ...scenario, archetype };
+  });
+};
+
+const selectRepresentativeScenarios = (samples, summaries) => {
+  if (!samples.length || summaries.wins.median == null || summaries.fpts.median == null) return [];
+  const medians = {
+    wins: summaries.wins.median,
+    fpts: summaries.fpts.median,
+    placement: summaries.placement.median ?? 6.5
+  };
+  const ranges = {
+    wins: Math.max(1, (summaries.wins.p90 ?? medians.wins) - (summaries.wins.p10 ?? medians.wins)),
+    fpts: Math.max(50, (summaries.fpts.p90 ?? medians.fpts) - (summaries.fpts.p10 ?? medians.fpts))
+  };
+  const byTypical = [...samples].sort((a, b) => distanceFromTypical(a, medians) - distanceFromTypical(b, medians) || a.trial - b.trial);
+  const selected = [byTypical[0]];
+  const selectedTrials = new Set([byTypical[0].trial]);
+  const routeGroups = new Map();
+  byTypical.forEach(scenario => {
+    if (!routeGroups.has(scenario.target.route)) routeGroups.set(scenario.target.route, []);
+    routeGroups.get(scenario.target.route).push(scenario);
+  });
+  [...routeGroups.entries()]
+    .filter(([route]) => route !== byTypical[0].target.route)
+    .sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0]))
+    .forEach(([, group]) => {
+      if (selected.length >= 3) return;
+      const candidate = group.find(scenario => !selectedTrials.has(scenario.trial));
+      if (candidate) {
+        selected.push(candidate);
+        selectedTrials.add(candidate.trial);
+      }
+    });
+  while (selected.length < Math.min(3, samples.length)) {
+    const candidate = byTypical
+      .filter(scenario => !selectedTrials.has(scenario.trial))
+      .map(scenario => ({
+        scenario,
+        score: Math.min(...selected.map(chosen => scenarioDiversity(scenario, chosen, ranges)))
+          - 0.15 * distanceFromTypical(scenario, medians)
+      }))
+      .sort((a, b) => b.score - a.score || a.scenario.trial - b.scenario.trial)[0]?.scenario;
+    if (!candidate) break;
+    selected.push(candidate);
+    selectedTrials.add(candidate.trial);
+  }
+  return labelScenarios(selected, medians);
 };
 
 export function runSimulationExplorer({
@@ -169,7 +259,8 @@ export function runSimulationExplorer({
   const routes = { division: 0, record: 0, points: 0, miss: 0 };
   const pathCounts = new Map();
   const samples = [];
-  const sampleLimit = 500;
+  const sampleLimit = 750;
+  const sampleRng = createSeededRandom((Number(seed) >>> 0) ^ 0x9e3779b9);
   const gameStats = new Map();
   const rivalStats = new Map(teams.filter(team => team.name !== targetName).map(team => [team.name, {
     trials: 0,
@@ -271,7 +362,12 @@ export function runSimulationExplorer({
         .map(game => game.winner === targetName ? 'W' : 'L')
         .join('');
       pathCounts.set(path, (pathCounts.get(path) || 0) + 1);
-      if (samples.length < sampleLimit) samples.push(snapshotTrial(trial, targetName, initial.wins));
+      if (samples.length < sampleLimit) {
+        samples.push(snapshotTrial(trial, targetName, initial.wins));
+      } else {
+        const reservoirIndex = Math.floor(sampleRng() * outcomeCount);
+        if (reservoirIndex < sampleLimit) samples[reservoirIndex] = snapshotTrial(trial, targetName, initial.wins);
+      }
     }
   });
 
@@ -330,14 +426,12 @@ export function runSimulationExplorer({
 
   const conditionalWinsSummary = outcomeWins.summarize();
   const conditionalPfSummary = outcomePf.summarize();
-  const conditionalMedianWins = conditionalWinsSummary.median;
-  const conditionalMedianPf = conditionalPfSummary.median;
-  const representativeScenarios = [...samples]
-    .sort((a, b) => {
-      const aDistance = Math.abs(a.target.wins - conditionalMedianWins) + Math.abs(a.target.fpts - conditionalMedianPf) / 100;
-      const bDistance = Math.abs(b.target.wins - conditionalMedianWins) + Math.abs(b.target.fpts - conditionalMedianPf) / 100;
-      return aDistance - bDistance;
-    }).slice(0, 3);
+  const conditionalPlacementSummary = outcomePlacement.summarize();
+  const representativeScenarios = selectRepresentativeScenarios(samples, {
+    wins: conditionalWinsSummary,
+    fpts: conditionalPfSummary,
+    placement: conditionalPlacementSummary
+  });
 
   return {
     targetName,
@@ -353,7 +447,7 @@ export function runSimulationExplorer({
         wins: conditionalWinsSummary,
         remainingWins: outcomeRemainingWins.summarize(),
         fpts: conditionalPfSummary,
-        placement: outcomePlacement.summarize(),
+        placement: conditionalPlacementSummary,
         pointsCutoffMargin: {
           ...outcomeCutoffMargins.summarize(),
           comparisons: cutoffComparisons,

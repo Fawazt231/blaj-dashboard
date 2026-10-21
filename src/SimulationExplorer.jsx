@@ -326,9 +326,9 @@ export default function SimulationExplorer({ liveData, excelData }) {
 
           {result.representativeScenarios.length > 0 && (
             <section className="card">
-              <SectionTitle info="Example simulated seasons close to the matching trials' median final wins and PF. They illustrate plausible paths, but they are not forecasts of one exact future.">Representative scenarios</SectionTitle>
+              <SectionTitle info="The Typical scenario is closest to the matching trials' median record, PF and placement. The other examples prioritize different qualification routes or meaningfully different win/loss paths. Candidates are sampled uniformly across the full run, and all choices remain reproducible for the same seed.">Representative scenarios</SectionTitle>
               <div className="explorer-scenario-tabs">
-                {result.representativeScenarios.map((scenario, index) => <button key={scenario.trial} className={scenarioIndex === index ? 'active' : ''} onClick={() => setScenarioIndex(index)}>Scenario {index + 1}</button>)}
+                {result.representativeScenarios.map((scenario, index) => <button key={scenario.trial} className={scenarioIndex === index ? 'active' : ''} onClick={() => setScenarioIndex(index)}>{scenario.archetype || `Scenario ${index + 1}`}</button>)}
               </div>
               {activeScenario && <div className="explorer-two-column">
                 <div className="table-container"><table className="data-table"><thead><tr><th>#</th><th>Team</th><th>Record</th><th>PF</th><th>Status</th></tr></thead><tbody>

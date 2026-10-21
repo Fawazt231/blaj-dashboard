@@ -32,6 +32,8 @@ test('simulation explorer is deterministic and accounts for every trial', () => 
   assert.equal(first.gameLeverage.length, 1);
   assert.ok(first.sampleSize > 0);
   assert.ok(first.representativeScenarios.length <= 3);
+  assert.equal(new Set(first.representativeScenarios.map(scenario => scenario.trial)).size, first.representativeScenarios.length);
+  first.representativeScenarios.forEach(scenario => assert.ok(scenario.archetype));
   assert.ok(first.confidence95.low <= first.probability);
   assert.ok(first.confidence95.high >= first.probability);
   assert.ok(first.profile.all.placement.median >= 1);
