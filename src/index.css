@@ -569,10 +569,6 @@ body {
   line-height: 1.4;
 }
 
-.explorer-evidence-key em {
-  color: var(--text-secondary);
-}
-
 .explorer-association-table td small,
 .explorer-leverage-table td small,
 .explorer-cell-note {

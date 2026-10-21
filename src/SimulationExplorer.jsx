@@ -58,7 +58,6 @@ function EvidenceKey() {
       <span><strong>Strong:</strong> adjusted q ≤ 0.05, 95% interval excludes zero, difference ≥ 0.50 points, and at least 200 outcome hits on both sides.</span>
       <span><strong>Suggestive:</strong> adjusted q ≤ 0.05 and interval excludes zero, but the effect is smaller or one side has fewer than 200 outcome hits.</span>
       <span><strong>Unclear:</strong> the adjusted test or interval cannot rule out Monte Carlo noise.</span>
-      <em>These labels describe evidence inside the simulation model, not certainty about real life.</em>
     </div>
   );
 }
