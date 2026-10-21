@@ -62,6 +62,48 @@ const extremeRank = item => {
   return `${word}${item.direction}`
 }
 
+const joinNames = names => {
+  if(names.length<=1)return names[0]||''
+  if(names.length===2)return `${names[0]} and ${names[1]}`
+  return `${names.slice(0,-1).join(', ')}, and ${names.at(-1)}`
+}
+
+const groupedStreakCandidates = streaks => {
+  const groups=new Map()
+  ;(streaks||[]).forEach(item=>{
+    const id=[item.streak,item.sampleSize,item.madePlayoffs,item.finalists,item.champions].join('|')
+    if(!groups.has(id))groups.set(id,[])
+    groups.get(id).push(item)
+  })
+  return [...groups.values()].map(items=>{
+    const first=items[0]
+    const names=items.map(item=>item.team).sort()
+    const subject=joinNames(names)
+    const opening=names.length>1?`${subject}: ${first.streak} straight wins each.`:`${subject}: ${first.streak} straight wins.`
+    const context=first.sampleSize
+      ?` Across ${first.sampleSize} prior team-seasons with a ${first.streak}-game winning streak at any point, ${first.madePlayoffs} made the playoffs, ${first.finalists} reached the Finals, and ${first.champions} won titles.`
+      :` This is the first single-season streak of that length in league history.`
+    return {team:subject,text:`${opening}${context}`,score:98+first.streak/100}
+  })
+}
+
+const groupedPointsAllowedCandidates = (items, recapWeek) => {
+  const groups=new Map()
+  ;(items||[]).forEach(item=>{
+    if(!groups.has(item.direction))groups.set(item.direction,[])
+    groups.get(item.direction).push(item)
+  })
+  return [...groups.values()].map(group=>{
+    const sorted=[...group].sort((a,b)=>a.rank-b.rank||a.team.localeCompare(b.team))
+    const details=sorted.map(item=>`${item.team} ranks ${ordinal(item.rank)}-${item.direction} (${score(item.pointsAllowed)})`).join('; ')
+    return {
+      team:sorted.map(item=>item.team).join(', '),
+      text:`Points allowed through Week ${recapWeek}: ${details}, among ${sorted[0].total} team-seasons.`,
+      score:97-Math.min(...sorted.map(item=>item.rank))/100
+    }
+  })
+}
+
 const compactHistoricalMarkup = (context, recapWeek, season) => {
   const showCohorts=shouldShowCohortTable(context.cohorts)
   const table=[...context.tables].sort((a,b)=>{
@@ -69,20 +111,21 @@ const compactHistoricalMarkup = (context, recapWeek, season) => {
     const bRank=Math.min(...b.rows.map((row,index)=>row.season===season?index+1:99))
     return aRank-bRank||a.label.localeCompare(b.label)
   })[0]
-  const ranking=table?`<div><div style="font-family:Arial,sans-serif;font-size:5.8px;font-weight:900;color:${C.muted};text-transform:uppercase;margin-bottom:3px;">${esc(table.label)} by PF</div>${table.rows.map((item,index)=>`<div style="min-height:20px;display:grid;grid-template-columns:13px 1fr 43px 1.55fr;gap:4px;align-items:center;padding:2px 0;box-sizing:border-box;border-bottom:1px solid ${C.line};background:${item.season===season?C.playoffBg:'transparent'};font-family:Arial,sans-serif;font-size:5.5px;line-height:1.15;"><strong style="color:${C.gold};">${index+1}</strong><strong>${esc(item.team)} '${String(item.season).slice(-2)}</strong><span style="text-align:right;font-weight:800;">${score(item.pf)}</span><span style="text-align:right;">${esc(item.outcome)}</span></div>`).join('')}</div>`:`<div><div style="font-family:Arial,sans-serif;font-size:5.8px;font-weight:900;color:${C.muted};text-transform:uppercase;margin-bottom:3px;">This season in the record book</div>${context.annotations.map(item=>`<div style="min-height:27px;padding:4px 0;border-bottom:1px solid ${C.line};font-family:Arial,sans-serif;font-size:6px;"><strong>${esc(item.team)}</strong> · ${ordinal(item.displayRank)}-${item.direction} of ${item.total} (${score(item.pf)} PF)</div>`).join('')}</div>`
+  const ranking=table?`<div><div style="font-family:Arial,sans-serif;font-size:5.8px;font-weight:900;color:${C.muted};text-transform:uppercase;margin-bottom:3px;">${esc(table.label)} by PF</div>${table.rows.map((item,index)=>`<div style="min-height:20px;display:grid;grid-template-columns:13px 1fr 43px 1.55fr;gap:4px;align-items:center;padding:2px 0;box-sizing:border-box;border-bottom:1px solid ${C.line};background:${item.season===season?C.playoffBg:'transparent'};font-family:Arial,sans-serif;font-size:5.5px;line-height:1.15;"><strong style="color:${C.gold};">${index+1}</strong><strong>${esc(item.team)} '${String(item.season).slice(-2)}</strong><span style="text-align:right;font-weight:800;">${score(item.pf)}</span><span style="text-align:right;">${esc(item.outcome)}</span></div>`).join('')}</div>`:!showCohorts?`<div><div style="font-family:Arial,sans-serif;font-size:5.8px;font-weight:900;color:${C.muted};text-transform:uppercase;margin-bottom:3px;">This season in the record book</div>${context.annotations.map(item=>`<div style="min-height:27px;padding:4px 0;border-bottom:1px solid ${C.line};font-family:Arial,sans-serif;font-size:6px;"><strong>${esc(item.team)}</strong> · ${ordinal(item.displayRank)}-${item.direction} of ${item.total} (${score(item.pf)} PF)</div>`).join('')}</div>`:''
 
   const cohorts=showCohorts?`<div><div style="font-family:Arial,sans-serif;font-size:5.8px;font-weight:900;color:${C.muted};text-transform:uppercase;margin-bottom:3px;">What these records have meant</div><div style="display:grid;grid-template-columns:29px 1.15fr 47px 1.5fr;gap:4px;padding-bottom:3px;border-bottom:1px solid ${C.ink};font-family:Arial,sans-serif;font-size:5px;font-weight:900;color:${C.muted};text-transform:uppercase;"><span>Start</span><span>Current</span><span style="text-align:right;">Playoffs</span><span style="text-align:right;">Champions</span></div>${context.cohorts.map(item=>`<div style="min-height:20px;display:grid;grid-template-columns:29px 1.15fr 47px 1.5fr;gap:4px;align-items:center;padding:2px 0;box-sizing:border-box;border-bottom:1px solid ${C.line};font-family:Arial,sans-serif;font-size:5.1px;line-height:1.15;"><strong style="color:${C.gold};">${esc(item.record)}</strong><strong>${esc(item.teams.join(', '))}</strong><span style="text-align:right;font-weight:800;">${pct(item.playoffPct)}</span><span style="text-align:right;">${item.championTeams.length?esc(item.championTeams.join(', ')):'None'}</span></div>`).join('')}</div>`:''
 
   const candidates=[
     ...context.milestones.map(item=>({team:item.team,text:item.text,score:100})),
-    ...context.winStreaks.map(item=>({team:item.team,text:item.sampleSize?`${item.team}: ${item.streak} straight wins. Of ${item.sampleSize} prior teams to reach ${item.streak}+, ${item.madePlayoffs} made the playoffs, ${item.finalists} reached the Finals, and ${item.champions} won titles.`:`${item.team}: ${item.streak} straight wins, the first single-season streak of that length in league history.`,score:98+item.streak/100})),
+    ...groupedStreakCandidates(context.winStreaks),
+    ...groupedPointsAllowedCandidates(context.pointsAllowedExtremes,recapWeek),
     ...context.stretchExtremes.map(item=>({team:item.team,text:`${item.team}: ${extremeRank(item)} ${item.length}-week stretch in league history (${score(item.points)} PF, Weeks ${item.startWeek}-${item.endWeek}).`,score:96-item.rank+item.length/100})),
     ...context.weeklyExtremes.map(item=>({team:item.team,text:`${item.team}: ${extremeRank(item)} franchise score (${score(item.score)}) across ${item.total} regular-season games.`,score:95-item.rank})),
     ...context.annotations.map(item=>({team:item.team,text:`${item.team}: ${ordinal(item.displayRank)}-${item.direction} of ${item.total} starts (${score(item.pf)} PF).`,score:80-item.displayRank}))
   ].sort((a,b)=>b.score-a.score||a.team.localeCompare(b.team))
   const facts=[],seen=new Set()
   candidates.forEach(item=>{const id=String(item.text||'').toLowerCase();if(facts.length<3&&!seen.has(id)){seen.add(id);facts.push(item)}})
-  const historyColumns=showCohorts?'1fr 1fr':'minmax(0,520px)'
+  const historyColumns=table&&showCohorts?'1fr 1fr':'minmax(0,1fr)'
   return `<div style="margin-top:5px;">${section(`Historical context | through Week ${recapWeek}`)}</div><div style="display:grid;grid-template-columns:${historyColumns};gap:20px;">${ranking}${cohorts}</div>${facts.length?`<div style="display:grid;grid-template-columns:repeat(${facts.length},1fr);gap:10px;margin-top:6px;">${facts.map(item=>`<div style="min-height:32px;padding:5px 7px;border-top:2px solid ${C.ink};background:#fffdf8;font-size:5.7px;line-height:1.3;"><strong>${esc(item.text)}</strong></div>`).join('')}</div>`:''}`
 }
 

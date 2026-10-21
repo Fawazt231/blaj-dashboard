@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-import { buildHistoricalContext, buildSeasonWinStreaks, buildStretchExtremes, getHeadToHeadWinStreak, mergeCurrentSeasonRegularGames, shouldShowCohortTable } from './historicalContext.js';
+import { buildHistoricalContext, buildPointsAllowedExtremes, buildSeasonWinStreaks, buildStretchExtremes, getHeadToHeadWinStreak, mergeCurrentSeasonRegularGames, shouldShowCohortTable } from './historicalContext.js';
 
 const history = JSON.parse(fs.readFileSync(new URL('../public/data/excel_history.json', import.meta.url)));
 const weekFourGames = history.MatchLog_PlayoffIncluded.filter(game => (
@@ -120,6 +120,31 @@ test('finds current 2-4 week extremes without crossing season boundaries', () =>
   assert.equal(alpha.startWeek, 1);
   assert.equal(alpha.endWeek, 4);
   assert.equal(alpha.points, 640);
+  assert.equal(alpha.direction, 'highest');
+  assert.equal(alpha.rank, 1);
+  assert.equal(alpha.total, 4);
+});
+
+test('ranks current points allowed through the report week', () => {
+  const log = [];
+  const addGame = (season, week, alphaScore, betaScore) => log.push({
+    season,
+    week,
+    game_type: 'regular',
+    awayTeamName: 'Alpha',
+    homeTeamName: 'Beta',
+    awayScore: alphaScore,
+    homeScore: betaScore
+  });
+  for (let week = 1; week <= 2; week += 1) addGame(2025, week, 100, 90);
+  for (let week = 1; week <= 2; week += 1) addGame(2026, week, 80, 130);
+
+  const extremes = buildPointsAllowedExtremes(log, 2, 2026);
+  const alpha = extremes.find(item => item.team === 'Alpha');
+
+  assert.ok(alpha);
+  assert.equal(alpha.pointsAllowed, 260);
+  assert.equal(alpha.average, 130);
   assert.equal(alpha.direction, 'highest');
   assert.equal(alpha.rank, 1);
   assert.equal(alpha.total, 4);

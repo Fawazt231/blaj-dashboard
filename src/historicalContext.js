@@ -182,6 +182,45 @@ function buildWeeklyExtremes(log, recapGames, currentSeason, recapWeek) {
   }).filter(Boolean).sort((a, b) => a.percentile - b.percentile || a.rank - b.rank || a.team.localeCompare(b.team)).slice(0, 6);
 }
 
+export function buildPointsAllowedExtremes(log, throughWeek, currentSeason) {
+  const totals = new Map();
+  const regular = (log || []).filter(game => (
+    String(game.game_type || 'regular').toLowerCase() === 'regular'
+    && Number(game.week) <= Number(throughWeek)
+  ));
+
+  regular.forEach(game => {
+    const season = Number(game.season);
+    [
+      [game.awayTeamName, Number(game.homeScore)],
+      [game.homeTeamName, Number(game.awayScore)]
+    ].forEach(([team, pointsAllowed]) => {
+      if (!team || !Number.isFinite(pointsAllowed)) return;
+      const id = `${season}|${normalize(team)}`;
+      const total = totals.get(id) || { season, team, pointsAllowed: 0, games: 0 };
+      total.pointsAllowed += pointsAllowed;
+      total.games += 1;
+      totals.set(id, total);
+    });
+  });
+
+  const entries = [...totals.values()].filter(item => item.games === Number(throughWeek));
+  return entries.filter(item => item.season === Number(currentSeason)).map(item => {
+    const lowRank = 1 + entries.filter(other => other.pointsAllowed < item.pointsAllowed).length;
+    const highRank = 1 + entries.filter(other => other.pointsAllowed > item.pointsAllowed).length;
+    const direction = lowRank <= highRank ? 'lowest' : 'highest';
+    const rank = Math.min(lowRank, highRank);
+    if (rank > 10) return null;
+    return {
+      ...item,
+      direction,
+      rank,
+      total: entries.length,
+      average: item.pointsAllowed / item.games
+    };
+  }).filter(Boolean).sort((a, b) => a.rank - b.rank || a.team.localeCompare(b.team));
+}
+
 export function buildStretchExtremes(log, currentSeason, throughWeek) {
   const performances = new Map();
 
@@ -391,6 +430,7 @@ export function buildHistoricalContext({ log = [], recapGames = [], throughWeek,
 
   const cohorts = buildCohorts(entries, playoffs, currentSeason);
   const weeklyExtremes = buildWeeklyExtremes(log, recapGames, currentSeason, throughWeek);
+  const pointsAllowedExtremes = buildPointsAllowedExtremes(log, throughWeek, currentSeason);
   const stretchExtremes = buildStretchExtremes(log, currentSeason, throughWeek);
   const winStreaks = buildSeasonWinStreaks(log, currentSeason, throughWeek);
   const milestones = buildCareerMilestones(log, recapGames, currentSeason, throughWeek);
@@ -400,9 +440,10 @@ export function buildHistoricalContext({ log = [], recapGames = [], throughWeek,
     annotations,
     cohorts,
     weeklyExtremes,
+    pointsAllowedExtremes,
     stretchExtremes,
     winStreaks,
     milestones,
-    hasContent: tables.length > 0 || annotations.length > 0 || cohorts.length > 0 || weeklyExtremes.length > 0 || stretchExtremes.length > 0 || winStreaks.length > 0 || milestones.length > 0
+    hasContent: tables.length > 0 || annotations.length > 0 || cohorts.length > 0 || weeklyExtremes.length > 0 || pointsAllowedExtremes.length > 0 || stretchExtremes.length > 0 || winStreaks.length > 0 || milestones.length > 0
   };
 }
