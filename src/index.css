@@ -792,6 +792,126 @@ body {
   background: rgba(217, 119, 6, 0.12);
 }
 
+.backtest-card {
+  margin-bottom: 0;
+}
+
+.backtest-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.backtest-header h2 {
+  margin: 0.25rem 0;
+  font-size: 1.45rem;
+}
+
+.backtest-header p,
+.backtest-note {
+  color: var(--text-muted);
+}
+
+.backtest-header label {
+  min-width: 190px;
+  display: grid;
+  gap: 0.35rem;
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.backtest-header select {
+  min-height: 42px;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.backtest-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+
+.backtest-summary-grid > div {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.85rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-primary);
+}
+
+.backtest-summary-grid span {
+  color: var(--text-muted);
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.backtest-summary-grid strong {
+  font-size: 1.4rem;
+}
+
+.backtest-summary-grid small {
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+.backtest-verdict {
+  margin-bottom: 1rem;
+  padding: 0.8rem 1rem;
+  border-left: 3px solid var(--accent-amber);
+  background: rgba(217, 119, 6, 0.08);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.backtest-table td,
+.backtest-table th {
+  white-space: nowrap;
+}
+
+.backtest-positive {
+  color: var(--accent-green);
+}
+
+.backtest-negative {
+  color: var(--danger-red);
+}
+
+.backtest-reading {
+  display: inline-flex;
+  padding: 0.2rem 0.45rem;
+  border-radius: 999px;
+  background: var(--bg-primary);
+  color: var(--text-muted);
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.backtest-underestimated {
+  color: var(--accent-green);
+  background: rgba(34, 197, 94, 0.1);
+}
+
+.backtest-overconfident {
+  color: var(--danger-red);
+  background: var(--danger-bg);
+}
+
+.backtest-note {
+  margin: 0.8rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
 @media (max-width: 1100px) {
   .explorer-hero,
   .explorer-two-column {
@@ -799,7 +919,8 @@ body {
   }
 
   .explorer-summary-grid,
-  .explorer-paths {
+  .explorer-paths,
+  .backtest-summary-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -813,9 +934,18 @@ body {
   }
 
   .explorer-takeaway,
-  .explorer-sensitivity-headline {
+  .explorer-sensitivity-headline,
+  .backtest-header {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .backtest-header label {
+    width: 100%;
+  }
+
+  .backtest-summary-grid {
+    grid-template-columns: 1fr;
   }
 
   .explorer-run,

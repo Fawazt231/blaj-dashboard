@@ -4,6 +4,7 @@ import Play from 'lucide-react/dist/esm/icons/play';
 import RefreshCw from 'lucide-react/dist/esm/icons/refresh-cw';
 import X from 'lucide-react/dist/esm/icons/x';
 import { collectCompletedWeeklyScores } from './simulationInputs.js';
+import HistoricalBacktest from './HistoricalBacktest.jsx';
 
 const OUTCOMES = [
   ['playoff', 'Makes playoffs'],
@@ -399,6 +400,7 @@ export default function SimulationExplorer({ liveData, excelData }) {
           )}
         </>
       )}
+      <HistoricalBacktest />
     </main>
   );
 }
