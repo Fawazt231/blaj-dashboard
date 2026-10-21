@@ -127,6 +127,7 @@ export default function SimulationExplorer({ liveData, excelData }) {
   const [notice, setNotice] = useState('');
   const [scenarioIndex, setScenarioIndex] = useState(0);
   const workerRef = useRef(null);
+  const cacheRef = useRef(new Map());
 
   useEffect(() => {
     if (!teamName && teams.length) setTeamName(teams[0].name);
@@ -138,6 +139,15 @@ export default function SimulationExplorer({ liveData, excelData }) {
   const selectedOutcome = OUTCOMES.find(([key]) => key === outcome)?.[1] || outcome;
   const activeScenario = result?.representativeScenarios?.[scenarioIndex] || null;
   const targetSchedule = scheduleMeta.filter(game => game.away === teamName || game.home === teamName);
+  const dataSignature = useMemo(() => JSON.stringify({
+    week: liveData?.current_week,
+    teams: teams.map(team => [team.name, team.wins, team.losses, team.fpts, team.weeklyScores]),
+    schedule: scheduleMeta.map(game => [game.week, game.away, game.home])
+  }), [liveData?.current_week, teams, scheduleMeta]);
+  const topRoute = result && result.outcome === 'playoff'
+    ? Object.entries(result.routes).filter(([route]) => route !== 'miss').sort((a, b) => (b[1].pct || 0) - (a[1].pct || 0))[0]
+    : null;
+  const clearestLeverage = result?.gameLeverage?.find(item => item.evidence !== 'Unclear') || result?.gameLeverage?.[0];
 
   const changeInput = setter => event => {
     workerRef.current?.terminate();
@@ -150,13 +160,15 @@ export default function SimulationExplorer({ liveData, excelData }) {
     setter(event);
   };
 
-  const startWorker = (trialCount, canRetry = true) => {
+  const startWorker = (trialCount, cacheKey, canRetry = true) => {
     const worker = new Worker(new URL('./simulationExplorerWorker.js', import.meta.url), { type: 'module' });
     workerRef.current = worker;
     setRunning(true);
     worker.onmessage = event => {
       if (event.data.type === 'result') {
         setResult(event.data.result);
+        cacheRef.current.set(cacheKey, event.data.result);
+        if (cacheRef.current.size > 12) cacheRef.current.delete(cacheRef.current.keys().next().value);
       } else {
         setError(event.data.message || 'Simulation analysis failed inside the worker.');
       }
@@ -170,7 +182,7 @@ export default function SimulationExplorer({ liveData, excelData }) {
       if (canRetry && trialCount > 100000) {
         const retryCount = Math.max(100000, Math.floor(trialCount / 2));
         setNotice(`The browser stopped the ${trialCount.toLocaleString()}-trial worker, usually because of a device memory limit. Retrying automatically with ${retryCount.toLocaleString()} trials.`);
-        startWorker(retryCount, false);
+        startWorker(retryCount, `${dataSignature}|${teamName}|${outcome}|${retryCount}|${seed}`, false);
         return;
       }
       setError(event.message || 'The browser could not start or complete the simulation worker. Refresh the page, then try 100,000 trials.');
@@ -195,9 +207,16 @@ export default function SimulationExplorer({ liveData, excelData }) {
     workerRef.current?.terminate();
     setError('');
     setNotice('');
-    setResult(null);
     setScenarioIndex(0);
-    startWorker(simulations);
+    const cacheKey = `${dataSignature}|${teamName}|${outcome}|${simulations}|${seed}`;
+    const cached = cacheRef.current.get(cacheKey);
+    if (cached) {
+      setResult(cached);
+      setNotice('Loaded the identical analysis from this browser session.');
+      return;
+    }
+    setResult(null);
+    startWorker(simulations, cacheKey);
   };
 
   const cancel = () => {
@@ -255,6 +274,18 @@ export default function SimulationExplorer({ liveData, excelData }) {
 
       {result && (
         <>
+          <section className="card explorer-takeaway">
+            <div>
+              <SectionTitle info="A compact interpretation of the simulation output. It highlights typical placement, the dominant playoff route when relevant, the clearest remaining-game association, and whether the result changes materially under reasonable model settings.">What matters most</SectionTitle>
+              <p>
+                {selectedTeam?.display} projects around <strong>{ordinal(result.profile.all.placement.median)} place</strong> overall.
+                {topRoute && <> When it makes the playoffs, its most common route is <strong>{topRoute[0] === 'division' ? 'a division title' : topRoute[0] === 'record' ? 'the record wildcard' : 'a points-for berth'} ({pct(topRoute[1].pct)})</strong>.</>}
+                {clearestLeverage && <> Its clearest remaining-game relationship is against <strong>{displayByName.get(clearestLeverage.opponent) || clearestLeverage.opponent}</strong>, with the selected outcome changing by <strong>{signed(clearestLeverage.difference)} points</strong> after a win versus a loss.</>}
+              </p>
+            </div>
+            <span className={`explorer-stability ${result.sensitivity?.stable ? 'stable' : 'sensitive'}`}>{result.sensitivity?.stable ? 'Model-stable' : 'Parameter-sensitive'}</span>
+          </section>
+
           <section className="explorer-summary-grid">
             <SummaryCard label={selectedOutcome} value={pct(result.probability)} detail={`${result.sampleSize.toLocaleString()} of ${result.simulations.toLocaleString()} trials · 95% interval ${pct(result.confidence95.low)}–${pct(result.confidence95.high)}`} info="How often the selected outcome occurred across all simulated seasons. The 95% interval shows the uncertainty caused by using a finite number of trials." />
             <SummaryCard label="Typical final record" value={`${num(result.profile.conditional.wins.median)} wins`} detail={`10th–90th: ${num(result.profile.conditional.wins.p10)}–${num(result.profile.conditional.wins.p90)}`} info="The median final win total among simulations where the selected outcome happened. The range contains the middle 80% of those matching trials." />
@@ -267,6 +298,21 @@ export default function SimulationExplorer({ liveData, excelData }) {
 
           {result.sampleSize < 100 && (
             <div className="explorer-warning">Only {result.sampleSize} matching trials were observed. Increase the trial count before treating these patterns as stable.</div>
+          )}
+
+          {result.outcome === 'playoff' && (
+            <section className="card">
+              <SectionTitle info="Among simulations where the team made the playoffs, this shows how it qualified: winning its division, earning the record-based wildcard, or taking one of the two points-for berths.">Playoff qualification route</SectionTitle>
+              <div className="explorer-route-grid">
+                {[['division', 'Division title'], ['record', 'Record wildcard'], ['points', 'Points-for berth']].map(([key, label]) => (
+                  <div className="explorer-route" key={key}>
+                    <span>{label}</span><strong>{pct(result.routes[key]?.pct)}</strong>
+                    <div><i style={{ width: `${Math.max(0, result.routes[key]?.pct || 0)}%` }} /></div>
+                    <small>{(result.routes[key]?.count || 0).toLocaleString()} qualifying trials</small>
+                  </div>
+                ))}
+              </div>
+            </section>
           )}
 
           <section className="explorer-analysis-stack">
@@ -314,6 +360,17 @@ export default function SimulationExplorer({ liveData, excelData }) {
                 {result.thresholds.pointsFor.filter(item => item.total >= Math.max(10, result.simulations / 10000)).map(item => <tr key={item.floor}><td>{item.floor}–{item.ceiling.toFixed(0)}</td><td>{pct(item.probability)}<small className="explorer-cell-note">95%: {pct(item.confidence95.low)}–{pct(item.confidence95.high)}</small></td><td>{item.total.toLocaleString()}</td></tr>)}
               </tbody></table></div>
             </div>
+          </section>
+
+          <section className="card">
+            <SectionTitle info="Re-runs a smaller, common-random-number simulation under reasonable alternatives for league regression and weekly volatility. A narrow range means the conclusion is not very sensitive to those modeling choices; it is not a guarantee that the model itself is correct.">Model sensitivity</SectionTitle>
+            <div className="explorer-sensitivity-headline">
+              <strong>{pct(result.sensitivity.range.low)}–{pct(result.sensitivity.range.high)}</strong>
+              <span>{result.sensitivity.stable ? 'Stable across tested settings' : 'Meaningfully changes with assumptions'} · {result.sensitivity.trialsPerVariant.toLocaleString()} trials per setting</span>
+            </div>
+            <div className="table-container"><table className="data-table"><thead><tr><th>Setting</th><th>League pull</th><th>Minimum volatility</th><th>{selectedOutcome}</th></tr></thead><tbody>
+              {result.sensitivity.variants.map(item => <tr key={item.label}><td>{item.label}</td><td>{item.priorStd}</td><td>{item.minSigma}</td><td>{pct(item.probability)}</td></tr>)}
+            </tbody></table></div>
           </section>
 
           <section className="card">

@@ -38,6 +38,10 @@ test('simulation explorer is deterministic and accounts for every trial', () => 
   assert.ok(first.confidence95.high >= first.probability);
   assert.ok(first.profile.all.placement.median >= 1);
   assert.ok(first.profile.all.placement.median <= teams.length);
+  assert.equal(first.sensitivity.variants.length, 5);
+  assert.equal(first.sensitivity.trialsPerVariant, 500);
+  assert.ok(first.sensitivity.range.low <= first.sensitivity.range.high);
+  assert.equal(first.sensitivity.span, first.sensitivity.range.high - first.sensitivity.range.low);
   first.rivalDependencies.forEach(item => {
     assert.equal(item.samples + item.complementSamples, input.simulations);
     assert.equal(item.hits + item.complementHits, first.sampleSize);
@@ -73,4 +77,5 @@ test('omits rival comparisons when the complementary condition never occurs', ()
   });
 
   assert.equal(result.rivalDependencies.some(item => item.rival === 'Team1' && item.condition === 'makes playoffs'), false);
+  assert.equal(Object.values(result.routes).reduce((sum, route) => sum + route.count, 0), result.sampleSize);
 });

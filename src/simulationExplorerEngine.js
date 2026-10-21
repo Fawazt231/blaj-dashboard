@@ -432,6 +432,43 @@ export function runSimulationExplorer({
     fpts: conditionalPfSummary,
     placement: conditionalPlacementSummary
   });
+  const sensitivityTrials = Math.min(10000, simulations);
+  const sensitivitySeed = (Number(seed) >>> 0) ^ 0x85ebca6b;
+  const sensitivityVariants = [
+    { label: 'Baseline', priorStd, minSigma },
+    { label: 'Stronger league pull', priorStd: 15, minSigma },
+    { label: 'Stronger team form', priorStd: 40, minSigma },
+    { label: 'Lower volatility', priorStd, minSigma: 15 },
+    { label: 'Higher volatility', priorStd, minSigma: 25 }
+  ];
+  const sensitivity = sensitivityVariants.map(variant => {
+    const variantResults = runPlayoffSimulation({
+      teams,
+      remainingSchedule,
+      simulations: sensitivityTrials,
+      model,
+      priorStd: variant.priorStd,
+      minSigma: variant.minSigma,
+      divisions,
+      rng: createSeededRandom(sensitivitySeed)
+    });
+    const targetResult = variantResults.find(team => team.name === targetName);
+    const count = outcome === 'playoff' ? targetResult?.playoffCount
+      : outcome === 'bye' ? targetResult?.byeCount
+        : outcome === 'divisionWinner' ? targetResult?.divWinnerCount
+          : outcome === 'miss' ? sensitivityTrials - Number(targetResult?.playoffCount || 0)
+            : targetResult?.lastCount;
+    return {
+      ...variant,
+      count: Number(count || 0),
+      probability: pct(Number(count || 0), sensitivityTrials)
+    };
+  });
+  const sensitivityProbabilities = sensitivity.map(item => item.probability).filter(Number.isFinite);
+  const sensitivityRange = {
+    low: sensitivityProbabilities.length ? Math.min(...sensitivityProbabilities) : null,
+    high: sensitivityProbabilities.length ? Math.max(...sensitivityProbabilities) : null
+  };
 
   return {
     targetName,
@@ -441,6 +478,13 @@ export function runSimulationExplorer({
     sampleSize: outcomeCount,
     probability: baselinePct,
     confidence95: wilsonInterval(outcomeCount, simulations),
+    sensitivity: {
+      trialsPerVariant: sensitivityTrials,
+      variants: sensitivity,
+      range: sensitivityRange,
+      span: sensitivityRange.low == null ? null : sensitivityRange.high - sensitivityRange.low,
+      stable: sensitivityRange.low != null && sensitivityRange.high - sensitivityRange.low <= 5
+    },
     profile: {
       all: { wins: allWins.summarize(), fpts: allPf.summarize(), placement: allPlacement.summarize() },
       conditional: {
