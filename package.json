@@ -6,7 +6,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "node --test"
+    "test": "node --test",
+    "sim:explore": "node scripts/simulationExplorer.mjs"
   },
   "dependencies": {
     "html2canvas": "^1.4.1",

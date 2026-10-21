@@ -2,10 +2,10 @@
 // Ported directly from Python (playoffPicture.py & streamlit_app.py) to pure JavaScript
 
 // Standard Normal random variate generator (Box-Muller transform)
-function randomNormal(mean = 0, std = 1) {
+function randomNormal(mean = 0, std = 1, rng = Math.random) {
   let u1 = 0, u2 = 0;
-  while (u1 === 0) u1 = Math.random();
-  while (u2 === 0) u2 = Math.random();
+  while (u1 === 0) u1 = rng();
+  while (u2 === 0) u2 = rng();
   const z = Math.sqrt(-2.0 * Math.log(u1)) * Math.cos(2.0 * Math.PI * u2);
   return mean + z * std;
 }
@@ -39,18 +39,33 @@ export function runPlayoffSimulation({
   priorStd = 20.0,
   minSigma = 10.0,
   overrides = {},    // { gameIndex: 'away' | 'home' } for What-If scenario forcing
-  divisions = {}     // { div_id: [teamNames] }
+  divisions = {},    // { div_id: [teamNames] }
+  rng = Math.random, // injectable RNG for deterministic diagnostics
+  onTrial = null     // optional callback for conditional simulation analysis
 }) {
   if (!teams || teams.length === 0) return [];
+
+  const scoredGames = teams.reduce((sum, team) => sum + Math.max(0, Number(team.wins || 0) + Number(team.losses || 0)), 0);
+  const scoredPoints = teams.reduce((sum, team) => sum + Number(team.fpts || 0), 0);
+  const leagueMean = scoredGames > 0 ? scoredPoints / scoredGames : 115.0;
 
   // 1. Calculate scoring baselines (mean & std) for each team
   const simTeamsBase = teams.map(t => {
     const totalGames = t.wins + t.losses;
     const rawMean = totalGames > 0 ? t.fpts / totalGames : (t.historicalAvg || 110.0);
     let mean = rawMean;
-    let std = Math.max(Math.sqrt(Math.max(rawMean, 1.0)) * 1.5, 16.0);
+    const weeklyScores = Array.isArray(t.weeklyScores)
+      ? t.weeklyScores.map(Number).filter(Number.isFinite)
+      : [];
+    const weeklyMean = weeklyScores.length
+      ? weeklyScores.reduce((sum, score) => sum + score, 0) / weeklyScores.length
+      : rawMean;
+    const observedStd = weeklyScores.length >= 2
+      ? Math.sqrt(weeklyScores.reduce((sum, score) => sum + (score - weeklyMean) ** 2, 0) / (weeklyScores.length - 1))
+      : null;
+    let std = observedStd ?? Math.max(Math.sqrt(Math.max(rawMean, 1.0)) * 1.5, 16.0);
 
-    const priorMean = 115.0;
+    const priorMean = leagueMean;
     if (model === 'Simple') {
       // 50% current team score average + 50% league average baseline
       mean = 0.5 * rawMean + 0.5 * priorMean;
@@ -119,6 +134,7 @@ export function runPlayoffSimulation({
 
     const teamByName = {};
     state.forEach(t => { teamByName[t.name] = t; });
+    const gameResults = onTrial ? [] : null;
 
     // Simulate remaining games
     remainingSchedule.forEach((match, idx) => {
@@ -136,8 +152,8 @@ export function runPlayoffSimulation({
         awayScore = away.mean - 20;
         homeScore = home.mean + 20;
       } else {
-        awayScore = randomNormal(away.mean, away.std);
-        homeScore = randomNormal(home.mean, home.std);
+        awayScore = randomNormal(away.mean, away.std, rng);
+        homeScore = randomNormal(home.mean, home.std, rng);
       }
 
       away.fpts += awayScore;
@@ -149,6 +165,16 @@ export function runPlayoffSimulation({
       } else {
         home.wins += 1;
         away.losses += 1;
+      }
+      if (gameResults) {
+        gameResults.push({
+          index: idx,
+          away: away.name,
+          home: home.name,
+          awayScore,
+          homeScore,
+          winner: awayScore > homeScore ? away.name : home.name
+        });
       }
     });
 
@@ -222,6 +248,20 @@ export function runPlayoffSimulation({
     playoffField.forEach(p => {
       playoffCounts[p.name] += 1;
     });
+
+    if (onTrial) {
+      onTrial({
+        index: s,
+        state,
+        gameResults,
+        lastPlace: sortedByRecord[0],
+        divisionWinners: divWinners,
+        byes: topTwoByes,
+        fourthSeed: fourthSeed[0] || null,
+        wildcards,
+        playoffField
+      });
+    }
   }
 
   // Calculate percentage odds and raw instance counts

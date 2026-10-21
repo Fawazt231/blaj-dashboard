@@ -51,3 +51,17 @@ npm run dev
 ```
 
 Visit `http://localhost:3000` in your browser.
+
+---
+
+## Simulation Explorer
+
+Open the **Simulation Explorer** dashboard tab to choose any manager, outcome, trial count, and deterministic seed. The analysis runs in a background worker and does not change the weekly report.
+
+The same explorer is available from the command line:
+
+```bash
+npm run sim:explore -- --team Nabbo --outcome miss --simulations 1000000 --seed 231
+```
+
+`--team` accepts a manager or team name. Supported outcomes are `playoff`, `bye`, `divisionWinner`, `miss`, and `last`. The explorer uses live Sleeper standings when available and reports conditional record, PF and placement ranges, playoff routes, game leverage, rival associations with adjusted significance evidence, win and PF outcome rates with confidence intervals, common remaining-season paths, and representative scenarios.

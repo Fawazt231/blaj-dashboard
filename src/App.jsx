@@ -27,6 +27,8 @@ import { runPlayoffSimulation } from './playoffSimulatorEngine'
 import { downloadWeeklyNewsletter } from './weeklyReport'
 import { resolveCurrentWeek } from './seasonWeek'
 import { calculateLuckRows } from './luckIndex'
+import SimulationExplorer from './SimulationExplorer'
+import { collectCompletedWeeklyScores } from './simulationInputs'
 
 const MONTH_NAMES_MAP = {
   1: { short: 'Jan', full: 'January' },
@@ -1306,6 +1308,7 @@ export default function App() {
           // Automatically compute baseline 5,000-iteration Bayesian Playoff Simulation
           if (live.standings) {
             const managerProxies = (excel.PerManagerSummary || []);
+            const completedScores = collectCompletedWeeklyScores(live.matchups_by_week, curWk);
             const simTeams = live.standings.map(s => {
               const proxy = managerProxies.find(m => m.manager === s.canonical_name);
               return {
@@ -1314,6 +1317,7 @@ export default function App() {
                 losses: s.losses || 0,
                 fpts: s.points_for || 0,
                 division: s.division || 1,
+                weeklyScores: completedScores[s.canonical_name] || [],
                 historicalAvg: proxy ? Math.max(100.0, proxy.highest_score * 0.7) : 110.0
               };
             });
@@ -1927,6 +1931,12 @@ export default function App() {
               onClick={() => setActiveTab('simulator')}
             >
               <Cpu size={16} /> Playoff Simulator
+            </button>
+            <button
+              className={`nav-tab ${activeTab === 'explorer' ? 'active' : ''}`}
+              onClick={() => setActiveTab('explorer')}
+            >
+              <TrendingUp size={16} /> Simulation Explorer
             </button>
           </nav>
         </div>
@@ -2810,6 +2820,8 @@ export default function App() {
                     // Extract baseline teams from live standings or historical proxies
                     const standings = liveData.standings || [];
                     const managerProxies = (excelData.PerManagerSummary || []);
+                    const curWk = liveData.current_week || 1;
+                    const completedScores = collectCompletedWeeklyScores(liveData.matchups_by_week, curWk);
                     const teams = standings.map(s => {
                       const proxy = managerProxies.find(m => m.manager === s.canonical_name);
                       return {
@@ -2818,6 +2830,7 @@ export default function App() {
                         losses: s.losses || 0,
                         fpts: s.points_for || 0,
                         division: s.division || 1,
+                        weeklyScores: completedScores[s.canonical_name] || [],
                         historicalAvg: proxy ? Math.max(100.0, proxy.highest_score * 0.7) : 110.0
                       };
                     });
@@ -2825,7 +2838,6 @@ export default function App() {
                     // Build remaining schedule from unplayed matchups for upcoming weeks (> current_week)
                     const remainingSchedule = [];
                     const matchupsByWk = liveData.matchups_by_week || {};
-                    const curWk = liveData.current_week || 1;
 
                     Object.keys(matchupsByWk).forEach(wkStr => {
                       const wkNum = Number(wkStr);
@@ -2985,6 +2997,11 @@ export default function App() {
             )}
           </section>
         </main>
+      )}
+
+      {/* TAB 5: CONDITIONAL SIMULATION EXPLORER */}
+      {activeTab === 'explorer' && (
+        <SimulationExplorer liveData={liveData} excelData={excelData} />
       )}
 
       {/* PER-MANAGER PROFILE MODAL */}

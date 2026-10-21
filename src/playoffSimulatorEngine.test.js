@@ -50,3 +50,40 @@ test('ignores an incomplete explicit division map', () => {
     simulations * 2
   );
 });
+
+test('uses the current league scoring average as the Bayesian prior', () => {
+  const teams = [
+    { name: 'A', wins: 1, losses: 0, fpts: 80, division: 1 },
+    { name: 'B', wins: 1, losses: 0, fpts: 100, division: 2 }
+  ];
+  const results = runPlayoffSimulation({
+    teams,
+    remainingSchedule: [],
+    simulations: 1,
+    model: 'Bayesian',
+    priorStd: 25,
+    minSigma: 20
+  });
+  const byName = Object.fromEntries(results.map(result => [result.name, result]));
+
+  assert.ok(byName.A.mean > 80 && byName.A.mean < 90);
+  assert.ok(byName.B.mean < 100 && byName.B.mean > 90);
+});
+
+test('uses completed weekly scores to estimate team volatility', () => {
+  const teams = [
+    { name: 'Volatile', wins: 1, losses: 1, fpts: 200, division: 1, weeklyScores: [50, 150] },
+    { name: 'Stable', wins: 1, losses: 1, fpts: 200, division: 2, weeklyScores: [99, 101] }
+  ];
+  const results = runPlayoffSimulation({
+    teams,
+    remainingSchedule: [],
+    simulations: 1,
+    model: 'Bayesian',
+    priorStd: 25,
+    minSigma: 20
+  });
+  const byName = Object.fromEntries(results.map(result => [result.name, result]));
+
+  assert.ok(byName.Volatile.std > byName.Stable.std * 2);
+});
