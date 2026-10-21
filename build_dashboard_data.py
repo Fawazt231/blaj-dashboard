@@ -51,6 +51,12 @@ def build_playoff_odds_snapshot(live_data, history_data, completed_week, simulat
         and str(game.get("game_type", "regular")).lower() == "regular"
     ]
     proxies = {row.get("manager"): row for row in history_data.get("PerManagerSummary", [])}
+    completed_scores = [
+        float(score)
+        for game in logs
+        for score in (game.get("awayScore", 0), game.get("homeScore", 0))
+    ]
+    prior_mean = sum(completed_scores) / len(completed_scores) if completed_scores else 115.0
 
     teams = []
     for standing in standings:
@@ -58,16 +64,21 @@ def build_playoff_odds_snapshot(live_data, history_data, completed_week, simulat
         team_games = [g for g in logs if name in (g.get("awayTeamName"), g.get("homeTeamName"))]
         wins = sum(1 for g in team_games if g.get("winner") == name)
         losses = sum(1 for g in team_games if g.get("loser") == name)
-        points = sum(
+        weekly_scores = [
             float(g.get("awayScore", 0)) if g.get("awayTeamName") == name else float(g.get("homeScore", 0))
             for g in team_games
-        )
+        ]
+        points = sum(weekly_scores)
         proxy = proxies.get(name, {})
         historical_avg = max(100.0, float(proxy.get("highest_score", 0)) * 0.7) if proxy else 110.0
         total_games = wins + losses
         raw_mean = points / total_games if total_games else historical_avg
-        std = max(math.sqrt(max(raw_mean, 1.0)) * 1.5, 16.0)
-        prior_mean, prior_std, min_sigma = 115.0, 25.0, 20.0
+        if len(weekly_scores) >= 2:
+            variance = sum((score - raw_mean) ** 2 for score in weekly_scores) / (len(weekly_scores) - 1)
+            std = math.sqrt(variance)
+        else:
+            std = max(math.sqrt(max(raw_mean, 1.0)) * 1.5, 16.0)
+        prior_std, min_sigma = 15.0, 40.0
         if total_games:
             prior_var = prior_std ** 2
             obs_var = max(std ** 2, min_sigma ** 2)
@@ -678,7 +689,13 @@ def fetch_sleeper_history_and_live():
                     "team_info": team_info,
                     "points": pts,
                     "starters": item.get("starters"),
-                    "starters_points": item.get("starters_points")
+                    "starters_points": item.get("starters_points"),
+                    # Keep the point-in-time roster snapshot for roster-aware
+                    # simulations. Previously these Sleeper fields were fetched
+                    # and then discarded, which made bench depth impossible to
+                    # reconstruct from the generated dashboard data.
+                    "players": item.get("players"),
+                    "players_points": item.get("players_points")
                 })
             matchups_by_week[wk] = list(grouped.values())
 
@@ -687,6 +704,8 @@ def fetch_sleeper_history_and_live():
         "season": league_res.get("season"),
         "current_week": current_week,
         "total_weeks": total_weeks,
+        "roster_positions": league_res.get("roster_positions", []),
+        "scoring_settings": league_res.get("scoring_settings", {}),
         "standings": standings,
         "playoff_picture": playoff_seeds,
         "punishment_watch": punishment_watch,

@@ -1,5 +1,6 @@
 import { runPlayoffSimulation } from './playoffSimulatorEngine.js';
 import { collectCompletedWeeklyScores } from './simulationInputs.js';
+import { SIMULATION_MODEL } from './simulationModelConfig.js';
 
 const cache = new Map();
 const pct = (hits, total) => total ? hits / total * 100 : 0;
@@ -77,8 +78,8 @@ export function buildSimulationSpotlight({ liveData, excelData, simulations = 10
     remainingSchedule: schedule.map(game => [game.away, game.home]),
     simulations,
     model: 'Bayesian',
-    priorStd: 25,
-    minSigma: 20,
+    priorStd: SIMULATION_MODEL.priorStd,
+    minSigma: SIMULATION_MODEL.minSigma,
     divisions: liveData?.divisions || {},
     rng: seededRandom((Number(liveData?.season || 0) * 1000 + currentWeek) >>> 0),
     onTrial: trial => {

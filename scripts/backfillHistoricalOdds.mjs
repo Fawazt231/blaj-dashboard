@@ -9,6 +9,33 @@ const history = JSON.parse(await fs.readFile(path.join(root, 'public/data/excel_
 const discovery = JSON.parse(await fs.readFile(path.join(root, 'data_discovery.json'), 'utf8'));
 const managers = JSON.parse(await fs.readFile(path.join(root, 'managers.json'), 'utf8'));
 const simulations = Number(process.env.BACKTEST_SIMULATIONS || 10000);
+const priorStd = Number(process.env.BACKTEST_PRIOR_STD || 15);
+const minSigma = Number(process.env.BACKTEST_MIN_SIGMA || 40);
+const rosterBlend = Number(process.env.BACKTEST_ROSTER_BLEND || 0);
+const outputPath = process.env.BACKTEST_OUTPUT
+  ? path.resolve(root, process.env.BACKTEST_OUTPUT)
+  : path.join(root, 'public/data/historical_backtest.json');
+const rosterFeaturePath = process.env.BACKTEST_ROSTER_FEATURES
+  ? path.resolve(root, process.env.BACKTEST_ROSTER_FEATURES)
+  : path.join(root, 'data/historical_roster_projection_features.json');
+let rosterFeatureByCheckpoint = new Map();
+if (rosterBlend > 0) {
+  const featureData = JSON.parse(await fs.readFile(rosterFeaturePath, 'utf8'));
+  rosterFeatureByCheckpoint = new Map(featureData.seasons.flatMap(season => (
+    season.checkpoints.flatMap(checkpoint => {
+      const complete = checkpoint.teams
+        .filter(team => team.lineupComplete && Number.isFinite(team.optimalProjectedPoints));
+      const projectedLeagueMean = complete.reduce(
+        (sum, team) => sum + team.optimalProjectedPoints,
+        0
+      ) / complete.length;
+      return complete.map(team => [
+        `${season.season}|${checkpoint.completedWeek}|${team.team}`,
+        { projectedMean: team.optimalProjectedPoints, projectedLeagueMean }
+      ]);
+    })
+  )));
+}
 
 const canonicalByUserId = new Map(Object.entries(managers.users).map(([id, value]) => [id, value.canonical_name]));
 const seededRandom = seed => {
@@ -108,13 +135,16 @@ function buildCheckpoint(games, config, completedWeek) {
     const weeklyScores = teamGames.sort((a, b) => a.week - b.week).map(game => (
       game.awayTeamName === name ? Number(game.awayScore) : Number(game.homeScore)
     ));
+    const rosterProjection = rosterFeatureByCheckpoint.get(`${config.season}|${completedWeek}|${name}`);
     return {
       name,
       wins: teamGames.filter(game => game.winner === name).length,
       losses: teamGames.filter(game => game.loser === name).length,
       fpts: weeklyScores.reduce((sum, value) => sum + value, 0),
       weeklyScores,
-      division: config.divisionByTeam.get(name) || '1'
+      division: config.divisionByTeam.get(name) || '1',
+      projectedMean: rosterProjection?.projectedMean,
+      projectedLeagueMean: rosterProjection?.projectedLeagueMean
     };
   });
   const remainingSchedule = games
@@ -192,8 +222,9 @@ for (const config of configurations) {
       ...checkpoint,
       simulations,
       model: 'Bayesian',
-      priorStd: 25,
-      minSigma: 20,
+      priorStd,
+      minSigma,
+      rosterBlend,
       divisions: config.divisions,
       rng: seededRandom(config.season * 100000 + completedWeek * 100 + simulations)
     });
@@ -224,6 +255,12 @@ const output = {
     divisions: config.divisions
   })),
   simulationsPerCheckpoint: simulations,
+  modelParameters: {
+    priorStd,
+    minSigma,
+    rosterBlend,
+    rosterProjectionSource: rosterBlend > 0 ? path.relative(root, rosterFeaturePath) : null
+  },
   checkpoints: new Set(forecasts.map(row => `${row.season}-${row.weekCompleted}`)).size,
   teamForecasts: forecasts.length,
   metrics: {
@@ -234,5 +271,5 @@ const output = {
   },
   forecasts
 };
-await fs.writeFile(path.join(root, 'public/data/historical_backtest.json'), `${JSON.stringify(output, null, 2)}\n`);
+await fs.writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`);
 process.stdout.write(`Saved ${output.checkpoints} checkpoints and ${output.teamForecasts} team forecasts.\n`);

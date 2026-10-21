@@ -1,4 +1,5 @@
 import { runPlayoffSimulation } from './playoffSimulatorEngine.js';
+import { SIMULATION_MODEL } from './simulationModelConfig.js';
 
 export const EXPLORER_OUTCOMES = ['playoff', 'bye', 'divisionWinner', 'miss', 'last'];
 
@@ -240,8 +241,8 @@ export function runSimulationExplorer({
   simulations = 100000,
   seed = 231,
   model = 'Bayesian',
-  priorStd = 25,
-  minSigma = 20,
+  priorStd = SIMULATION_MODEL.priorStd,
+  minSigma = SIMULATION_MODEL.minSigma,
   divisions = {}
 }) {
   if (!EXPLORER_OUTCOMES.includes(outcome)) throw new Error(`Unsupported outcome: ${outcome}`);
@@ -436,10 +437,10 @@ export function runSimulationExplorer({
   const sensitivitySeed = (Number(seed) >>> 0) ^ 0x85ebca6b;
   const sensitivityVariants = [
     { label: 'Baseline', priorStd, minSigma },
-    { label: 'Stronger league pull', priorStd: 15, minSigma },
-    { label: 'Stronger team form', priorStd: 40, minSigma },
-    { label: 'Lower volatility', priorStd, minSigma: 15 },
-    { label: 'Higher volatility', priorStd, minSigma: 25 }
+    { label: 'Stronger league pull', priorStd: 10, minSigma },
+    { label: 'Stronger team form', priorStd: 25, minSigma },
+    { label: 'Lower volatility', priorStd, minSigma: 30 },
+    { label: 'Higher volatility', priorStd, minSigma: 50 }
   ];
   const sensitivity = sensitivityVariants.map(variant => {
     const variantResults = runPlayoffSimulation({

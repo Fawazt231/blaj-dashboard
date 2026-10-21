@@ -38,6 +38,7 @@ export function runPlayoffSimulation({
   model = 'Bayesian', // 'Bayesian', 'Simple'
   priorStd = 20.0,
   minSigma = 10.0,
+  rosterBlend = 0,
   overrides = {},    // { gameIndex: 'away' | 'home' } for What-If scenario forcing
   divisions = {},    // { div_id: [teamNames] }
   rng = Math.random, // injectable RNG for deterministic diagnostics
@@ -81,6 +82,18 @@ export function runPlayoffSimulation({
         mean = 0.5 * rawMean + 0.5 * priorMean;
         std = priorStd;
       }
+    }
+
+    // Optional challenger-model input. A missing roster projection always falls
+    // back to the score-only estimate instead of being interpreted as zero.
+    const projectedMean = Number(t.projectedMean);
+    if (Number.isFinite(projectedMean) && rosterBlend > 0) {
+      const blend = Math.min(1, Math.max(0, Number(rosterBlend)));
+      const projectedLeagueMean = Number(t.projectedLeagueMean);
+      const normalizedProjection = Number.isFinite(projectedLeagueMean)
+        ? leagueMean + projectedMean - projectedLeagueMean
+        : projectedMean;
+      mean = (1 - blend) * mean + blend * normalizedProjection;
     }
 
     return {

@@ -26,6 +26,7 @@ import FileDown from 'lucide-react/dist/esm/icons/file-down'
 import { runPlayoffSimulation } from './playoffSimulatorEngine'
 import { downloadWeeklyNewsletter } from './weeklyReport'
 import { resolveCurrentWeek } from './seasonWeek'
+import { SIMULATION_MODEL } from './simulationModelConfig'
 import { calculateLuckRows } from './luckIndex'
 import SimulationExplorer from './SimulationExplorer'
 import { collectCompletedWeeklyScores } from './simulationInputs'
@@ -1341,8 +1342,8 @@ export default function App() {
               remainingSchedule: remainingSched,
               simulations: 10000,
               model: 'Bayesian',
-              priorStd: 25,
-              minSigma: 20,
+              priorStd: SIMULATION_MODEL.priorStd,
+              minSigma: SIMULATION_MODEL.minSigma,
               overrides: {},
               divisions: live.divisions || {}
             });

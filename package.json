@@ -8,7 +8,11 @@
     "preview": "vite preview",
     "test": "node --test",
     "sim:explore": "node scripts/simulationExplorer.mjs",
-    "sim:backfill": "node scripts/backfillHistoricalOdds.mjs"
+    "sim:backfill": "node scripts/backfillHistoricalOdds.mjs",
+    "sim:calibrate": "node scripts/calibrateHistoricalOdds.mjs",
+    "data:rosters": "node scripts/backfillRosterSnapshots.mjs",
+    "data:roster-features": "node scripts/buildRosterProjectionFeatures.mjs",
+    "model:roster-evaluate": "node scripts/evaluateRosterProjectionFeatures.mjs"
   },
   "dependencies": {
     "html2canvas": "^1.4.1",

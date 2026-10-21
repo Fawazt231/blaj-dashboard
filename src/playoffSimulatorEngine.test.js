@@ -87,3 +87,42 @@ test('uses completed weekly scores to estimate team volatility', () => {
 
   assert.ok(byName.Volatile.std > byName.Stable.std * 2);
 });
+
+test('blends normalized roster projections without changing the league scoring level', () => {
+  const teams = [
+    { name: 'Deep', wins: 1, losses: 0, fpts: 100, division: 1, projectedMean: 120, projectedLeagueMean: 100 },
+    { name: 'Thin', wins: 1, losses: 0, fpts: 100, division: 2, projectedMean: 80, projectedLeagueMean: 100 }
+  ];
+  const results = runPlayoffSimulation({
+    teams,
+    remainingSchedule: [],
+    simulations: 1,
+    model: 'Bayesian',
+    priorStd: 15,
+    minSigma: 40,
+    rosterBlend: 0.5
+  });
+  const byName = Object.fromEntries(results.map(result => [result.name, result]));
+
+  assert.equal(byName.Deep.mean, 110);
+  assert.equal(byName.Thin.mean, 90);
+  assert.equal((byName.Deep.mean + byName.Thin.mean) / 2, 100);
+});
+
+test('falls back to the score-only model when a roster projection is missing', () => {
+  const teams = [
+    { name: 'Known', wins: 1, losses: 0, fpts: 80, division: 1 },
+    { name: 'Other', wins: 1, losses: 0, fpts: 100, division: 2 }
+  ];
+  const baseline = runPlayoffSimulation({ teams, remainingSchedule: [], simulations: 1 });
+  const challenger = runPlayoffSimulation({
+    teams,
+    remainingSchedule: [],
+    simulations: 1,
+    rosterBlend: 0.5
+  });
+
+  const baselineMeans = Object.fromEntries(baseline.map(result => [result.name, result.mean]));
+  const challengerMeans = Object.fromEntries(challenger.map(result => [result.name, result.mean]));
+  assert.deepEqual(challengerMeans, baselineMeans);
+});

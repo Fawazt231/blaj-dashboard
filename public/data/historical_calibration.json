@@ -1,0 +1,512 @@
+{
+  "generatedAt": "2026-10-21T22:10:31.025Z",
+  "sourceBacktestGeneratedAt": "2026-10-21T22:09:52.072Z",
+  "method": "Leave-one-season-out Platt calibration; each held-out season is adjusted only with coefficients fitted on the other six seasons.",
+  "recommendation": "do_not_apply_globally",
+  "results": {
+    "playoff": {
+      "method": "regularized_platt_logistic",
+      "finalCoefficients": {
+        "intercept": 0.0031632483820448996,
+        "slope": 1.0546584879560346
+      },
+      "outOfSeason": {
+        "raw": {
+          "brier": 0.17003187829588004,
+          "logLoss": 0.49808935335821175
+        },
+        "calibrated": {
+          "brier": 0.17168828049964532,
+          "logLoss": 0.5027563987005805
+        },
+        "brierImprovementPct": -0.9741715614544288,
+        "logLossImprovementPct": -0.9369895804643757
+      },
+      "folds": [
+        {
+          "season": 2019,
+          "coefficients": {
+            "intercept": -0.0010460102383195295,
+            "slope": 0.9809019360805236
+          },
+          "raw": {
+            "brier": 0.14280662749999998,
+            "logLoss": 0.4373297589348534
+          },
+          "calibrated": {
+            "brier": 0.14331214439940043,
+            "logLoss": 0.4390809471543747
+          }
+        },
+        {
+          "season": 2020,
+          "coefficients": {
+            "intercept": 0.006429919047245931,
+            "slope": 1.1125012558597056
+          },
+          "raw": {
+            "brier": 0.2110561898611111,
+            "logLoss": 0.6121403339862541
+          },
+          "calibrated": {
+            "brier": 0.2121753320071427,
+            "logLoss": 0.6187646378245139
+          }
+        },
+        {
+          "season": 2021,
+          "coefficients": {
+            "intercept": 0.010212816841724941,
+            "slope": 1.173349174347444
+          },
+          "raw": {
+            "brier": 0.2056933984615384,
+            "logLoss": 0.5734042883313833
+          },
+          "calibrated": {
+            "brier": 0.2130139754793204,
+            "logLoss": 0.5918977371584737
+          }
+        },
+        {
+          "season": 2022,
+          "coefficients": {
+            "intercept": -0.0011524969959836972,
+            "slope": 0.9786904426388549
+          },
+          "raw": {
+            "brier": 0.1410384001282052,
+            "logLoss": 0.428110743785371
+          },
+          "calibrated": {
+            "brier": 0.1415133431505702,
+            "logLoss": 0.4299658109879926
+          }
+        },
+        {
+          "season": 2023,
+          "coefficients": {
+            "intercept": 0.0013909637125682957,
+            "slope": 1.0347116056524306
+          },
+          "raw": {
+            "brier": 0.1531808961538461,
+            "logLoss": 0.4601735124555883
+          },
+          "calibrated": {
+            "brier": 0.15294417936031898,
+            "logLoss": 0.4592982576242318
+          }
+        },
+        {
+          "season": 2024,
+          "coefficients": {
+            "intercept": 0.001168864373790101,
+            "slope": 1.018770220389666
+          },
+          "raw": {
+            "brier": 0.1439479305128206,
+            "logLoss": 0.4310132821889691
+          },
+          "calibrated": {
+            "brier": 0.14377191339107703,
+            "logLoss": 0.43022473954077656
+          }
+        },
+        {
+          "season": 2025,
+          "coefficients": {
+            "intercept": 0.007579811098182655,
+            "slope": 1.1099076026028207
+          },
+          "raw": {
+            "brier": 0.19356117166666664,
+            "logLoss": 0.5485528912254248
+          },
+          "calibrated": {
+            "brier": 0.19601868458716679,
+            "logLoss": 0.5540882596581425
+          }
+        }
+      ]
+    },
+    "bye": {
+      "method": "regularized_platt_logistic",
+      "finalCoefficients": {
+        "intercept": 0.3967143541873454,
+        "slope": 1.3932822154559068
+      },
+      "outOfSeason": {
+        "raw": {
+          "brier": 0.07376504095505616,
+          "logLoss": 0.24682888882558676
+        },
+        "calibrated": {
+          "brier": 0.0718482995887938,
+          "logLoss": 0.24291379105018152
+        },
+        "brierImprovementPct": 2.598441404553964,
+        "logLossImprovementPct": 1.5861586518633675
+      },
+      "folds": [
+        {
+          "season": 2019,
+          "coefficients": {
+            "intercept": 0.3961609777431076,
+            "slope": 1.3846471660268949
+          },
+          "raw": {
+            "brier": 0.0762583984722222,
+            "logLoss": 0.24237227131551023
+          },
+          "calibrated": {
+            "brier": 0.07555026760464982,
+            "logLoss": 0.23406698718257749
+          }
+        },
+        {
+          "season": 2020,
+          "coefficients": {
+            "intercept": 0.44041745042925706,
+            "slope": 1.4483281392133112
+          },
+          "raw": {
+            "brier": 0.10085893722222228,
+            "logLoss": 0.32508014879593233
+          },
+          "calibrated": {
+            "brier": 0.10204067825461398,
+            "logLoss": 0.3298357851853442
+          }
+        },
+        {
+          "season": 2021,
+          "coefficients": {
+            "intercept": 0.31259586767295644,
+            "slope": 1.3102778419889778
+          },
+          "raw": {
+            "brier": 0.051740949871794846,
+            "logLoss": 0.17368340471599814
+          },
+          "calibrated": {
+            "brier": 0.04736819733046571,
+            "logLoss": 0.15646417807842392
+          }
+        },
+        {
+          "season": 2022,
+          "coefficients": {
+            "intercept": 0.30342790315566665,
+            "slope": 1.2991476648078426
+          },
+          "raw": {
+            "brier": 0.05869048923076928,
+            "logLoss": 0.2066994521625792
+          },
+          "calibrated": {
+            "brier": 0.05352636168824944,
+            "logLoss": 0.18665113198342997
+          }
+        },
+        {
+          "season": 2023,
+          "coefficients": {
+            "intercept": 0.36090057961345884,
+            "slope": 1.3496823768387303
+          },
+          "raw": {
+            "brier": 0.0616686126923077,
+            "logLoss": 0.19943190835385957
+          },
+          "calibrated": {
+            "brier": 0.0594404347035159,
+            "logLoss": 0.1862686076380646
+          }
+        },
+        {
+          "season": 2024,
+          "coefficients": {
+            "intercept": 0.43640992457963806,
+            "slope": 1.4361796605874688
+          },
+          "raw": {
+            "brier": 0.09466926448717952,
+            "logLoss": 0.31085892875894655
+          },
+          "calibrated": {
+            "brier": 0.0931659305269455,
+            "logLoss": 0.31260516751904927
+          }
+        },
+        {
+          "season": 2025,
+          "coefficients": {
+            "intercept": 0.529124765944381,
+            "slope": 1.54089969590723
+          },
+          "raw": {
+            "brier": 0.07474457730769234,
+            "logLoss": 0.2753526186347538
+          },
+          "calibrated": {
+            "brier": 0.07445348445016824,
+            "logLoss": 0.3005104636311079
+          }
+        }
+      ]
+    },
+    "divisionWinner": {
+      "method": "regularized_platt_logistic",
+      "finalCoefficients": {
+        "intercept": 0.0071571507519827575,
+        "slope": 1.0104949385579731
+      },
+      "outOfSeason": {
+        "raw": {
+          "brier": 0.11768506337078632,
+          "logLoss": 0.36219650640304013
+        },
+        "calibrated": {
+          "brier": 0.11880070953536799,
+          "logLoss": 0.36653550905714155
+        },
+        "brierImprovementPct": -0.947993001513403,
+        "logLossImprovementPct": -1.1979692176470325
+      },
+      "folds": [
+        {
+          "season": 2019,
+          "coefficients": {
+            "intercept": 0.023016889380511316,
+            "slope": 1.0309964276238313
+          },
+          "raw": {
+            "brier": 0.11987398833333336,
+            "logLoss": 0.3465237812532537
+          },
+          "calibrated": {
+            "brier": 0.12045928341755371,
+            "logLoss": 0.34716379444047635
+          }
+        },
+        {
+          "season": 2020,
+          "coefficients": {
+            "intercept": 0.03490792345188518,
+            "slope": 1.0485616464844063
+          },
+          "raw": {
+            "brier": 0.14556583347222232,
+            "logLoss": 0.4404232156849063
+          },
+          "calibrated": {
+            "brier": 0.14615613181088163,
+            "logLoss": 0.44231824660282687
+          }
+        },
+        {
+          "season": 2021,
+          "coefficients": {
+            "intercept": 0.029620666467092063,
+            "slope": 1.0405203868649093
+          },
+          "raw": {
+            "brier": 0.12384814461538465,
+            "logLoss": 0.3812168605805373
+          },
+          "calibrated": {
+            "brier": 0.12413209138592186,
+            "logLoss": 0.38236117411337095
+          }
+        },
+        {
+          "season": 2022,
+          "coefficients": {
+            "intercept": -0.03035702009787894,
+            "slope": 0.9606879824718274
+          },
+          "raw": {
+            "brier": 0.1163281971794872,
+            "logLoss": 0.3633619606932375
+          },
+          "calibrated": {
+            "brier": 0.11669479514572824,
+            "logLoss": 0.3653346268048615
+          }
+        },
+        {
+          "season": 2023,
+          "coefficients": {
+            "intercept": -0.06639999395260883,
+            "slope": 0.9158565652031232
+          },
+          "raw": {
+            "brier": 0.06330825576923073,
+            "logLoss": 0.2114722242540371
+          },
+          "calibrated": {
+            "brier": 0.06547274890057675,
+            "logLoss": 0.21970394415576627
+          }
+        },
+        {
+          "season": 2024,
+          "coefficients": {
+            "intercept": -0.02732965937908846,
+            "slope": 0.9652423302209834
+          },
+          "raw": {
+            "brier": 0.11025225666666663,
+            "logLoss": 0.34071161977167796
+          },
+          "calibrated": {
+            "brier": 0.11071073147258197,
+            "logLoss": 0.34231827758513295
+          }
+        },
+        {
+          "season": 2025,
+          "coefficients": {
+            "intercept": 0.09781822300242597,
+            "slope": 1.134608161049412
+          },
+          "raw": {
+            "brier": 0.14693182102564115,
+            "logLoss": 0.4564777275168616
+          },
+          "calibrated": {
+            "brier": 0.1502110304726165,
+            "logLoss": 0.47088780915362516
+          }
+        }
+      ]
+    },
+    "last": {
+      "method": "regularized_platt_logistic",
+      "finalCoefficients": {
+        "intercept": -0.41630767508163746,
+        "slope": 0.7598152785106437
+      },
+      "outOfSeason": {
+        "raw": {
+          "brier": 0.060768607771535615,
+          "logLoss": 0.21602786798539475
+        },
+        "calibrated": {
+          "brier": 0.06170565570135728,
+          "logLoss": 0.21881536077483038
+        },
+        "brierImprovementPct": -1.5419934143374947,
+        "logLossImprovementPct": -1.2903394434388815
+      },
+      "folds": [
+        {
+          "season": 2019,
+          "coefficients": {
+            "intercept": -0.2926595520559611,
+            "slope": 0.8292939520900433
+          },
+          "raw": {
+            "brier": 0.07624377527777776,
+            "logLoss": 0.2944309546759065
+          },
+          "calibrated": {
+            "brier": 0.07497103374750261,
+            "logLoss": 0.2820048931659327
+          }
+        },
+        {
+          "season": 2020,
+          "coefficients": {
+            "intercept": -0.5877238776866509,
+            "slope": 0.6658349075834634
+          },
+          "raw": {
+            "brier": 0.022432262777777788,
+            "logLoss": 0.08439895201674599
+          },
+          "calibrated": {
+            "brier": 0.028822876231621344,
+            "logLoss": 0.10982953716992415
+          }
+        },
+        {
+          "season": 2021,
+          "coefficients": {
+            "intercept": -0.48584203742237536,
+            "slope": 0.719923936974275
+          },
+          "raw": {
+            "brier": 0.04109026051282054,
+            "logLoss": 0.15290503463362595
+          },
+          "calibrated": {
+            "brier": 0.04308966264097958,
+            "logLoss": 0.15873424904797587
+          }
+        },
+        {
+          "season": 2022,
+          "coefficients": {
+            "intercept": -0.4183711474247206,
+            "slope": 0.7574641219835853
+          },
+          "raw": {
+            "brier": 0.07012578858974362,
+            "logLoss": 0.23849317422448968
+          },
+          "calibrated": {
+            "brier": 0.06922961257516402,
+            "logLoss": 0.23640821490166672
+          }
+        },
+        {
+          "season": 2023,
+          "coefficients": {
+            "intercept": -0.13341079888274066,
+            "slope": 0.921904876186346
+          },
+          "raw": {
+            "brier": 0.09311516743589743,
+            "logLoss": 0.34878592640725475
+          },
+          "calibrated": {
+            "brier": 0.09108962219497051,
+            "logLoss": 0.33846677633955086
+          }
+        },
+        {
+          "season": 2024,
+          "coefficients": {
+            "intercept": -0.5874879505259125,
+            "slope": 0.6692098811001845
+          },
+          "raw": {
+            "brier": 0.03919994743589747,
+            "logLoss": 0.13269581283624118
+          },
+          "calibrated": {
+            "brier": 0.04587932184993523,
+            "logLoss": 0.1563533590040397
+          }
+        },
+        {
+          "season": 2025,
+          "coefficients": {
+            "intercept": -0.338425139662715,
+            "slope": 0.8028625325443014
+          },
+          "raw": {
+            "brier": 0.08141450025641024,
+            "logLoss": 0.256390926543633
+          },
+          "calibrated": {
+            "brier": 0.07734842979058976,
+            "logLoss": 0.24638770416289155
+          }
+        }
+      ]
+    }
+  }
+}

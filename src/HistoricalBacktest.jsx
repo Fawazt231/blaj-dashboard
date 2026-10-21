@@ -35,6 +35,9 @@ export default function HistoricalBacktest() {
     ), 0) / total : null;
   }, [metric]);
   const label = OUTCOMES.find(([key]) => key === outcome)?.[1] || outcome;
+  const exampleBucket = useMemo(() => metric?.calibration.reduce((best, bucket) => (
+    !best || bucket.forecasts > best.forecasts ? bucket : best
+  ), null), [metric]);
 
   if (error) return <section className="card explorer-warning">{error}</section>;
   if (!data || !metric) return <section className="card explorer-empty">Loading historical model backtest…</section>;
@@ -54,11 +57,27 @@ export default function HistoricalBacktest() {
         </label>
       </div>
 
+      <details className="backtest-guide" open>
+        <summary>How to read this backtest</summary>
+        <div className="backtest-guide-grid">
+          <div><strong>1. Recreate the past</strong><span>At the end of each historical week, the simulator sees only scores, records, and schedule information that existed then.</span></div>
+          <div><strong>2. Save each probability</strong><span>One forecast means one team at one weekly checkpoint—for example, a 70% chance to make the playoffs after Week 6.</span></div>
+          <div><strong>3. Compare with reality</strong><span>After the season, that probability is compared with the actual yes-or-no result. Confident wrong forecasts receive the largest penalty.</span></div>
+          <div><strong>4. Group similar forecasts</strong><span>If probabilities are calibrated, teams given about 70% odds should actually achieve the outcome about 70% of the time.</span></div>
+        </div>
+        <div className="backtest-score-help">
+          <p><strong>Brier score:</strong> the average squared probability error. Zero is perfect; lower is better.</p>
+          <p><strong>Uninformed baseline:</strong> the score from giving every team the league-wide rate, such as 50% for a six-of-twelve playoff field.</p>
+          <p><strong>Error reduction:</strong> how much error the model removed relative to that baseline. Positive is useful; larger is better.</p>
+          <p><strong>Calibration error:</strong> the typical absolute difference between displayed probabilities and observed results. Zero is perfect.</p>
+        </div>
+      </details>
+
       <div className="backtest-summary-grid">
-        <div><span>Brier score</span><strong>{decimal(metric.brier)}</strong><small>Lower is better · 0 is perfect</small></div>
-        <div><span>Uninformed baseline</span><strong>{decimal(metric.uninformedBrier)}</strong><small>Always predicts the league-wide rate</small></div>
-        <div><span>Error reduction</span><strong>{percent(metric.brierSkillScore * 100)}</strong><small>Versus the uninformed baseline</small></div>
-        <div><span>Calibration error</span><strong>{percent(calibrationError)}</strong><small>Average forecast-versus-result gap</small></div>
+        <div><span>Brier score</span><strong>{decimal(metric.brier)}</strong><small>Overall probability error · lower is better</small></div>
+        <div><span>Uninformed baseline</span><strong>{decimal(metric.uninformedBrier)}</strong><small>The no-information comparison score</small></div>
+        <div><span>Error reduction</span><strong>{percent(metric.brierSkillScore * 100)}</strong><small>Error removed versus the baseline</small></div>
+        <div><span>Average calibration gap</span><strong>{percent(calibrationError)}</strong><small>Typical displayed-versus-observed difference</small></div>
       </div>
 
       <div className="backtest-verdict">
@@ -66,9 +85,20 @@ export default function HistoricalBacktest() {
         {' '}Its average calibration gap was {percent(calibrationError)}; individual probability bands below show where it was over- or underconfident.
       </div>
 
+      {exampleBucket && (() => {
+        const gap = exampleBucket.observedRate - exampleBucket.meanPrediction;
+        return <div className="backtest-example">
+          <strong>Concrete example:</strong> The model produced {exampleBucket.forecasts.toLocaleString()} {exampleBucket.range} forecasts. Their average was {percent(exampleBucket.meanPrediction)}, and {label.toLowerCase()} actually occurred {percent(exampleBucket.observedRate)} of the time. Because reality was {Math.abs(gap).toFixed(1)} points {gap >= 0 ? 'higher' : 'lower'}, the model <strong>{gap >= 0 ? 'underestimated' : 'was overconfident about'}</strong> this group.
+        </div>;
+      })()}
+
+      <div className="backtest-table-intro">
+        <strong>Reading the table:</strong> positive gaps mean the outcome happened more often than predicted; negative gaps mean it happened less often. “Close” means the difference was under five percentage points.
+      </div>
+
       <div className="table-container">
         <table className="data-table backtest-table">
-          <thead><tr><th>Displayed range</th><th>Average forecast</th><th>Actually happened</th><th>Gap</th><th>Reading</th><th>Forecasts</th></tr></thead>
+          <thead><tr><th>Probability band</th><th>Average forecast</th><th>Observed result rate</th><th>Actual − forecast</th><th>Interpretation</th><th>Team-week forecasts</th></tr></thead>
           <tbody>
             {metric.calibration.map(bucket => {
               const gap = bucket.observedRate - bucket.meanPrediction;

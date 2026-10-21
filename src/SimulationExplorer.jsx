@@ -5,6 +5,7 @@ import RefreshCw from 'lucide-react/dist/esm/icons/refresh-cw';
 import X from 'lucide-react/dist/esm/icons/x';
 import { collectCompletedWeeklyScores } from './simulationInputs.js';
 import HistoricalBacktest from './HistoricalBacktest.jsx';
+import { SIMULATION_MODEL } from './simulationModelConfig.js';
 
 const OUTCOMES = [
   ['playoff', 'Makes playoffs'],
@@ -197,8 +198,8 @@ export default function SimulationExplorer({ liveData, excelData }) {
       simulations: trialCount,
       seed,
       model: 'Bayesian',
-      priorStd: 25,
-      minSigma: 20,
+      priorStd: SIMULATION_MODEL.priorStd,
+      minSigma: SIMULATION_MODEL.minSigma,
       divisions: liveData?.divisions || {}
     });
   };
