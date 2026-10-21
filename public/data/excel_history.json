@@ -2,9 +2,9 @@
   "PerManagerSummary": [
     {
       "manager": "Loomnoo",
-      "all_time_record": "72-55-0",
-      "regular_season_win_pct": 0.5669,
-      "total_games": 127,
+      "all_time_record": "72-56-0",
+      "regular_season_win_pct": 0.5625,
+      "total_games": 128,
       "highest_score": 159.16,
       "lowest_score": 62.22,
       "week1_record": "7-3-0",
@@ -12,12 +12,22 @@
     },
     {
       "manager": "GeneralSod",
-      "all_time_record": "69-58-0",
-      "regular_season_win_pct": 0.5433,
-      "total_games": 127,
+      "all_time_record": "70-58-0",
+      "regular_season_win_pct": 0.5469,
+      "total_games": 128,
       "highest_score": 165.86,
       "lowest_score": 51.9,
       "week1_record": "6-4-0",
+      "playoff_appearances": 7
+    },
+    {
+      "manager": "Fawaz",
+      "all_time_record": "69-59-0",
+      "regular_season_win_pct": 0.5391,
+      "total_games": 128,
+      "highest_score": 157.7,
+      "lowest_score": 44.64,
+      "week1_record": "4-6-0",
       "playoff_appearances": 7
     },
     {
@@ -31,50 +41,40 @@
       "playoff_appearances": 1
     },
     {
-      "manager": "Fawaz",
-      "all_time_record": "68-59-0",
-      "regular_season_win_pct": 0.5354,
-      "total_games": 127,
-      "highest_score": 157.7,
-      "lowest_score": 44.64,
-      "week1_record": "4-6-0",
-      "playoff_appearances": 7
-    },
-    {
       "manager": "Aneesh",
-      "all_time_record": "67-60-0",
-      "regular_season_win_pct": 0.5276,
-      "total_games": 127,
+      "all_time_record": "67-61-0",
+      "regular_season_win_pct": 0.5234,
+      "total_games": 128,
       "highest_score": 165.16,
       "lowest_score": 51.42,
       "week1_record": "6-4-0",
       "playoff_appearances": 3
     },
     {
-      "manager": "Rohit",
-      "all_time_record": "53-48-0",
-      "regular_season_win_pct": 0.5248,
-      "total_games": 101,
-      "highest_score": 154.48,
-      "lowest_score": 50.64,
-      "week1_record": "3-5-0",
-      "playoff_appearances": 2
-    },
-    {
       "manager": "hoo2champ",
-      "all_time_record": "66-61-0",
-      "regular_season_win_pct": 0.5197,
-      "total_games": 127,
+      "all_time_record": "67-61-0",
+      "regular_season_win_pct": 0.5234,
+      "total_games": 128,
       "highest_score": 169.2,
       "lowest_score": 46.76,
       "week1_record": "7-3-0",
       "playoff_appearances": 6
     },
     {
+      "manager": "Rohit",
+      "all_time_record": "53-49-0",
+      "regular_season_win_pct": 0.5196,
+      "total_games": 102,
+      "highest_score": 154.48,
+      "lowest_score": 50.64,
+      "week1_record": "3-5-0",
+      "playoff_appearances": 2
+    },
+    {
       "manager": "Nfi421",
-      "all_time_record": "51-50-0",
-      "regular_season_win_pct": 0.505,
-      "total_games": 101,
+      "all_time_record": "52-50-0",
+      "regular_season_win_pct": 0.5098,
+      "total_games": 102,
       "highest_score": 158.42,
       "lowest_score": 52.02,
       "week1_record": "5-3-0",
@@ -82,9 +82,9 @@
     },
     {
       "manager": "Nabbo",
-      "all_time_record": "62-65-0",
-      "regular_season_win_pct": 0.4882,
-      "total_games": 127,
+      "all_time_record": "63-65-0",
+      "regular_season_win_pct": 0.4922,
+      "total_games": 128,
       "highest_score": 158.52,
       "lowest_score": 37.76,
       "week1_record": "3-7-0",
@@ -92,9 +92,9 @@
     },
     {
       "manager": "Mutumbs",
-      "all_time_record": "61-66-0",
-      "regular_season_win_pct": 0.4803,
-      "total_games": 127,
+      "all_time_record": "61-67-0",
+      "regular_season_win_pct": 0.4766,
+      "total_games": 128,
       "highest_score": 151.0,
       "lowest_score": 49.06,
       "week1_record": "6-4-0",
@@ -102,9 +102,9 @@
     },
     {
       "manager": "Jaguo",
-      "all_time_record": "47-54-0",
-      "regular_season_win_pct": 0.4653,
-      "total_games": 101,
+      "all_time_record": "48-54-0",
+      "regular_season_win_pct": 0.4706,
+      "total_games": 102,
       "highest_score": 164.08,
       "lowest_score": 42.94,
       "week1_record": "4-4-0",
@@ -112,9 +112,9 @@
     },
     {
       "manager": "Gmen",
-      "all_time_record": "59-68-0",
-      "regular_season_win_pct": 0.4646,
-      "total_games": 127,
+      "all_time_record": "59-69-0",
+      "regular_season_win_pct": 0.4609,
+      "total_games": 128,
       "highest_score": 153.34,
       "lowest_score": 52.86,
       "week1_record": "4-6-0",
@@ -122,9 +122,9 @@
     },
     {
       "manager": "Aryan",
-      "all_time_record": "56-71-0",
-      "regular_season_win_pct": 0.4409,
-      "total_games": 127,
+      "all_time_record": "56-72-0",
+      "regular_season_win_pct": 0.4375,
+      "total_games": 128,
       "highest_score": 160.9,
       "lowest_score": 50.04,
       "week1_record": "3-7-0",
@@ -298,18 +298,18 @@
   ],
   "Top10_Seasons_Reg": [
     {
-      "season": 2026,
-      "manager": "Nabbo",
-      "avg_points_per_game": 127.37,
-      "total_points": 636.86,
-      "games_played": 5
-    },
-    {
       "season": 2018,
       "manager": "Loomnoo",
       "avg_points_per_game": 120.77,
       "total_points": 1569.98,
       "games_played": 13
+    },
+    {
+      "season": 2026,
+      "manager": "Nabbo",
+      "avg_points_per_game": 119.16,
+      "total_points": 714.96,
+      "games_played": 6
     },
     {
       "season": 2023,
@@ -326,13 +326,6 @@
       "games_played": 14
     },
     {
-      "season": 2026,
-      "manager": "Nfi421",
-      "avg_points_per_game": 116.6,
-      "total_points": 583.02,
-      "games_played": 5
-    },
-    {
       "season": 2022,
       "manager": "Nabbo",
       "avg_points_per_game": 116.12,
@@ -347,6 +340,13 @@
       "games_played": 14
     },
     {
+      "season": 2026,
+      "manager": "Jaguo",
+      "avg_points_per_game": 114.46,
+      "total_points": 686.74,
+      "games_played": 6
+    },
+    {
       "season": 2024,
       "manager": "Nabbo",
       "avg_points_per_game": 113.93,
@@ -354,27 +354,27 @@
       "games_played": 14
     },
     {
-      "season": 2026,
-      "manager": "Loomnoo",
-      "avg_points_per_game": 113.82,
-      "total_points": 569.1,
-      "games_played": 5
-    },
-    {
       "season": 2022,
       "manager": "Aneesh",
       "avg_points_per_game": 113.73,
       "total_points": 1592.2,
       "games_played": 14
+    },
+    {
+      "season": 2026,
+      "manager": "hoo2champ",
+      "avg_points_per_game": 113.37,
+      "total_points": 680.24,
+      "games_played": 6
     }
   ],
   "Top10_Seasons_InclPlayoffs": [
     {
       "season": 2026,
       "manager": "Nabbo",
-      "avg_points_per_game": 127.37,
-      "total_points": 636.86,
-      "games_played": 5
+      "avg_points_per_game": 119.16,
+      "total_points": 714.96,
+      "games_played": 6
     },
     {
       "season": 2024,
@@ -398,18 +398,18 @@
       "games_played": 15
     },
     {
-      "season": 2026,
-      "manager": "Nfi421",
-      "avg_points_per_game": 116.6,
-      "total_points": 583.02,
-      "games_played": 5
-    },
-    {
       "season": 2024,
       "manager": "Nfi421",
       "avg_points_per_game": 114.66,
       "total_points": 1949.28,
       "games_played": 17
+    },
+    {
+      "season": 2026,
+      "manager": "Jaguo",
+      "avg_points_per_game": 114.46,
+      "total_points": 686.74,
+      "games_played": 6
     },
     {
       "season": 2022,
@@ -427,10 +427,10 @@
     },
     {
       "season": 2026,
-      "manager": "Loomnoo",
-      "avg_points_per_game": 113.82,
-      "total_points": 569.1,
-      "games_played": 5
+      "manager": "hoo2champ",
+      "avg_points_per_game": 113.37,
+      "total_points": 680.24,
+      "games_played": 6
     },
     {
       "season": 2025,
@@ -461,9 +461,9 @@
       "manager": "Aneesh",
       "opponent": "Fawaz",
       "W": 8,
-      "L": 2,
+      "L": 3,
       "T": 0,
-      "meetings_total": 10
+      "meetings_total": 11
     },
     {
       "manager": "Aneesh",
@@ -669,9 +669,9 @@
       "manager": "Aryan",
       "opponent": "GeneralSod",
       "W": 3,
-      "L": 6,
+      "L": 7,
       "T": 0,
-      "meetings_total": 9
+      "meetings_total": 10
     },
     {
       "manager": "Aryan",
@@ -756,10 +756,10 @@
     {
       "manager": "Fawaz",
       "opponent": "Aneesh",
-      "W": 2,
+      "W": 3,
       "L": 8,
       "T": 0,
-      "meetings_total": 10
+      "meetings_total": 11
     },
     {
       "manager": "Fawaz",
@@ -884,10 +884,10 @@
     {
       "manager": "GeneralSod",
       "opponent": "Aryan",
-      "W": 6,
+      "W": 7,
       "L": 3,
       "T": 0,
-      "meetings_total": 9
+      "meetings_total": 10
     },
     {
       "manager": "GeneralSod",
@@ -1061,9 +1061,9 @@
       "manager": "Gmen",
       "opponent": "Nfi421",
       "W": 4,
-      "L": 3,
+      "L": 4,
       "T": 0,
-      "meetings_total": 7
+      "meetings_total": 8
     },
     {
       "manager": "Gmen",
@@ -1140,10 +1140,10 @@
     {
       "manager": "Jaguo",
       "opponent": "Mutumbs",
-      "W": 2,
+      "W": 3,
       "L": 6,
       "T": 0,
-      "meetings_total": 8
+      "meetings_total": 9
     },
     {
       "manager": "Jaguo",
@@ -1253,9 +1253,9 @@
       "manager": "Loomnoo",
       "opponent": "Nabbo",
       "W": 8,
-      "L": 1,
+      "L": 2,
       "T": 0,
-      "meetings_total": 9
+      "meetings_total": 10
     },
     {
       "manager": "Loomnoo",
@@ -1429,9 +1429,9 @@
       "manager": "Mutumbs",
       "opponent": "Jaguo",
       "W": 6,
-      "L": 2,
+      "L": 3,
       "T": 0,
-      "meetings_total": 8
+      "meetings_total": 9
     },
     {
       "manager": "Mutumbs",
@@ -1548,10 +1548,10 @@
     {
       "manager": "Nabbo",
       "opponent": "Loomnoo",
-      "W": 1,
+      "W": 2,
       "L": 8,
       "T": 0,
-      "meetings_total": 9
+      "meetings_total": 10
     },
     {
       "manager": "Nabbo",
@@ -1636,10 +1636,10 @@
     {
       "manager": "Nfi421",
       "opponent": "Gmen",
-      "W": 3,
+      "W": 4,
       "L": 4,
       "T": 0,
-      "meetings_total": 7
+      "meetings_total": 8
     },
     {
       "manager": "Nfi421",
@@ -1773,9 +1773,9 @@
       "manager": "Rohit",
       "opponent": "hoo2champ",
       "W": 3,
-      "L": 4,
+      "L": 5,
       "T": 0,
-      "meetings_total": 7
+      "meetings_total": 8
     },
     {
       "manager": "Will",
@@ -1964,10 +1964,10 @@
     {
       "manager": "hoo2champ",
       "opponent": "Rohit",
-      "W": 4,
+      "W": 5,
       "L": 3,
       "T": 0,
-      "meetings_total": 7
+      "meetings_total": 8
     },
     {
       "manager": "hoo2champ",
@@ -1998,8 +1998,8 @@
     {
       "manager": "Aneesh",
       "opponent": "Fawaz",
-      "last5_W": 4,
-      "last5_L": 1,
+      "last5_W": 3,
+      "last5_L": 2,
       "last5_T": 0,
       "meetings_considered": 5
     },
@@ -2206,8 +2206,8 @@
     {
       "manager": "Aryan",
       "opponent": "GeneralSod",
-      "last5_W": 1,
-      "last5_L": 4,
+      "last5_W": 0,
+      "last5_L": 5,
       "last5_T": 0,
       "meetings_considered": 5
     },
@@ -2294,8 +2294,8 @@
     {
       "manager": "Fawaz",
       "opponent": "Aneesh",
-      "last5_W": 1,
-      "last5_L": 4,
+      "last5_W": 2,
+      "last5_L": 3,
       "last5_T": 0,
       "meetings_considered": 5
     },
@@ -2422,8 +2422,8 @@
     {
       "manager": "GeneralSod",
       "opponent": "Aryan",
-      "last5_W": 4,
-      "last5_L": 1,
+      "last5_W": 5,
+      "last5_L": 0,
       "last5_T": 0,
       "meetings_considered": 5
     },
@@ -2678,8 +2678,8 @@
     {
       "manager": "Jaguo",
       "opponent": "Mutumbs",
-      "last5_W": 1,
-      "last5_L": 4,
+      "last5_W": 2,
+      "last5_L": 3,
       "last5_T": 0,
       "meetings_considered": 5
     },
@@ -2790,508 +2790,508 @@
     {
       "manager": "Loomnoo",
       "opponent": "Nabbo",
+      "last5_W": 4,
+      "last5_L": 1,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Loomnoo",
+      "opponent": "Nfi421",
+      "last5_W": 1,
+      "last5_L": 4,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Loomnoo",
+      "opponent": "Rohit",
+      "last5_W": 1,
+      "last5_L": 4,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Loomnoo",
+      "opponent": "Will",
+      "last5_W": 2,
+      "last5_L": 0,
+      "last5_T": 0,
+      "meetings_considered": 2
+    },
+    {
+      "manager": "Loomnoo",
+      "opponent": "hoo2champ",
+      "last5_W": 2,
+      "last5_L": 3,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Mihir",
+      "opponent": "Aneesh",
+      "last5_W": 3,
+      "last5_L": 1,
+      "last5_T": 0,
+      "meetings_considered": 4
+    },
+    {
+      "manager": "Mihir",
+      "opponent": "Arpan",
+      "last5_W": 2,
+      "last5_L": 0,
+      "last5_T": 0,
+      "meetings_considered": 2
+    },
+    {
+      "manager": "Mihir",
+      "opponent": "Aryan",
+      "last5_W": 1,
+      "last5_L": 1,
+      "last5_T": 0,
+      "meetings_considered": 2
+    },
+    {
+      "manager": "Mihir",
+      "opponent": "Fawaz",
+      "last5_W": 1,
+      "last5_L": 1,
+      "last5_T": 0,
+      "meetings_considered": 2
+    },
+    {
+      "manager": "Mihir",
+      "opponent": "GeneralSod",
+      "last5_W": 1,
+      "last5_L": 1,
+      "last5_T": 0,
+      "meetings_considered": 2
+    },
+    {
+      "manager": "Mihir",
+      "opponent": "Gmen",
+      "last5_W": 0,
+      "last5_L": 2,
+      "last5_T": 0,
+      "meetings_considered": 2
+    },
+    {
+      "manager": "Mihir",
+      "opponent": "Loomnoo",
+      "last5_W": 1,
+      "last5_L": 1,
+      "last5_T": 0,
+      "meetings_considered": 2
+    },
+    {
+      "manager": "Mihir",
+      "opponent": "Mutumbs",
+      "last5_W": 1,
+      "last5_L": 3,
+      "last5_T": 0,
+      "meetings_considered": 4
+    },
+    {
+      "manager": "Mihir",
+      "opponent": "Nabbo",
+      "last5_W": 1,
+      "last5_L": 1,
+      "last5_T": 0,
+      "meetings_considered": 2
+    },
+    {
+      "manager": "Mihir",
+      "opponent": "Will",
+      "last5_W": 1,
+      "last5_L": 1,
+      "last5_T": 0,
+      "meetings_considered": 2
+    },
+    {
+      "manager": "Mihir",
+      "opponent": "hoo2champ",
+      "last5_W": 2,
+      "last5_L": 0,
+      "last5_T": 0,
+      "meetings_considered": 2
+    },
+    {
+      "manager": "Mutumbs",
+      "opponent": "Aneesh",
+      "last5_W": 1,
+      "last5_L": 4,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Mutumbs",
+      "opponent": "Arpan",
+      "last5_W": 2,
+      "last5_L": 0,
+      "last5_T": 0,
+      "meetings_considered": 2
+    },
+    {
+      "manager": "Mutumbs",
+      "opponent": "Aryan",
+      "last5_W": 3,
+      "last5_L": 2,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Mutumbs",
+      "opponent": "Fawaz",
+      "last5_W": 3,
+      "last5_L": 2,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Mutumbs",
+      "opponent": "GeneralSod",
+      "last5_W": 3,
+      "last5_L": 2,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Mutumbs",
+      "opponent": "Gmen",
+      "last5_W": 3,
+      "last5_L": 2,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Mutumbs",
+      "opponent": "Jaguo",
+      "last5_W": 3,
+      "last5_L": 2,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Mutumbs",
+      "opponent": "Loomnoo",
+      "last5_W": 1,
+      "last5_L": 4,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Mutumbs",
+      "opponent": "Mihir",
+      "last5_W": 3,
+      "last5_L": 1,
+      "last5_T": 0,
+      "meetings_considered": 4
+    },
+    {
+      "manager": "Mutumbs",
+      "opponent": "Nabbo",
+      "last5_W": 1,
+      "last5_L": 4,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Mutumbs",
+      "opponent": "Nfi421",
+      "last5_W": 1,
+      "last5_L": 4,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Mutumbs",
+      "opponent": "Rohit",
+      "last5_W": 0,
+      "last5_L": 5,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Mutumbs",
+      "opponent": "Will",
+      "last5_W": 2,
+      "last5_L": 0,
+      "last5_T": 0,
+      "meetings_considered": 2
+    },
+    {
+      "manager": "Mutumbs",
+      "opponent": "hoo2champ",
+      "last5_W": 3,
+      "last5_L": 2,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Nabbo",
+      "opponent": "Aneesh",
+      "last5_W": 2,
+      "last5_L": 3,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Nabbo",
+      "opponent": "Arpan",
+      "last5_W": 1,
+      "last5_L": 1,
+      "last5_T": 0,
+      "meetings_considered": 2
+    },
+    {
+      "manager": "Nabbo",
+      "opponent": "Aryan",
+      "last5_W": 1,
+      "last5_L": 4,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Nabbo",
+      "opponent": "Fawaz",
+      "last5_W": 3,
+      "last5_L": 2,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Nabbo",
+      "opponent": "GeneralSod",
+      "last5_W": 3,
+      "last5_L": 2,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Nabbo",
+      "opponent": "Gmen",
+      "last5_W": 4,
+      "last5_L": 1,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Nabbo",
+      "opponent": "Jaguo",
+      "last5_W": 3,
+      "last5_L": 2,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Nabbo",
+      "opponent": "Loomnoo",
+      "last5_W": 1,
+      "last5_L": 4,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Nabbo",
+      "opponent": "Mihir",
+      "last5_W": 1,
+      "last5_L": 1,
+      "last5_T": 0,
+      "meetings_considered": 2
+    },
+    {
+      "manager": "Nabbo",
+      "opponent": "Mutumbs",
+      "last5_W": 4,
+      "last5_L": 1,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Nabbo",
+      "opponent": "Nfi421",
+      "last5_W": 2,
+      "last5_L": 3,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Nabbo",
+      "opponent": "Rohit",
+      "last5_W": 3,
+      "last5_L": 2,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Nabbo",
+      "opponent": "Will",
+      "last5_W": 2,
+      "last5_L": 2,
+      "last5_T": 0,
+      "meetings_considered": 4
+    },
+    {
+      "manager": "Nabbo",
+      "opponent": "hoo2champ",
+      "last5_W": 2,
+      "last5_L": 3,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Nfi421",
+      "opponent": "Aneesh",
+      "last5_W": 4,
+      "last5_L": 1,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Nfi421",
+      "opponent": "Aryan",
+      "last5_W": 3,
+      "last5_L": 2,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Nfi421",
+      "opponent": "Fawaz",
+      "last5_W": 2,
+      "last5_L": 3,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Nfi421",
+      "opponent": "GeneralSod",
+      "last5_W": 1,
+      "last5_L": 4,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Nfi421",
+      "opponent": "Gmen",
+      "last5_W": 3,
+      "last5_L": 2,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Nfi421",
+      "opponent": "Jaguo",
+      "last5_W": 1,
+      "last5_L": 4,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Nfi421",
+      "opponent": "Loomnoo",
+      "last5_W": 4,
+      "last5_L": 1,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Nfi421",
+      "opponent": "Mutumbs",
+      "last5_W": 4,
+      "last5_L": 1,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Nfi421",
+      "opponent": "Nabbo",
+      "last5_W": 3,
+      "last5_L": 2,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Nfi421",
+      "opponent": "Rohit",
+      "last5_W": 3,
+      "last5_L": 2,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Nfi421",
+      "opponent": "hoo2champ",
+      "last5_W": 1,
+      "last5_L": 4,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Rohit",
+      "opponent": "Aneesh",
+      "last5_W": 4,
+      "last5_L": 1,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Rohit",
+      "opponent": "Aryan",
+      "last5_W": 3,
+      "last5_L": 2,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Rohit",
+      "opponent": "Fawaz",
+      "last5_W": 2,
+      "last5_L": 3,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Rohit",
+      "opponent": "GeneralSod",
+      "last5_W": 3,
+      "last5_L": 2,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Rohit",
+      "opponent": "Gmen",
+      "last5_W": 3,
+      "last5_L": 2,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Rohit",
+      "opponent": "Jaguo",
+      "last5_W": 1,
+      "last5_L": 4,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Rohit",
+      "opponent": "Loomnoo",
+      "last5_W": 4,
+      "last5_L": 1,
+      "last5_T": 0,
+      "meetings_considered": 5
+    },
+    {
+      "manager": "Rohit",
+      "opponent": "Mutumbs",
       "last5_W": 5,
       "last5_L": 0,
       "last5_T": 0,
       "meetings_considered": 5
     },
     {
-      "manager": "Loomnoo",
-      "opponent": "Nfi421",
-      "last5_W": 1,
-      "last5_L": 4,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Loomnoo",
-      "opponent": "Rohit",
-      "last5_W": 1,
-      "last5_L": 4,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Loomnoo",
-      "opponent": "Will",
-      "last5_W": 2,
-      "last5_L": 0,
-      "last5_T": 0,
-      "meetings_considered": 2
-    },
-    {
-      "manager": "Loomnoo",
-      "opponent": "hoo2champ",
-      "last5_W": 2,
-      "last5_L": 3,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Mihir",
-      "opponent": "Aneesh",
-      "last5_W": 3,
-      "last5_L": 1,
-      "last5_T": 0,
-      "meetings_considered": 4
-    },
-    {
-      "manager": "Mihir",
-      "opponent": "Arpan",
-      "last5_W": 2,
-      "last5_L": 0,
-      "last5_T": 0,
-      "meetings_considered": 2
-    },
-    {
-      "manager": "Mihir",
-      "opponent": "Aryan",
-      "last5_W": 1,
-      "last5_L": 1,
-      "last5_T": 0,
-      "meetings_considered": 2
-    },
-    {
-      "manager": "Mihir",
-      "opponent": "Fawaz",
-      "last5_W": 1,
-      "last5_L": 1,
-      "last5_T": 0,
-      "meetings_considered": 2
-    },
-    {
-      "manager": "Mihir",
-      "opponent": "GeneralSod",
-      "last5_W": 1,
-      "last5_L": 1,
-      "last5_T": 0,
-      "meetings_considered": 2
-    },
-    {
-      "manager": "Mihir",
-      "opponent": "Gmen",
-      "last5_W": 0,
-      "last5_L": 2,
-      "last5_T": 0,
-      "meetings_considered": 2
-    },
-    {
-      "manager": "Mihir",
-      "opponent": "Loomnoo",
-      "last5_W": 1,
-      "last5_L": 1,
-      "last5_T": 0,
-      "meetings_considered": 2
-    },
-    {
-      "manager": "Mihir",
-      "opponent": "Mutumbs",
-      "last5_W": 1,
-      "last5_L": 3,
-      "last5_T": 0,
-      "meetings_considered": 4
-    },
-    {
-      "manager": "Mihir",
-      "opponent": "Nabbo",
-      "last5_W": 1,
-      "last5_L": 1,
-      "last5_T": 0,
-      "meetings_considered": 2
-    },
-    {
-      "manager": "Mihir",
-      "opponent": "Will",
-      "last5_W": 1,
-      "last5_L": 1,
-      "last5_T": 0,
-      "meetings_considered": 2
-    },
-    {
-      "manager": "Mihir",
-      "opponent": "hoo2champ",
-      "last5_W": 2,
-      "last5_L": 0,
-      "last5_T": 0,
-      "meetings_considered": 2
-    },
-    {
-      "manager": "Mutumbs",
-      "opponent": "Aneesh",
-      "last5_W": 1,
-      "last5_L": 4,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Mutumbs",
-      "opponent": "Arpan",
-      "last5_W": 2,
-      "last5_L": 0,
-      "last5_T": 0,
-      "meetings_considered": 2
-    },
-    {
-      "manager": "Mutumbs",
-      "opponent": "Aryan",
-      "last5_W": 3,
-      "last5_L": 2,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Mutumbs",
-      "opponent": "Fawaz",
-      "last5_W": 3,
-      "last5_L": 2,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Mutumbs",
-      "opponent": "GeneralSod",
-      "last5_W": 3,
-      "last5_L": 2,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Mutumbs",
-      "opponent": "Gmen",
-      "last5_W": 3,
-      "last5_L": 2,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Mutumbs",
-      "opponent": "Jaguo",
-      "last5_W": 4,
-      "last5_L": 1,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Mutumbs",
-      "opponent": "Loomnoo",
-      "last5_W": 1,
-      "last5_L": 4,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Mutumbs",
-      "opponent": "Mihir",
-      "last5_W": 3,
-      "last5_L": 1,
-      "last5_T": 0,
-      "meetings_considered": 4
-    },
-    {
-      "manager": "Mutumbs",
-      "opponent": "Nabbo",
-      "last5_W": 1,
-      "last5_L": 4,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Mutumbs",
-      "opponent": "Nfi421",
-      "last5_W": 1,
-      "last5_L": 4,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Mutumbs",
-      "opponent": "Rohit",
-      "last5_W": 0,
-      "last5_L": 5,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Mutumbs",
-      "opponent": "Will",
-      "last5_W": 2,
-      "last5_L": 0,
-      "last5_T": 0,
-      "meetings_considered": 2
-    },
-    {
-      "manager": "Mutumbs",
-      "opponent": "hoo2champ",
-      "last5_W": 3,
-      "last5_L": 2,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Nabbo",
-      "opponent": "Aneesh",
-      "last5_W": 2,
-      "last5_L": 3,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Nabbo",
-      "opponent": "Arpan",
-      "last5_W": 1,
-      "last5_L": 1,
-      "last5_T": 0,
-      "meetings_considered": 2
-    },
-    {
-      "manager": "Nabbo",
-      "opponent": "Aryan",
-      "last5_W": 1,
-      "last5_L": 4,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Nabbo",
-      "opponent": "Fawaz",
-      "last5_W": 3,
-      "last5_L": 2,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Nabbo",
-      "opponent": "GeneralSod",
-      "last5_W": 3,
-      "last5_L": 2,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Nabbo",
-      "opponent": "Gmen",
-      "last5_W": 4,
-      "last5_L": 1,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Nabbo",
-      "opponent": "Jaguo",
-      "last5_W": 3,
-      "last5_L": 2,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Nabbo",
-      "opponent": "Loomnoo",
-      "last5_W": 0,
-      "last5_L": 5,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Nabbo",
-      "opponent": "Mihir",
-      "last5_W": 1,
-      "last5_L": 1,
-      "last5_T": 0,
-      "meetings_considered": 2
-    },
-    {
-      "manager": "Nabbo",
-      "opponent": "Mutumbs",
-      "last5_W": 4,
-      "last5_L": 1,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Nabbo",
-      "opponent": "Nfi421",
-      "last5_W": 2,
-      "last5_L": 3,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Nabbo",
-      "opponent": "Rohit",
-      "last5_W": 3,
-      "last5_L": 2,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Nabbo",
-      "opponent": "Will",
-      "last5_W": 2,
-      "last5_L": 2,
-      "last5_T": 0,
-      "meetings_considered": 4
-    },
-    {
-      "manager": "Nabbo",
-      "opponent": "hoo2champ",
-      "last5_W": 2,
-      "last5_L": 3,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Nfi421",
-      "opponent": "Aneesh",
-      "last5_W": 4,
-      "last5_L": 1,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Nfi421",
-      "opponent": "Aryan",
-      "last5_W": 3,
-      "last5_L": 2,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Nfi421",
-      "opponent": "Fawaz",
-      "last5_W": 2,
-      "last5_L": 3,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Nfi421",
-      "opponent": "GeneralSod",
-      "last5_W": 1,
-      "last5_L": 4,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Nfi421",
-      "opponent": "Gmen",
-      "last5_W": 3,
-      "last5_L": 2,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Nfi421",
-      "opponent": "Jaguo",
-      "last5_W": 1,
-      "last5_L": 4,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Nfi421",
-      "opponent": "Loomnoo",
-      "last5_W": 4,
-      "last5_L": 1,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Nfi421",
-      "opponent": "Mutumbs",
-      "last5_W": 4,
-      "last5_L": 1,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Nfi421",
-      "opponent": "Nabbo",
-      "last5_W": 3,
-      "last5_L": 2,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Nfi421",
-      "opponent": "Rohit",
-      "last5_W": 3,
-      "last5_L": 2,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Nfi421",
-      "opponent": "hoo2champ",
-      "last5_W": 1,
-      "last5_L": 4,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Rohit",
-      "opponent": "Aneesh",
-      "last5_W": 4,
-      "last5_L": 1,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Rohit",
-      "opponent": "Aryan",
-      "last5_W": 3,
-      "last5_L": 2,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Rohit",
-      "opponent": "Fawaz",
-      "last5_W": 2,
-      "last5_L": 3,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Rohit",
-      "opponent": "GeneralSod",
-      "last5_W": 3,
-      "last5_L": 2,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Rohit",
-      "opponent": "Gmen",
-      "last5_W": 3,
-      "last5_L": 2,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Rohit",
-      "opponent": "Jaguo",
-      "last5_W": 1,
-      "last5_L": 4,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Rohit",
-      "opponent": "Loomnoo",
-      "last5_W": 4,
-      "last5_L": 1,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
-      "manager": "Rohit",
-      "opponent": "Mutumbs",
-      "last5_W": 5,
-      "last5_L": 0,
-      "last5_T": 0,
-      "meetings_considered": 5
-    },
-    {
       "manager": "Rohit",
       "opponent": "Nabbo",
       "last5_W": 2,
@@ -3310,8 +3310,8 @@
     {
       "manager": "Rohit",
       "opponent": "hoo2champ",
-      "last5_W": 2,
-      "last5_L": 3,
+      "last5_W": 1,
+      "last5_L": 4,
       "last5_T": 0,
       "meetings_considered": 5
     },
@@ -3502,8 +3502,8 @@
     {
       "manager": "hoo2champ",
       "opponent": "Rohit",
-      "last5_W": 3,
-      "last5_L": 2,
+      "last5_W": 4,
+      "last5_L": 1,
       "last5_T": 0,
       "meetings_considered": 5
     },
@@ -3537,9 +3537,9 @@
       "manager": "Aneesh",
       "opponent": "Fawaz",
       "W": 8,
-      "L": 3,
+      "L": 4,
       "T": 0,
-      "meetings_total": 11
+      "meetings_total": 12
     },
     {
       "manager": "Aneesh",
@@ -3745,9 +3745,9 @@
       "manager": "Aryan",
       "opponent": "GeneralSod",
       "W": 3,
-      "L": 7,
+      "L": 8,
       "T": 0,
-      "meetings_total": 10
+      "meetings_total": 11
     },
     {
       "manager": "Aryan",
@@ -3832,10 +3832,10 @@
     {
       "manager": "Fawaz",
       "opponent": "Aneesh",
-      "W": 3,
+      "W": 4,
       "L": 8,
       "T": 0,
-      "meetings_total": 11
+      "meetings_total": 12
     },
     {
       "manager": "Fawaz",
@@ -3960,10 +3960,10 @@
     {
       "manager": "GeneralSod",
       "opponent": "Aryan",
-      "W": 7,
+      "W": 8,
       "L": 3,
       "T": 0,
-      "meetings_total": 10
+      "meetings_total": 11
     },
     {
       "manager": "GeneralSod",
@@ -4137,9 +4137,9 @@
       "manager": "Gmen",
       "opponent": "Nfi421",
       "W": 4,
-      "L": 3,
+      "L": 4,
       "T": 0,
-      "meetings_total": 7
+      "meetings_total": 8
     },
     {
       "manager": "Gmen",
@@ -4216,10 +4216,10 @@
     {
       "manager": "Jaguo",
       "opponent": "Mutumbs",
-      "W": 2,
+      "W": 3,
       "L": 6,
       "T": 0,
-      "meetings_total": 8
+      "meetings_total": 9
     },
     {
       "manager": "Jaguo",
@@ -4329,9 +4329,9 @@
       "manager": "Loomnoo",
       "opponent": "Nabbo",
       "W": 8,
-      "L": 1,
+      "L": 2,
       "T": 0,
-      "meetings_total": 9
+      "meetings_total": 10
     },
     {
       "manager": "Loomnoo",
@@ -4505,9 +4505,9 @@
       "manager": "Mutumbs",
       "opponent": "Jaguo",
       "W": 6,
-      "L": 2,
+      "L": 3,
       "T": 0,
-      "meetings_total": 8
+      "meetings_total": 9
     },
     {
       "manager": "Mutumbs",
@@ -4624,10 +4624,10 @@
     {
       "manager": "Nabbo",
       "opponent": "Loomnoo",
-      "W": 1,
+      "W": 2,
       "L": 8,
       "T": 0,
-      "meetings_total": 9
+      "meetings_total": 10
     },
     {
       "manager": "Nabbo",
@@ -4712,10 +4712,10 @@
     {
       "manager": "Nfi421",
       "opponent": "Gmen",
-      "W": 3,
+      "W": 4,
       "L": 4,
       "T": 0,
-      "meetings_total": 7
+      "meetings_total": 8
     },
     {
       "manager": "Nfi421",
@@ -4849,9 +4849,9 @@
       "manager": "Rohit",
       "opponent": "hoo2champ",
       "W": 3,
-      "L": 4,
+      "L": 5,
       "T": 0,
-      "meetings_total": 7
+      "meetings_total": 8
     },
     {
       "manager": "Will",
@@ -5040,10 +5040,10 @@
     {
       "manager": "hoo2champ",
       "opponent": "Rohit",
-      "W": 4,
+      "W": 5,
       "L": 3,
       "T": 0,
-      "meetings_total": 7
+      "meetings_total": 8
     },
     {
       "manager": "hoo2champ",
@@ -5074,8 +5074,8 @@
     {
       "manager": "Aneesh",
       "opponent": "Fawaz",
-      "last5_W": 4,
-      "last5_L": 1,
+      "last5_W": 3,
+      "last5_L": 2,
       "last5_T": 0,
       "meetings_considered": 5
     },
@@ -5282,8 +5282,8 @@
     {
       "manager": "Aryan",
       "opponent": "GeneralSod",
-      "last5_W": 1,
-      "last5_L": 4,
+      "last5_W": 0,
+      "last5_L": 5,
       "last5_T": 0,
       "meetings_considered": 5
     },
@@ -5370,8 +5370,8 @@
     {
       "manager": "Fawaz",
       "opponent": "Aneesh",
-      "last5_W": 1,
-      "last5_L": 4,
+      "last5_W": 2,
+      "last5_L": 3,
       "last5_T": 0,
       "meetings_considered": 5
     },
@@ -5498,8 +5498,8 @@
     {
       "manager": "GeneralSod",
       "opponent": "Aryan",
-      "last5_W": 4,
-      "last5_L": 1,
+      "last5_W": 5,
+      "last5_L": 0,
       "last5_T": 0,
       "meetings_considered": 5
     },
@@ -5754,8 +5754,8 @@
     {
       "manager": "Jaguo",
       "opponent": "Mutumbs",
-      "last5_W": 1,
-      "last5_L": 4,
+      "last5_W": 2,
+      "last5_L": 3,
       "last5_T": 0,
       "meetings_considered": 5
     },
@@ -5866,8 +5866,8 @@
     {
       "manager": "Loomnoo",
       "opponent": "Nabbo",
-      "last5_W": 5,
-      "last5_L": 0,
+      "last5_W": 4,
+      "last5_L": 1,
       "last5_T": 0,
       "meetings_considered": 5
     },
@@ -6042,8 +6042,8 @@
     {
       "manager": "Mutumbs",
       "opponent": "Jaguo",
-      "last5_W": 4,
-      "last5_L": 1,
+      "last5_W": 3,
+      "last5_L": 2,
       "last5_T": 0,
       "meetings_considered": 5
     },
@@ -6162,8 +6162,8 @@
     {
       "manager": "Nabbo",
       "opponent": "Loomnoo",
-      "last5_W": 0,
-      "last5_L": 5,
+      "last5_W": 1,
+      "last5_L": 4,
       "last5_T": 0,
       "meetings_considered": 5
     },
@@ -6386,8 +6386,8 @@
     {
       "manager": "Rohit",
       "opponent": "hoo2champ",
-      "last5_W": 2,
-      "last5_L": 3,
+      "last5_W": 1,
+      "last5_L": 4,
       "last5_T": 0,
       "meetings_considered": 5
     },
@@ -6578,8 +6578,8 @@
     {
       "manager": "hoo2champ",
       "opponent": "Rohit",
-      "last5_W": 3,
-      "last5_L": 2,
+      "last5_W": 4,
+      "last5_L": 1,
       "last5_T": 0,
       "meetings_considered": 5
     },
@@ -6980,6 +6980,84 @@
       "winner": "Nabbo",
       "loser": "Aneesh",
       "margin": 4.92,
+      "tie": false,
+      "game_type": "regular"
+    },
+    {
+      "season": 2026,
+      "week": 6,
+      "awayTeamName": "Fawaz",
+      "homeTeamName": "Aneesh",
+      "awayScore": 111.8,
+      "homeScore": 71.8,
+      "winner": "Fawaz",
+      "loser": "Aneesh",
+      "margin": 40.0,
+      "tie": false,
+      "game_type": "regular"
+    },
+    {
+      "season": 2026,
+      "week": 6,
+      "awayTeamName": "hoo2champ",
+      "homeTeamName": "Rohit",
+      "awayScore": 135.1,
+      "homeScore": 94.32,
+      "winner": "hoo2champ",
+      "loser": "Rohit",
+      "margin": 40.78,
+      "tie": false,
+      "game_type": "regular"
+    },
+    {
+      "season": 2026,
+      "week": 6,
+      "awayTeamName": "Aryan",
+      "homeTeamName": "GeneralSod",
+      "awayScore": 87.86,
+      "homeScore": 111.44,
+      "winner": "GeneralSod",
+      "loser": "Aryan",
+      "margin": 23.58,
+      "tie": false,
+      "game_type": "regular"
+    },
+    {
+      "season": 2026,
+      "week": 6,
+      "awayTeamName": "Jaguo",
+      "homeTeamName": "Mutumbs",
+      "awayScore": 120.98,
+      "homeScore": 72.76,
+      "winner": "Jaguo",
+      "loser": "Mutumbs",
+      "margin": 48.22,
+      "tie": false,
+      "game_type": "regular"
+    },
+    {
+      "season": 2026,
+      "week": 6,
+      "awayTeamName": "Gmen",
+      "homeTeamName": "Nfi421",
+      "awayScore": 59.54,
+      "homeScore": 90.9,
+      "winner": "Nfi421",
+      "loser": "Gmen",
+      "margin": 31.36,
+      "tie": false,
+      "game_type": "regular"
+    },
+    {
+      "season": 2026,
+      "week": 6,
+      "awayTeamName": "Loomnoo",
+      "homeTeamName": "Nabbo",
+      "awayScore": 76.3,
+      "homeScore": 78.1,
+      "winner": "Nabbo",
+      "loser": "Loomnoo",
+      "margin": 1.8,
       "tie": false,
       "game_type": "regular"
     },
@@ -17709,6 +17787,84 @@
       "winner": "Nabbo",
       "loser": "Aneesh",
       "margin": 4.92,
+      "tie": false,
+      "game_type": "regular"
+    },
+    {
+      "season": 2026,
+      "week": 6,
+      "awayTeamName": "Fawaz",
+      "homeTeamName": "Aneesh",
+      "awayScore": 111.8,
+      "homeScore": 71.8,
+      "winner": "Fawaz",
+      "loser": "Aneesh",
+      "margin": 40.0,
+      "tie": false,
+      "game_type": "regular"
+    },
+    {
+      "season": 2026,
+      "week": 6,
+      "awayTeamName": "hoo2champ",
+      "homeTeamName": "Rohit",
+      "awayScore": 135.1,
+      "homeScore": 94.32,
+      "winner": "hoo2champ",
+      "loser": "Rohit",
+      "margin": 40.78,
+      "tie": false,
+      "game_type": "regular"
+    },
+    {
+      "season": 2026,
+      "week": 6,
+      "awayTeamName": "Aryan",
+      "homeTeamName": "GeneralSod",
+      "awayScore": 87.86,
+      "homeScore": 111.44,
+      "winner": "GeneralSod",
+      "loser": "Aryan",
+      "margin": 23.58,
+      "tie": false,
+      "game_type": "regular"
+    },
+    {
+      "season": 2026,
+      "week": 6,
+      "awayTeamName": "Jaguo",
+      "homeTeamName": "Mutumbs",
+      "awayScore": 120.98,
+      "homeScore": 72.76,
+      "winner": "Jaguo",
+      "loser": "Mutumbs",
+      "margin": 48.22,
+      "tie": false,
+      "game_type": "regular"
+    },
+    {
+      "season": 2026,
+      "week": 6,
+      "awayTeamName": "Gmen",
+      "homeTeamName": "Nfi421",
+      "awayScore": 59.54,
+      "homeScore": 90.9,
+      "winner": "Nfi421",
+      "loser": "Gmen",
+      "margin": 31.36,
+      "tie": false,
+      "game_type": "regular"
+    },
+    {
+      "season": 2026,
+      "week": 6,
+      "awayTeamName": "Loomnoo",
+      "homeTeamName": "Nabbo",
+      "awayScore": 76.3,
+      "homeScore": 78.1,
+      "winner": "Nabbo",
+      "loser": "Loomnoo",
+      "margin": 1.8,
       "tie": false,
       "game_type": "regular"
     },

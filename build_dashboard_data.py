@@ -14,6 +14,9 @@ EXCEL_PATH = os.environ.get(
 CURRENT_LEAGUE_ID = "1389388845572702208"
 MANAGERS_FILE = os.path.join(BASE_DIR, "managers.json")
 OUTPUT_DIR = os.path.join(BASE_DIR, "public", "data")
+SIMULATION_MODEL_VERSION = "bayesian-15-40-v1"
+SIMULATION_PRIOR_STD = 15.0
+SIMULATION_MIN_SIGMA = 40.0
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
@@ -78,7 +81,7 @@ def build_playoff_odds_snapshot(live_data, history_data, completed_week, simulat
             std = math.sqrt(variance)
         else:
             std = max(math.sqrt(max(raw_mean, 1.0)) * 1.5, 16.0)
-        prior_std, min_sigma = 15.0, 40.0
+        prior_std, min_sigma = SIMULATION_PRIOR_STD, SIMULATION_MIN_SIGMA
         if total_games:
             prior_var = prior_std ** 2
             obs_var = max(std ** 2, min_sigma ** 2)
@@ -186,6 +189,11 @@ def build_playoff_odds_snapshot(live_data, history_data, completed_week, simulat
         "weekCompleted": completed_week,
         "simulations": simulations,
         "model": "Bayesian",
+        "modelVersion": SIMULATION_MODEL_VERSION,
+        "modelParameters": {
+            "priorStd": SIMULATION_PRIOR_STD,
+            "minSigma": SIMULATION_MIN_SIGMA,
+        },
         "seed": season * 100000 + completed_week * 100 + simulations,
         "results": results,
     }
@@ -206,7 +214,7 @@ def update_playoff_odds_history(live_data):
     snapshots = odds_history.setdefault("snapshots", {})
     for week in range(1, completed_week + 1):
         key = str(week)
-        if key not in snapshots:
+        if snapshots.get(key, {}).get("modelVersion") != SIMULATION_MODEL_VERSION:
             snapshots[key] = build_playoff_odds_snapshot(live_data, history_data, week)
             snapshots[key]["source"] = "reconstructed" if week < completed_week else "weekly_update"
     with open(odds_path, "w") as stream:
