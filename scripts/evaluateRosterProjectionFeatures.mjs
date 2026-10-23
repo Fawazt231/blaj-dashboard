@@ -4,9 +4,10 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const history = JSON.parse(await fs.readFile(path.join(root, 'public/data/excel_history.json'), 'utf8'));
-const features = JSON.parse(
-  await fs.readFile(path.join(root, 'data/historical_roster_projection_features.json'), 'utf8')
-);
+const featurePath = process.env.ROSTER_FEATURE_INPUT
+  ? path.resolve(root, process.env.ROSTER_FEATURE_INPUT)
+  : path.join(root, 'data/historical_roster_projection_features.json');
+const features = JSON.parse(await fs.readFile(featurePath, 'utf8'));
 const outputPath = process.env.ROSTER_EVALUATION_OUTPUT
   ? path.resolve(root, process.env.ROSTER_EVALUATION_OUTPUT)
   : path.join(root, 'data/roster_model_evaluation.json');
@@ -126,6 +127,7 @@ const bestFixed = [...fixedBlendResults].sort((left, right) => left.rmse - right
 const output = {
   generatedAt: new Date().toISOString(),
   status: 'challenger_not_promoted',
+  featureSource: path.relative(root, featurePath),
   method: 'Predict the next weekly team score from the tuned PF posterior and the optimal projected lineup, using only the completed-week roster.',
   sample: {
     forecasts: rows.length,

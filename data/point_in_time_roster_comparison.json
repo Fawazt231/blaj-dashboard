@@ -1,0 +1,73 @@
+{
+  "generatedAt": "2026-10-23T01:44:00.856Z",
+  "status": "research_only_not_used_by_live_simulator",
+  "method": "Paired comparison on checkpoints where both roster inputs produce a complete projected lineup; both use a 50% PF and 50% lineup-projection blend.",
+  "baselineSource": "data/historical_roster_projection_features.json",
+  "challengerSource": "data/historical_point_in_time_projection_features.json",
+  "pairedForecasts": 995,
+  "baseline": {
+    "forecasts": 995,
+    "rmse": 20.91975696127958,
+    "mae": 16.79899116964963
+  },
+  "challenger": {
+    "forecasts": 995,
+    "rmse": 20.913486589980185,
+    "mae": 16.79157206400025
+  },
+  "challengerRmseImprovementPct": 0.029973442382735804,
+  "changedForecasts": 147,
+  "meanAbsoluteProjectionChange": 0.196893527232121,
+  "bySeason": [
+    {
+      "season": 2019,
+      "forecasts": 133,
+      "baselineRmse": 20.732376016131326,
+      "challengerRmse": 20.717791543535228,
+      "challengerRmseImprovementPct": 0.07034636350773393
+    },
+    {
+      "season": 2020,
+      "forecasts": 134,
+      "baselineRmse": 21.576750808134697,
+      "challengerRmse": 21.591120059075045,
+      "challengerRmseImprovementPct": -0.0665959906017477
+    },
+    {
+      "season": 2021,
+      "forecasts": 148,
+      "baselineRmse": 20.424929130941564,
+      "challengerRmse": 20.403490519785922,
+      "challengerRmseImprovementPct": 0.1049629647094541
+    },
+    {
+      "season": 2022,
+      "forecasts": 147,
+      "baselineRmse": 20.59560911450566,
+      "challengerRmse": 20.58956124029316,
+      "challengerRmseImprovementPct": 0.029364871798032155
+    },
+    {
+      "season": 2023,
+      "forecasts": 144,
+      "baselineRmse": 20.835170361935273,
+      "challengerRmse": 20.826818225239375,
+      "challengerRmseImprovementPct": 0.04008672139852454
+    },
+    {
+      "season": 2024,
+      "forecasts": 143,
+      "baselineRmse": 20.714081881234613,
+      "challengerRmse": 20.712074823527118,
+      "challengerRmseImprovementPct": 0.009689339450347223
+    },
+    {
+      "season": 2025,
+      "forecasts": 146,
+      "baselineRmse": 21.57034080217043,
+      "challengerRmse": 21.564694657196544,
+      "challengerRmseImprovementPct": 0.026175501934211365
+    }
+  ],
+  "decision": "Do not promote point-in-time roster reconstruction unless its paired improvement is material and remains positive downstream in playoff-probability scoring."
+}

@@ -3,9 +3,13 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const snapshots = JSON.parse(
-  await fs.readFile(path.join(root, 'data/historical_roster_snapshots.json'), 'utf8')
-);
+const defaultSnapshotsPath = path.join(root, 'data/historical_roster_snapshots.json');
+const rosterInputPath = process.env.ROSTER_FEATURE_ROSTER_INPUT
+  ? path.resolve(root, process.env.ROSTER_FEATURE_ROSTER_INPUT)
+  : defaultSnapshotsPath;
+const snapshots = JSON.parse(await fs.readFile(rosterInputPath, 'utf8'));
+const leagueConfigurations = JSON.parse(await fs.readFile(defaultSnapshotsPath, 'utf8'));
+const pointInTimeRosters = Boolean(snapshots.pointInTimePolicy);
 const outputPath = process.env.ROSTER_FEATURE_OUTPUT
   ? path.resolve(root, process.env.ROSTER_FEATURE_OUTPUT)
   : path.join(root, 'data/historical_roster_projection_features.json');
@@ -71,11 +75,23 @@ function optimizeLineup(players, rosterPositions) {
 
 const seasons = [];
 for (const season of snapshots.seasons) {
+  const leagueConfiguration = leagueConfigurations.seasons.find(
+    item => Number(item.season) === Number(season.season)
+  );
+  if (!leagueConfiguration) throw new Error(`Missing league configuration for ${season.season}`);
+  const rosterPositions = season.rosterPositions || leagueConfiguration.rosterPositions;
+  const scoringSettings = season.scoringSettings || leagueConfiguration.scoringSettings;
+  const playoffStartWeek = Number(season.playoffStartWeek || leagueConfiguration.playoffStartWeek);
+  const sourceCheckpoints = season.weeks
+    ? season.weeks.map(week => ({ completedWeek: week.week, teams: week.teams }))
+    : season.checkpoints;
   const checkpoints = [];
-  // A Week N report uses the completed Week N roster with the archived Week N+1
-  // projection. It never uses the future week's finalized roster or starters.
-  for (const completed of season.weeks.slice(0, -1)) {
-    const projectionWeek = completed.week + 1;
+  // A Week N report combines the selected point-in-time roster source with the
+  // archived Week N+1 projection. It never uses future finalized starters.
+  for (const completed of sourceCheckpoints.filter(
+    checkpoint => Number(checkpoint.completedWeek) < playoffStartWeek - 1
+  )) {
+    const projectionWeek = completed.completedWeek + 1;
     const url = `https://api.sleeper.com/projections/nfl/${season.season}/${projectionWeek}?season_type=regular`;
     const projectionRows = await fetchJson(url);
     const rosteredIds = new Set(completed.teams.flatMap(team => team.players).map(String));
@@ -90,13 +106,13 @@ for (const season of snapshots.seasons) {
         playerId,
         name: [row.player?.first_name, row.player?.last_name].filter(Boolean).join(' ') || playerId,
         position,
-        projectedPoints: customProjection(row.stats, season.scoringSettings)
+        projectedPoints: customProjection(row.stats, scoringSettings)
       });
     });
 
     const teams = completed.teams.map(team => {
       const players = team.players.map(playerId => projections.get(String(playerId))).filter(Boolean);
-      const optimized = optimizeLineup(players, season.rosterPositions);
+      const optimized = optimizeLineup(players, rosterPositions);
       const selected = new Set(optimized.lineup.map(player => player.playerId));
       const bench = players.filter(player => !selected.has(player.playerId));
       const sortedLineup = [...optimized.lineup].sort((a, b) => b.projectedPoints - a.projectedPoints);
@@ -121,8 +137,8 @@ for (const season of snapshots.seasons) {
         }))
       };
     });
-    checkpoints.push({ completedWeek: completed.week, projectionWeek, teams });
-    process.stdout.write(`${season.season} Week ${completed.week} -> ${projectionWeek}\n`);
+    checkpoints.push({ completedWeek: completed.completedWeek, projectionWeek, teams });
+    process.stdout.write(`${season.season} Week ${completed.completedWeek} -> ${projectionWeek}\n`);
   }
 
   const teamRows = checkpoints.flatMap(checkpoint => checkpoint.teams);
@@ -145,12 +161,18 @@ const output = {
   generatedAt: new Date().toISOString(),
   status: 'experimental_challenger_input',
   projectionSource: 'Sleeper archived weekly projections (unofficial endpoint)',
-  forecastTiming: 'Completed-week roster combined with the following week projection; future finalized rosters and starters are excluded.',
+  rosterSource: path.relative(root, rosterInputPath),
+  forecastTiming: pointInTimeRosters
+    ? 'Reconstructed report-cutoff roster combined with the following week projection.'
+    : 'Completed-week roster combined with the following week projection; future finalized rosters and starters are excluded.',
   warnings: [
     'The projection endpoint is not part of Sleeper’s documented public API and may change or disappear.',
     'Nested player metadata may be current rather than historically versioned; only identity and position are used.',
     'Historical injury status is not treated as a separately reliable feature.',
-    'These features must not affect production odds until leave-one-season-out validation beats the tuned PF model.'
+    'These features must not affect production odds until leave-one-season-out validation beats the tuned PF model.',
+    ...(pointInTimeRosters
+      ? ['Roster timing inherits the documented assumptions and limitations in data/historical_point_in_time_rosters.json.']
+      : [])
   ],
   seasons
 };

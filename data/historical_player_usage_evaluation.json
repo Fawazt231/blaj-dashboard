@@ -1,0 +1,1245 @@
+{
+  "generatedAt": "2026-10-23T01:44:23.322812+00:00",
+  "status": "research_only_not_used_by_live_simulator",
+  "method": "Ridge residual correction to the tuned PF posterior, evaluated with entire seasons held out.",
+  "ridgePenalty": 10.0,
+  "sample": {
+    "forecasts": 1068,
+    "seasons": [
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ]
+  },
+  "evaluations": [
+    {
+      "features": [],
+      "forecasts": 1068,
+      "baselineRmse": 21.5728,
+      "candidateRmse": 21.6257,
+      "rmseImprovementPct": -0.246,
+      "baselineMae": 17.3256,
+      "candidateMae": 17.3236,
+      "heldOutSeasonWins": 4,
+      "bySeason": [
+        {
+          "season": 2019,
+          "forecasts": 144,
+          "baselineRmse": 21.0366,
+          "candidateRmse": 20.9758,
+          "rmseImprovementPct": 0.289
+        },
+        {
+          "season": 2020,
+          "forecasts": 144,
+          "baselineRmse": 22.7898,
+          "candidateRmse": 22.7385,
+          "rmseImprovementPct": 0.225
+        },
+        {
+          "season": 2021,
+          "forecasts": 156,
+          "baselineRmse": 21.1707,
+          "candidateRmse": 21.1271,
+          "rmseImprovementPct": 0.206
+        },
+        {
+          "season": 2022,
+          "forecasts": 156,
+          "baselineRmse": 20.9381,
+          "candidateRmse": 20.9112,
+          "rmseImprovementPct": 0.128
+        },
+        {
+          "season": 2023,
+          "forecasts": 156,
+          "baselineRmse": 21.1305,
+          "candidateRmse": 21.2519,
+          "rmseImprovementPct": -0.574
+        },
+        {
+          "season": 2024,
+          "forecasts": 156,
+          "baselineRmse": 20.9598,
+          "candidateRmse": 21.0832,
+          "rmseImprovementPct": -0.589
+        },
+        {
+          "season": 2025,
+          "forecasts": 156,
+          "baselineRmse": 22.9293,
+          "candidateRmse": 23.2073,
+          "rmseImprovementPct": -1.212
+        }
+      ],
+      "incrementalVsInterceptOnlyRmsePct": 0.0
+    },
+    {
+      "features": [
+        "projection"
+      ],
+      "forecasts": 1068,
+      "baselineRmse": 21.5728,
+      "candidateRmse": 21.3186,
+      "rmseImprovementPct": 1.178,
+      "baselineMae": 17.3256,
+      "candidateMae": 17.1128,
+      "heldOutSeasonWins": 6,
+      "bySeason": [
+        {
+          "season": 2019,
+          "forecasts": 144,
+          "baselineRmse": 21.0366,
+          "candidateRmse": 20.5842,
+          "rmseImprovementPct": 2.151
+        },
+        {
+          "season": 2020,
+          "forecasts": 144,
+          "baselineRmse": 22.7898,
+          "candidateRmse": 22.6921,
+          "rmseImprovementPct": 0.429
+        },
+        {
+          "season": 2021,
+          "forecasts": 156,
+          "baselineRmse": 21.1707,
+          "candidateRmse": 20.4243,
+          "rmseImprovementPct": 3.526
+        },
+        {
+          "season": 2022,
+          "forecasts": 156,
+          "baselineRmse": 20.9381,
+          "candidateRmse": 20.4943,
+          "rmseImprovementPct": 2.119
+        },
+        {
+          "season": 2023,
+          "forecasts": 156,
+          "baselineRmse": 21.1305,
+          "candidateRmse": 21.0205,
+          "rmseImprovementPct": 0.521
+        },
+        {
+          "season": 2024,
+          "forecasts": 156,
+          "baselineRmse": 20.9598,
+          "candidateRmse": 20.9257,
+          "rmseImprovementPct": 0.163
+        },
+        {
+          "season": 2025,
+          "forecasts": 156,
+          "baselineRmse": 22.9293,
+          "candidateRmse": 22.9806,
+          "rmseImprovementPct": -0.224
+        }
+      ],
+      "incrementalVsInterceptOnlyRmsePct": 1.42
+    },
+    {
+      "features": [
+        "lineupSnapShare"
+      ],
+      "forecasts": 1068,
+      "baselineRmse": 21.5728,
+      "candidateRmse": 21.6674,
+      "rmseImprovementPct": -0.439,
+      "baselineMae": 17.3256,
+      "candidateMae": 17.3424,
+      "heldOutSeasonWins": 3,
+      "bySeason": [
+        {
+          "season": 2019,
+          "forecasts": 144,
+          "baselineRmse": 21.0366,
+          "candidateRmse": 21.0264,
+          "rmseImprovementPct": 0.049
+        },
+        {
+          "season": 2020,
+          "forecasts": 144,
+          "baselineRmse": 22.7898,
+          "candidateRmse": 22.7553,
+          "rmseImprovementPct": 0.151
+        },
+        {
+          "season": 2021,
+          "forecasts": 156,
+          "baselineRmse": 21.1707,
+          "candidateRmse": 21.1644,
+          "rmseImprovementPct": 0.03
+        },
+        {
+          "season": 2022,
+          "forecasts": 156,
+          "baselineRmse": 20.9381,
+          "candidateRmse": 20.9528,
+          "rmseImprovementPct": -0.07
+        },
+        {
+          "season": 2023,
+          "forecasts": 156,
+          "baselineRmse": 21.1305,
+          "candidateRmse": 21.2467,
+          "rmseImprovementPct": -0.55
+        },
+        {
+          "season": 2024,
+          "forecasts": 156,
+          "baselineRmse": 20.9598,
+          "candidateRmse": 21.2407,
+          "rmseImprovementPct": -1.34
+        },
+        {
+          "season": 2025,
+          "forecasts": 156,
+          "baselineRmse": 22.9293,
+          "candidateRmse": 23.2053,
+          "rmseImprovementPct": -1.204
+        }
+      ],
+      "incrementalVsInterceptOnlyRmsePct": -0.193
+    },
+    {
+      "features": [
+        "lineupOpportunities"
+      ],
+      "forecasts": 1068,
+      "baselineRmse": 21.5728,
+      "candidateRmse": 21.6367,
+      "rmseImprovementPct": -0.296,
+      "baselineMae": 17.3256,
+      "candidateMae": 17.3286,
+      "heldOutSeasonWins": 4,
+      "bySeason": [
+        {
+          "season": 2019,
+          "forecasts": 144,
+          "baselineRmse": 21.0366,
+          "candidateRmse": 20.9872,
+          "rmseImprovementPct": 0.235
+        },
+        {
+          "season": 2020,
+          "forecasts": 144,
+          "baselineRmse": 22.7898,
+          "candidateRmse": 22.7829,
+          "rmseImprovementPct": 0.03
+        },
+        {
+          "season": 2021,
+          "forecasts": 156,
+          "baselineRmse": 21.1707,
+          "candidateRmse": 21.1316,
+          "rmseImprovementPct": 0.185
+        },
+        {
+          "season": 2022,
+          "forecasts": 156,
+          "baselineRmse": 20.9381,
+          "candidateRmse": 20.921,
+          "rmseImprovementPct": 0.082
+        },
+        {
+          "season": 2023,
+          "forecasts": 156,
+          "baselineRmse": 21.1305,
+          "candidateRmse": 21.2528,
+          "rmseImprovementPct": -0.579
+        },
+        {
+          "season": 2024,
+          "forecasts": 156,
+          "baselineRmse": 20.9598,
+          "candidateRmse": 21.0893,
+          "rmseImprovementPct": -0.618
+        },
+        {
+          "season": 2025,
+          "forecasts": 156,
+          "baselineRmse": 22.9293,
+          "candidateRmse": 23.208,
+          "rmseImprovementPct": -1.215
+        }
+      ],
+      "incrementalVsInterceptOnlyRmsePct": -0.051
+    },
+    {
+      "features": [
+        "lineupTargetShare"
+      ],
+      "forecasts": 1068,
+      "baselineRmse": 21.5728,
+      "candidateRmse": 21.6483,
+      "rmseImprovementPct": -0.35,
+      "baselineMae": 17.3256,
+      "candidateMae": 17.3298,
+      "heldOutSeasonWins": 3,
+      "bySeason": [
+        {
+          "season": 2019,
+          "forecasts": 144,
+          "baselineRmse": 21.0366,
+          "candidateRmse": 20.9815,
+          "rmseImprovementPct": 0.262
+        },
+        {
+          "season": 2020,
+          "forecasts": 144,
+          "baselineRmse": 22.7898,
+          "candidateRmse": 22.7898,
+          "rmseImprovementPct": 0.0
+        },
+        {
+          "season": 2021,
+          "forecasts": 156,
+          "baselineRmse": 21.1707,
+          "candidateRmse": 21.1242,
+          "rmseImprovementPct": 0.22
+        },
+        {
+          "season": 2022,
+          "forecasts": 156,
+          "baselineRmse": 20.9381,
+          "candidateRmse": 20.9342,
+          "rmseImprovementPct": 0.019
+        },
+        {
+          "season": 2023,
+          "forecasts": 156,
+          "baselineRmse": 21.1305,
+          "candidateRmse": 21.2538,
+          "rmseImprovementPct": -0.583
+        },
+        {
+          "season": 2024,
+          "forecasts": 156,
+          "baselineRmse": 20.9598,
+          "candidateRmse": 21.1276,
+          "rmseImprovementPct": -0.801
+        },
+        {
+          "season": 2025,
+          "forecasts": 156,
+          "baselineRmse": 22.9293,
+          "candidateRmse": 23.2401,
+          "rmseImprovementPct": -1.356
+        }
+      ],
+      "incrementalVsInterceptOnlyRmsePct": -0.105
+    },
+    {
+      "features": [
+        "lineupRedZoneOpportunities"
+      ],
+      "forecasts": 1068,
+      "baselineRmse": 21.5728,
+      "candidateRmse": 21.6284,
+      "rmseImprovementPct": -0.258,
+      "baselineMae": 17.3256,
+      "candidateMae": 17.3263,
+      "heldOutSeasonWins": 3,
+      "bySeason": [
+        {
+          "season": 2019,
+          "forecasts": 144,
+          "baselineRmse": 21.0366,
+          "candidateRmse": 21.0072,
+          "rmseImprovementPct": 0.14
+        },
+        {
+          "season": 2020,
+          "forecasts": 144,
+          "baselineRmse": 22.7898,
+          "candidateRmse": 22.7927,
+          "rmseImprovementPct": -0.012
+        },
+        {
+          "season": 2021,
+          "forecasts": 156,
+          "baselineRmse": 21.1707,
+          "candidateRmse": 21.1034,
+          "rmseImprovementPct": 0.318
+        },
+        {
+          "season": 2022,
+          "forecasts": 156,
+          "baselineRmse": 20.9381,
+          "candidateRmse": 20.9205,
+          "rmseImprovementPct": 0.084
+        },
+        {
+          "season": 2023,
+          "forecasts": 156,
+          "baselineRmse": 21.1305,
+          "candidateRmse": 21.2461,
+          "rmseImprovementPct": -0.547
+        },
+        {
+          "season": 2024,
+          "forecasts": 156,
+          "baselineRmse": 20.9598,
+          "candidateRmse": 21.0631,
+          "rmseImprovementPct": -0.493
+        },
+        {
+          "season": 2025,
+          "forecasts": 156,
+          "baselineRmse": 22.9293,
+          "candidateRmse": 23.186,
+          "rmseImprovementPct": -1.12
+        }
+      ],
+      "incrementalVsInterceptOnlyRmsePct": -0.012
+    },
+    {
+      "features": [
+        "lineupDepthScore"
+      ],
+      "forecasts": 1068,
+      "baselineRmse": 21.5728,
+      "candidateRmse": 21.6287,
+      "rmseImprovementPct": -0.259,
+      "baselineMae": 17.3256,
+      "candidateMae": 17.3274,
+      "heldOutSeasonWins": 4,
+      "bySeason": [
+        {
+          "season": 2019,
+          "forecasts": 144,
+          "baselineRmse": 21.0366,
+          "candidateRmse": 20.9947,
+          "rmseImprovementPct": 0.199
+        },
+        {
+          "season": 2020,
+          "forecasts": 144,
+          "baselineRmse": 22.7898,
+          "candidateRmse": 22.7379,
+          "rmseImprovementPct": 0.228
+        },
+        {
+          "season": 2021,
+          "forecasts": 156,
+          "baselineRmse": 21.1707,
+          "candidateRmse": 21.1246,
+          "rmseImprovementPct": 0.217
+        },
+        {
+          "season": 2022,
+          "forecasts": 156,
+          "baselineRmse": 20.9381,
+          "candidateRmse": 20.9206,
+          "rmseImprovementPct": 0.083
+        },
+        {
+          "season": 2023,
+          "forecasts": 156,
+          "baselineRmse": 21.1305,
+          "candidateRmse": 21.2487,
+          "rmseImprovementPct": -0.559
+        },
+        {
+          "season": 2024,
+          "forecasts": 156,
+          "baselineRmse": 20.9598,
+          "candidateRmse": 21.0834,
+          "rmseImprovementPct": -0.59
+        },
+        {
+          "season": 2025,
+          "forecasts": 156,
+          "baselineRmse": 22.9293,
+          "candidateRmse": 23.2073,
+          "rmseImprovementPct": -1.212
+        }
+      ],
+      "incrementalVsInterceptOnlyRmsePct": -0.014
+    },
+    {
+      "features": [
+        "trailingLineupSnapShare"
+      ],
+      "forecasts": 1068,
+      "baselineRmse": 21.5728,
+      "candidateRmse": 21.6547,
+      "rmseImprovementPct": -0.38,
+      "baselineMae": 17.3256,
+      "candidateMae": 17.3283,
+      "heldOutSeasonWins": 4,
+      "bySeason": [
+        {
+          "season": 2019,
+          "forecasts": 144,
+          "baselineRmse": 21.0366,
+          "candidateRmse": 20.9739,
+          "rmseImprovementPct": 0.298
+        },
+        {
+          "season": 2020,
+          "forecasts": 144,
+          "baselineRmse": 22.7898,
+          "candidateRmse": 22.7421,
+          "rmseImprovementPct": 0.209
+        },
+        {
+          "season": 2021,
+          "forecasts": 156,
+          "baselineRmse": 21.1707,
+          "candidateRmse": 21.1313,
+          "rmseImprovementPct": 0.186
+        },
+        {
+          "season": 2022,
+          "forecasts": 156,
+          "baselineRmse": 20.9381,
+          "candidateRmse": 20.9197,
+          "rmseImprovementPct": 0.088
+        },
+        {
+          "season": 2023,
+          "forecasts": 156,
+          "baselineRmse": 21.1305,
+          "candidateRmse": 21.2573,
+          "rmseImprovementPct": -0.6
+        },
+        {
+          "season": 2024,
+          "forecasts": 156,
+          "baselineRmse": 20.9598,
+          "candidateRmse": 21.2676,
+          "rmseImprovementPct": -1.468
+        },
+        {
+          "season": 2025,
+          "forecasts": 156,
+          "baselineRmse": 22.9293,
+          "candidateRmse": 23.2057,
+          "rmseImprovementPct": -1.205
+        }
+      ],
+      "incrementalVsInterceptOnlyRmsePct": -0.134
+    },
+    {
+      "features": [
+        "trailingLineupOpportunities"
+      ],
+      "forecasts": 1068,
+      "baselineRmse": 21.5728,
+      "candidateRmse": 21.6386,
+      "rmseImprovementPct": -0.305,
+      "baselineMae": 17.3256,
+      "candidateMae": 17.3337,
+      "heldOutSeasonWins": 3,
+      "bySeason": [
+        {
+          "season": 2019,
+          "forecasts": 144,
+          "baselineRmse": 21.0366,
+          "candidateRmse": 20.9775,
+          "rmseImprovementPct": 0.281
+        },
+        {
+          "season": 2020,
+          "forecasts": 144,
+          "baselineRmse": 22.7898,
+          "candidateRmse": 22.7992,
+          "rmseImprovementPct": -0.041
+        },
+        {
+          "season": 2021,
+          "forecasts": 156,
+          "baselineRmse": 21.1707,
+          "candidateRmse": 21.1299,
+          "rmseImprovementPct": 0.193
+        },
+        {
+          "season": 2022,
+          "forecasts": 156,
+          "baselineRmse": 20.9381,
+          "candidateRmse": 20.9216,
+          "rmseImprovementPct": 0.079
+        },
+        {
+          "season": 2023,
+          "forecasts": 156,
+          "baselineRmse": 21.1305,
+          "candidateRmse": 21.254,
+          "rmseImprovementPct": -0.584
+        },
+        {
+          "season": 2024,
+          "forecasts": 156,
+          "baselineRmse": 20.9598,
+          "candidateRmse": 21.0777,
+          "rmseImprovementPct": -0.562
+        },
+        {
+          "season": 2025,
+          "forecasts": 156,
+          "baselineRmse": 22.9293,
+          "candidateRmse": 23.2242,
+          "rmseImprovementPct": -1.286
+        }
+      ],
+      "incrementalVsInterceptOnlyRmsePct": -0.06
+    },
+    {
+      "features": [
+        "trailingLineupRedZoneOpportunities"
+      ],
+      "forecasts": 1068,
+      "baselineRmse": 21.5728,
+      "candidateRmse": 21.6411,
+      "rmseImprovementPct": -0.317,
+      "baselineMae": 17.3256,
+      "candidateMae": 17.3345,
+      "heldOutSeasonWins": 4,
+      "bySeason": [
+        {
+          "season": 2019,
+          "forecasts": 144,
+          "baselineRmse": 21.0366,
+          "candidateRmse": 20.9736,
+          "rmseImprovementPct": 0.3
+        },
+        {
+          "season": 2020,
+          "forecasts": 144,
+          "baselineRmse": 22.7898,
+          "candidateRmse": 22.7516,
+          "rmseImprovementPct": 0.168
+        },
+        {
+          "season": 2021,
+          "forecasts": 156,
+          "baselineRmse": 21.1707,
+          "candidateRmse": 21.1446,
+          "rmseImprovementPct": 0.123
+        },
+        {
+          "season": 2022,
+          "forecasts": 156,
+          "baselineRmse": 20.9381,
+          "candidateRmse": 20.9209,
+          "rmseImprovementPct": 0.082
+        },
+        {
+          "season": 2023,
+          "forecasts": 156,
+          "baselineRmse": 21.1305,
+          "candidateRmse": 21.2499,
+          "rmseImprovementPct": -0.565
+        },
+        {
+          "season": 2024,
+          "forecasts": 156,
+          "baselineRmse": 20.9598,
+          "candidateRmse": 21.0943,
+          "rmseImprovementPct": -0.642
+        },
+        {
+          "season": 2025,
+          "forecasts": 156,
+          "baselineRmse": 22.9293,
+          "candidateRmse": 23.2623,
+          "rmseImprovementPct": -1.452
+        }
+      ],
+      "incrementalVsInterceptOnlyRmsePct": -0.071
+    },
+    {
+      "features": [
+        "rosterOpportunityConcentration"
+      ],
+      "forecasts": 1068,
+      "baselineRmse": 21.5728,
+      "candidateRmse": 21.5829,
+      "rmseImprovementPct": -0.047,
+      "baselineMae": 17.3256,
+      "candidateMae": 17.3199,
+      "heldOutSeasonWins": 4,
+      "bySeason": [
+        {
+          "season": 2019,
+          "forecasts": 144,
+          "baselineRmse": 21.0366,
+          "candidateRmse": 21.024,
+          "rmseImprovementPct": 0.06
+        },
+        {
+          "season": 2020,
+          "forecasts": 144,
+          "baselineRmse": 22.7898,
+          "candidateRmse": 22.8146,
+          "rmseImprovementPct": -0.109
+        },
+        {
+          "season": 2021,
+          "forecasts": 156,
+          "baselineRmse": 21.1707,
+          "candidateRmse": 20.9748,
+          "rmseImprovementPct": 0.925
+        },
+        {
+          "season": 2022,
+          "forecasts": 156,
+          "baselineRmse": 20.9381,
+          "candidateRmse": 20.8308,
+          "rmseImprovementPct": 0.512
+        },
+        {
+          "season": 2023,
+          "forecasts": 156,
+          "baselineRmse": 21.1305,
+          "candidateRmse": 21.2762,
+          "rmseImprovementPct": -0.689
+        },
+        {
+          "season": 2024,
+          "forecasts": 156,
+          "baselineRmse": 20.9598,
+          "candidateRmse": 20.9452,
+          "rmseImprovementPct": 0.069
+        },
+        {
+          "season": 2025,
+          "forecasts": 156,
+          "baselineRmse": 22.9293,
+          "candidateRmse": 23.1379,
+          "rmseImprovementPct": -0.91
+        }
+      ],
+      "incrementalVsInterceptOnlyRmsePct": 0.198
+    },
+    {
+      "features": [
+        "targetPerOffensiveSnap"
+      ],
+      "forecasts": 1068,
+      "baselineRmse": 21.5728,
+      "candidateRmse": 21.6383,
+      "rmseImprovementPct": -0.304,
+      "baselineMae": 17.3256,
+      "candidateMae": 17.3287,
+      "heldOutSeasonWins": 4,
+      "bySeason": [
+        {
+          "season": 2019,
+          "forecasts": 144,
+          "baselineRmse": 21.0366,
+          "candidateRmse": 20.9815,
+          "rmseImprovementPct": 0.262
+        },
+        {
+          "season": 2020,
+          "forecasts": 144,
+          "baselineRmse": 22.7898,
+          "candidateRmse": 22.7516,
+          "rmseImprovementPct": 0.168
+        },
+        {
+          "season": 2021,
+          "forecasts": 156,
+          "baselineRmse": 21.1707,
+          "candidateRmse": 21.1218,
+          "rmseImprovementPct": 0.231
+        },
+        {
+          "season": 2022,
+          "forecasts": 156,
+          "baselineRmse": 20.9381,
+          "candidateRmse": 20.9178,
+          "rmseImprovementPct": 0.097
+        },
+        {
+          "season": 2023,
+          "forecasts": 156,
+          "baselineRmse": 21.1305,
+          "candidateRmse": 21.3068,
+          "rmseImprovementPct": -0.834
+        },
+        {
+          "season": 2024,
+          "forecasts": 156,
+          "baselineRmse": 20.9598,
+          "candidateRmse": 21.0813,
+          "rmseImprovementPct": -0.58
+        },
+        {
+          "season": 2025,
+          "forecasts": 156,
+          "baselineRmse": 22.9293,
+          "candidateRmse": 23.2209,
+          "rmseImprovementPct": -1.272
+        }
+      ],
+      "incrementalVsInterceptOnlyRmsePct": -0.058
+    },
+    {
+      "features": [
+        "lineupSnapShare",
+        "lineupOpportunities",
+        "lineupRedZoneOpportunities",
+        "lineupDepthScore"
+      ],
+      "forecasts": 1068,
+      "baselineRmse": 21.5728,
+      "candidateRmse": 21.6871,
+      "rmseImprovementPct": -0.53,
+      "baselineMae": 17.3256,
+      "candidateMae": 17.37,
+      "heldOutSeasonWins": 2,
+      "bySeason": [
+        {
+          "season": 2019,
+          "forecasts": 144,
+          "baselineRmse": 21.0366,
+          "candidateRmse": 21.1819,
+          "rmseImprovementPct": -0.691
+        },
+        {
+          "season": 2020,
+          "forecasts": 144,
+          "baselineRmse": 22.7898,
+          "candidateRmse": 22.7881,
+          "rmseImprovementPct": 0.008
+        },
+        {
+          "season": 2021,
+          "forecasts": 156,
+          "baselineRmse": 21.1707,
+          "candidateRmse": 21.1627,
+          "rmseImprovementPct": 0.037
+        },
+        {
+          "season": 2022,
+          "forecasts": 156,
+          "baselineRmse": 20.9381,
+          "candidateRmse": 20.9409,
+          "rmseImprovementPct": -0.014
+        },
+        {
+          "season": 2023,
+          "forecasts": 156,
+          "baselineRmse": 21.1305,
+          "candidateRmse": 21.2486,
+          "rmseImprovementPct": -0.559
+        },
+        {
+          "season": 2024,
+          "forecasts": 156,
+          "baselineRmse": 20.9598,
+          "candidateRmse": 21.2485,
+          "rmseImprovementPct": -1.377
+        },
+        {
+          "season": 2025,
+          "forecasts": 156,
+          "baselineRmse": 22.9293,
+          "candidateRmse": 23.1748,
+          "rmseImprovementPct": -1.071
+        }
+      ],
+      "incrementalVsInterceptOnlyRmsePct": -0.284
+    },
+    {
+      "features": [
+        "trailingLineupSnapShare",
+        "trailingLineupOpportunities",
+        "trailingLineupRedZoneOpportunities"
+      ],
+      "forecasts": 1068,
+      "baselineRmse": 21.5728,
+      "candidateRmse": 21.6948,
+      "rmseImprovementPct": -0.566,
+      "baselineMae": 17.3256,
+      "candidateMae": 17.3439,
+      "heldOutSeasonWins": 4,
+      "bySeason": [
+        {
+          "season": 2019,
+          "forecasts": 144,
+          "baselineRmse": 21.0366,
+          "candidateRmse": 20.9575,
+          "rmseImprovementPct": 0.376
+        },
+        {
+          "season": 2020,
+          "forecasts": 144,
+          "baselineRmse": 22.7898,
+          "candidateRmse": 22.7792,
+          "rmseImprovementPct": 0.047
+        },
+        {
+          "season": 2021,
+          "forecasts": 156,
+          "baselineRmse": 21.1707,
+          "candidateRmse": 21.1308,
+          "rmseImprovementPct": 0.189
+        },
+        {
+          "season": 2022,
+          "forecasts": 156,
+          "baselineRmse": 20.9381,
+          "candidateRmse": 20.8989,
+          "rmseImprovementPct": 0.187
+        },
+        {
+          "season": 2023,
+          "forecasts": 156,
+          "baselineRmse": 21.1305,
+          "candidateRmse": 21.2574,
+          "rmseImprovementPct": -0.6
+        },
+        {
+          "season": 2024,
+          "forecasts": 156,
+          "baselineRmse": 20.9598,
+          "candidateRmse": 21.33,
+          "rmseImprovementPct": -1.766
+        },
+        {
+          "season": 2025,
+          "forecasts": 156,
+          "baselineRmse": 22.9293,
+          "candidateRmse": 23.4033,
+          "rmseImprovementPct": -2.067
+        }
+      ],
+      "incrementalVsInterceptOnlyRmsePct": -0.32
+    },
+    {
+      "features": [
+        "projection",
+        "lineupSnapShare",
+        "lineupOpportunities",
+        "lineupRedZoneOpportunities",
+        "lineupDepthScore"
+      ],
+      "forecasts": 1068,
+      "baselineRmse": 21.5728,
+      "candidateRmse": 21.3559,
+      "rmseImprovementPct": 1.005,
+      "baselineMae": 17.3256,
+      "candidateMae": 17.1285,
+      "heldOutSeasonWins": 5,
+      "bySeason": [
+        {
+          "season": 2019,
+          "forecasts": 144,
+          "baselineRmse": 21.0366,
+          "candidateRmse": 20.7081,
+          "rmseImprovementPct": 1.562
+        },
+        {
+          "season": 2020,
+          "forecasts": 144,
+          "baselineRmse": 22.7898,
+          "candidateRmse": 22.6313,
+          "rmseImprovementPct": 0.696
+        },
+        {
+          "season": 2021,
+          "forecasts": 156,
+          "baselineRmse": 21.1707,
+          "candidateRmse": 20.3901,
+          "rmseImprovementPct": 3.687
+        },
+        {
+          "season": 2022,
+          "forecasts": 156,
+          "baselineRmse": 20.9381,
+          "candidateRmse": 20.4348,
+          "rmseImprovementPct": 2.404
+        },
+        {
+          "season": 2023,
+          "forecasts": 156,
+          "baselineRmse": 21.1305,
+          "candidateRmse": 21.0764,
+          "rmseImprovementPct": 0.256
+        },
+        {
+          "season": 2024,
+          "forecasts": 156,
+          "baselineRmse": 20.9598,
+          "candidateRmse": 21.223,
+          "rmseImprovementPct": -1.256
+        },
+        {
+          "season": 2025,
+          "forecasts": 156,
+          "baselineRmse": 22.9293,
+          "candidateRmse": 22.9299,
+          "rmseImprovementPct": -0.003
+        }
+      ],
+      "incrementalVsInterceptOnlyRmsePct": 1.248
+    },
+    {
+      "features": [
+        "projection",
+        "trailingLineupSnapShare",
+        "trailingLineupOpportunities",
+        "trailingLineupRedZoneOpportunities"
+      ],
+      "forecasts": 1068,
+      "baselineRmse": 21.5728,
+      "candidateRmse": 21.3536,
+      "rmseImprovementPct": 1.016,
+      "baselineMae": 17.3256,
+      "candidateMae": 17.1085,
+      "heldOutSeasonWins": 5,
+      "bySeason": [
+        {
+          "season": 2019,
+          "forecasts": 144,
+          "baselineRmse": 21.0366,
+          "candidateRmse": 20.5906,
+          "rmseImprovementPct": 2.12
+        },
+        {
+          "season": 2020,
+          "forecasts": 144,
+          "baselineRmse": 22.7898,
+          "candidateRmse": 22.5902,
+          "rmseImprovementPct": 0.876
+        },
+        {
+          "season": 2021,
+          "forecasts": 156,
+          "baselineRmse": 21.1707,
+          "candidateRmse": 20.3808,
+          "rmseImprovementPct": 3.731
+        },
+        {
+          "season": 2022,
+          "forecasts": 156,
+          "baselineRmse": 20.9381,
+          "candidateRmse": 20.365,
+          "rmseImprovementPct": 2.737
+        },
+        {
+          "season": 2023,
+          "forecasts": 156,
+          "baselineRmse": 21.1305,
+          "candidateRmse": 21.0331,
+          "rmseImprovementPct": 0.461
+        },
+        {
+          "season": 2024,
+          "forecasts": 156,
+          "baselineRmse": 20.9598,
+          "candidateRmse": 21.2628,
+          "rmseImprovementPct": -1.446
+        },
+        {
+          "season": 2025,
+          "forecasts": 156,
+          "baselineRmse": 22.9293,
+          "candidateRmse": 23.1225,
+          "rmseImprovementPct": -0.843
+        }
+      ],
+      "incrementalVsInterceptOnlyRmsePct": 1.258
+    }
+  ],
+  "interceptOnly": {
+    "features": [],
+    "forecasts": 1068,
+    "baselineRmse": 21.5728,
+    "candidateRmse": 21.6257,
+    "rmseImprovementPct": -0.246,
+    "baselineMae": 17.3256,
+    "candidateMae": 17.3236,
+    "heldOutSeasonWins": 4,
+    "bySeason": [
+      {
+        "season": 2019,
+        "forecasts": 144,
+        "baselineRmse": 21.0366,
+        "candidateRmse": 20.9758,
+        "rmseImprovementPct": 0.289
+      },
+      {
+        "season": 2020,
+        "forecasts": 144,
+        "baselineRmse": 22.7898,
+        "candidateRmse": 22.7385,
+        "rmseImprovementPct": 0.225
+      },
+      {
+        "season": 2021,
+        "forecasts": 156,
+        "baselineRmse": 21.1707,
+        "candidateRmse": 21.1271,
+        "rmseImprovementPct": 0.206
+      },
+      {
+        "season": 2022,
+        "forecasts": 156,
+        "baselineRmse": 20.9381,
+        "candidateRmse": 20.9112,
+        "rmseImprovementPct": 0.128
+      },
+      {
+        "season": 2023,
+        "forecasts": 156,
+        "baselineRmse": 21.1305,
+        "candidateRmse": 21.2519,
+        "rmseImprovementPct": -0.574
+      },
+      {
+        "season": 2024,
+        "forecasts": 156,
+        "baselineRmse": 20.9598,
+        "candidateRmse": 21.0832,
+        "rmseImprovementPct": -0.589
+      },
+      {
+        "season": 2025,
+        "forecasts": 156,
+        "baselineRmse": 22.9293,
+        "candidateRmse": 23.2073,
+        "rmseImprovementPct": -1.212
+      }
+    ],
+    "incrementalVsInterceptOnlyRmsePct": 0.0
+  },
+  "bestUsageOnly": {
+    "features": [
+      "rosterOpportunityConcentration"
+    ],
+    "forecasts": 1068,
+    "baselineRmse": 21.5728,
+    "candidateRmse": 21.5829,
+    "rmseImprovementPct": -0.047,
+    "baselineMae": 17.3256,
+    "candidateMae": 17.3199,
+    "heldOutSeasonWins": 4,
+    "bySeason": [
+      {
+        "season": 2019,
+        "forecasts": 144,
+        "baselineRmse": 21.0366,
+        "candidateRmse": 21.024,
+        "rmseImprovementPct": 0.06
+      },
+      {
+        "season": 2020,
+        "forecasts": 144,
+        "baselineRmse": 22.7898,
+        "candidateRmse": 22.8146,
+        "rmseImprovementPct": -0.109
+      },
+      {
+        "season": 2021,
+        "forecasts": 156,
+        "baselineRmse": 21.1707,
+        "candidateRmse": 20.9748,
+        "rmseImprovementPct": 0.925
+      },
+      {
+        "season": 2022,
+        "forecasts": 156,
+        "baselineRmse": 20.9381,
+        "candidateRmse": 20.8308,
+        "rmseImprovementPct": 0.512
+      },
+      {
+        "season": 2023,
+        "forecasts": 156,
+        "baselineRmse": 21.1305,
+        "candidateRmse": 21.2762,
+        "rmseImprovementPct": -0.689
+      },
+      {
+        "season": 2024,
+        "forecasts": 156,
+        "baselineRmse": 20.9598,
+        "candidateRmse": 20.9452,
+        "rmseImprovementPct": 0.069
+      },
+      {
+        "season": 2025,
+        "forecasts": 156,
+        "baselineRmse": 22.9293,
+        "candidateRmse": 23.1379,
+        "rmseImprovementPct": -0.91
+      }
+    ],
+    "incrementalVsInterceptOnlyRmsePct": 0.198
+  },
+  "bestWithProjection": {
+    "features": [
+      "projection"
+    ],
+    "forecasts": 1068,
+    "baselineRmse": 21.5728,
+    "candidateRmse": 21.3186,
+    "rmseImprovementPct": 1.178,
+    "baselineMae": 17.3256,
+    "candidateMae": 17.1128,
+    "heldOutSeasonWins": 6,
+    "bySeason": [
+      {
+        "season": 2019,
+        "forecasts": 144,
+        "baselineRmse": 21.0366,
+        "candidateRmse": 20.5842,
+        "rmseImprovementPct": 2.151
+      },
+      {
+        "season": 2020,
+        "forecasts": 144,
+        "baselineRmse": 22.7898,
+        "candidateRmse": 22.6921,
+        "rmseImprovementPct": 0.429
+      },
+      {
+        "season": 2021,
+        "forecasts": 156,
+        "baselineRmse": 21.1707,
+        "candidateRmse": 20.4243,
+        "rmseImprovementPct": 3.526
+      },
+      {
+        "season": 2022,
+        "forecasts": 156,
+        "baselineRmse": 20.9381,
+        "candidateRmse": 20.4943,
+        "rmseImprovementPct": 2.119
+      },
+      {
+        "season": 2023,
+        "forecasts": 156,
+        "baselineRmse": 21.1305,
+        "candidateRmse": 21.0205,
+        "rmseImprovementPct": 0.521
+      },
+      {
+        "season": 2024,
+        "forecasts": 156,
+        "baselineRmse": 20.9598,
+        "candidateRmse": 20.9257,
+        "rmseImprovementPct": 0.163
+      },
+      {
+        "season": 2025,
+        "forecasts": 156,
+        "baselineRmse": 22.9293,
+        "candidateRmse": 22.9806,
+        "rmseImprovementPct": -0.224
+      }
+    ],
+    "incrementalVsInterceptOnlyRmsePct": 1.42
+  },
+  "decisionRule": "Do not promote a usage feature unless it improves RMSE across most held-out seasons and adds value beyond archived optimal-lineup projections."
+}

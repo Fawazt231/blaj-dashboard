@@ -11,8 +11,13 @@
     "sim:backfill": "node scripts/backfillHistoricalOdds.mjs",
     "sim:calibrate": "node scripts/calibrateHistoricalOdds.mjs",
     "data:rosters": "node scripts/backfillRosterSnapshots.mjs",
+    "data:rosters-point-in-time": "node scripts/backfillPointInTimeRosters.mjs",
     "data:roster-features": "node scripts/buildRosterProjectionFeatures.mjs",
-    "model:roster-evaluate": "node scripts/evaluateRosterProjectionFeatures.mjs"
+    "data:roster-features-point-in-time": "ROSTER_FEATURE_ROSTER_INPUT=data/historical_point_in_time_rosters.json ROSTER_FEATURE_OUTPUT=data/historical_point_in_time_projection_features.json node scripts/buildRosterProjectionFeatures.mjs",
+    "data:usage": "python3 scripts/backfillHistoricalPlayerUsage.py",
+    "model:roster-evaluate": "node scripts/evaluateRosterProjectionFeatures.mjs",
+    "model:roster-compare": "node scripts/compareRosterProjectionFeatures.mjs",
+    "model:usage-evaluate": "python3 scripts/evaluateHistoricalPlayerUsage.py"
   },
   "dependencies": {
     "html2canvas": "^1.4.1",
