@@ -122,6 +122,7 @@ const compactHistoricalMarkup = (context, recapWeek, season) => {
     ...groupedPointsAllowedCandidates(context.pointsAllowedExtremes,recapWeek),
     ...context.stretchExtremes.map(item=>({team:item.team,text:`${item.team}: ${extremeRank(item)} ${item.length}-week stretch in league history (${score(item.points)} PF, Weeks ${item.startWeek}-${item.endWeek}).`,score:96-item.rank+item.length/100})),
     ...context.weeklyExtremes.map(item=>({team:item.team,text:`${item.team}: ${extremeRank(item)} franchise score (${score(item.score)}) across ${item.total} regular-season games.`,score:95-item.rank})),
+    ...context.allTimeStandingsMovements.map(item=>({team:item.team,text:`${item.team} moved from ${ordinal(item.from)} to ${ordinal(item.to)} in the all-time regular-season standings${item.passed.length?`, passing ${item.passed.join(', ')}`:''} (${item.wins}-${item.losses}${item.ties?`-${item.ties}`:''}, ${(item.winPct*100).toFixed(1)}%).`,score:84+item.positions*2+Math.max(0,6-item.to)})),
     ...context.annotations.map(item=>({team:item.team,text:`${item.team}: ${ordinal(item.displayRank)}-${item.direction} of ${item.total} starts (${score(item.pf)} PF).`,score:80-item.displayRank}))
   ].sort((a,b)=>b.score-a.score||a.team.localeCompare(b.team))
   const facts=[],seen=new Set()

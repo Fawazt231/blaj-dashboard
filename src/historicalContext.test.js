@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-import { buildHistoricalContext, buildPointsAllowedExtremes, buildSeasonWinStreaks, buildStretchExtremes, getHeadToHeadWinStreak, mergeCurrentSeasonRegularGames, shouldShowCohortTable } from './historicalContext.js';
+import { buildAllTimeStandingsMovements, buildHistoricalContext, buildPointsAllowedExtremes, buildSeasonWinStreaks, buildStretchExtremes, getHeadToHeadWinStreak, mergeCurrentSeasonRegularGames, shouldShowCohortTable } from './historicalContext.js';
 
 const history = JSON.parse(fs.readFileSync(new URL('../public/data/excel_history.json', import.meta.url)));
 const weekFourGames = history.MatchLog_PlayoffIncluded.filter(game => (
@@ -69,6 +69,36 @@ test('Week 4 recognizes Nfi421 reaching an exact 50-50 regular-season record', (
   assert.deepEqual(context.milestones.map(item => item.text), [
     'Nfi421 is exactly 50-50 through 100 regular-season games.'
   ]);
+});
+
+test('detects an active manager moving up the all-time standings after the recap week', () => {
+  const games = [];
+  const addResult = (season, week, winner, loser) => games.push({
+    season,
+    week,
+    game_type: 'regular',
+    awayTeamName: winner,
+    homeTeamName: loser,
+    awayScore: 110,
+    homeScore: 90,
+    winner,
+    loser
+  });
+  for (let index = 0; index < 3; index += 1) addResult(2025, index + 1, 'Alpha', `Alpha Opponent ${index}`);
+  for (let index = 0; index < 2; index += 1) addResult(2025, index + 4, `Alpha Victor ${index}`, 'Alpha');
+  for (let index = 0; index < 5; index += 1) addResult(2025, index + 1, 'Bravo', `Bravo Opponent ${index}`);
+  for (let index = 0; index < 3; index += 1) addResult(2025, index + 6, `Bravo Victor ${index}`, 'Bravo');
+  addResult(2026, 1, 'Alpha', 'Current Opponent');
+
+  const movements = buildAllTimeStandingsMovements(games, 2026, 1);
+  const alpha = movements.find(item => item.team === 'Alpha');
+
+  assert.ok(alpha);
+  assert.equal(alpha.positions, 1);
+  assert.equal(alpha.to, alpha.from - 1);
+  assert.deepEqual(alpha.passed, ['Bravo']);
+  assert.equal(alpha.wins, 4);
+  assert.equal(alpha.losses, 2);
 });
 
 test('shows record cohorts only when the table has no more than five rows', () => {

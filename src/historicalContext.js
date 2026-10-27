@@ -398,6 +398,75 @@ function buildCareerMilestones(log, recapGames, currentSeason, recapWeek) {
   })).sort((a, b) => b.games - a.games || a.team.localeCompare(b.team));
 }
 
+export function buildAllTimeStandingsMovements(log, currentSeason, recapWeek) {
+  const regular = (log || []).filter(game => (
+    String(game.game_type || 'regular').toLowerCase() === 'regular'
+    && Number(game.season) <= Number(currentSeason)
+    && !(Number(game.season) === Number(currentSeason) && Number(game.week) > Number(recapWeek))
+  ));
+  const currentManagers = new Set();
+  regular.filter(game => Number(game.season) === Number(currentSeason)).forEach(game => {
+    if (game.awayTeamName) currentManagers.add(normalize(game.awayTeamName));
+    if (game.homeTeamName) currentManagers.add(normalize(game.homeTeamName));
+  });
+
+  const standingsThrough = maxWeek => {
+    const records = new Map();
+    regular.forEach(game => {
+      if (Number(game.season) === Number(currentSeason) && Number(game.week) > maxWeek) return;
+      [game.awayTeamName, game.homeTeamName].forEach(team => {
+        if (!team) return;
+        const id = normalize(team);
+        const record = records.get(id) || { team, wins: 0, losses: 0, ties: 0, games: 0 };
+        record.games += 1;
+        if (normalize(game.winner) === id) record.wins += 1;
+        else if (normalize(game.loser) === id) record.losses += 1;
+        else record.ties += 1;
+        records.set(id, record);
+      });
+    });
+    return [...records.entries()].map(([id, record]) => ({
+      ...record,
+      id,
+      winPct: record.games ? (record.wins + record.ties * 0.5) / record.games : 0
+    })).sort((a, b) => (
+      b.winPct - a.winPct
+      || b.wins - a.wins
+      || a.losses - b.losses
+      || a.team.localeCompare(b.team)
+    ));
+  };
+
+  const before = standingsThrough(Number(recapWeek) - 1);
+  const after = standingsThrough(Number(recapWeek));
+  const beforeRank = new Map(before.map((item, index) => [item.id, index + 1]));
+  const afterRank = new Map(after.map((item, index) => [item.id, index + 1]));
+
+  return after.map(item => {
+    if (!currentManagers.has(item.id) || !beforeRank.has(item.id)) return null;
+    const from = beforeRank.get(item.id);
+    const to = afterRank.get(item.id);
+    if (to >= from || to > 10) return null;
+    const passed = after.filter(other => (
+      other.id !== item.id
+      && beforeRank.has(other.id)
+      && beforeRank.get(other.id) < from
+      && afterRank.get(other.id) > to
+    )).map(other => other.team);
+    return {
+      team: item.team,
+      from,
+      to,
+      positions: from - to,
+      passed,
+      wins: item.wins,
+      losses: item.losses,
+      ties: item.ties,
+      winPct: item.winPct
+    };
+  }).filter(Boolean).sort((a, b) => a.to - b.to || b.positions - a.positions || a.team.localeCompare(b.team));
+}
+
 export function buildHistoricalContext({ log = [], recapGames = [], throughWeek, currentSeason }) {
   const { entries, playoffs } = buildStarts(log, throughWeek, currentSeason);
   const byPf = [...entries].sort((a, b) => b.pf - a.pf);
@@ -434,6 +503,7 @@ export function buildHistoricalContext({ log = [], recapGames = [], throughWeek,
   const stretchExtremes = buildStretchExtremes(log, currentSeason, throughWeek);
   const winStreaks = buildSeasonWinStreaks(log, currentSeason, throughWeek);
   const milestones = buildCareerMilestones(log, recapGames, currentSeason, throughWeek);
+  const allTimeStandingsMovements = buildAllTimeStandingsMovements(log, currentSeason, throughWeek);
 
   return {
     tables,
@@ -444,6 +514,7 @@ export function buildHistoricalContext({ log = [], recapGames = [], throughWeek,
     stretchExtremes,
     winStreaks,
     milestones,
-    hasContent: tables.length > 0 || annotations.length > 0 || cohorts.length > 0 || weeklyExtremes.length > 0 || pointsAllowedExtremes.length > 0 || stretchExtremes.length > 0 || winStreaks.length > 0 || milestones.length > 0
+    allTimeStandingsMovements,
+    hasContent: tables.length > 0 || annotations.length > 0 || cohorts.length > 0 || weeklyExtremes.length > 0 || pointsAllowedExtremes.length > 0 || stretchExtremes.length > 0 || winStreaks.length > 0 || milestones.length > 0 || allTimeStandingsMovements.length > 0
   };
 }
