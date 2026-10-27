@@ -341,6 +341,22 @@ body {
   color: var(--text-primary);
 }
 
+.team-score-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.team-projection {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
 .vs-badge {
   font-size: 0.75rem;
   font-weight: 800;

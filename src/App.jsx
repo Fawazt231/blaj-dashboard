@@ -28,6 +28,7 @@ import { downloadWeeklyNewsletter } from './weeklyReport'
 import { resolveCurrentWeek } from './seasonWeek'
 import { SIMULATION_MODEL } from './simulationModelConfig'
 import { calculateLuckRows } from './luckIndex'
+import { buildProjectionLookup, projectedLineupTotal } from './sleeperProjections'
 import SimulationExplorer from './SimulationExplorer'
 import { collectCompletedWeeklyScores } from './simulationInputs'
 
@@ -1134,6 +1135,9 @@ export default function App() {
   // Active Manager Profile Modal State
   const [activeManagerProfile, setActiveManagerProfile] = useState(null)
 
+  // Sleeper projections for the selected matchup week, keyed by player ID.
+  const [weeklyProjections, setWeeklyProjections] = useState({})
+
   // H2H View Toggle ('list' vs 'matrix')
   const [h2hDisplayMode, setH2hDisplayMode] = useState('matrix')
 
@@ -1173,9 +1177,9 @@ export default function App() {
 
           allWeekMatchups.forEach(({ week, matchups }) => {
             if (Array.isArray(matchups) && matchups.length > 0 && live) {
-              const ptsMap = {}
+              const matchupMap = {}
               matchups.forEach(m => {
-                ptsMap[String(m.roster_id)] = m.points || 0
+                matchupMap[String(m.roster_id)] = m
               })
 
               const applyPts = (targetObj) => {
@@ -1184,12 +1188,24 @@ export default function App() {
                 list.forEach(item => {
                   if (Array.isArray(item)) {
                     item.forEach(subItem => {
-                      if (subItem && ptsMap[String(subItem.roster_id)] !== undefined) {
-                        subItem.points = ptsMap[String(subItem.roster_id)]
+                      const liveMatchup = subItem && matchupMap[String(subItem.roster_id)]
+                      if (liveMatchup) {
+                        subItem.points = liveMatchup.points || 0
+                        subItem.starters = liveMatchup.starters || subItem.starters
+                        subItem.players = liveMatchup.players || subItem.players
+                        subItem.starters_points = liveMatchup.starters_points || subItem.starters_points
+                        subItem.players_points = liveMatchup.players_points || subItem.players_points
                       }
                     })
-                  } else if (item && ptsMap[String(item.roster_id)] !== undefined) {
-                    item.points = ptsMap[String(item.roster_id)]
+                  } else {
+                    const liveMatchup = item && matchupMap[String(item.roster_id)]
+                    if (liveMatchup) {
+                      item.points = liveMatchup.points || 0
+                      item.starters = liveMatchup.starters || item.starters
+                      item.players = liveMatchup.players || item.players
+                      item.starters_points = liveMatchup.starters_points || item.starters_points
+                      item.players_points = liveMatchup.players_points || item.players_points
+                    }
                   }
                 })
               }
@@ -1366,6 +1382,39 @@ export default function App() {
 
     return () => clearInterval(interval)
   }, [])
+
+  const selectedWeekStarters = (liveData?.matchups_by_week?.[String(selectedWeek)] || [])
+    .flatMap(pair => Array.isArray(pair) ? pair : [pair])
+    .flatMap(team => team?.starters || [])
+    .map(String)
+    .sort()
+  const selectedWeekStarterKey = selectedWeekStarters.join(',')
+
+  useEffect(() => {
+    if (!liveData?.season || !selectedWeekStarterKey) return
+    const weekKey = String(selectedWeek)
+    let cancelled = false
+    const params = new URLSearchParams({ season_type: 'regular' })
+    ;['QB', 'RB', 'WR', 'TE', 'K', 'DEF'].forEach(position => params.append('position[]', position))
+
+    fetch(`https://api.sleeper.com/projections/nfl/${liveData.season}/${selectedWeek}?${params}`)
+      .then(response => {
+        if (!response.ok) throw new Error(`Sleeper projections returned ${response.status}`)
+        return response.json()
+      })
+      .then(rows => {
+        if (cancelled) return
+        const lookup = buildProjectionLookup(rows, selectedWeekStarters, liveData.scoring_settings || {})
+        setWeeklyProjections(current => ({ ...current, [weekKey]: lookup }))
+      })
+      .catch(error => {
+        if (!cancelled) console.warn(`Could not load Sleeper Week ${selectedWeek} projections:`, error)
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [liveData?.season, selectedWeek, selectedWeekStarterKey])
 
   if (!liveData || !excelData) {
     return (
@@ -1819,6 +1868,10 @@ export default function App() {
     return Object.values(grouped).filter(pair => pair.length === 2)
   })()
 
+  const playoffRosterIds = new Set(
+    (liveData.playoff_picture || []).map(entry => String(entry?.team?.roster_id))
+  )
+
   return (
     <div className="app-container">
       {/* Header & Nav */}
@@ -2002,7 +2055,7 @@ export default function App() {
                   <tbody>
                     {(liveData.standings || []).map((team) => (
                       <tr key={team.roster_id}>
-                        <td style={{ fontWeight: '700', color: team.rank <= 6 ? 'var(--accent-green)' : 'var(--text-muted)' }}>
+                        <td style={{ fontWeight: '700', color: playoffRosterIds.has(String(team.roster_id)) ? 'var(--accent-green)' : 'var(--text-muted)' }}>
                           {team.rank}
                         </td>
                         <td className="team-name-cell">
@@ -2152,6 +2205,9 @@ export default function App() {
                   const teamA = matchup[0]
                   const teamB = matchup[1]
                   const h2h = getH2HRecord(teamA.team_info.canonical_name, teamB.team_info.canonical_name)
+                  const weekProjectionLookup = weeklyProjections[String(selectedWeek)]
+                  const teamAProjection = projectedLineupTotal(teamA.starters, weekProjectionLookup)
+                  const teamBProjection = projectedLineupTotal(teamB.starters, weekProjectionLookup)
 
                   return (
                     <div key={idx} className="matchup-card" style={{ marginBottom: '1rem' }}>
@@ -2174,7 +2230,12 @@ export default function App() {
                           <div style={{ fontSize: '0.75rem', color: 'var(--accent-amber)', fontWeight: '600' }}>
                             {teamA.team_info.canonical_name}
                           </div>
-                          <div className="team-score" style={{ marginTop: '0.25rem' }}>{teamA.points.toFixed(2)}</div>
+                          <div className="team-score-row">
+                            <span className="team-score">{teamA.points.toFixed(2)}</span>
+                            {teamAProjection !== null && (
+                              <span className="team-projection">Proj {teamAProjection.toFixed(2)}</span>
+                            )}
+                          </div>
                         </div>
                         <div className="vs-badge">VS</div>
                         <div className="team-box">
@@ -2189,7 +2250,12 @@ export default function App() {
                           <div style={{ fontSize: '0.75rem', color: 'var(--accent-amber)', fontWeight: '600' }}>
                             {teamB.team_info.canonical_name}
                           </div>
-                          <div className="team-score" style={{ marginTop: '0.25rem' }}>{teamB.points.toFixed(2)}</div>
+                          <div className="team-score-row">
+                            <span className="team-score">{teamB.points.toFixed(2)}</span>
+                            {teamBProjection !== null && (
+                              <span className="team-projection">Proj {teamBProjection.toFixed(2)}</span>
+                            )}
+                          </div>
                         </div>
                       </div>
                     </div>
