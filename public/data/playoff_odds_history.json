@@ -1020,6 +1020,176 @@
         }
       ],
       "source": "weekly_update"
+    },
+    "7": {
+      "weekCompleted": 7,
+      "simulations": 10000,
+      "model": "Bayesian",
+      "modelVersion": "bayesian-15-40-v1",
+      "modelParameters": {
+        "priorStd": 15.0,
+        "minSigma": 40.0
+      },
+      "seed": 202610700,
+      "results": [
+        {
+          "name": "Nabbo",
+          "playoffCount": 9907,
+          "playoffPct": 99.1,
+          "byeCount": 8872,
+          "byePct": 88.7,
+          "divWinnerCount": 9317,
+          "divWinnerPct": 93.2,
+          "lastCount": 0,
+          "lastPct": 0.0,
+          "projWins": 11.0,
+          "projFpts": 1638.7
+        },
+        {
+          "name": "Nfi421",
+          "playoffCount": 9825,
+          "playoffPct": 98.2,
+          "byeCount": 8558,
+          "byePct": 85.6,
+          "divWinnerCount": 9378,
+          "divWinnerPct": 93.8,
+          "lastCount": 0,
+          "lastPct": 0.0,
+          "projWins": 10.8,
+          "projFpts": 1587.6
+        },
+        {
+          "name": "Loomnoo",
+          "playoffCount": 7966,
+          "playoffPct": 79.7,
+          "byeCount": 991,
+          "byePct": 9.9,
+          "divWinnerCount": 5710,
+          "divWinnerPct": 57.1,
+          "lastCount": 25,
+          "lastPct": 0.2,
+          "projWins": 7.8,
+          "projFpts": 1533.4
+        },
+        {
+          "name": "hoo2champ",
+          "playoffCount": 7522,
+          "playoffPct": 75.2,
+          "byeCount": 530,
+          "byePct": 5.3,
+          "divWinnerCount": 655,
+          "divWinnerPct": 6.6,
+          "lastCount": 26,
+          "lastPct": 0.3,
+          "projWins": 7.7,
+          "projFpts": 1533.4
+        },
+        {
+          "name": "Jaguo",
+          "playoffCount": 7330,
+          "playoffPct": 73.3,
+          "byeCount": 207,
+          "byePct": 2.1,
+          "divWinnerCount": 284,
+          "divWinnerPct": 2.8,
+          "lastCount": 145,
+          "lastPct": 1.5,
+          "projWins": 6.7,
+          "projFpts": 1532.3
+        },
+        {
+          "name": "Fawaz",
+          "playoffCount": 5839,
+          "playoffPct": 58.4,
+          "byeCount": 567,
+          "byePct": 5.7,
+          "divWinnerCount": 3852,
+          "divWinnerPct": 38.5,
+          "lastCount": 49,
+          "lastPct": 0.5,
+          "projWins": 7.5,
+          "projFpts": 1446.9
+        },
+        {
+          "name": "GeneralSod",
+          "playoffCount": 3605,
+          "playoffPct": 36.0,
+          "byeCount": 13,
+          "byePct": 0.1,
+          "divWinnerCount": 21,
+          "divWinnerPct": 0.2,
+          "lastCount": 958,
+          "lastPct": 9.6,
+          "projWins": 5.4,
+          "projFpts": 1431.4
+        },
+        {
+          "name": "Rohit",
+          "playoffCount": 2867,
+          "playoffPct": 28.7,
+          "byeCount": 236,
+          "byePct": 2.4,
+          "divWinnerCount": 314,
+          "divWinnerPct": 3.1,
+          "lastCount": 110,
+          "lastPct": 1.1,
+          "projWins": 7.2,
+          "projFpts": 1371.2
+        },
+        {
+          "name": "Aneesh",
+          "playoffCount": 1874,
+          "playoffPct": 18.7,
+          "byeCount": 13,
+          "byePct": 0.1,
+          "divWinnerCount": 24,
+          "divWinnerPct": 0.2,
+          "lastCount": 1320,
+          "lastPct": 13.2,
+          "projWins": 5.3,
+          "projFpts": 1376.0
+        },
+        {
+          "name": "Aryan",
+          "playoffCount": 1657,
+          "playoffPct": 16.6,
+          "byeCount": 2,
+          "byePct": 0.0,
+          "divWinnerCount": 122,
+          "divWinnerPct": 1.2,
+          "lastCount": 3420,
+          "lastPct": 34.2,
+          "projWins": 4.3,
+          "projFpts": 1363.7
+        },
+        {
+          "name": "Mutumbs",
+          "playoffCount": 946,
+          "playoffPct": 9.5,
+          "byeCount": 7,
+          "byePct": 0.1,
+          "divWinnerCount": 316,
+          "divWinnerPct": 3.2,
+          "lastCount": 1958,
+          "lastPct": 19.6,
+          "projWins": 5.2,
+          "projFpts": 1314.3
+        },
+        {
+          "name": "Gmen",
+          "playoffCount": 662,
+          "playoffPct": 6.6,
+          "byeCount": 4,
+          "byePct": 0.0,
+          "divWinnerCount": 7,
+          "divWinnerPct": 0.1,
+          "lastCount": 1989,
+          "lastPct": 19.9,
+          "projWins": 5.1,
+          "projFpts": 1299.7
+        }
+      ],
+      "source": "weekly_update"
     }
   }
 }
