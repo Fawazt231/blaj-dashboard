@@ -28,7 +28,7 @@ import { downloadWeeklyNewsletter } from './weeklyReport'
 import { resolveCurrentWeek } from './seasonWeek'
 import { SIMULATION_MODEL } from './simulationModelConfig'
 import { calculateLuckRows } from './luckIndex'
-import { buildProjectionLookup, projectedLineupTotal } from './sleeperProjections'
+import { buildProjectionLookup, buildProjectionTeamLookup, projectedLineupTotal } from './sleeperProjections'
 import SimulationExplorer from './SimulationExplorer'
 import { collectCompletedWeeklyScores } from './simulationInputs'
 
@@ -1137,6 +1137,8 @@ export default function App() {
 
   // Sleeper projections for the selected matchup week, keyed by player ID.
   const [weeklyProjections, setWeeklyProjections] = useState({})
+  const [weeklyProjectionTeams, setWeeklyProjectionTeams] = useState({})
+  const [weeklyGameStatuses, setWeeklyGameStatuses] = useState({})
 
   // H2H View Toggle ('list' vs 'matrix')
   const [h2hDisplayMode, setH2hDisplayMode] = useState('matrix')
@@ -1392,6 +1394,10 @@ export default function App() {
     .map(String)
     .sort()
   const selectedWeekStarterKey = selectedWeekStarters.join(',')
+  const selectedWeekScoreKey = (liveData?.matchups_by_week?.[String(selectedWeek)] || [])
+    .flatMap(pair => Array.isArray(pair) ? pair : [pair])
+    .map(team => `${team?.roster_id || ''}:${Number(team?.points || 0).toFixed(2)}`)
+    .join(',')
 
   useEffect(() => {
     if (!liveData?.season || !selectedWeekStarterKey) return
@@ -1400,15 +1406,28 @@ export default function App() {
     const params = new URLSearchParams({ season_type: 'regular' })
     ;['QB', 'RB', 'WR', 'TE', 'K', 'DEF'].forEach(position => params.append('position[]', position))
 
-    fetch(`https://api.sleeper.com/projections/nfl/${liveData.season}/${selectedWeek}?${params}`)
-      .then(response => {
+    Promise.all([
+      fetch(`https://api.sleeper.com/projections/nfl/${liveData.season}/${selectedWeek}?${params}`).then(response => {
         if (!response.ok) throw new Error(`Sleeper projections returned ${response.status}`)
         return response.json()
-      })
-      .then(rows => {
+      }),
+      fetch(`https://api.sleeper.app/schedule/nfl/regular/${liveData.season}`).then(response => {
+        if (!response.ok) throw new Error(`Sleeper schedule returned ${response.status}`)
+        return response.json()
+      }).catch(() => [])
+    ])
+      .then(([rows, schedule]) => {
         if (cancelled) return
         const lookup = buildProjectionLookup(rows, selectedWeekStarters, liveData.scoring_settings || {})
+        const playerTeams = buildProjectionTeamLookup(rows, selectedWeekStarters)
+        const statuses = {}
+        ;(schedule || []).filter(game => Number(game.week) === Number(selectedWeek)).forEach(game => {
+          if (game.home) statuses[String(game.home)] = game.status || 'pre_game'
+          if (game.away) statuses[String(game.away)] = game.status || 'pre_game'
+        })
         setWeeklyProjections(current => ({ ...current, [weekKey]: lookup }))
+        setWeeklyProjectionTeams(current => ({ ...current, [weekKey]: playerTeams }))
+        setWeeklyGameStatuses(current => ({ ...current, [weekKey]: statuses }))
       })
       .catch(error => {
         if (!cancelled) console.warn(`Could not load Sleeper Week ${selectedWeek} projections:`, error)
@@ -1417,7 +1436,7 @@ export default function App() {
     return () => {
       cancelled = true
     }
-  }, [liveData?.season, selectedWeek, selectedWeekStarterKey])
+  }, [liveData?.season, selectedWeek, selectedWeekStarterKey, selectedWeekScoreKey])
 
   if (!liveData || !excelData) {
     return (
@@ -2209,8 +2228,18 @@ export default function App() {
                   const teamB = matchup[1]
                   const h2h = getH2HRecord(teamA.team_info.canonical_name, teamB.team_info.canonical_name)
                   const weekProjectionLookup = weeklyProjections[String(selectedWeek)]
-                  const teamAProjection = projectedLineupTotal(teamA.starters, weekProjectionLookup)
-                  const teamBProjection = projectedLineupTotal(teamB.starters, weekProjectionLookup)
+                  const projectionOptions = {
+                    playerTeams: weeklyProjectionTeams[String(selectedWeek)],
+                    gameStatuses: weeklyGameStatuses[String(selectedWeek)]
+                  }
+                  const teamAProjection = projectedLineupTotal(teamA.starters, weekProjectionLookup, {
+                    ...projectionOptions,
+                    actualPoints: teamA.players_points
+                  })
+                  const teamBProjection = projectedLineupTotal(teamB.starters, weekProjectionLookup, {
+                    ...projectionOptions,
+                    actualPoints: teamB.players_points
+                  })
 
                   return (
                     <div key={idx} className="matchup-card" style={{ marginBottom: '1rem' }}>
