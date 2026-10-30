@@ -243,6 +243,9 @@ export function runSimulationExplorer({
   model = 'Bayesian',
   priorStd = SIMULATION_MODEL.priorStd,
   minSigma = SIMULATION_MODEL.minSigma,
+  scoreModel = SIMULATION_MODEL.scoreModel,
+  weeklySigma = SIMULATION_MODEL.weeklySigma,
+  volatilityPriorGames = SIMULATION_MODEL.volatilityPriorGames,
   divisions = {}
 }) {
   if (!EXPLORER_OUTCOMES.includes(outcome)) throw new Error(`Unsupported outcome: ${outcome}`);
@@ -283,6 +286,9 @@ export function runSimulationExplorer({
     model,
     priorStd,
     minSigma,
+    scoreModel,
+    weeklySigma,
+    volatilityPriorGames,
     divisions,
     rng: createSeededRandom(seed),
     onTrial: trial => {
@@ -436,11 +442,11 @@ export function runSimulationExplorer({
   const sensitivityTrials = Math.min(10000, simulations);
   const sensitivitySeed = (Number(seed) >>> 0) ^ 0x85ebca6b;
   const sensitivityVariants = [
-    { label: 'Baseline', priorStd, minSigma },
-    { label: 'Stronger league pull', priorStd: 10, minSigma },
-    { label: 'Stronger team form', priorStd: 25, minSigma },
-    { label: 'Lower volatility', priorStd, minSigma: 30 },
-    { label: 'Higher volatility', priorStd, minSigma: 50 }
+    { label: 'Baseline', priorStd, minSigma, weeklySigma },
+    { label: 'Stronger league pull', priorStd: 10, minSigma, weeklySigma },
+    { label: 'Stronger team form', priorStd: 25, minSigma, weeklySigma },
+    { label: 'Lower weekly volatility', priorStd, minSigma, weeklySigma: Math.max(10, weeklySigma - 2) },
+    { label: 'Higher weekly volatility', priorStd, minSigma, weeklySigma: weeklySigma + 2 }
   ];
   const sensitivity = sensitivityVariants.map(variant => {
     const variantResults = runPlayoffSimulation({
@@ -450,6 +456,9 @@ export function runSimulationExplorer({
       model,
       priorStd: variant.priorStd,
       minSigma: variant.minSigma,
+      scoreModel,
+      weeklySigma: variant.weeklySigma,
+      volatilityPriorGames,
       divisions,
       rng: createSeededRandom(sensitivitySeed)
     });

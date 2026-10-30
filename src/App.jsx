@@ -1117,10 +1117,10 @@ export default function App() {
   const [top10Mode, setTop10Mode] = useState('incl') // 'incl' or 'reg'
   const [h2hMode, setH2hMode] = useState('reg') // 'reg' or 'incl'
 
-  // Playoff Simulator State (Default: 10,000 iterations, Bayesian model, 25 Prior STD, 20 Min Sigma)
+  // Playoff Simulator State (defaults come from the validated live model).
   const [simModel, setSimModel] = useState('Bayesian')
-  const [simPriorStd, setSimPriorStd] = useState(25)
-  const [simMinSigma, setSimMinSigma] = useState(20)
+  const [simPriorStd, setSimPriorStd] = useState(SIMULATION_MODEL.priorStd)
+  const [simMinSigma, setSimMinSigma] = useState(SIMULATION_MODEL.minSigma)
   const [simCount, setSimCount] = useState(10000)
   const [simOverrides, setSimOverrides] = useState({})
   const [simResults, setSimResults] = useState(null)
@@ -1360,6 +1360,9 @@ export default function App() {
               model: 'Bayesian',
               priorStd: SIMULATION_MODEL.priorStd,
               minSigma: SIMULATION_MODEL.minSigma,
+              scoreModel: SIMULATION_MODEL.scoreModel,
+              weeklySigma: SIMULATION_MODEL.weeklySigma,
+              volatilityPriorGames: SIMULATION_MODEL.volatilityPriorGames,
               overrides: {},
               divisions: live.divisions || {}
             });
@@ -2845,16 +2848,16 @@ export default function App() {
 
                   <div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
-                      <span style={{ fontSize: '0.8125rem', fontWeight: '600' }}>Min Weekly Sigma</span>
+                      <span style={{ fontSize: '0.8125rem', fontWeight: '600' }}>Strength Evidence Sigma</span>
                       <span style={{ fontSize: '0.8125rem', color: 'var(--accent-green)', fontWeight: '700' }}>{simMinSigma}</span>
                     </div>
                     <input 
-                      type="range" min="1" max="40" value={simMinSigma} 
+                      type="range" min="10" max="70" value={simMinSigma}
                       onChange={(e) => setSimMinSigma(Number(e.target.value))}
                       style={{ width: '100%' }}
                     />
                     <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>
-                      Controls score variance/volatility.
+                      Higher values are more cautious about treating a short scoring sample as true team strength. Weekly score volatility is calibrated separately.
                     </span>
                   </div>
                 </>
@@ -2929,6 +2932,9 @@ export default function App() {
                       model: simModel,
                       priorStd: simPriorStd,
                       minSigma: simMinSigma,
+                      scoreModel: SIMULATION_MODEL.scoreModel,
+                      weeklySigma: SIMULATION_MODEL.weeklySigma,
+                      volatilityPriorGames: SIMULATION_MODEL.volatilityPriorGames,
                       overrides: simOverrides,
                       divisions: liveData.divisions || {}
                     });

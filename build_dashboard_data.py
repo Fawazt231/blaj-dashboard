@@ -14,9 +14,11 @@ EXCEL_PATH = os.environ.get(
 CURRENT_LEAGUE_ID = "1389388845572702208"
 MANAGERS_FILE = os.path.join(BASE_DIR, "managers.json")
 OUTPUT_DIR = os.path.join(BASE_DIR, "public", "data")
-SIMULATION_MODEL_VERSION = "bayesian-15-40-v1"
+SIMULATION_MODEL_VERSION = "hierarchical-15-50-17-16-v2"
 SIMULATION_PRIOR_STD = 15.0
-SIMULATION_MIN_SIGMA = 40.0
+SIMULATION_MIN_SIGMA = 50.0
+SIMULATION_WEEKLY_SIGMA = 17.0
+SIMULATION_VOLATILITY_PRIOR_GAMES = 16.0
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
@@ -76,21 +78,31 @@ def build_playoff_odds_snapshot(live_data, history_data, completed_week, simulat
         historical_avg = max(100.0, float(proxy.get("highest_score", 0)) * 0.7) if proxy else 110.0
         total_games = wins + losses
         raw_mean = points / total_games if total_games else historical_avg
+        observed_variance = None
         if len(weekly_scores) >= 2:
             variance = sum((score - raw_mean) ** 2 for score in weekly_scores) / (len(weekly_scores) - 1)
             std = math.sqrt(variance)
+            observed_variance = variance
         else:
             std = max(math.sqrt(max(raw_mean, 1.0)) * 1.5, 16.0)
         prior_std, min_sigma = SIMULATION_PRIOR_STD, SIMULATION_MIN_SIGMA
+        strength_std = 0.0
         if total_games:
             prior_var = prior_std ** 2
-            obs_var = max(std ** 2, min_sigma ** 2)
-            post_var = 1.0 / (1.0 / prior_var + total_games / obs_var)
-            mean = post_var * (prior_mean / prior_var + total_games * raw_mean / obs_var)
-            std = math.sqrt(obs_var + post_var)
+            evidence_var = max(observed_variance if observed_variance is not None else std ** 2, min_sigma ** 2)
+            post_var = 1.0 / (1.0 / prior_var + total_games / evidence_var)
+            mean = post_var * (prior_mean / prior_var + total_games * raw_mean / evidence_var)
+            strength_std = math.sqrt(post_var)
         else:
             mean = 0.5 * raw_mean + 0.5 * prior_mean
-            std = prior_std
+            strength_std = prior_std
+        target_variance = SIMULATION_WEEKLY_SIGMA ** 2
+        observed_degrees = max(1, len(weekly_scores) - 1) if observed_variance is not None else 0
+        predictive_variance = (
+            SIMULATION_VOLATILITY_PRIOR_GAMES * target_variance
+            + observed_degrees * (observed_variance if observed_variance is not None else target_variance)
+        ) / max(1.0, SIMULATION_VOLATILITY_PRIOR_GAMES + observed_degrees)
+        std = math.sqrt(predictive_variance)
         teams.append({
             "name": name,
             "wins": wins,
@@ -98,6 +110,7 @@ def build_playoff_odds_snapshot(live_data, history_data, completed_week, simulat
             "fpts": points,
             "mean": mean,
             "std": std,
+            "strengthStd": strength_std,
             "division": standing.get("division", 1),
         })
 
@@ -125,6 +138,8 @@ def build_playoff_odds_snapshot(live_data, history_data, completed_week, simulat
 
     for _ in range(simulations):
         state = {team["name"]: dict(team) for team in teams}
+        for team in state.values():
+            team["mean"] = rng.gauss(team["mean"], team.get("strengthStd", 0.0))
         for away_name, home_name in remaining_schedule:
             away, home = state.get(away_name), state.get(home_name)
             if not away or not home:
@@ -193,6 +208,9 @@ def build_playoff_odds_snapshot(live_data, history_data, completed_week, simulat
         "modelParameters": {
             "priorStd": SIMULATION_PRIOR_STD,
             "minSigma": SIMULATION_MIN_SIGMA,
+            "scoreModel": "hierarchical",
+            "weeklySigma": SIMULATION_WEEKLY_SIGMA,
+            "volatilityPriorGames": SIMULATION_VOLATILITY_PRIOR_GAMES,
         },
         "seed": season * 100000 + completed_week * 100 + simulations,
         "results": results,
@@ -214,7 +232,11 @@ def update_playoff_odds_history(live_data):
     snapshots = odds_history.setdefault("snapshots", {})
     for week in range(1, completed_week + 1):
         key = str(week)
-        if snapshots.get(key, {}).get("modelVersion") != SIMULATION_MODEL_VERSION:
+        # Published snapshots are immutable: rebuilding them after a model
+        # change makes the report's week-over-week movement disagree with what
+        # managers actually saw at the time. A new model starts with the next
+        # unsaved completed week.
+        if key not in snapshots:
             snapshots[key] = build_playoff_odds_snapshot(live_data, history_data, week)
             snapshots[key]["source"] = "reconstructed" if week < completed_week else "weekly_update"
     with open(odds_path, "w") as stream:

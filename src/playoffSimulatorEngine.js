@@ -31,29 +31,22 @@ function isCompleteDivisionMap(divisions, teams) {
     && members.every(name => knownTeams.has(name));
 }
 
-export function runPlayoffSimulation({
-  teams,             // list of { name, wins, losses, fpts, roster_id, division }
-  remainingSchedule, // list of [awayName, homeName] for unplayed regular season games
-  simulations = 5000,
-  model = 'Bayesian', // 'Bayesian', 'Simple'
+export function buildSimulationTeamProfiles({
+  teams,
+  model = 'Bayesian',
   priorStd = 20.0,
   minSigma = 10.0,
-  rosterBlend = 0,
-  overrides = {},    // { gameIndex: 'away' | 'home' } for What-If scenario forcing
-  divisions = {},    // { div_id: [teamNames] }
-  rng = Math.random, // injectable RNG for deterministic diagnostics
-  onTrial = null     // optional callback for conditional simulation analysis
+  scoreModel = 'legacy',
+  weeklySigma = 20.0,
+  volatilityPriorGames = 8
 }) {
-  if (!teams || teams.length === 0) return [];
-
   const scoredGames = teams.reduce((sum, team) => sum + Math.max(0, Number(team.wins || 0) + Number(team.losses || 0)), 0);
   const scoredPoints = teams.reduce((sum, team) => sum + Number(team.fpts || 0), 0);
   const leagueMean = scoredGames > 0 ? scoredPoints / scoredGames : 115.0;
 
-  // 1. Calculate scoring baselines (mean & std) for each team
-  const simTeamsBase = teams.map(t => {
-    const totalGames = t.wins + t.losses;
-    const rawMean = totalGames > 0 ? t.fpts / totalGames : (t.historicalAvg || 110.0);
+  return teams.map(t => {
+    const totalGames = Number(t.wins || 0) + Number(t.losses || 0);
+    const rawMean = totalGames > 0 ? Number(t.fpts || 0) / totalGames : (t.historicalAvg || 110.0);
     let mean = rawMean;
     const weeklyScores = Array.isArray(t.weeklyScores)
       ? t.weeklyScores.map(Number).filter(Number.isFinite)
@@ -61,32 +54,39 @@ export function runPlayoffSimulation({
     const weeklyMean = weeklyScores.length
       ? weeklyScores.reduce((sum, score) => sum + score, 0) / weeklyScores.length
       : rawMean;
-    const observedStd = weeklyScores.length >= 2
-      ? Math.sqrt(weeklyScores.reduce((sum, score) => sum + (score - weeklyMean) ** 2, 0) / (weeklyScores.length - 1))
+    const observedVariance = weeklyScores.length >= 2
+      ? weeklyScores.reduce((sum, score) => sum + (score - weeklyMean) ** 2, 0) / (weeklyScores.length - 1)
       : null;
+    const observedStd = observedVariance == null ? null : Math.sqrt(observedVariance);
     let std = observedStd ?? Math.max(Math.sqrt(Math.max(rawMean, 1.0)) * 1.5, 16.0);
+    let strengthStd = 0;
 
     const priorMean = leagueMean;
     if (model === 'Simple') {
-      // 50% current team score average + 50% league average baseline
       mean = 0.5 * rawMean + 0.5 * priorMean;
     } else if (model === 'Bayesian') {
       const priorVar = priorStd * priorStd;
       if (totalGames > 0) {
-        const obsVar = Math.max(std * std, minSigma * minSigma);
-        const postVar = 1.0 / (1.0 / priorVar + totalGames / obsVar);
-        mean = postVar * (priorMean / priorVar + totalGames * rawMean / obsVar);
-        std = Math.sqrt(obsVar + postVar);
+        const evidenceVar = Math.max((observedVariance ?? std * std), minSigma * minSigma);
+        const postVar = 1.0 / (1.0 / priorVar + totalGames / evidenceVar);
+        mean = postVar * (priorMean / priorVar + totalGames * rawMean / evidenceVar);
+        strengthStd = Math.sqrt(postVar);
+        if (scoreModel === 'legacy') std = Math.sqrt(evidenceVar + postVar);
       } else {
-        // Pre-season Bayesian prior using team historical average
         mean = 0.5 * rawMean + 0.5 * priorMean;
-        std = priorStd;
+        strengthStd = priorStd;
       }
     }
 
-    // Optional challenger-model input. Keep it separate from the durable PF
-    // estimate so a one-week lineup projection affects only its target week.
-    // Missing projections always fall back to the score-only estimate.
+    if (scoreModel === 'hierarchical') {
+      const priorGames = Math.max(0, Number(volatilityPriorGames) || 0);
+      const targetVariance = Math.max(1, Number(weeklySigma) || 20) ** 2;
+      const observedDegrees = observedVariance == null ? 0 : Math.max(1, weeklyScores.length - 1);
+      const predictiveVariance = (priorGames * targetVariance + observedDegrees * (observedVariance ?? targetVariance))
+        / Math.max(1, priorGames + observedDegrees);
+      std = Math.sqrt(predictiveVariance);
+    }
+
     const projectedMean = Number(t.projectedMean);
     const projectedLeagueMean = Number(t.projectedLeagueMean);
     const rosterMean = Number.isFinite(projectedMean)
@@ -97,15 +97,46 @@ export function runPlayoffSimulation({
 
     return {
       name: t.name,
-      wins: t.wins,
-      losses: t.losses,
-      fpts: t.fpts,
-      mean: mean,
-      std: std,
+      wins: Number(t.wins || 0),
+      losses: Number(t.losses || 0),
+      fpts: Number(t.fpts || 0),
+      mean,
+      std,
+      strengthStd,
       rosterMean,
       projectionWeek: Number(t.projectionWeek),
       division: t.division
     };
+  });
+}
+
+export function runPlayoffSimulation({
+  teams,             // list of { name, wins, losses, fpts, roster_id, division }
+  remainingSchedule, // list of [awayName, homeName] for unplayed regular season games
+  simulations = 5000,
+  model = 'Bayesian', // 'Bayesian', 'Simple'
+  priorStd = 20.0,
+  minSigma = 10.0,
+  scoreModel = 'legacy',
+  weeklySigma = 20.0,
+  volatilityPriorGames = 8,
+  rosterBlend = 0,
+  overrides = {},    // { gameIndex: 'away' | 'home' } for What-If scenario forcing
+  divisions = {},    // { div_id: [teamNames] }
+  rng = Math.random, // injectable RNG for deterministic diagnostics
+  onTrial = null     // optional callback for conditional simulation analysis
+}) {
+  if (!teams || teams.length === 0) return [];
+
+  // 1. Calculate team-strength posteriors and weekly score volatility.
+  const simTeamsBase = buildSimulationTeamProfiles({
+    teams,
+    model,
+    priorStd,
+    minSigma,
+    scoreModel,
+    weeklySigma,
+    volatilityPriorGames
   });
 
   // The live payload stores division membership on each team and may not include
@@ -141,7 +172,11 @@ export function runPlayoffSimulation({
       wins: t.wins,
       losses: t.losses,
       fpts: t.fpts,
-      mean: t.mean,
+      // Team-strength uncertainty is shared across every remaining week in a
+      // hierarchical trial instead of being reintroduced as weekly noise.
+      mean: scoreModel === 'hierarchical' && t.strengthStd > 0
+        ? randomNormal(t.mean, t.strengthStd, rng)
+        : t.mean,
       std: t.std,
       rosterMean: t.rosterMean,
       projectionWeek: t.projectionWeek,

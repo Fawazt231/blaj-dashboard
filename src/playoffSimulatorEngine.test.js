@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { runPlayoffSimulation } from './playoffSimulatorEngine.js';
+import { buildSimulationTeamProfiles, runPlayoffSimulation } from './playoffSimulatorEngine.js';
 
 test('derives missing division groups and awards one winner per division per simulation', () => {
   const teams = [
@@ -86,6 +86,25 @@ test('uses completed weekly scores to estimate team volatility', () => {
   const byName = Object.fromEntries(results.map(result => [result.name, result]));
 
   assert.ok(byName.Volatile.std > byName.Stable.std * 2);
+});
+
+test('hierarchical model separates strength uncertainty from realistic weekly volatility', () => {
+  const [profile] = buildSimulationTeamProfiles({
+    teams: [{
+      name: 'Stable', wins: 4, losses: 3, fpts: 700, division: 1,
+      weeklyScores: [95, 105, 100, 102, 98, 101, 99]
+    }],
+    model: 'Bayesian',
+    priorStd: 15,
+    minSigma: 50,
+    scoreModel: 'hierarchical',
+    weeklySigma: 17,
+    volatilityPriorGames: 16
+  });
+
+  assert.ok(profile.strengthStd > 0);
+  assert.ok(profile.std >= 14 && profile.std <= 20);
+  assert.ok(profile.std < 50);
 });
 
 test('applies a normalized roster projection only to its target week', () => {

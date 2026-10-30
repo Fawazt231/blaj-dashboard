@@ -10,7 +10,10 @@ const discovery = JSON.parse(await fs.readFile(path.join(root, 'data_discovery.j
 const managers = JSON.parse(await fs.readFile(path.join(root, 'managers.json'), 'utf8'));
 const simulations = Number(process.env.BACKTEST_SIMULATIONS || 10000);
 const priorStd = Number(process.env.BACKTEST_PRIOR_STD || 15);
-const minSigma = Number(process.env.BACKTEST_MIN_SIGMA || 40);
+const minSigma = Number(process.env.BACKTEST_MIN_SIGMA || 50);
+const scoreModel = process.env.BACKTEST_SCORE_MODEL || 'hierarchical';
+const weeklySigma = Number(process.env.BACKTEST_WEEKLY_SIGMA || 17);
+const volatilityPriorGames = Number(process.env.BACKTEST_VOLATILITY_PRIOR_GAMES || 16);
 const rosterBlend = Number(process.env.BACKTEST_ROSTER_BLEND || 0);
 const rosterMinCompletedWeek = Number(process.env.BACKTEST_ROSTER_MIN_WEEK || 1);
 const rosterMaxCompletedWeek = Number(process.env.BACKTEST_ROSTER_MAX_WEEK || 99);
@@ -229,6 +232,9 @@ for (const config of configurations) {
       model: 'Bayesian',
       priorStd,
       minSigma,
+      scoreModel,
+      weeklySigma,
+      volatilityPriorGames,
       rosterBlend,
       divisions: config.divisions,
       rng: seededRandom(config.season * 100000 + completedWeek * 100 + simulations)
@@ -263,6 +269,9 @@ const output = {
   modelParameters: {
     priorStd,
     minSigma,
+    scoreModel,
+    weeklySigma,
+    volatilityPriorGames,
     rosterBlend,
     rosterProjectionWindow: rosterBlend > 0
       ? { minCompletedWeek: rosterMinCompletedWeek, maxCompletedWeek: rosterMaxCompletedWeek }

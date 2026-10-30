@@ -156,12 +156,15 @@ export async function downloadWeeklyNewsletter({ liveData, excelData, simResults
     throughWeek:recapWeek,
   })
   const snapshots=liveData?.playoff_odds_history?.snapshots||{}
-  const currentSnapshot=snapshots[String(recapWeek)]?.results||simResults||[]
-  const previousSnapshot=snapshots[String(recapWeek-1)]?.results||[]
+  const currentSnapshotEntry=snapshots[String(recapWeek)]||{}
+  const previousSnapshotEntry=snapshots[String(recapWeek-1)]||{}
+  const currentSnapshot=currentSnapshotEntry.results||simResults||[]
+  const previousSnapshot=previousSnapshotEntry.results||[]
+  const comparableSnapshots=Boolean(currentSnapshotEntry.modelVersion&&currentSnapshotEntry.modelVersion===previousSnapshotEntry.modelVersion)
   const previousByName=new Map(previousSnapshot.map(item=>[String(item.name||'').toLowerCase(),item]))
   const odds=[...currentSnapshot].sort((a,b)=>Number(b.playoffPct||0)-Number(a.playoffPct||0)).map(item=>({
     ...item,
-    delta:Number(item.playoffPct||0)-Number(previousByName.get(String(item.name||'').toLowerCase())?.playoffPct||0),
+    delta:comparableSnapshots?Number(item.playoffPct||0)-Number(previousByName.get(String(item.name||'').toLowerCase())?.playoffPct||0):null,
   }))
   const historical=buildHistoricalContext({log:contextLog,recapGames:games,throughWeek:recapWeek,currentSeason:season})
   const simulationSpotlight=buildSimulationSpotlight({liveData,excelData})
@@ -192,7 +195,7 @@ export async function downloadWeeklyNewsletter({ liveData, excelData, simResults
       <div>
         ${section(`Playoff outlook | 10k sims | vs Week ${Math.max(1,recapWeek-1)}`)}
         <div style="display:grid;grid-template-columns:1fr 53px 38px 40px 40px;gap:4px;padding-bottom:5px;border-bottom:1px solid ${C.ink};font-family:Arial,sans-serif;font-size:6px;font-weight:900;color:${C.muted};text-transform:uppercase;"><span>Team</span><span style="text-align:right;">Playoff</span><span style="text-align:right;">Change</span><span style="text-align:right;">Bye</span><span style="text-align:right;">Last</span></div>
-        ${odds.map(item=>{const team=teams.get(String(item.name||'').toLowerCase());const tiny=Number(item.playoffCount||0)<100?` (${Number(item.playoffCount||0).toLocaleString()})`:'';const sign=item.delta>0?'+':'';return `<div style="height:20px;display:grid;grid-template-columns:1fr 53px 38px 40px 40px;gap:4px;align-items:center;border-bottom:1px solid ${C.line};font-family:Arial,sans-serif;"><strong style="font-size:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(teamName(team))}</strong><span style="font-size:6px;text-align:right;font-weight:900;">${pct(item.playoffPct)}${tiny}</span><span style="font-size:6px;text-align:right;color:${item.delta>0?C.green:item.delta<0?C.red:C.muted};">${sign}${item.delta.toFixed(1)}</span><span style="font-size:6px;text-align:right;">${pct(item.byePct)}</span><span style="font-size:6px;text-align:right;">${pct(item.lastPct)}</span></div>`}).join('')}
+        ${odds.map(item=>{const team=teams.get(String(item.name||'').toLowerCase());const tiny=Number(item.playoffCount||0)<100?` (${Number(item.playoffCount||0).toLocaleString()})`:'';const sign=item.delta>0?'+':'';const change=item.delta==null?'Reset':`${sign}${item.delta.toFixed(1)}`;return `<div style="height:20px;display:grid;grid-template-columns:1fr 53px 38px 40px 40px;gap:4px;align-items:center;border-bottom:1px solid ${C.line};font-family:Arial,sans-serif;"><strong style="font-size:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(teamName(team))}</strong><span style="font-size:6px;text-align:right;font-weight:900;">${pct(item.playoffPct)}${tiny}</span><span style="font-size:6px;text-align:right;color:${item.delta>0?C.green:item.delta<0?C.red:C.muted};">${change}</span><span style="font-size:6px;text-align:right;">${pct(item.byePct)}</span><span style="font-size:6px;text-align:right;">${pct(item.lastPct)}</span></div>`}).join('')}
       </div>
     </div>
 

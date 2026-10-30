@@ -200,6 +200,9 @@ export default function SimulationExplorer({ liveData, excelData }) {
       model: 'Bayesian',
       priorStd: SIMULATION_MODEL.priorStd,
       minSigma: SIMULATION_MODEL.minSigma,
+      scoreModel: SIMULATION_MODEL.scoreModel,
+      weeklySigma: SIMULATION_MODEL.weeklySigma,
+      volatilityPriorGames: SIMULATION_MODEL.volatilityPriorGames,
       divisions: liveData?.divisions || {}
     });
   };
@@ -370,8 +373,8 @@ export default function SimulationExplorer({ liveData, excelData }) {
               <strong>{pct(result.sensitivity.range.low)}–{pct(result.sensitivity.range.high)}</strong>
               <span>{result.sensitivity.stable ? 'Stable across tested settings' : 'Meaningfully changes with assumptions'} · {result.sensitivity.trialsPerVariant.toLocaleString()} trials per setting</span>
             </div>
-            <div className="table-container"><table className="data-table"><thead><tr><th>Setting</th><th>League pull</th><th>Minimum volatility</th><th>{selectedOutcome}</th></tr></thead><tbody>
-              {result.sensitivity.variants.map(item => <tr key={item.label}><td>{item.label}</td><td>{item.priorStd}</td><td>{item.minSigma}</td><td>{pct(item.probability)}</td></tr>)}
+            <div className="table-container"><table className="data-table"><thead><tr><th>Setting</th><th>League pull</th><th>Strength evidence</th><th>Weekly volatility</th><th>{selectedOutcome}</th></tr></thead><tbody>
+              {result.sensitivity.variants.map(item => <tr key={item.label}><td>{item.label}</td><td>{item.priorStd}</td><td>{item.minSigma}</td><td>{item.weeklySigma}</td><td>{pct(item.probability)}</td></tr>)}
             </tbody></table></div>
           </section>
 

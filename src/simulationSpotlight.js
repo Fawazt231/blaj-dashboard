@@ -80,6 +80,9 @@ export function buildSimulationSpotlight({ liveData, excelData, simulations = 10
     model: 'Bayesian',
     priorStd: SIMULATION_MODEL.priorStd,
     minSigma: SIMULATION_MODEL.minSigma,
+    scoreModel: SIMULATION_MODEL.scoreModel,
+    weeklySigma: SIMULATION_MODEL.weeklySigma,
+    volatilityPriorGames: SIMULATION_MODEL.volatilityPriorGames,
     divisions: liveData?.divisions || {},
     rng: seededRandom((Number(liveData?.season || 0) * 1000 + currentWeek) >>> 0),
     onTrial: trial => {
