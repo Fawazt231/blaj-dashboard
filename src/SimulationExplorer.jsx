@@ -149,7 +149,9 @@ export default function SimulationExplorer({ liveData, excelData }) {
   const topRoute = result && result.outcome === 'playoff'
     ? Object.entries(result.routes).filter(([route]) => route !== 'miss').sort((a, b) => (b[1].pct || 0) - (a[1].pct || 0))[0]
     : null;
-  const clearestLeverage = result?.gameLeverage?.find(item => item.evidence !== 'Unclear') || result?.gameLeverage?.[0];
+  const upcomingWeek = Number(liveData?.current_week || 1);
+  const upcomingLeverage = result?.gameLeverage?.filter(item => scheduleMeta[item.index]?.week === upcomingWeek) || [];
+  const clearestLeverage = upcomingLeverage.find(item => item.evidence !== 'Unclear') || upcomingLeverage[0];
 
   const changeInput = setter => event => {
     workerRef.current?.terminate();

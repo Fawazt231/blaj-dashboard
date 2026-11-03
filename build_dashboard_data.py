@@ -232,13 +232,10 @@ def update_playoff_odds_history(live_data):
     snapshots = odds_history.setdefault("snapshots", {})
     for week in range(1, completed_week + 1):
         key = str(week)
-        # Published snapshots are immutable: rebuilding them after a model
-        # change makes the report's week-over-week movement disagree with what
-        # managers actually saw at the time. A new model starts with the next
-        # unsaved completed week.
-        if key not in snapshots:
-            snapshots[key] = build_playoff_odds_snapshot(live_data, history_data, week)
-            snapshots[key]["source"] = "reconstructed" if week < completed_week else "weekly_update"
+        # Rebuild every checkpoint with the current model so the report's
+        # week-over-week changes compare like with like after model updates.
+        snapshots[key] = build_playoff_odds_snapshot(live_data, history_data, week)
+        snapshots[key]["source"] = "reconstructed" if week < completed_week else "weekly_update"
     with open(odds_path, "w") as stream:
         json.dump(odds_history, stream, indent=2)
     live_data["playoff_odds_history"] = odds_history

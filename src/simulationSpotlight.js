@@ -10,21 +10,6 @@ const twoRateZ = (hitsA, totalA, hitsB, totalB) => {
   const standardError = Math.sqrt(pooled * (1 - pooled) * (1 / totalA + 1 / totalB));
   return standardError ? Math.abs(hitsA / totalA - hitsB / totalB) / standardError : 0;
 };
-const median = histogram => {
-  const total = [...histogram.values()].reduce((sum, count) => sum + count, 0);
-  let seen = 0;
-  for (const [value, count] of [...histogram.entries()].sort((a, b) => a[0] - b[0])) {
-    seen += count;
-    if (seen >= total / 2) return value;
-  }
-  return null;
-};
-const routeFor = (name, trial) => {
-  if (trial.divisionWinners.some(team => team.name === name)) return 'division';
-  if (trial.fourthSeed?.name === name) return 'record';
-  if (trial.wildcards.some(team => team.name === name)) return 'points';
-  return 'miss';
-};
 const seededRandom = seed => {
   let state = Number(seed) >>> 0;
   return () => {
@@ -69,8 +54,6 @@ export function buildSimulationSpotlight({ liveData, excelData, simulations = 10
   const stats = new Map(teams.map(team => [team.name, {
     team,
     playoff: 0,
-    routes: { division: 0, record: 0, points: 0 },
-    placements: new Map(),
     games: new Map()
   }]));
   runPlayoffSimulation({
@@ -86,15 +69,9 @@ export function buildSimulationSpotlight({ liveData, excelData, simulations = 10
     divisions: liveData?.divisions || {},
     rng: seededRandom((Number(liveData?.season || 0) * 1000 + currentWeek) >>> 0),
     onTrial: trial => {
-      const placements = [...trial.state].sort((a, b) => b.wins - a.wins || b.fpts - a.fpts);
       stats.forEach((stat, name) => {
         const madePlayoffs = trial.playoffField.some(team => team.name === name);
-        if (madePlayoffs) {
-          stat.playoff += 1;
-          stat.routes[routeFor(name, trial)] += 1;
-        }
-        const placement = placements.findIndex(team => team.name === name) + 1;
-        stat.placements.set(placement, (stat.placements.get(placement) || 0) + 1);
+        if (madePlayoffs) stat.playoff += 1;
       });
       trial.gameResults.forEach(game => {
         [game.away, game.home].forEach(name => {
@@ -116,11 +93,14 @@ export function buildSimulationSpotlight({ liveData, excelData, simulations = 10
     }
   });
 
-  const routeLabels = { division: 'division title', record: 'record wildcard', points: 'points-for berth' };
   const candidates = [];
   stats.forEach((stat, name) => {
     const playoffPct = pct(stat.playoff, simulations);
     stat.games.forEach((game, index) => {
+      // The report's spotlight is actionable only when it refers to the game
+      // managers are about to play. Later-week leverage belongs in the full
+      // Simulation Explorer, not the weekly preview.
+      if (schedule[index]?.week !== currentWeek) return;
       if (game.wins < 500 || game.losses < 500) return;
       const afterWin = pct(game.playoffAfterWin, game.wins);
       const afterLoss = pct(game.playoffAfterLoss, game.losses);
@@ -134,22 +114,6 @@ export function buildSimulationSpotlight({ liveData, excelData, simulations = 10
         score: 120 + Math.abs(difference) - (schedule[index]?.week - currentWeek) * 2,
         text: `${stat.team.display}'s Week ${schedule[index]?.week} game against ${opponentDisplay} is its biggest playoff lever: ${afterWin.toFixed(1)}% after a win versus ${afterLoss.toFixed(1)}% after a loss.`
       });
-    });
-    if (stat.playoff > 0 && playoffPct >= 10 && playoffPct <= 90) {
-      const topRoute = Object.entries(stat.routes).sort((a, b) => b[1] - a[1])[0];
-      const routePct = pct(topRoute[1], stat.playoff);
-      if (routePct >= 60) candidates.push({
-        kind: 'route',
-        score: 100 + routePct / 10,
-        text: `${stat.team.display}'s clearest playoff route is the ${routeLabels[topRoute[0]]}: ${routePct.toFixed(1)}% of its simulated berths arrive that way.`
-      });
-    }
-    const projected = median(stat.placements);
-    const gap = stat.team.rank - projected;
-    if (projected && Math.abs(gap) >= 2 && playoffPct >= 5 && playoffPct <= 95) candidates.push({
-      kind: 'placement',
-      score: 80 + Math.abs(gap) * 3,
-      text: `${stat.team.display} is currently ${stat.team.rank}${stat.team.rank === 1 ? 'st' : stat.team.rank === 2 ? 'nd' : stat.team.rank === 3 ? 'rd' : 'th'}, but its median simulated finish is ${projected}${projected === 1 ? 'st' : projected === 2 ? 'nd' : projected === 3 ? 'rd' : 'th'}.`
     });
   });
   const result = candidates.sort((a, b) => b.score - a.score || a.text.localeCompare(b.text))[0] || null;

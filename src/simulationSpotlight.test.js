@@ -25,5 +25,15 @@ test('simulation spotlight is deterministic and returns a supported insight', ()
   const first = buildSimulationSpotlight(input);
   const second = buildSimulationSpotlight(input);
   assert.deepEqual(first, second);
-  if (first) assert.ok(['leverage', 'route', 'placement'].includes(first.kind));
+  if (first) assert.equal(first.kind, 'leverage');
+});
+
+test('simulation spotlight stays empty when no insight concerns the upcoming week', () => {
+  const futureOnly = Object.fromEntries(Object.entries(matchups).filter(([week]) => Number(week) > 8));
+  const result = buildSimulationSpotlight({
+    liveData: { current_week: 8, season: 2026, standings, matchups_by_week: futureOnly },
+    excelData: {},
+    simulations: 1000
+  });
+  assert.equal(result, null);
 });
