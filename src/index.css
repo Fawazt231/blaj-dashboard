@@ -330,6 +330,17 @@ body {
   object-fit: cover;
 }
 
+.team-avatar-initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(217, 119, 6, 0.4);
+  background: rgba(217, 119, 6, 0.12);
+  color: var(--accent-amber);
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
 .team-name {
   font-weight: 700;
   font-size: 1rem;

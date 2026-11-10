@@ -1155,10 +1155,9 @@ export default function App() {
           return r.json()
         }),
         fetch('https://api.sleeper.app/v1/league/1389388845572702208').then(r => r.json()).catch(() => ({})),
-        fetch('https://api.sleeper.app/v1/league/1389388845572702208/users').then(r => r.json()).catch(() => []),
         fetch('https://api.sleeper.app/v1/league/1389388845572702208/rosters').then(r => r.json()).catch(() => [])
       ])
-        .then(async ([live, excel, sleeperLeague, sleeperUsers, sleeperRosters]) => {
+        .then(async ([live, excel, sleeperLeague, sleeperRosters]) => {
           if (excel && excel.Sheet1) {
             delete excel.Sheet1
           }
@@ -1290,29 +1289,6 @@ export default function App() {
               { seed: 5, type: "Points For Qualifier", team: seed5 },
               { seed: 6, type: "Points For Qualifier", team: seed6 }
             ].filter(p => p.team)
-          }
-
-          // Build live 100% real-time Sleeper avatar map (Prioritizing custom 2026 Team Logos)
-          if (Array.isArray(sleeperUsers) && sleeperUsers.length > 0 && live) {
-            const liveAvatarMap = {}
-            sleeperUsers.forEach(u => {
-              if (u.user_id) {
-                const teamLogo = u.metadata?.avatar
-                const userAvatar = u.avatar ? `profile-images-removed/${u.avatar}` : null
-                liveAvatarMap[u.user_id] = teamLogo || userAvatar
-              }
-            })
-            
-            // Inject live team avatars into live.roster_avatar_map
-            if (live.rosters) {
-              live.rosters.forEach(r => {
-                const oid = r.owner_id
-                if (oid && liveAvatarMap[oid]) {
-                  if (!live.roster_avatar_map) live.roster_avatar_map = {}
-                  live.roster_avatar_map[String(r.roster_id)] = liveAvatarMap[oid]
-                }
-              })
-            }
           }
 
           if (curWk) {
@@ -1852,14 +1828,12 @@ export default function App() {
         return pair.map(item => {
           const cName = item.team_info?.canonical_name || item.canonical_name || item.display_name || `Team ${item.roster_id}`
           const tName = item.team_info?.team_name || item.team_name || (liveData && liveData.roster_team_map && liveData.roster_team_map[String(item.roster_id)]) || cName
-          const sAvatar = (liveData && liveData.roster_avatar_map && (liveData.roster_avatar_map[String(item.roster_id)] || liveData.roster_avatar_map[item.roster_id])) || item.sleeper_avatar_url || item.team_info?.avatar_url
           return {
             ...item,
             points: Number(item.points || 0),
             team_info: {
               canonical_name: cName,
-              team_name: tName,
-              avatar_url: sAvatar || `/avatars/${cName.replace(/\//g, '_')}.jpg`
+              team_name: tName
             }
           }
         })
@@ -1873,14 +1847,12 @@ export default function App() {
         if (!grouped[mid]) grouped[mid] = []
         const cName = item.canonical_name || item.display_name || `Team ${item.roster_id}`
         const tName = item.team_name || (liveData && liveData.roster_team_map && liveData.roster_team_map[String(item.roster_id)]) || cName
-        const sAvatar = (liveData && liveData.roster_avatar_map && (liveData.roster_avatar_map[String(item.roster_id)] || liveData.roster_avatar_map[item.roster_id])) || item.sleeper_avatar_url
         const formattedItem = {
           ...item,
           points: Number(item.points || 0),
           team_info: {
             canonical_name: cName,
-            team_name: tName,
-            avatar_url: sAvatar || `/avatars/${cName.replace(/\//g, '_')}.jpg`
+            team_name: tName
           }
         }
         grouped[mid].push(formattedItem)
@@ -2251,11 +2223,9 @@ export default function App() {
                       </div>
                       <div className="matchup-teams">
                         <div className="team-box">
-                          <img 
-                            src={teamA.team_info.avatar_url || "https://sleepercdn.com/images/v2/icons/player_default.png"} 
-                            alt={teamA.team_info.team_name} 
-                            className="team-avatar" 
-                          />
+                          <div className="team-avatar team-avatar-initials" aria-hidden="true">
+                            {teamA.team_info.canonical_name?.charAt(0) || '?'}
+                          </div>
                           <div className="team-name" style={{ fontWeight: '800', color: 'var(--text-primary)', fontSize: '0.95rem' }}>
                             {teamA.team_info.team_name}
                           </div>
@@ -2271,11 +2241,9 @@ export default function App() {
                         </div>
                         <div className="vs-badge">VS</div>
                         <div className="team-box">
-                          <img 
-                            src={teamB.team_info.avatar_url || "https://sleepercdn.com/images/v2/icons/player_default.png"} 
-                            alt={teamB.team_info.team_name} 
-                            className="team-avatar" 
-                          />
+                          <div className="team-avatar team-avatar-initials" aria-hidden="true">
+                            {teamB.team_info.canonical_name?.charAt(0) || '?'}
+                          </div>
                           <div className="team-name" style={{ fontWeight: '800', color: 'var(--text-primary)', fontSize: '0.95rem' }}>
                             {teamB.team_info.team_name}
                           </div>
@@ -3202,22 +3170,9 @@ export default function App() {
                 <div>
                   {/* HEADER */}
                   {(() => {
-                    const safeAvatarName = mName ? mName.replace(/\//g, '_') : mName;
                     return (
                       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.25rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '1rem' }}>
                         <div style={{ width: '64px', height: '64px', borderRadius: '50%', backgroundColor: 'var(--bg-primary)', border: '2px solid #fde68a', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.75rem', fontWeight: '800', color: '#fde68a', overflow: 'hidden', position: 'relative' }}>
-                          <img 
-                            src={`/avatars/${safeAvatarName}.jpg`} 
-                            alt={mName} 
-                            onError={(e) => { 
-                              if (e.target.src.endsWith('.jpg')) {
-                                e.target.src = `/avatars/${safeAvatarName}.png`;
-                              } else {
-                                e.target.style.display = 'none';
-                              }
-                            }}
-                            style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
-                          />
                           <span>{mName.charAt(0)}</span>
                         </div>
                         <div>

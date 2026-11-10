@@ -5,6 +5,8 @@ import os
 import math
 import random
 from collections import defaultdict
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 EXCEL_PATH = os.environ.get(
@@ -21,6 +23,27 @@ SIMULATION_WEEKLY_SIGMA = 17.0
 SIMULATION_VOLATILITY_PRIOR_GAMES = 16.0
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+# The history rebuild makes many Sleeper requests in one run. Sleeper can
+# occasionally reset a connection mid-refresh, so retry transient failures
+# instead of leaving the scheduled weekly update half-finished.
+SLEEPER_SESSION = requests.Session()
+SLEEPER_SESSION.mount(
+    "https://",
+    HTTPAdapter(max_retries=Retry(
+        total=6,
+        connect=6,
+        read=6,
+        status=6,
+        backoff_factor=0.75,
+        status_forcelist=(429, 500, 502, 503, 504),
+        allowed_methods=("GET",),
+    )),
+)
+
+
+def sleeper_get(url):
+    return SLEEPER_SESSION.get(url, timeout=30)
 
 # Load manager mapping
 with open(MANAGERS_FILE, "r") as f:
@@ -278,12 +301,12 @@ def build_full_history():
     # 2. Fetch 2019 - Present from Sleeper API
     curr_id = CURRENT_LEAGUE_ID
     while curr_id and curr_id != "0":
-        l_res = requests.get(f"https://api.sleeper.app/v1/league/{curr_id}").json()
+        l_res = sleeper_get(f"https://api.sleeper.app/v1/league/{curr_id}").json()
         season = int(l_res.get("season"))
         
         print(f"Fetching Sleeper season {season} (League {curr_id})...")
-        users = requests.get(f"https://api.sleeper.app/v1/league/{curr_id}/users").json()
-        rosters = requests.get(f"https://api.sleeper.app/v1/league/{curr_id}/rosters").json()
+        users = sleeper_get(f"https://api.sleeper.app/v1/league/{curr_id}/users").json()
+        rosters = sleeper_get(f"https://api.sleeper.app/v1/league/{curr_id}/rosters").json()
         playoff_start_week = l_res.get("settings", {}).get("playoff_week_start", 15)
         
         user_map = {u["user_id"]: get_canonical(u.get("display_name") or u.get("username")) for u in users}
@@ -291,7 +314,7 @@ def build_full_history():
         
         # A. Regular Season Games (Weeks 1 to playoff_start_week - 1)
         for wk in range(1, playoff_start_week):
-            res = requests.get(f"https://api.sleeper.app/v1/league/{curr_id}/matchups/{wk}")
+            res = sleeper_get(f"https://api.sleeper.app/v1/league/{curr_id}/matchups/{wk}")
             if res.status_code != 200: continue
             matchups = res.json()
             if not matchups: continue
@@ -326,7 +349,7 @@ def build_full_history():
                 })
 
         # B. Official Playoff Games via winners_bracket
-        bracket_res = requests.get(f"https://api.sleeper.app/v1/league/{curr_id}/winners_bracket")
+        bracket_res = sleeper_get(f"https://api.sleeper.app/v1/league/{curr_id}/winners_bracket")
         if bracket_res.status_code == 200:
             bracket = bracket_res.json()
             for b_match in bracket:
@@ -338,7 +361,7 @@ def build_full_history():
                 wk = playoff_start_week + (r_num - 1)
                 
                 # Fetch week scores
-                w_res = requests.get(f"https://api.sleeper.app/v1/league/{curr_id}/matchups/{wk}")
+                w_res = sleeper_get(f"https://api.sleeper.app/v1/league/{curr_id}/matchups/{wk}")
                 if w_res.status_code != 200: continue
                 wk_matchups = w_res.json()
                 if not wk_matchups: continue
@@ -557,12 +580,12 @@ def fetch_sleeper_history_and_live():
     ]
     
     while curr_id and curr_id != "0":
-        l_res = requests.get(f"https://api.sleeper.app/v1/league/{curr_id}").json()
+        l_res = sleeper_get(f"https://api.sleeper.app/v1/league/{curr_id}").json()
         season = int(l_res.get("season"))
         
-        bracket = requests.get(f"https://api.sleeper.app/v1/league/{curr_id}/winners_bracket").json()
-        users = requests.get(f"https://api.sleeper.app/v1/league/{curr_id}/users").json()
-        rosters = requests.get(f"https://api.sleeper.app/v1/league/{curr_id}/rosters").json()
+        bracket = sleeper_get(f"https://api.sleeper.app/v1/league/{curr_id}/winners_bracket").json()
+        users = sleeper_get(f"https://api.sleeper.app/v1/league/{curr_id}/users").json()
+        rosters = sleeper_get(f"https://api.sleeper.app/v1/league/{curr_id}/rosters").json()
         
         user_map = {}
         team_name_map = {}
@@ -597,30 +620,27 @@ def fetch_sleeper_history_and_live():
     champions_by_year.sort(key=lambda x: x["season"], reverse=True)
     
     league_url = f"https://api.sleeper.app/v1/league/{CURRENT_LEAGUE_ID}"
-    league_res = requests.get(league_url).json()
+    league_res = sleeper_get(league_url).json()
     total_weeks = league_res.get("settings", {}).get("playoff_week_start", 15) - 1
     league_settings = league_res.get("settings", {})
     current_leg = int(league_settings.get("leg") or 1)
     last_scored_leg = int(league_settings.get("last_scored_leg") or 0)
     
     users_url = f"https://api.sleeper.app/v1/league/{CURRENT_LEAGUE_ID}/users"
-    users_data = requests.get(users_url).json()
+    users_data = sleeper_get(users_url).json()
     user_map = {}
     for u in users_data:
         uid = u["user_id"]
         cname = get_canonical(uid)
         display_name = u.get("display_name") or u.get("username") or "Unknown"
-        avatar = u.get("avatar")
-        avatar_url = f"profile-images-removed/thumbs/{avatar}" if avatar else None
         user_map[uid] = {
             "canonical_name": cname,
             "display_name": display_name,
-            "avatar_url": avatar_url,
             "team_name": u.get("metadata", {}).get("team_name") or display_name
         }
         
     rosters_url = f"https://api.sleeper.app/v1/league/{CURRENT_LEAGUE_ID}/rosters"
-    rosters_data = requests.get(rosters_url).json()
+    rosters_data = sleeper_get(rosters_url).json()
     
     roster_map = {}
     standings = []
@@ -631,7 +651,6 @@ def fetch_sleeper_history_and_live():
         user_info = user_map.get(owner_id, {
             "canonical_name": "Unknown",
             "display_name": "Unknown",
-            "avatar_url": None,
             "team_name": "Unknown Team"
         })
         
@@ -645,11 +664,9 @@ def fetch_sleeper_history_and_live():
         
         roster_info = {
             "roster_id": rid,
-            "owner_id": owner_id,
             "canonical_name": user_info["canonical_name"],
             "display_name": user_info["display_name"],
             "team_name": user_info["team_name"],
-            "avatar_url": user_info["avatar_url"],
             "wins": wins,
             "losses": losses,
             "ties": ties,
@@ -701,7 +718,7 @@ def fetch_sleeper_history_and_live():
     
     for wk in range(1, 15):
         m_url = f"https://api.sleeper.app/v1/league/{CURRENT_LEAGUE_ID}/matchups/{wk}"
-        m_res = requests.get(m_url)
+        m_res = sleeper_get(m_url)
         if m_res.status_code == 200:
             m_data = m_res.json()
             grouped = {}
